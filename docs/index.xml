@@ -5,38 +5,38 @@
       xmlns:dc="http://purl.org/dc/elements/1.1/" 
       version="2.0">
 <channel>
-<title>First Drafts</title>
-<link>https://github.com/apurvanakade/first-drafts/</link>
-<atom:link href="https://github.com/apurvanakade/first-drafts/index.xml" rel="self" type="application/rss+xml"/>
+<title>Second Drafts</title>
+<link>https://github.com/apurvanakade/second-drafts/index.html</link>
+<atom:link href="https://github.com/apurvanakade/second-drafts/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
-<generator>quarto-1.7.29</generator>
+<generator>quarto-1.3.450</generator>
 <lastBuildDate>Sat, 03 May 2025 13:11:32 GMT</lastBuildDate>
 <item>
   <title>Begin Again</title>
   <dc:creator>Apurva Nakade</dc:creator>
-  <link>https://github.com/apurvanakade/first-drafts/posts/begin-again.html</link>
+  <link>https://github.com/apurvanakade/second-drafts/posts/begin-again.html</link>
   <description><![CDATA[ 
 
 
 
-
-
-<p>I opened this page with a clear idea of what to write. I’ve now spent the last half an hour updating quarto, creating a new github repository, fixing a git merge issue on the old repository, figuring out how to render drafts… This was a mistake. When I have something to write, I need to get the words out as soon as possible without worrying about where are going to go.</p>
+<p>I opened this page with a clear idea of what to write. I’ve now spent the last half an hour updating quarto, creating a new github repository, fixing a git merge issue on the old repository, figuring out how to render drafts… This was a mistake. When I have something to write, I need to get the words out as soon as possible without worrying about where they are going to go.</p>
 <hr>
 <p>One of the protagonist in <a href="https://www.goodreads.com/book/show/10357575-1q84">1Q84</a>, Tengo, is a writer. He teaches math at cram schools to make a living but his real passion is writing. At some point in his life he as to decide between writing and math, and he decides to write.</p>
-<p>Tengo is my alter-ego from a different dimension - funny that the book itself is about different dimensions, as is always the case with Murakami’s novels. I don’t have a talent for writing but I’ve always loved writing. I have had several blogs in different parts of my life each quite reflective of the what I was going through at the time.</p>
-<p>I haven’t blogged in the past few years. I can think of many excuses.</p>
+<p>Tengo is my alter-ego from a different dimension - funny that the book itself is about different dimensions. He chose writing where as I chose math. Thankfully math pays so I do not have to teach writing for a living.</p>
+<p>I’ve always loved writing. I have had several blogs representing different phrases of my life, each reflective of what I was going through at the time. I haven’t blogged in the past few years.</p>
 <ul>
 <li>I wanted to focus more on math writing and my work.</li>
 <li>Do people write any more? Isn’t this the age of videos?</li>
 <li>Why write a blog at all that nobody reads?</li>
+<li>… so many excuses.</li>
 </ul>
-<p>But then recently I started reading <a href="https://www.goodreads.com/book/show/615570.The_Artist_s_Way">The Artist’s Way</a> and it inspired me to write again.</p>
+<p>Recently I started reading <a href="https://www.goodreads.com/book/show/615570.The_Artist_s_Way">The Artist’s Way</a> and it inspired me to write again. I sometimes get stuck in logic and rationalizing and trying to find reasons to do something. But really, I just enjoy putting thoughts into words, and that is reason enough. I heard Neil Gaiman talk about how he likes to write with a fountain pen. And I do too, I find it magical to see words appear on paper. But, I write much slower on paper than I can think. And I move around a lot so I do not have the luxury of carrying ink cartridges with me. For me, writing here is the equivalent of writing with a fountain pen. Just watching words magically appear on the screen out of nowhere.</p>
+<p>I’m calling this journal Second Drafts as that’s what it’s going to be. Nothing polished or well-thought but not stream-of-conscious either. I hope to write what comes to mind and then do one scan to clean it up. As Sam Harris says, it’s never late to begin again.</p>
 
 
 
  ]]></description>
-  <guid>https://github.com/apurvanakade/first-drafts/posts/begin-again.html</guid>
+  <guid>https://github.com/apurvanakade/second-drafts/posts/begin-again.html</guid>
   <pubDate>Sat, 03 May 2025 13:11:32 GMT</pubDate>
 </item>
 </channel>
