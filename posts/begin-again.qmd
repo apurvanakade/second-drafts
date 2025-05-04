@@ -1,0 +1,23 @@
+---
+title: Begin Again
+author: Apurva Nakade
+date: 2025-05-03 09:11:32
+categories: []
+# draft: true
+---
+
+I opened this page with a clear idea of what to write. I've now spent the last half an hour updating quarto, creating a new github repository, fixing a git merge issue on the old repository, figuring out how to render drafts... This was a mistake. When I have something to write, I need to get the words out as soon as possible without worrying about where are going to go. 
+
+---
+
+One of the protagonist in [1Q84](https://www.goodreads.com/book/show/10357575-1q84), Tengo, is a writer. He teaches math at cram schools to make a living but his real passion is writing. At some point in his life he as to decide between writing and math, and he decides to write. 
+
+Tengo is my alter-ego from a different dimension - funny that the book itself is about different dimensions, as is always the case with Murakami's novels. I don't have a talent for writing but I've always loved writing. I have had several blogs in different parts of my life each quite reflective of the what I was going through at the time.
+
+I haven't blogged in the past few years. I can think of many excuses.
+
+- I wanted to focus more on math writing and my work.
+- Do people write any more? Isn't this the age of videos?
+- Why write a blog at all that nobody reads?
+
+But then recently I started reading [The Artist's Way](https://www.goodreads.com/book/show/615570.The_Artist_s_Way) and it inspired me to write again. 

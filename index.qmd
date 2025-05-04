@@ -1,0 +1,12 @@
+---
+title: Second Drafts
+listing:
+  fields: [date, title, description, categories]
+  sort: "date desc"
+  contents: "*.qmd"
+  sort-ui: false
+  filter-ui: false
+  categories: true
+  feed: true
+page-layout: full
+---
