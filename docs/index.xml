@@ -5,23 +5,23 @@
       xmlns:dc="http://purl.org/dc/elements/1.1/" 
       version="2.0">
 <channel>
-<title>First Drafts</title>
-<link>https://github.com/apurvanakade/first-drafts/</link>
-<atom:link href="https://github.com/apurvanakade/first-drafts/index.xml" rel="self" type="application/rss+xml"/>
+<title>Second Drafts</title>
+<link>https://github.com/apurvanakade/second-drafts/</link>
+<atom:link href="https://github.com/apurvanakade/second-drafts/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.7.29</generator>
 <lastBuildDate>Sat, 03 May 2025 13:11:32 GMT</lastBuildDate>
 <item>
   <title>Begin Again</title>
   <dc:creator>Apurva Nakade</dc:creator>
-  <link>https://github.com/apurvanakade/first-drafts/posts/begin-again.html</link>
+  <link>https://github.com/apurvanakade/second-drafts/posts/begin-again.html</link>
   <description><![CDATA[ 
 
 
 
 
 
-<p>I opened this page with a clear idea of what to write. I’ve now spent the last half an hour updating quarto, creating a new github repository, fixing a git merge issue on the old repository, figuring out how to render drafts… This was a mistake. When I have something to write, I need to get the words out as soon as possible without worrying about where are going to go.</p>
+<p>I opened this page with a clear idea of what I wanted to write. I’ve now spent the last half an hour updating quarto, creating a new github repository, fixing a git merge issue on the old repository, figuring out how to render drafts… this was a mistake. When I have something to write, I need to get the words out as soon as possible without worrying about where are going to go.</p>
 <hr>
 <p>One of the protagonist in <a href="https://www.goodreads.com/book/show/10357575-1q84">1Q84</a>, Tengo, is a writer. He teaches math at cram schools to make a living but his real passion is writing. At some point in his life he as to decide between writing and math, and he decides to write.</p>
 <p>Tengo is my alter-ego from a different dimension - funny that the book itself is about different dimensions, as is always the case with Murakami’s novels. I don’t have a talent for writing but I’ve always loved writing. I have had several blogs in different parts of my life each quite reflective of the what I was going through at the time.</p>
@@ -36,7 +36,7 @@
 
 
  ]]></description>
-  <guid>https://github.com/apurvanakade/first-drafts/posts/begin-again.html</guid>
+  <guid>https://github.com/apurvanakade/second-drafts/posts/begin-again.html</guid>
   <pubDate>Sat, 03 May 2025 13:11:32 GMT</pubDate>
 </item>
 </channel>

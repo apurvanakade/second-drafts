@@ -6,7 +6,7 @@ categories: []
 # draft: true
 ---
 
-I opened this page with a clear idea of what to write. I've now spent the last half an hour updating quarto, creating a new github repository, fixing a git merge issue on the old repository, figuring out how to render drafts... This was a mistake. When I have something to write, I need to get the words out as soon as possible without worrying about where are going to go. 
+I opened this page with a clear idea of what I wanted to write. I've now spent the last half an hour updating quarto, creating a new github repository, fixing a git merge issue on the old repository, figuring out how to render drafts... this was a mistake. When I have something to write, I need to get the words out as soon as possible without worrying about where are going to go. 
 
 ---
 

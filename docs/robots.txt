@@ -1,1 +1,1 @@
-Sitemap: https://github.com/apurvanakade/first-drafts/sitemap.xml
+Sitemap: https://github.com/apurvanakade/second-drafts/sitemap.xml
