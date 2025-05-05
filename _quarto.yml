@@ -4,24 +4,7 @@ project:
 
 website:
   title: "Second Drafts"
-  navbar:
-    # left:
-    #   - text: Home
-    #     href: https://apurvanakade.github.io/
-      # - text: Class Notes
-      #   href: https://apurvanakade.github.io/notes.html
-      # - text: Math Blog
-      #   href: https://apurvanakade.github.io/math-blog/
-      # - text: CV
-      #   href: https://apurvanakade.github.io/CV.html
-    right:
-      - icon: github
-        href: https://github.com/apurvanakade/second-drafts/
-        aria-label: GitHub
-  # sidebar: 
-  #   style: floating
-  #   search: true
-  #   contents: auto
+  navbar: true
   open-graph: true
   site-url: https://github.com/apurvanakade/second-drafts/
   repo-url: https://github.com/apurvanakade/second-drafts/
