@@ -6,33 +6,29 @@
       version="2.0">
 <channel>
 <title>Second Drafts</title>
-<link>https://github.com/apurvanakade/second-drafts/</link>
+<link>https://github.com/apurvanakade/second-drafts/index.html</link>
 <atom:link href="https://github.com/apurvanakade/second-drafts/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
-<generator>quarto-1.7.29</generator>
-<lastBuildDate>Sat, 03 May 2025 13:11:32 GMT</lastBuildDate>
+<generator>quarto-1.3.450</generator>
+<lastBuildDate>Wed, 07 May 2025 21:11:43 GMT</lastBuildDate>
 <item>
-  <title>Begin Again</title>
+  <title>Sperner’s Lemma - Part 1</title>
   <dc:creator>Apurva Nakade</dc:creator>
-  <link>https://github.com/apurvanakade/second-drafts/posts/begin-again.html</link>
+  <link>https://github.com/apurvanakade/second-drafts/posts/sperners lemma 01.html</link>
   <description><![CDATA[ 
 
 
 
-
-
-<p>I opened this page with a clear idea of what I wanted to write. I’ve now spent the last half hour updating quarto, setting up a new git repository, fixing a git merge issue, figuring out how to render drafts… this was a mistake. When I have something to write, I need to get the words out as soon as possible without worrying about their final destination.</p>
-<hr>
-<p>One of the protagonist in <a href="https://www.goodreads.com/book/show/10357575-1q84">1Q84</a>, Tengo, is a writer. He teaches math at cram schools to make a living but his real passion is writing. At some point in his life he has to decide between writing and math, and he decides to write. Tengo is my alter-ego from a different dimension. He chose writing just as I chose math. Thankfully math pays so I do not have to teach writing for a living.</p>
-<p>I’ve always loved writing. I have had several blogs representing different phrases of my life, each reflective of what I was going through at the time but haven’t maintained one of late for various inane excuses.</p>
-<p>I recently started reading <a href="https://www.goodreads.com/book/show/615570.The_Artist_s_Way">The Artist’s Way</a> and it inspired me to write again. I sometimes get stuck in arguments, trying to find reasons to justify doing or not doing something, analysis paralysis. Very simply though, I just enjoy putting thoughts into words, which is justification enough to write. I heard Neil Gaiman talk about how he likes to write with a fountain pen. Writing here is the equivalent of writing with a fountain pen for me - just watching words magically appear on the screen out of nowhere.</p>
-<p>This journal is going to be a collection of my second drafts - nothing polished or well-thought but not stream-of-conscious either. As Sam Harris says, it’s never late to <a href="https://dynamic.wakingup.com/course/CO7C3B8B5">begin again</a>.</p>
+<p>test</p>
 
 
 
  ]]></description>
-  <guid>https://github.com/apurvanakade/second-drafts/posts/begin-again.html</guid>
-  <pubDate>Sat, 03 May 2025 13:11:32 GMT</pubDate>
+  <category>math</category>
+  <category>combinatorics</category>
+  <category>graph theory</category>
+  <guid>https://github.com/apurvanakade/second-drafts/posts/sperners lemma 01.html</guid>
+  <pubDate>Wed, 07 May 2025 21:11:43 GMT</pubDate>
 </item>
 </channel>
 </rss>

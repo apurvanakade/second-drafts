@@ -1,0 +1,14 @@
+---
+title: Sperner's Lemma - Part 1
+author: Apurva Nakade
+date: 2025-05-07 17:11:43
+categories: [math, combinatorics, graph theory]
+---
+
+what is sperner's lemma?
+
+Monsky's theorem
+
+baricentric coordinates, delauney triangulations
+
+generating random triangulations
