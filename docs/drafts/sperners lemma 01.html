@@ -64,11 +64,16 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../styles.css">
 <meta property="og:title" content="Second Drafts - Sperner’s Lemma - Part 1">
 <meta property="og:description" content="">
+<meta property="og:image" content="https://github.com/apurvanakade/second-drafts/drafts/sperners lemma 01_files/figure-html/cell-3-output-1.png">
 <meta property="og:site-name" content="Second Drafts">
+<meta property="og:image:height" content="455">
+<meta property="og:image:width" content="562">
 </head>
 
 <body class="nav-fixed fullcontent">
@@ -131,9 +136,39 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>test</p>
+<p>what is sperner’s lemma?</p>
+<p>Monsky’s theorem</p>
+<p>baricentric coordinates, delauney triangulations</p>
+<p>generating random triangulations</p>
+<hr>
+<p>I recently encountered <a href="https://en.wikipedia.org/wiki/Monsky%27s_theorem">Monsky’s theorem</a> about the impossibility of dividing the square into an odd number of equal area triangles. It got me thinking about the Sperner’s lemma on a long hike I was on. I love doing proofs in my head and I tried recreating the Sperner’s proof but could not figure it out no matter what until I realized I was missing the Sperner condition. And once I did that it all fit together perfectly. But for the first time, it also made me see the connection between Sperner’s lemma and algebraic topology.</p>
+<p>The classical version of Sperner’s lemma states the following</p>
+<div class="thm-sperners-lemma">
+<p>Let <span class="math inline">\(T\)</span> be a triangle subdivided into smaller triangles such that:</p>
+<ol type="1">
+<li>Each vertex of the subdivision is labeled with one of three labels <span class="math inline">\(1, 2, 3\)</span>.</li>
+<li>The vertices of the outer triangle <span class="math inline">\(T\)</span> are labeled <span class="math inline">\(1, 2, 3\)</span> in some order.</li>
+<li>Each vertex on an edge of <span class="math inline">\(T\)</span> is labeled with one of the two labels of that edge.</li>
+</ol>
+<p>Then, there exists at least one subtriangle in the subdivision whose vertices are labeled with all three labels <span class="math inline">\(1, 2, 3\)</span>.</p>
+</div>
+<p>The third condition is the one I was missing - the so called <strong>Sperner condition</strong>. We call the subtriangle with all three colors a <strong>rainbow triangle</strong>. So Sperner’s lemma can be stated as saying that for any triangulation of a triangle that satisfies the Sperner condition, there is a rainbow triangle.</p>
+<section id="barycentric-coordinates" class="level2">
+<h2 class="anchored" data-anchor-id="barycentric-coordinates">Barycentric Coordinates</h2>
+<p>I know the proof, multiple proofs actually, but just for fun I want to see this in action. How do I generated random colorings and random triangulations? It’s my old friend barycentric coordinates.</p>
+<div class="cell" data-execution_count="2">
+<div class="cell-output cell-output-display">
+<p><img src="sperners lemma 01_files/figure-html/cell-3-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="3">
+<div class="cell-output cell-output-display">
+<pre><code>Unable to display output for mime type(s): application/vnd.plotly.v1+json</code></pre>
+</div>
+</div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Second Drafts",
     "section": "",
-    "text": "Sperner’s Lemma - Part 1\n\n\n\n\n\n\n\nmath\n\n\ncombinatorics\n\n\ngraph theory\n\n\n\n\n\n\n\n\n\n\n\nMay 7, 2025\n\n\n\n\n\n\nNo matching items"
+    "text": "Begin Again\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMay 3, 2025\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/begin-again.html",
@@ -14,10 +14,24 @@
     "text": "I opened this page with a clear idea of what I wanted to write. I’ve now spent the last half hour updating quarto, setting up a new git repository, fixing a git merge issue, figuring out how to render drafts… this was a mistake. When I have something to write, I need to get the words out as soon as possible without worrying about their final destination.\n\nOne of the protagonist in 1Q84, Tengo, is a writer. He teaches math at cram schools to make a living but his real passion is writing. At some point in his life he has to decide between writing and math, and he decides to write. Tengo is my alter-ego from a different dimension. He chose writing just as I chose math. Thankfully math pays so I do not have to teach writing for a living.\nI’ve always loved writing. I have had several blogs representing different phrases of my life, each reflective of what I was going through at the time but haven’t maintained one of late for various inane excuses.\nI recently started reading The Artist’s Way and it inspired me to write again. I sometimes get stuck in arguments, trying to find reasons to justify doing or not doing something, analysis paralysis. Very simply though, I just enjoy putting thoughts into words, which is justification enough to write. I heard Neil Gaiman talk about how he likes to write with a fountain pen. Writing here is the equivalent of writing with a fountain pen for me - just watching words magically appear on the screen out of nowhere.\nThis journal is going to be a collection of my second drafts - nothing polished or well-thought but not stream-of-conscious either. As Sam Harris says, it’s never late to begin again."
   },
   {
-    "objectID": "posts/sperners lemma 01.html",
-    "href": "posts/sperners lemma 01.html",
+    "objectID": "drafts/test2.html",
+    "href": "drafts/test2.html",
+    "title": "Slider Controlled Point",
+    "section": "",
+    "text": "import plotly.graph_objects as go\nimport numpy as np\n\n# Generate curve data\nt = np.linspace(-1, 1, 100)\nx = t + t ** 2\ny = t - t ** 2\nxm = np.min(x) - 1.5\nxM = np.max(x) + 1.5\nym = np.min(y) - 1.5\nyM = np.max(y) + 1.5\nN = 25\ns = np.linspace(-1, 1, N)\nxx = s + s ** 2\nyy = s - s ** 2\n\n# Create figure\nfig = go.Figure(\n    data=[go.Scatter(x=x, y=y,\n                     mode=\"lines\",\n                     line=dict(width=2, color=\"blue\")),\n          go.Scatter(x=[xx[0]], y=[yy[0]],\n                     mode=\"markers\",\n                     marker=dict(color=\"red\", size=10))])\n\n# Add frames for animation\nfig.update(frames=[go.Frame(\n                        data=[go.Scatter(\n                                   x=x,\n                                   y=y,\n                                   mode=\"lines\",\n                                   line=dict(width=2, color=\"blue\")),\n                              go.Scatter(\n                                   x=[xx[k]], \n                                   y=[yy[k]], \n                                   mode=\"markers\", \n                                   marker=dict(color=\"red\", size=10))],\n                        name=str(k))\n        for k in range(N)])\n\n# Create slider steps\nslider_steps = [\n    dict(\n        args=[[str(k)],\n              {\"frame\": {\"duration\": 0, \"redraw\": True},\n               \"mode\": \"immediate\", \"transition\": {\"duration\": 0}}],\n        label=str(k),\n        method=\"animate\"\n    ) for k in range(N)\n]\n\n# Update layout with only slider\nfig.update_layout(\n    width=600,\n    height=450,\n    xaxis=dict(range=[xm, xM], autorange=False, zeroline=False),\n    yaxis=dict(range=[ym, yM], autorange=False, zeroline=False),\n    title_text=\"Kinematic Generation of a Planar Curve\", title_x=0.5,\n    sliders=[dict(\n        currentvalue={\"prefix\": \"Time: \", \"visible\": True, \"xanchor\": \"center\"},\n        steps=slider_steps)\n    ]\n)\n\nfig.show()"
+  },
+  {
+    "objectID": "drafts/sperners lemma 01.html",
+    "href": "drafts/sperners lemma 01.html",
     "title": "Sperner’s Lemma - Part 1",
     "section": "",
-    "text": "test"
+    "text": "what is sperner’s lemma?\nMonsky’s theorem\nbaricentric coordinates, delauney triangulations\ngenerating random triangulations\nI recently encountered Monsky’s theorem about the impossibility of dividing the square into an odd number of equal area triangles. It got me thinking about the Sperner’s lemma on a long hike I was on. I love doing proofs in my head and I tried recreating the Sperner’s proof but could not figure it out no matter what until I realized I was missing the Sperner condition. And once I did that it all fit together perfectly. But for the first time, it also made me see the connection between Sperner’s lemma and algebraic topology.\nThe classical version of Sperner’s lemma states the following\nThe third condition is the one I was missing - the so called Sperner condition. We call the subtriangle with all three colors a rainbow triangle. So Sperner’s lemma can be stated as saying that for any triangulation of a triangle that satisfies the Sperner condition, there is a rainbow triangle."
+  },
+  {
+    "objectID": "drafts/sperners lemma 01.html#barycentric-coordinates",
+    "href": "drafts/sperners lemma 01.html#barycentric-coordinates",
+    "title": "Sperner’s Lemma - Part 1",
+    "section": "Barycentric Coordinates",
+    "text": "Barycentric Coordinates\nI know the proof, multiple proofs actually, but just for fun I want to see this in action. How do I generated random colorings and random triangulations? It’s my old friend barycentric coordinates.\n\n\n\n\n\n\n\nUnable to display output for mime type(s): application/vnd.plotly.v1+json"
   }
 ]
