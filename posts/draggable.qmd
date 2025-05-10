@@ -1,0 +1,170 @@
+---
+title: "Interactive Ternary Plot"
+format: html
+---
+
+```{ojs}
+import {Inputs, html} from "@observablehq/stdlib";
+
+viewof canvas = {
+  const width = 700, height = 300;
+  const canvas = html`<canvas width=${width} height=${height} style="border:1px solid #ccc"></canvas>`;
+  const ctx = canvas.getContext("2d");
+
+  const A = [0, 0], B = [1, 0], C = [0, 1];
+  
+  const A2 = [-0.5 + 2, 0];
+  const B2 = [0.5 + 2, 0];
+  const C2 = [0.0 + 2.0, Math.sqrt(3)/2];
+
+  const scale = 200;
+  const offset = [50, 250];
+
+  function toCanvas([x, y]) {
+    return [x * scale + offset[0], offset[1] - y * scale];
+  }
+
+  let target = {i: 0.3, j: 0.3};
+  let current = {i: 0.3, j: 0.3};
+
+  function drawGrid() {
+  const gridSpacing = 0.1;
+  
+  // Loop through grid points, ensuring they are within the red triangle bounds
+  for (let i = 0; i <= 1; i += gridSpacing) {
+    for (let j = 0; j <= 1 - i; j += gridSpacing) {
+      const k = 1 - i - j;
+
+      // Calculate the grid points for the triangle
+      const x1 = i * A2[0] + j * B2[0] + k * C2[0];
+      const y1 = i * A2[1] + j * B2[1] + k * C2[1];
+      
+      const x2 = (i + gridSpacing) * A2[0] + j * B2[0] + (k - gridSpacing) * C2[0];
+      const y2 = (i + gridSpacing) * A2[1] + j * B2[1] + (k - gridSpacing) * C2[1];
+      
+      const x3 = i * A2[0] + (j + gridSpacing) * B2[0] + (k - gridSpacing) * C2[0];
+      const y3 = i * A2[1] + (j + gridSpacing) * B2[1] + (k - gridSpacing) * C2[1];
+
+      // Only draw the triangle if it’s within the bounds of the red triangle
+      if (i + j + gridSpacing <= 1) {
+        const [p1x, p1y] = toCanvas([x1, y1]);
+        const [p2x, p2y] = toCanvas([x2, y2]);
+        const [p3x, p3y] = toCanvas([x3, y3]);
+
+        // Draw the edges of the triangle
+        ctx.beginPath();
+        ctx.moveTo(p1x, p1y);
+        ctx.lineTo(p2x, p2y);
+        ctx.lineTo(p3x, p3y);
+        ctx.closePath();
+        ctx.strokeStyle = "rgba(200, 200, 200, 0.5)"; // Faint grid color
+        ctx.lineWidth = 1;
+        ctx.stroke();
+      }
+    }
+  }
+}
+
+
+  function draw() {
+    ctx.clearRect(0, 0, width, height);
+
+    // Draw the black triangle and fill it
+    ctx.beginPath();
+    ctx.moveTo(...toCanvas(A));
+    ctx.lineTo(...toCanvas(B));
+    ctx.lineTo(...toCanvas(C));
+    ctx.closePath();
+    ctx.fillStyle = "rgba(0, 0, 0, 0.07)";  // Fill color for black triangle
+    ctx.fill();
+    ctx.strokeStyle = "black";
+    ctx.stroke();
+
+    const k = 1 - current.i - current.j;
+    const px = current.i * A[0] + current.j * B[0] + k * C[0];
+    const py = current.i * A[1] + current.j * B[1] + k * C[1];
+    const [cx, cy] = toCanvas([px, py]);
+
+    ctx.beginPath();
+    ctx.arc(cx, cy, 5, 0, 2 * Math.PI);
+    ctx.fillStyle = "black";
+    ctx.fill();
+    
+
+    drawGrid();  // Add grid to the red triangle
+
+    ctx.beginPath();
+    ctx.moveTo(...toCanvas(A2));
+    ctx.lineTo(...toCanvas(B2));
+    ctx.lineTo(...toCanvas(C2));
+    ctx.closePath();
+    ctx.strokeStyle = "red";
+    ctx.stroke();
+
+    const rx = current.i * A2[0] + current.j * B2[0] + k * C2[0];
+    const ry = current.i * A2[1] + current.j * B2[1] + k * C2[1];
+    const [rcx, rcy] = toCanvas([rx, ry]);
+    ctx.beginPath();
+    ctx.arc(rcx, rcy, 5, 0, 2 * Math.PI);
+    ctx.fillStyle = "red";
+    ctx.fill();
+
+    ctx.fillStyle = "black";
+    ctx.font = "14px sans-serif";
+    ctx.fillText(`i = ${current.i.toFixed(2)}, j = ${current.j.toFixed(2)}, k = ${k.toFixed(2)}`, 20, height - 20);
+    ctx.fillText(`x = ${rx.toFixed(2)}, y = ${ry.toFixed(2)}`, 320, height - 20);
+  }
+
+  function animate() {
+    const alpha = 0.2; // smoothing factor
+    current.i += alpha * (target.i - current.i);
+    current.j += alpha * (target.j - current.j);
+    draw();
+    requestAnimationFrame(animate);
+  }
+
+  function handleMouse(e) {
+    const rect = canvas.getBoundingClientRect();
+    const mx = e.clientX - rect.left;
+    const my = e.clientY - rect.top;
+
+    const x = (mx - offset[0]) / scale;
+    const y = (offset[1] - my) / scale;
+
+    const denom = (B[1] - C[1]) * (A[0] - C[0]) + (C[0] - B[0]) * (A[1] - C[1]);
+    const bi = ((B[1] - C[1]) * (x - C[0]) + (C[0] - B[0]) * (y - C[1])) / denom;
+    const bj = ((C[1] - A[1]) * (x - C[0]) + (A[0] - C[0]) * (y - C[1])) / denom;
+    const bk = 1 - bi - bj;
+
+    const snapTol = 0.05;
+    const vertices = [
+      [1, 0],
+      [0, 1],
+      [0, 0]
+    ];
+    const dists = vertices.map(([vi, vj]) => Math.hypot(bi - vi, bj - vj));
+    const minDist = Math.min(...dists);
+    if (minDist < snapTol) {
+      [target.i, target.j] = vertices[dists.indexOf(minDist)];
+    } else if (bi >= 0 && bj >= 0 && bi + bj <= 1) {
+      target.i = bi;
+      target.j = bj;
+    }
+  }
+
+  canvas.addEventListener("mousedown", e => {
+    handleMouse(e);
+    const move = e => handleMouse(e);
+    const up = () => {
+      window.removeEventListener("mousemove", move);
+      window.removeEventListener("mouseup", up);
+    };
+    window.addEventListener("mousemove", move);
+    window.addEventListener("mouseup", up);
+  });
+
+  requestAnimationFrame(animate);
+  return canvas;
+}
+
+```
