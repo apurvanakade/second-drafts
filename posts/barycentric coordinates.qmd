@@ -292,4 +292,5 @@ This post was an excuse for me to learn how to use ObservableJS. I was initially
 <!-- 
 TODO: Export javascript classes to separate files.
 TODO: Write a little about the javascript implementation.
+TODO: Extend triangle class to a draggable triangle class.
  -->
