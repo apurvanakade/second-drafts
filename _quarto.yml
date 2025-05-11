@@ -1,10 +1,16 @@
 project:
   type: website
   output-dir: docs
+  render:
+  - "*.qmd"
+  - "!drafts/"
 
 website:
   title: "Second Drafts"
+  page-navigation: true
+  back-to-top-navigation: true
   open-graph: true
+  page-footer: "Copyright 2025, Apurva Nakade" 
   site-url: https://github.com/apurvanakade/second-drafts/
   repo-url: https://github.com/apurvanakade/second-drafts/
   navbar:
@@ -24,10 +30,10 @@ website:
   search:
     type: overlay
     location: navbar
-  # sidebar: 
-  #   style: floating
-  #   search: true
-  #   contents: auto
+  sidebar: 
+    style: floating
+    search: true
+    contents: auto
 
   
 
