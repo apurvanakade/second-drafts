@@ -31,7 +31,6 @@ class Triangle {
     return this.canvasObj.fromCanvas(p);
   }
 
-
   draw({ fillStyle = null, strokeStyle = "black", vertexColor = null } = {}) {
     const { CanvasA, CanvasB, CanvasC, ctx } = this;
     ctx.beginPath();
@@ -62,13 +61,11 @@ class Triangle {
     for (let i = 0; i <= 1; i += spacing) {
       for (let j = 0; j <= 1 - i; j += spacing) {
         const [x, y] = this.toCanvas(this.barycentricToCartesian(i, j));
-
         const neighbors = [
           [i + spacing, j],
           [i, j + spacing],
           [i + spacing, j - spacing]
         ];
-
         for (const [ni, nj] of neighbors) {
           if (ni >= 0 && nj >= 0 && ni + nj <= 1) {
             const [x2, y2] = this.toCanvas(this.barycentricToCartesian(ni, nj));
@@ -95,22 +92,52 @@ class Triangle {
     const [Ax, Ay] = this.A;
     const [Bx, By] = this.B;
     const [Cx, Cy] = this.C;
-
     const v0 = [Bx - Ax, By - Ay];
     const v1 = [Cx - Ax, Cy - Ay];
     const v2 = [x - Ax, y - Ay];
-
     const d00 = v0[0] * v0[0] + v0[1] * v0[1];
     const d01 = v0[0] * v1[0] + v0[1] * v1[1];
     const d11 = v1[0] * v1[0] + v1[1] * v1[1];
     const d20 = v2[0] * v0[0] + v2[1] * v0[1];
     const d21 = v2[0] * v1[0] + v2[1] * v1[1];
-
     const denom = d00 * d11 - d01 * d01;
     const j = (d11 * d20 - d01 * d21) / denom;
     const k = (d00 * d21 - d01 * d20) / denom;
     const i = 1 - j - k;
     return [i, j];
+  }
+}
+
+class DraggableTriangle extends Triangle {
+  constructor(A, B, C, canvasObj) {
+    super(A, B, C, canvasObj);
+    this.draggingIndex = null;
+  }
+
+  hitTest([mx, my], radius = 10) {
+    const points = [this.A, this.B, this.C];
+    return points.findIndex(([x, y]) => Math.hypot(mx - x, my - y) < radius);
+  }
+
+  startDrag([mx, my]) {
+    this.draggingIndex = this.hitTest([mx, my]);
+    return this.draggingIndex !== -1;
+  }
+
+  dragTo([mx, my]) {
+    if (this.draggingIndex === null) return;
+    const newCoord = this.fromCanvas([mx, my]);
+    if (this.draggingIndex === 0) this.A = newCoord;
+    else if (this.draggingIndex === 1) this.B = newCoord;
+    else if (this.draggingIndex === 2) this.C = newCoord;
+
+    this.CanvasA = this.toCanvas(this.A);
+    this.CanvasB = this.toCanvas(this.B);
+    this.CanvasC = this.toCanvas(this.C);
+  }
+
+  endDrag() {
+    this.draggingIndex = null;
   }
 }
 
@@ -148,21 +175,25 @@ class Canvas {
     this.ctx.fill();
   }
 
-  newTriangle(A, B, C) {
-    return new Triangle(A, B, C, this);
+  newTriangle(A, B, C, draggable = false) {
+    return draggable
+      ? new DraggableTriangle(A, B, C, this)
+      : new Triangle(A, B, C, this);
   }
 }
+```
 
+```{ojs}
 // === Observable viewof canvas ===
 viewof canvas = {
   const width = 800, height = 400;
   const scale = 200, offset = [50, 250];
-  const canvasObj = new Canvas(width, height, scale, offset);
-  const canvas = canvasObj.getCanvas();
-  const ctx = canvasObj.getContext();
+  const canvasInstance = new Canvas(width, height, scale, offset);
+  const canvas = canvasInstance.getCanvas();
+  const ctx = canvasInstance.getContext();
 
   const A = [0, 0], B = [1, 0], C = [0, 1];
-  let A2 = [1.5, 0], B2 = [3, 0], C2 = [2, 1]; 
+  let A2 = [1.5, 0], B2 = [3, 0], C2 = [2, 1];
 
   let target = { i: 0.3, j: 0.3 };
   let current = { i: 0.3, j: 0.3 };
@@ -171,20 +202,20 @@ viewof canvas = {
   function draw() {
     ctx.clearRect(0, 0, width, height);
 
-    const blackTri = canvasObj.newTriangle(A, B, C);
+    const blackTri = canvasInstance.newTriangle(A, B, C);
     blackTri.drawGrid();
     blackTri.draw({ fillStyle: "rgba(0,0,0,0.2)", strokeStyle: "black" });
 
-    const redTri = canvasObj.newTriangle(A2, B2, C2);
+    const redTri = canvasInstance.newTriangle(A2, B2, C2);
     redTri.drawGrid();
     redTri.draw({ strokeStyle: "red", vertexColor: "red" });
 
     const k = 1 - current.i - current.j;
     const [x, y] = blackTri.barycentricToCartesian(current.i, current.j);
-    canvasObj.drawPoint([x, y], "blue");
+    canvasInstance.drawPoint([x, y], "blue");
 
     const [gx, gy] = redTri.barycentricToCartesian(current.i, current.j);
-    canvasObj.drawPoint([gx, gy], "green");
+    canvasInstance.drawPoint([gx, gy], "green");
 
     ctx.fillStyle = "black";
     ctx.font = "14px sans-serif";
@@ -204,8 +235,8 @@ viewof canvas = {
     const rect = canvas.getBoundingClientRect();
     const mx = e.clientX - rect.left;
     const my = e.clientY - rect.top;
-    const [x, y] = canvasObj.fromCanvas([mx, my]);
-    const blackTri = canvasObj.newTriangle(A, B, C);
+    const [x, y] = canvasInstance.fromCanvas([mx, my]);
+    const blackTri = canvasInstance.newTriangle(A, B, C);
     const [bi, bj] = blackTri.cartesianToBarycentric(x, y);
     const snapTol = 0.05;
     const vertices = [[1, 0], [0, 1], [0, 0]];
@@ -225,10 +256,10 @@ viewof canvas = {
     const my = e.clientY - rect.top;
 
     if (draggingVertex !== null) {
-      if (draggingVertex === 0) A2 = canvasObj.fromCanvas([mx, my]);
-      else if (draggingVertex === 1) B2 = canvasObj.fromCanvas([mx, my]);
-      else if (draggingVertex === 2) C2 = canvasObj.fromCanvas([mx, my]);
-      draw();  // <-- Ensures red point moves with triangle
+      if (draggingVertex === 0) A2 = canvasInstance.fromCanvas([mx, my]);
+      else if (draggingVertex === 1) B2 = canvasInstance.fromCanvas([mx, my]);
+      else if (draggingVertex === 2) C2 = canvasInstance.fromCanvas([mx, my]);
+      draw();
     } else {
       handleMouse(e);
     }
@@ -239,7 +270,7 @@ viewof canvas = {
     const my = e.clientY - canvas.getBoundingClientRect().top;
     draggingVertex = null;
     [A2, B2, C2].forEach(([x, y], idx) => {
-      const [cx, cy] = canvasObj.toCanvas([x, y]);
+      const [cx, cy] = canvasInstance.toCanvas([x, y]);
       if (Math.hypot(mx - cx, my - cy) < 10) draggingVertex = idx;
     });
 
@@ -257,8 +288,6 @@ viewof canvas = {
   requestAnimationFrame(animate);
   return canvas;
 }
-
-
 ```
 **Barycentric coordinates** are a coordinate system for describing points within a triangle.  
 
