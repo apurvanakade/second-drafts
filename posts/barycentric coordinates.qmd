@@ -1,5 +1,5 @@
 ---
-title: "Barycentric Coordinates ft. ObservableJS"
+title: "Barycentric Coordinates"
 date: 2025-05-11 02:55:36
 format: html
 execute:
