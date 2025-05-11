@@ -1,0 +1,302 @@
+---
+title: "Barycentric Coordinates ft. ObservableJS"
+date: 2025-05-10 18:33:24
+format: 
+  html:
+    code-fold: true
+author: Apurva Nakade
+---
+
+```{ojs}
+
+// === Class Definitions ===
+class Triangle {
+  constructor(A, B, C, canvasObj) {
+    this.A = A;
+    this.B = B;
+    this.C = C;
+    this.canvasObj = canvasObj;
+    this.ctx = canvasObj.getContext();
+    this.CanvasA = canvasObj.toCanvas(A);
+    this.CanvasB = canvasObj.toCanvas(B);
+    this.CanvasC = canvasObj.toCanvas(C);
+  }
+
+  toCanvas(p) {
+    return this.canvasObj.toCanvas(p);
+  }
+
+  fromCanvas(p) {
+    return this.canvasObj.fromCanvas(p);
+  }
+
+
+  draw({ fillStyle = null, strokeStyle = "black", vertexColor = null } = {}) {
+    const { CanvasA, CanvasB, CanvasC, ctx } = this;
+    ctx.beginPath();
+    ctx.moveTo(...CanvasA);
+    ctx.lineTo(...CanvasB);
+    ctx.lineTo(...CanvasC);
+    ctx.closePath();
+    if (fillStyle) {
+      ctx.fillStyle = fillStyle;
+      ctx.fill();
+    }
+    if (strokeStyle) {
+      ctx.strokeStyle = strokeStyle;
+      ctx.stroke();
+    }
+    if (vertexColor) {
+      [this.CanvasA, this.CanvasB, this.CanvasC].forEach(([x, y]) => {
+        ctx.beginPath();
+        ctx.arc(x, y, 5, 0, 2 * Math.PI);
+        ctx.fillStyle = vertexColor;
+        ctx.fill();
+      });
+    }
+  }
+
+  drawGrid(spacing = 0.1, color = "rgba(200,200,200,0.5)") {
+    const { ctx } = this;
+    for (let i = 0; i <= 1; i += spacing) {
+      for (let j = 0; j <= 1 - i; j += spacing) {
+        const [x, y] = this.toCanvas(this.barycentricToCartesian(i, j));
+
+        const neighbors = [
+          [i + spacing, j],
+          [i, j + spacing],
+          [i + spacing, j - spacing]
+        ];
+
+        for (const [ni, nj] of neighbors) {
+          if (ni >= 0 && nj >= 0 && ni + nj <= 1) {
+            const [x2, y2] = this.toCanvas(this.barycentricToCartesian(ni, nj));
+            ctx.beginPath();
+            ctx.moveTo(x, y);
+            ctx.lineTo(x2, y2);
+            ctx.strokeStyle = color;
+            ctx.stroke();
+          }
+        }
+      }
+    }
+  }
+
+  barycentricToCartesian(i, j) {
+    const k = 1 - i - j;
+    return [
+      i * this.A[0] + j * this.B[0] + k * this.C[0],
+      i * this.A[1] + j * this.B[1] + k * this.C[1]
+    ];
+  }
+
+  cartesianToBarycentric(x, y) {
+    const [Ax, Ay] = this.A;
+    const [Bx, By] = this.B;
+    const [Cx, Cy] = this.C;
+
+    const v0 = [Bx - Ax, By - Ay];
+    const v1 = [Cx - Ax, Cy - Ay];
+    const v2 = [x - Ax, y - Ay];
+
+    const d00 = v0[0] * v0[0] + v0[1] * v0[1];
+    const d01 = v0[0] * v1[0] + v0[1] * v1[1];
+    const d11 = v1[0] * v1[0] + v1[1] * v1[1];
+    const d20 = v2[0] * v0[0] + v2[1] * v0[1];
+    const d21 = v2[0] * v1[0] + v2[1] * v1[1];
+
+    const denom = d00 * d11 - d01 * d01;
+    const j = (d11 * d20 - d01 * d21) / denom;
+    const k = (d00 * d21 - d01 * d20) / denom;
+    const i = 1 - j - k;
+    return [i, j];
+  }
+}
+
+class Canvas {
+  constructor(width, height, scale = 200, offset = [50, 250]) {
+    this.canvas = document.createElement("canvas");
+    this.canvas.width = width;
+    this.canvas.height = height;
+    this.ctx = this.canvas.getContext("2d");
+    this.scale = scale;
+    this.offset = offset;
+  }
+
+  getCanvas() {
+    return this.canvas;
+  }
+
+  getContext() {
+    return this.ctx;
+  }
+
+  toCanvas([x, y]) {
+    return [this.offset[0] + x * this.scale, this.offset[1] - y * this.scale];
+  }
+
+  fromCanvas([x, y]) {
+    return [(x - this.offset[0]) / this.scale, (this.offset[1] - y) / this.scale];
+  }
+
+  drawPoint([x, y], color = "black") {
+    const [canvasX, canvasY] = this.toCanvas([x, y]);
+    this.ctx.beginPath();
+    this.ctx.arc(canvasX, canvasY, 5, 0, 2 * Math.PI);
+    this.ctx.fillStyle = color;
+    this.ctx.fill();
+  }
+
+  newTriangle(A, B, C) {
+    return new Triangle(A, B, C, this);
+  }
+}
+
+// === Observable viewof canvas ===
+viewof canvas = {
+  const width = 800, height = 400;
+  const scale = 200, offset = [50, 250];
+  const canvasObj = new Canvas(width, height, scale, offset);
+  const canvas = canvasObj.getCanvas();
+  const ctx = canvasObj.getContext();
+
+  const A = [0, 0], B = [1, 0], C = [0, 1];
+  let A2 = [1.5, 0], B2 = [3, 0], C2 = [2, 1]; // ✅ now mutable
+
+  let target = { i: 0.3, j: 0.3 };
+  let current = { i: 0.3, j: 0.3 };
+  let draggingVertex = null;
+
+  function draw() {
+    ctx.clearRect(0, 0, width, height);
+
+    const blackTri = canvasObj.newTriangle(A, B, C);
+    blackTri.draw({ fillStyle: "rgba(0,0,0,0.2)", strokeStyle: "black" });
+
+    const redTri = canvasObj.newTriangle(A2, B2, C2);
+    redTri.drawGrid();
+    redTri.draw({ strokeStyle: "red", vertexColor: "red" });
+
+    const k = 1 - current.i - current.j;
+    const [x, y] = blackTri.barycentricToCartesian(current.i, current.j);
+    canvasObj.drawPoint([x, y], "blue");
+
+    const [gx, gy] = redTri.barycentricToCartesian(current.i, current.j);
+    canvasObj.drawPoint([gx, gy], "green");
+
+    ctx.fillStyle = "black";
+    ctx.font = "14px sans-serif";
+    ctx.fillText(`i = ${current.i.toFixed(2)}, j = ${current.j.toFixed(2)}, k = ${k.toFixed(2)}`, 75, height - 100);
+    ctx.fillText(`x = ${gx.toFixed(2)}, y = ${gy.toFixed(2)}`, 420, height - 100);
+  }
+
+  function animate() {
+    const alpha = 0.2;
+    current.i += alpha * (target.i - current.i);
+    current.j += alpha * (target.j - current.j);
+    draw();
+    requestAnimationFrame(animate);
+  }
+
+  function handleMouse(e) {
+    const rect = canvas.getBoundingClientRect();
+    const mx = e.clientX - rect.left;
+    const my = e.clientY - rect.top;
+    const [x, y] = canvasObj.fromCanvas([mx, my]);
+    const blackTri = canvasObj.newTriangle(A, B, C);
+    const [bi, bj] = blackTri.cartesianToBarycentric(x, y);
+    const snapTol = 0.05;
+    const vertices = [[1, 0], [0, 1], [0, 0]];
+    const dists = vertices.map(([vi, vj]) => Math.hypot(bi - vi, bj - vj));
+    const minDist = Math.min(...dists);
+    if (minDist < snapTol) {
+      [target.i, target.j] = vertices[dists.indexOf(minDist)];
+    } else if (bi >= 0 && bj >= 0 && bi + bj <= 1) {
+      target.i = bi;
+      target.j = bj;
+    }
+  }
+
+  function handleDrag(e) {
+    const rect = canvas.getBoundingClientRect();
+    const mx = e.clientX - rect.left;
+    const my = e.clientY - rect.top;
+
+    if (draggingVertex !== null) {
+      if (draggingVertex === 0) A2 = canvasObj.fromCanvas([mx, my]);
+      else if (draggingVertex === 1) B2 = canvasObj.fromCanvas([mx, my]);
+      else if (draggingVertex === 2) C2 = canvasObj.fromCanvas([mx, my]);
+      draw();  // <-- Ensures red point moves with triangle
+    } else {
+      handleMouse(e);
+    }
+  }
+
+  canvas.addEventListener("mousedown", e => {
+    const mx = e.clientX - canvas.getBoundingClientRect().left;
+    const my = e.clientY - canvas.getBoundingClientRect().top;
+    draggingVertex = null;
+    [A2, B2, C2].forEach(([x, y], idx) => {
+      const [cx, cy] = canvasObj.toCanvas([x, y]);
+      if (Math.hypot(mx - cx, my - cy) < 10) draggingVertex = idx;
+    });
+
+    handleDrag(e);
+    const move = e => handleDrag(e);
+    const up = () => {
+      draggingVertex = null;
+      window.removeEventListener("mousemove", move);
+      window.removeEventListener("mouseup", up);
+    };
+    window.addEventListener("mousemove", move);
+    window.addEventListener("mouseup", up);
+  });
+
+  requestAnimationFrame(animate);
+  return canvas;
+}
+
+
+```
+
+
+
+I need to do a simple thing. Show what Barycentric coordinates are and add some sliders so the reader can move points around and see the coordinates in action. I spent hours, no days, trying to understand Plotly, Shinylive - but these are ridiculously bad! 
+
+I write most of my code in python but I really don't like it. My first programming language was "C", which I learnt from a textbook (this was before the internet) and a yellow TurboC IDE/compiler. I routinely created null pointer exceptions. I knew what every single line of my code was doing almost down to assembly. 
+
+Now I do not even understand how `numpy` manipulates arrays. In the name of optimization, we have created so many layers of abstraction that I don't actually know how to use "python", I just know how to use "python libraries". It's a bit sad. 
+
+To my extreme frustration, there is no simple method to generate javascript using python. ShinyLive apparently translates python to WebAssembly but I couldn't make it work. 
+
+So, I ended up "learning" ObservableJS. I say learning, because I just asked ChatGPT again and again to generate code until I was satisfied with the result. I don't think I can write ObservableJS myself but I have an example to use a template and I hope to properly learn it later. 
+
+Or perhaps, I'll never learn it. Are the days of learning new programming languages behind us? Do we now just program using prompt engineering? I find this state of affairs a bit alarming and disappointing.
+
+---
+
+## Barycentric Coordinates
+
+Barycentric coordinates are simplicial coordinates in 2 dimensions used to describe points in a triangle. Let's start with a simple ObservableJS script.
+
+For two vectors $\vec{A}$ and $\vec{B}$ in $\mathbb{R}^n$, one learns in a standard calculus course that the line passing through them is given by the parametric equation 
+$$
+t \vec{A} + (1 - t) \vec{B}, t \in \mathbb{R}.
+$$
+If we want to restrict to the segment joining $\vec{A}$ and $\vec{B}$, we need to restrict $t$ to the interval $[0, 1]$. Another way of stating the same thing is to say that the line segment joining $\vec{A}$ and $\vec{B}$ is given by the equation
+$$
+a \vec{A} + b \vec{B}, a + b = 1, a, b \geq 0.
+$$
+This is an example of a **convex combination** or **simplicial coordinates** in 1 dimension.
+
+In 2 dimensions, we can do the same thing with three points $\vec{A}, \vec{B}, \vec{C}$ in $\mathbb{R}^2$. Assume that the triangle is non-degenerate, i.e. the points are not collinear. Then, we can write provide parametric equation for the plane containing the triangle as 
+$$
+s (\vec{B} - \vec{A}) + t (\vec{C} - \vec{A}).
+$$
+If we want to restrict to the points inside the triangle, we can simplify the above to get a really simple equation 
+$$
+a \vec{A} + b \vec{B} + c \vec{C}, \quad a + b + c = 1, \quad a, b, c \geq 0.
+$$
+$(a, b, c)$ are called the **barycentric coordinates**. Note that these aren't coordinates in the linear algebra sense as they are constrained by the equation $a + b + c = 1.$ They are an example of a **convex combination** or **simplicial coordinates** in 2 dimensions.
+
+
