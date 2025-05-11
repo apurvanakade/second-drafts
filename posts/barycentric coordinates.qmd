@@ -1,10 +1,11 @@
 ---
 title: "Barycentric Coordinates ft. ObservableJS"
-date: 2025-05-10 18:33:24
-format: 
-  html:
-    code-fold: true
+date: 2025-05-11 02:55:36
+format: html
+execute:
+  echo: false
 author: Apurva Nakade
+categories: [affine geometry, observablejs, triangles, interactive, visualization]
 ---
 
 ```{ojs}
@@ -161,7 +162,7 @@ viewof canvas = {
   const ctx = canvasObj.getContext();
 
   const A = [0, 0], B = [1, 0], C = [0, 1];
-  let A2 = [1.5, 0], B2 = [3, 0], C2 = [2, 1]; // ✅ now mutable
+  let A2 = [1.5, 0], B2 = [3, 0], C2 = [2, 1]; 
 
   let target = { i: 0.3, j: 0.3 };
   let current = { i: 0.3, j: 0.3 };
@@ -171,6 +172,7 @@ viewof canvas = {
     ctx.clearRect(0, 0, width, height);
 
     const blackTri = canvasObj.newTriangle(A, B, C);
+    blackTri.drawGrid();
     blackTri.draw({ fillStyle: "rgba(0,0,0,0.2)", strokeStyle: "black" });
 
     const redTri = canvasObj.newTriangle(A2, B2, C2);
@@ -258,45 +260,30 @@ viewof canvas = {
 
 
 ```
+**Barycentric coordinates** are a coordinate system for describing points within a triangle.  
 
+For a triangle with vertices $A$, $B$, and $C$, any point $P$ inside the triangle can be expressed as a weighted sum of the vertices:
+$$
+P = iA + jB + kC
+$$
+where $i$, $j$, and $k$ are the barycentric coordinates, satisfying $i + j + k = 1$ and $i, j, k \geq 0$. The barycentric coordinates can be interpreted as the relative areas of the sub-triangles formed with the point $P$ and the vertices of the triangle.
 
+There are many ways of seeing why this is true. Here's one visual interpretation: First consider the triangle with vertices $(0, 0)$, $(1, 0)$, and $(0, 1)$. A point $(x, y)$ is inside this triangle exactly when:
+$$
+0 \le x, \quad 0 \le y, \quad \text{and} \quad x + y \le 1
+$$
+In this case, we can write the point $(x, y)$ as:
+$$
+\begin{bmatrix} x \\ y \end{bmatrix}
+= 
+(1 - x - y) \begin{bmatrix} 0 \\ 0 \end{bmatrix} + 
+x \begin{bmatrix} 1 \\ 0 \end{bmatrix} +
+y \begin{bmatrix} 0 \\ 1 \end{bmatrix}
+$$
+So the barycentric coordinates of $(x, y)$ are $(1 - x - y, x, y)$, all of which are non-negative and sum to 1. Now all you need to do is map $(0, 0)$, $(1, 0)$, and $(0, 1)$ to the vertices of the triangle $A$, $B$, and $C$, respectively, via an affine transformation. The barycentric coordinates of a point $P$ inside the triangle with vertices $A$, $B$, and $C$ are given by the same formula as above, with the standard triangle's vertices replaced by $A$, $B$, and $C$.
 
-I need to do a simple thing. Show what Barycentric coordinates are and add some sliders so the reader can move points around and see the coordinates in action. I spent hours, no days, trying to understand Plotly, Shinylive - but these are ridiculously bad! 
-
-I write most of my code in python but I really don't like it. My first programming language was "C", which I learnt from a textbook (this was before the internet) and a yellow TurboC IDE/compiler. I routinely created null pointer exceptions. I knew what every single line of my code was doing almost down to assembly. 
-
-Now I do not even understand how `numpy` manipulates arrays. In the name of optimization, we have created so many layers of abstraction that I don't actually know how to use "python", I just know how to use "python libraries". It's a bit sad. 
-
-To my extreme frustration, there is no simple method to generate javascript using python. ShinyLive apparently translates python to WebAssembly but I couldn't make it work. 
-
-So, I ended up "learning" ObservableJS. I say learning, because I just asked ChatGPT again and again to generate code until I was satisfied with the result. I don't think I can write ObservableJS myself but I have an example to use a template and I hope to properly learn it later. 
-
-Or perhaps, I'll never learn it. Are the days of learning new programming languages behind us? Do we now just program using prompt engineering? I find this state of affairs a bit alarming and disappointing.
+You can see this in the app above: move the blue point around the triangle and watch how the barycentric coordinates change. You can also move the vertices of the red triangle and observe how the coordinates adapt. The red triangle is a grid of barycentric coordinates, and the green point is the corresponding point within that triangle.
 
 ---
 
-## Barycentric Coordinates
-
-Barycentric coordinates are simplicial coordinates in 2 dimensions used to describe points in a triangle. Let's start with a simple ObservableJS script.
-
-For two vectors $\vec{A}$ and $\vec{B}$ in $\mathbb{R}^n$, one learns in a standard calculus course that the line passing through them is given by the parametric equation 
-$$
-t \vec{A} + (1 - t) \vec{B}, t \in \mathbb{R}.
-$$
-If we want to restrict to the segment joining $\vec{A}$ and $\vec{B}$, we need to restrict $t$ to the interval $[0, 1]$. Another way of stating the same thing is to say that the line segment joining $\vec{A}$ and $\vec{B}$ is given by the equation
-$$
-a \vec{A} + b \vec{B}, a + b = 1, a, b \geq 0.
-$$
-This is an example of a **convex combination** or **simplicial coordinates** in 1 dimension.
-
-In 2 dimensions, we can do the same thing with three points $\vec{A}, \vec{B}, \vec{C}$ in $\mathbb{R}^2$. Assume that the triangle is non-degenerate, i.e. the points are not collinear. Then, we can write provide parametric equation for the plane containing the triangle as 
-$$
-s (\vec{B} - \vec{A}) + t (\vec{C} - \vec{A}).
-$$
-If we want to restrict to the points inside the triangle, we can simplify the above to get a really simple equation 
-$$
-a \vec{A} + b \vec{B} + c \vec{C}, \quad a + b + c = 1, \quad a, b, c \geq 0.
-$$
-$(a, b, c)$ are called the **barycentric coordinates**. Note that these aren't coordinates in the linear algebra sense as they are constrained by the equation $a + b + c = 1.$ They are an example of a **convex combination** or **simplicial coordinates** in 2 dimensions.
-
-
+This post was an excuse for me to learn how to use ObservableJS. I was initially planning on using Python and Plotly, but Plotly is absurdly immature in terms of interactivity. Most of the code is generated by ChatGPT. I merely edited it to fit my needs. 
