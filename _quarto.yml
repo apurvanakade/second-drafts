@@ -24,10 +24,10 @@ website:
   search:
     type: overlay
     location: navbar
-  sidebar: 
-    style: floating
-    search: true
-    contents: auto
+  # sidebar: 
+  #   style: floating
+  #   search: true
+  #   contents: auto
 
   
 
