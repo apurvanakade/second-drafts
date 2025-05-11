@@ -282,7 +282,7 @@ y \begin{bmatrix} 0 \\ 1 \end{bmatrix}
 $$
 So the barycentric coordinates of $(x, y)$ are $(1 - x - y, x, y)$, all of which are non-negative and sum to 1. Now all you need to do is map $(0, 0)$, $(1, 0)$, and $(0, 1)$ to the vertices of the triangle $A$, $B$, and $C$, respectively, via an affine transformation. The barycentric coordinates of a point $P$ inside the triangle with vertices $A$, $B$, and $C$ are given by the same formula as above, with the standard triangle's vertices replaced by $A$, $B$, and $C$.
 
-You can see this in the app above: move the blue point around the triangle and watch how the barycentric coordinates change. You can also move the vertices of the red triangle and observe how the coordinates adapt. The red triangle is a grid of barycentric coordinates, and the green point is the corresponding point within that triangle.
+You can see this in the app above: move the blue point around the triangle and watch how the barycentric coordinates change. You can also move the vertices of the red triangle and observe how the coordinates adapt.
 
 ---
 
