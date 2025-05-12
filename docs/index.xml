@@ -6,11 +6,33 @@
       version="2.0">
 <channel>
 <title>Second Drafts</title>
-<link>https://github.com/apurvanakade/second-drafts/index.html</link>
+<link>https://github.com/apurvanakade/second-drafts/</link>
 <atom:link href="https://github.com/apurvanakade/second-drafts/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
-<generator>quarto-1.3.450</generator>
-<lastBuildDate>Sun, 11 May 2025 06:55:36 GMT</lastBuildDate>
+<generator>quarto-1.7.30</generator>
+<lastBuildDate>Mon, 12 May 2025 19:27:09 GMT</lastBuildDate>
+<item>
+  <title>Hopkins is a joke</title>
+  <dc:creator>Apurva Nakade</dc:creator>
+  <link>https://github.com/apurvanakade/second-drafts/posts/hopkins-is-a-joke.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>It’s a crisp sunny day in the middle of way. We are deep into the final exam season. Everyone is stressed, sleep-deprived, over-caffeinated, over-worked. We have an exam for our course at 2 pm.</p>
+<p>We arrive at the classroom to find it has a capacity of 150, and guess how many students we have in the class? 144. On the top of that, many of the chairs are broken. Oh and these are old, old chairs, fixed to the floor, tiny, uncomfortable - perfect for a 3 hour exam.</p>
+<p>Professors have been complaining for years about outdated classrooms and what does Hopkins administration decide to do - build a new student center. The cherry on top is that the library is closed for “renovations” for ages now. So not only do we not have enough classrooms but students also do not have a place to study. Academics is clearly no longer a priority here.</p>
+<p>This is just the way of life here and we have gotten accustomed to it. But today, for something extra special, it being the finals week after all, there was “Fire Alarm Test” DURING THE EXAM. Mind you, Hopkins really cares about it’s students. All the buildings are locked to provide quiet zones for students. So a fire alarm going on every 5 mins for an hour straight during the exam is totally fine. The administration has done their duty by posting “quite please” signs in the hallways. Now please donate to Hopkins so they can build a world class jacuzzi.</p>
+<p>What. A. Joke.</p>
+
+
+
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
+  <guid>https://github.com/apurvanakade/second-drafts/posts/hopkins-is-a-joke.html</guid>
+  <pubDate>Mon, 12 May 2025 19:27:09 GMT</pubDate>
+</item>
 <item>
   <title>Barycentric Coordinates</title>
   <dc:creator>Apurva Nakade</dc:creator>
@@ -53,6 +75,7 @@ background-color: null;
 font-style: inherit;">=</span> {</span>
 <span id="cb2-19">  <span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">const</span> width <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
@@ -68,6 +91,7 @@ background-color: null;
 font-style: inherit;">;</span></span>
 <span id="cb2-20">  <span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">const</span> scale <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
@@ -87,10 +111,12 @@ background-color: null;
 font-style: inherit;">;</span></span>
 <span id="cb2-21">  <span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">const</span> canvasInstance <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">new</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">Canvas</span>(width<span class="op" style="color: #5E5E5E;
@@ -104,6 +130,7 @@ background-color: null;
 font-style: inherit;">;</span></span>
 <span id="cb2-22">  <span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">const</span> canvas <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> canvasInstance<span class="op" style="color: #5E5E5E;
@@ -115,6 +142,7 @@ background-color: null;
 font-style: inherit;">;</span></span>
 <span id="cb2-23">  <span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">const</span> ctx <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> canvasInstance<span class="op" style="color: #5E5E5E;
@@ -127,6 +155,7 @@ font-style: inherit;">;</span></span>
 <span id="cb2-24"></span>
 <span id="cb2-25">  <span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">const</span> A <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> [<span class="dv" style="color: #AD0000;
@@ -160,6 +189,7 @@ background-color: null;
 font-style: inherit;">;</span></span>
 <span id="cb2-26">  <span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">let</span> A2 <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> [<span class="fl" style="color: #AD0000;
@@ -194,6 +224,7 @@ font-style: inherit;">;</span></span>
 <span id="cb2-27"></span>
 <span id="cb2-28">  <span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">let</span> target <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> { <span class="dt" style="color: #AD0000;
@@ -215,6 +246,7 @@ background-color: null;
 font-style: inherit;">;</span></span>
 <span id="cb2-29">  <span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">let</span> current <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> { <span class="dt" style="color: #AD0000;
@@ -236,16 +268,19 @@ background-color: null;
 font-style: inherit;">;</span></span>
 <span id="cb2-30">  <span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">let</span> draggingVertex <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">null</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
 <span id="cb2-31"></span>
 <span id="cb2-32">  <span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">function</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">draw</span>() {</span>
@@ -269,6 +304,7 @@ font-style: inherit;">;</span></span>
 <span id="cb2-34"></span>
 <span id="cb2-35">    <span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">const</span> blackTri <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> canvasInstance<span class="op" style="color: #5E5E5E;
@@ -313,6 +349,7 @@ font-style: inherit;">;</span></span>
 <span id="cb2-38"></span>
 <span id="cb2-39">    <span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">const</span> redTri <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> canvasInstance<span class="op" style="color: #5E5E5E;
@@ -357,6 +394,7 @@ font-style: inherit;">;</span></span>
 <span id="cb2-42"></span>
 <span id="cb2-43">    <span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">const</span> k <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
@@ -378,6 +416,7 @@ background-color: null;
 font-style: inherit;">;</span></span>
 <span id="cb2-44">    <span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">const</span> [x<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> y] <span class="op" style="color: #5E5E5E;
@@ -415,6 +454,7 @@ font-style: inherit;">;</span></span>
 <span id="cb2-46"></span>
 <span id="cb2-47">    <span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">const</span> [gx<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> gy] <span class="op" style="color: #5E5E5E;
@@ -582,11 +622,13 @@ font-style: inherit;">;</span></span>
 <span id="cb2-55"></span>
 <span id="cb2-56">  <span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">function</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">animate</span>() {</span>
 <span id="cb2-57">    <span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">const</span> alpha <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
@@ -650,11 +692,13 @@ font-style: inherit;">;</span></span>
 <span id="cb2-63"></span>
 <span id="cb2-64">  <span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">function</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">handleMouse</span>(e) {</span>
 <span id="cb2-65">    <span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">const</span> rect <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> canvas<span class="op" style="color: #5E5E5E;
@@ -666,6 +710,7 @@ background-color: null;
 font-style: inherit;">;</span></span>
 <span id="cb2-66">    <span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">const</span> mx <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> e<span class="op" style="color: #5E5E5E;
@@ -683,6 +728,7 @@ background-color: null;
 font-style: inherit;">;</span></span>
 <span id="cb2-67">    <span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">const</span> my <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> e<span class="op" style="color: #5E5E5E;
@@ -700,6 +746,7 @@ background-color: null;
 font-style: inherit;">;</span></span>
 <span id="cb2-68">    <span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">const</span> [x<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> y] <span class="op" style="color: #5E5E5E;
@@ -715,6 +762,7 @@ background-color: null;
 font-style: inherit;">;</span></span>
 <span id="cb2-69">    <span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">const</span> blackTri <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> canvasInstance<span class="op" style="color: #5E5E5E;
@@ -730,6 +778,7 @@ background-color: null;
 font-style: inherit;">;</span></span>
 <span id="cb2-70">    <span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">const</span> [bi<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> bj] <span class="op" style="color: #5E5E5E;
@@ -745,6 +794,7 @@ background-color: null;
 font-style: inherit;">;</span></span>
 <span id="cb2-71">    <span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">const</span> snapTol <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
@@ -754,6 +804,7 @@ background-color: null;
 font-style: inherit;">;</span></span>
 <span id="cb2-72">    <span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">const</span> vertices <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> [[<span class="dv" style="color: #AD0000;
@@ -783,6 +834,7 @@ background-color: null;
 font-style: inherit;">;</span></span>
 <span id="cb2-73">    <span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">const</span> dists <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> vertices<span class="op" style="color: #5E5E5E;
@@ -793,6 +845,7 @@ font-style: inherit;">map</span>(([vi<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> vj]) <span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">=&gt;</span> <span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">Math</span><span class="op" style="color: #5E5E5E;
@@ -810,6 +863,7 @@ background-color: null;
 font-style: inherit;">;</span></span>
 <span id="cb2-74">    <span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">const</span> minDist <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="bu" style="color: null;
@@ -825,6 +879,7 @@ background-color: null;
 font-style: inherit;">;</span></span>
 <span id="cb2-75">    <span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">if</span> (minDist <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">&lt;</span> snapTol) {</span>
@@ -849,8 +904,10 @@ background-color: null;
 font-style: inherit;">;</span></span>
 <span id="cb2-77">    } <span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">else</span> <span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">if</span> (bi <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">&gt;=</span> <span class="dv" style="color: #AD0000;
@@ -893,11 +950,13 @@ font-style: inherit;">;</span></span>
 <span id="cb2-82"></span>
 <span id="cb2-83">  <span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">function</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">handleDrag</span>(e) {</span>
 <span id="cb2-84">    <span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">const</span> rect <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> canvas<span class="op" style="color: #5E5E5E;
@@ -909,6 +968,7 @@ background-color: null;
 font-style: inherit;">;</span></span>
 <span id="cb2-85">    <span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">const</span> mx <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> e<span class="op" style="color: #5E5E5E;
@@ -926,6 +986,7 @@ background-color: null;
 font-style: inherit;">;</span></span>
 <span id="cb2-86">    <span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">const</span> my <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> e<span class="op" style="color: #5E5E5E;
@@ -944,13 +1005,16 @@ font-style: inherit;">;</span></span>
 <span id="cb2-87"></span>
 <span id="cb2-88">    <span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">if</span> (draggingVertex <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">!==</span> <span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">null</span>) {</span>
 <span id="cb2-89">      <span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">if</span> (draggingVertex <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">===</span> <span class="dv" style="color: #AD0000;
@@ -968,8 +1032,10 @@ background-color: null;
 font-style: inherit;">;</span></span>
 <span id="cb2-90">      <span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">else</span> <span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">if</span> (draggingVertex <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">===</span> <span class="dv" style="color: #AD0000;
@@ -987,8 +1053,10 @@ background-color: null;
 font-style: inherit;">;</span></span>
 <span id="cb2-91">      <span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">else</span> <span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">if</span> (draggingVertex <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">===</span> <span class="dv" style="color: #AD0000;
@@ -1011,6 +1079,7 @@ background-color: null;
 font-style: inherit;">;</span></span>
 <span id="cb2-93">    } <span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">else</span> {</span>
 <span id="cb2-94">      <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -1030,9 +1099,11 @@ font-style: inherit;">"mousedown"</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> e <span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">=&gt;</span> {</span>
 <span id="cb2-99">    <span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">const</span> mx <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> e<span class="op" style="color: #5E5E5E;
@@ -1054,6 +1125,7 @@ background-color: null;
 font-style: inherit;">;</span></span>
 <span id="cb2-100">    <span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">const</span> my <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> e<span class="op" style="color: #5E5E5E;
@@ -1077,6 +1149,7 @@ font-style: inherit;">;</span></span>
 background-color: null;
 font-style: inherit;">=</span> <span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">null</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
@@ -1094,9 +1167,11 @@ font-style: inherit;">,</span> y]<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> idx) <span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">=&gt;</span> {</span>
 <span id="cb2-103">      <span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">const</span> [cx<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> cy] <span class="op" style="color: #5E5E5E;
@@ -1112,6 +1187,7 @@ background-color: null;
 font-style: inherit;">;</span></span>
 <span id="cb2-104">      <span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">if</span> (<span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">Math</span><span class="op" style="color: #5E5E5E;
@@ -1144,10 +1220,12 @@ background-color: null;
 font-style: inherit;">;</span></span>
 <span id="cb2-108">    <span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">const</span> move <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> e <span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">=&gt;</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">handleDrag</span>(e)<span class="op" style="color: #5E5E5E;
@@ -1155,15 +1233,18 @@ background-color: null;
 font-style: inherit;">;</span></span>
 <span id="cb2-109">    <span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">const</span> up <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> () <span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">=&gt;</span> {</span>
 <span id="cb2-110">      draggingVertex <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">null</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
@@ -1233,6 +1314,7 @@ background-color: null;
 font-style: inherit;">;</span></span>
 <span id="cb2-119">  <span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">return</span> canvas<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
