@@ -10,12 +10,9 @@ categories: [affine geometry, observablejs, triangles, interactive, visualizatio
 ---
 
 ```{ojs}
-import { Triangle, DraggableTriangle, Canvas } from "../scripts/triangle.js";
+import { Triangle, DraggableTriangle, Canvas, ShapeManager } from "../scripts/triangle.js";
 
-```
-
-```{ojs}
-// === Observable viewof canvas ===
+// === Observable view of canvas ===
 viewof canvas = {
   const width = 800, height = 400;
   const scale = 200, offset = [50, 250];
@@ -23,21 +20,35 @@ viewof canvas = {
   const canvas = canvasInstance.getCanvas();
   const ctx = canvasInstance.getContext();
 
+  // Add the canvas to the DOM
+  document.body.appendChild(canvas);
+
   const A = [0, 0], B = [1, 0], C = [0, 1];
   let A2 = [1.5, 0], B2 = [3, 0], C2 = [2, 1];
 
   let target = { i: 0.3, j: 0.3 };
   let current = { i: 0.3, j: 0.3 };
-  let draggingVertex = null;
+  
+  // Shape manager to handle all shapes on the canvas
+  const shapeManager = new ShapeManager(canvasInstance);
+  
+  // Create triangles
+  const blackTri = canvasInstance.newTriangle(A, B, C);
+  const redTri = canvasInstance.newTriangle(A2, B2, C2, true);  // Draggable triangle
 
+  // Add triangles to shape manager
+  shapeManager.addShape(blackTri);
+  shapeManager.addShape(redTri);
+
+  // Handle drawing logic
   function draw() {
     ctx.clearRect(0, 0, width, height);
 
-    const blackTri = canvasInstance.newTriangle(A, B, C);
+    // Draw black triangle and its grid
     blackTri.drawGrid();
     blackTri.draw({ fillStyle: "rgba(0,0,0,0.2)", strokeStyle: "black" });
 
-    const redTri = canvasInstance.newTriangle(A2, B2, C2);
+    // Draw red triangle and its grid
     redTri.drawGrid();
     redTri.draw({ strokeStyle: "red", vertexColor: "red" });
 
@@ -54,6 +65,7 @@ viewof canvas = {
     ctx.fillText(`x = ${gx.toFixed(2)}, y = ${gy.toFixed(2)}`, 420, height - 100);
   }
 
+  // Animation loop for smooth transitions
   function animate() {
     const alpha = 0.2;
     current.i += alpha * (target.i - current.i);
@@ -62,6 +74,7 @@ viewof canvas = {
     requestAnimationFrame(animate);
   }
 
+  // Handle mouse interactions for triangle grid snapping
   function handleMouse(e) {
     const rect = canvas.getBoundingClientRect();
     const mx = e.clientX - rect.left;
@@ -81,31 +94,42 @@ viewof canvas = {
     }
   }
 
+  // Handle dragging interaction on vertices
+  let draggingVertex = null;
   function handleDrag(e) {
     const rect = canvas.getBoundingClientRect();
     const mx = e.clientX - rect.left;
     const my = e.clientY - rect.top;
 
     if (draggingVertex !== null) {
-      if (draggingVertex === 0) A2 = canvasInstance.fromCanvas([mx, my]);
-      else if (draggingVertex === 1) B2 = canvasInstance.fromCanvas([mx, my]);
-      else if (draggingVertex === 2) C2 = canvasInstance.fromCanvas([mx, my]);
+      const newCoord = canvasInstance.fromCanvas([mx, my]);
+      if (draggingVertex === 0) A2 = newCoord;
+      else if (draggingVertex === 1) B2 = newCoord;
+      else if (draggingVertex === 2) C2 = newCoord;
+      redTri.A = A2;
+      redTri.B = B2;
+      redTri.C = C2;
       draw();
     } else {
       handleMouse(e);
     }
   }
 
+  // Mouse down event for dragging vertices
   canvas.addEventListener("mousedown", e => {
     const mx = e.clientX - canvas.getBoundingClientRect().left;
     const my = e.clientY - canvas.getBoundingClientRect().top;
     draggingVertex = null;
+
+    // Check which vertex is being dragged
     [A2, B2, C2].forEach(([x, y], idx) => {
       const [cx, cy] = canvasInstance.toCanvas([x, y]);
       if (Math.hypot(mx - cx, my - cy) < 10) draggingVertex = idx;
     });
 
     handleDrag(e);
+
+    // Attach move and up listeners to handle dragging
     const move = e => handleDrag(e);
     const up = () => {
       draggingVertex = null;
@@ -116,10 +140,13 @@ viewof canvas = {
     window.addEventListener("mouseup", up);
   });
 
+  // Start animation
   requestAnimationFrame(animate);
   return canvas;
 }
+
 ```
+
 **Barycentric coordinates** are a coordinate system for describing points within a triangle.  
 
 For a triangle with vertices $A$, $B$, and $C$, any point $P$ inside the triangle can be expressed as a weighted sum of the vertices:

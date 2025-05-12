@@ -1,5 +1,40 @@
 // === Class Definitions ===
-export class Triangle {
+
+class ShapeManager {
+  constructor(canvasObj) {
+    this.canvasObj = canvasObj;
+    this.shapes = [];
+  }
+
+  addShape(shape) {
+    this.shapes.push(shape);
+  }
+
+  removeShape(shape) {
+    const index = this.shapes.indexOf(shape);
+    if (index > -1) {
+      this.shapes.splice(index, 1);
+    }
+  }
+
+  drawShapes() {
+    this.shapes.forEach(shape => shape.draw());
+  }
+
+  handleMouseDown(mx, my) {
+    this.shapes.forEach(shape => shape.startDrag([mx, my]));
+  }
+
+  handleMouseMove(mx, my) {
+    this.shapes.forEach(shape => shape.dragTo([mx, my]));
+  }
+
+  handleMouseUp() {
+    this.shapes.forEach(shape => shape.endDrag());
+  }
+}
+
+class Triangle {
   constructor(A, B, C, canvasObj) {
     this.A = A;
     this.B = B;
@@ -96,7 +131,7 @@ export class Triangle {
   }
 }
 
-export class DraggableTriangle extends Triangle {
+class DraggableTriangle extends Triangle {
   constructor(A, B, C, canvasObj) {
     super(A, B, C, canvasObj);
     this.draggingIndex = null;
@@ -129,8 +164,7 @@ export class DraggableTriangle extends Triangle {
   }
 }
 
-
-export class Canvas {
+class Canvas {
   constructor(width, height, scale = 200, offset = [50, 250]) {
     this.canvas = document.createElement("canvas");
     this.canvas.width = width;
