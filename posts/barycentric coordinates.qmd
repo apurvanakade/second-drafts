@@ -28,11 +28,11 @@ viewof canvas = {
 
   let target = { i: 0.3, j: 0.3 };
   let current = { i: 0.3, j: 0.3 };
-  
-  // Shape manager to handle all shapes on the canvas
+
+  // Create ShapeManager instance
   const shapeManager = new ShapeManager(canvasInstance);
-  
-  // Create triangles
+
+  // Create triangles only once and add them to the ShapeManager
   const blackTri = canvasInstance.newTriangle(A, B, C);
   const redTri = canvasInstance.newTriangle(A2, B2, C2, true);  // Draggable triangle
 
@@ -40,17 +40,12 @@ viewof canvas = {
   shapeManager.addShape(blackTri);
   shapeManager.addShape(redTri);
 
-  // Handle drawing logic
+  // Handle drawing logic using ShapeManager
   function draw() {
     ctx.clearRect(0, 0, width, height);
 
-    // Draw black triangle and its grid
-    blackTri.drawGrid();
-    blackTri.draw({ fillStyle: "rgba(0,0,0,0.2)", strokeStyle: "black" });
-
-    // Draw red triangle and its grid
-    redTri.drawGrid();
-    redTri.draw({ strokeStyle: "red", vertexColor: "red" });
+    // Draw the shapes via ShapeManager
+    shapeManager.drawShapes();
 
     const k = 1 - current.i - current.j;
     const [x, y] = blackTri.barycentricToCartesian(current.i, current.j);
@@ -80,7 +75,6 @@ viewof canvas = {
     const mx = e.clientX - rect.left;
     const my = e.clientY - rect.top;
     const [x, y] = canvasInstance.fromCanvas([mx, my]);
-    const blackTri = canvasInstance.newTriangle(A, B, C);
     const [bi, bj] = blackTri.cartesianToBarycentric(x, y);
     const snapTol = 0.05;
     const vertices = [[1, 0], [0, 1], [0, 0]];
@@ -109,6 +103,9 @@ viewof canvas = {
       redTri.A = A2;
       redTri.B = B2;
       redTri.C = C2;
+
+      // After drag, ensure ShapeManager updates and redraws the shapes
+      shapeManager.updateShape(redTri);
       draw();
     } else {
       handleMouse(e);
@@ -144,7 +141,6 @@ viewof canvas = {
   requestAnimationFrame(animate);
   return canvas;
 }
-
 ```
 
 **Barycentric coordinates** are a coordinate system for describing points within a triangle.  
