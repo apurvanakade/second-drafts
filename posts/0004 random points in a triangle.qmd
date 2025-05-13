@@ -1,0 +1,74 @@
+---
+title: "Generating random points in a triangle"
+author: Apurva Nakade
+date: 2025-05-12 17:22:57
+---
+
+Randomness is a surprisingly hard thing to generate. Any program, by definition has predictable output. The best you can hope for is predictably generate points that look random (pseudo-random) and fool statistical tests. 
+
+All random generation relies on two things:
+
+1. a Pseudo-random number generator that outputs a single number that "looks random"
+2. a mathematical function that converts uniform random variable(s) into random variables with other distributions. 
+
+The mathematical game is to engineer Step 2. Step 1 is of great importance, but is usually delegated to computer scientists and engineers.
+
+With that preamble, here's the question: **Generate points randomly inside a triangle.** I need this in order to play around with Sperner's lemma examples. Enter [Barycentric Coordinates](barycentric%20coordinates.qmd).
+
+The first step is to generate random points in the "standard triangle" with vertices $[0, 0], [1, 0], [0, 1]$. A very simple trick for this is to generate points in the unit square and "reflect the points" across the midpoint of the hypotenuse, $[0.5, 0.5]$.
+
+```{python}
+import numpy as np
+
+N = 100
+
+# generate N random vectors in 2D
+square_points = np.random.rand(N, 2)
+
+# Plot 1. the unit square, 2. the triangle, 3. the random points
+import matplotlib.pyplot as plt
+plt.figure(figsize=(8, 8))
+plt.plot([0, 1, 0, 0], [0, 0, 1, 0], 'k-')
+plt.plot([0, 1], [0, 0], 'k--')
+plt.plot([0, 0], [0, 1], 'k--')
+
+# Plot the random points - red dots for points inside the triangle and red crosses for points outside the triangle
+for point in square_points:
+    if point[0] + point[1] <= 1:
+        plt.scatter(point[0], point[1], color='red')
+    else:
+        plt.scatter(point[0], point[1], color='blue')
+
+plt.show()
+
+plt.figure(figsize=(8, 8))
+plt.plot([0, 1, 0, 0], [0, 0, 1, 0], 'k-')
+plt.plot([0, 1], [0, 0], 'k--')
+plt.plot([0, 0], [0, 1], 'k--')
+
+triangle_points = np.zeros((N, 2))
+# Plot the reflected random points - red dots for points inside the triangle and red crosses for points outside the triangle
+for i, point in enumerate(square_points):
+  if point[0] + point[1] <= 1:
+    plt.scatter(point[0], point[1], color='red', label=f'Point {i}' if i < 10 else "")
+    triangle_points[i] = point
+  else:
+    plt.scatter(1-point[0], 1-point[1], color='blue', label=f'Reflected Point {i}' if i < 10 else "")
+    triangle_points[i] = 1 - point
+
+plt.show()
+```
+
+Next we use the "barycentric transformation" to transform the standard triangle into the desired triangle.
+
+```{python}
+
+vertices = np.array([[0, 0], [1, 0], [0.5, np.sqrt(3)/2]])
+
+# plot the triangle
+plt.figure(figsize=(8, 8))
+plt.plot([vertices[0][0], vertices[1][0], vertices[2][0], vertices[0][0]],
+     [vertices[0][1], vertices[1][1], vertices[2][1], vertices[0][1]], 'k-')
+
+```
+
