@@ -27,10 +27,10 @@ website:
   search:
     type: overlay
     location: navbar
-  # sidebar: 
-  #   style: floating
-  #   search: true
-  #   contents: posts/
+  sidebar: 
+    style: floating
+    search: true
+    contents: posts/
 
   
 
