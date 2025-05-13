@@ -1,6 +1,6 @@
 DOCS_DIR = docs/
 FREEZE_DIR = _freeze/
-CACHE_DIR = posts/.jupyter_cache/
+CACHE_DIR = .jupyter_cache/
 QUARTO_DIR = .quarto/
 MAKE = quarto render
 
