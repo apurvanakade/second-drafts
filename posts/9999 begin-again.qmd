@@ -3,8 +3,6 @@ title: Begin Again
 author: Apurva Nakade
 date: 2025-05-03 09:11:32
 categories: []
-website:
-  page-navigation: true
 ---
 
 I opened this page with a clear idea of what I wanted to write. I've now spent the last half hour updating quarto, setting up a new git repository, fixing a git merge issue, figuring out how to render drafts... this was a mistake. When I have something to write, I need to get the words out as soon as possible without worrying about their final destination. 

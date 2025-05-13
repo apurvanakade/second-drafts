@@ -1,0 +1,11 @@
+{
+  "hash": "3f3d0582570e355380116d3d1bc19950",
+  "result": {
+    "markdown": "---\ntitle: \"Generating random points in a triangle\"\nauthor: Apurva Nakade\ndate: 2025-05-12 17:22:57\ncategories: [randomness, triangles, barycentric coordinates]\n---\n\nRandomness is a surprisingly hard thing to generate. Any program, by definition has predictable output. The best you can hope for is predictably generate points that look random (pseudo-random) and fool statistical tests. \n\nAll random generation relies on two things:\n\n1. a Pseudo-random number generator that outputs a single number that \"looks random\"\n2. a mathematical function that converts uniform random variable(s) into random variables with other distributions. \n\nThe mathematical game is to engineer Step 2. Step 1 is of great importance, but is usually delegated to computer scientists and engineers.\n\nWith that preamble, here's the question: **Generate points randomly inside a triangle.** I need this in order to play around with Sperner's lemma examples. \n\nThe first step is to generate random points in the \"standard triangle\" with vertices $[0, 0], [1, 0], [0, 1]$. A very simple trick for this is to generate points in the unit square and \"reflect the points\" across the midpoint of the hypotenuse, $[0.5, 0.5]$.\n\n::: {.cell execution_count=1}\n\n::: {.cell-output .cell-output-display}\n![](9996 random points in a triangle_files/figure-html/cell-2-output-1.png){width=645 height=653}\n:::\n:::\n\n\nNext we use the [barycentric transformation](9998%20barycentric%20coordinates.qmd) to transform the standard triangle into the desired triangle, in this case, the equilateral triangle with vertices $[0, 0], [1, 0], [0.5, \\sqrt{3}/2]$.\n\n::: {.cell execution_count=2}\n\n::: {.cell-output .cell-output-display}\n![](9996 random points in a triangle_files/figure-html/cell-3-output-1.png){width=645 height=653}\n:::\n:::\n\n\n",
+    "supporting": [
+      "9996 random points in a triangle_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}

@@ -9,7 +9,7 @@
 <meta name="author" content="Apurva Nakade">
 <meta name="dcterms.date" content="2025-05-12">
 
-<title>Second Drafts - Hopkins is a joke</title>
+<title>Second Drafts - Generating random points in a triangle</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -32,8 +32,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../posts/0004 random points in a triangle.html" rel="next">
-<link href="../posts/0002 barycentric coordinates.html" rel="prev">
+<link href="../posts/9997 hopkins-is-a-joke.html" rel="next">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -66,11 +65,16 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../styles.css">
-<meta property="og:title" content="Second Drafts - Hopkins is a joke">
+<meta property="og:title" content="Second Drafts - Generating random points in a triangle">
 <meta property="og:description" content="">
+<meta property="og:image" content="https://github.com/apurvanakade/second-drafts/posts/9996 random points in a triangle_files/figure-html/cell-2-output-1.png">
 <meta property="og:site-name" content="Second Drafts">
+<meta property="og:image:height" content="1305">
+<meta property="og:image:width" content="1289">
 </head>
 
 <body class="nav-sidebar floating nav-fixed fullcontent">
@@ -125,7 +129,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../posts/0001 begin-again.html">Posts</a></li><li class="breadcrumb-item"><a href="../posts/0003 hopkins-is-a-joke.html">Hopkins is a joke</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../posts/9996 random points in a triangle.html">Posts</a></li><li class="breadcrumb-item"><a href="../posts/9996 random points in a triangle.html">Generating random points in a triangle</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -156,26 +160,26 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../posts/0001 begin-again.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Begin Again</span></a>
+  <a href="../posts/9996 random points in a triangle.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Generating random points in a triangle</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../posts/0002 barycentric coordinates.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Barycentric Coordinates</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../posts/0003 hopkins-is-a-joke.html" class="sidebar-item-text sidebar-link active">
+  <a href="../posts/9997 hopkins-is-a-joke.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Hopkins is a joke</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../posts/0004 random points in a triangle.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Generating random points in a triangle</span></a>
+  <a href="../posts/9998 barycentric coordinates.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Barycentric Coordinates</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../posts/9999 begin-again.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Begin Again</span></a>
   </div>
 </li>
       </ul>
@@ -191,8 +195,13 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Hopkins is a joke</h1>
-</div>
+<h1 class="title">Generating random points in a triangle</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">randomness</div>
+    <div class="quarto-category">triangles</div>
+    <div class="quarto-category">barycentric coordinates</div>
+  </div>
+  </div>
 
 
 
@@ -218,11 +227,26 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>It’s a crisp sunny day in the middle of way. We are deep into the final exam season. Everyone is stressed, sleep-deprived, over-caffeinated, over-worked. We have an exam for our course at 2 pm.</p>
-<p>We arrive at the classroom to find it has a capacity of 150, and guess how many students we have in the class? 144. On the top of that, many of the chairs are broken. Oh and these are old, old chairs, fixed to the floor, tiny, uncomfortable - perfect for a 3 hour exam.</p>
-<p>Professors have been complaining for years about outdated classrooms and what does Hopkins administration decide to do - build a new student center. The cherry on top is that the library is closed for “renovations” for ages now. So not only do we not have enough classrooms but students also do not have a place to study. Academics is clearly not a priority.</p>
-<p>This is just the way of life here and we have gotten accustomed to it. But today, for something extra special, it being the finals week after all, there was a “Fire Alarm Test” DURING THE EXAM. Mind you, Hopkins really cares about it’s students - all the buildings are locked to provide quiet zones for students. So a fire alarm going on every 5 mins for an hour straight during the exam is totally fine. The administration has done their duty by posting “quite please” signs in the hallways. Now please donate to Hopkins so they can build a world class jacuzzi.</p>
-<p>What. A. Joke.</p>
+<p>Randomness is a surprisingly hard thing to generate. Any program, by definition has predictable output. The best you can hope for is predictably generate points that look random (pseudo-random) and fool statistical tests.</p>
+<p>All random generation relies on two things:</p>
+<ol type="1">
+<li>a Pseudo-random number generator that outputs a single number that “looks random”</li>
+<li>a mathematical function that converts uniform random variable(s) into random variables with other distributions.</li>
+</ol>
+<p>The mathematical game is to engineer Step 2. Step 1 is of great importance, but is usually delegated to computer scientists and engineers.</p>
+<p>With that preamble, here’s the question: <strong>Generate points randomly inside a triangle.</strong> I need this in order to play around with Sperner’s lemma examples.</p>
+<p>The first step is to generate random points in the “standard triangle” with vertices <span class="math inline">\([0, 0], [1, 0], [0, 1]\)</span>. A very simple trick for this is to generate points in the unit square and “reflect the points” across the midpoint of the hypotenuse, <span class="math inline">\([0.5, 0.5]\)</span>.</p>
+<div class="cell" data-execution_count="1">
+<div class="cell-output cell-output-display">
+<p><img src="9996 random points in a triangle_files/figure-html/cell-2-output-1.png" width="645" height="653"></p>
+</div>
+</div>
+<p>Next we use the <a href="../posts/9998 barycentric coordinates.html">barycentric transformation</a> to transform the standard triangle into the desired triangle, in this case, the equilateral triangle with vertices <span class="math inline">\([0, 0], [1, 0], [0.5, \sqrt{3}/2]\)</span>.</p>
+<div class="cell" data-execution_count="2">
+<div class="cell-output cell-output-display">
+<p><img src="9996 random points in a triangle_files/figure-html/cell-3-output-1.png" width="645" height="653"></p>
+</div>
+</div>
 
 
 
@@ -577,13 +601,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../posts/0002 barycentric coordinates.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Barycentric Coordinates</span>
-      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../posts/0004 random points in a triangle.html" class="pagination-link">
-        <span class="nav-page-text">Generating random points in a triangle</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../posts/9997 hopkins-is-a-joke.html" class="pagination-link">
+        <span class="nav-page-text">Hopkins is a joke</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -1,9 +1,6 @@
 ---
 title: "Barycentric Coordinates"
 date: 2025-05-11 02:55:36
-format: html
-execute: 
-  echo: false
 author: Apurva Nakade
 categories: [affine geometry, observablejs, triangles, interactive, visualization]
 ---

@@ -41,4 +41,11 @@ format:
       dark: cyborg
     css: styles.css
 
+execute:
+  freeze: auto
+  cache: true
+  echo: false
+
+jupyter: myenv
+
 output-dir: docs

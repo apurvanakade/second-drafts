@@ -2,10 +2,6 @@
 title: "Generating random points in a triangle"
 author: Apurva Nakade
 date: 2025-05-12 17:22:57
-format: html
-execute: 
-  echo: false
-jupyter: myenv
 categories: [randomness, triangles, barycentric coordinates]
 ---
 
@@ -58,7 +54,7 @@ plt.title('Random Points in a Triangle')
 plt.show()
 ```
 
-Next we use the [barycentric transformation](0002%20barycentric%20coordinates.qmd) to transform the standard triangle into the desired triangle, in this case, the equilateral triangle with vertices $[0, 0], [1, 0], [0.5, \sqrt{3}/2]$.
+Next we use the [barycentric transformation](9998%20barycentric%20coordinates.qmd) to transform the standard triangle into the desired triangle, in this case, the equilateral triangle with vertices $[0, 0], [1, 0], [0.5, \sqrt{3}/2]$.
 
 ```{python}
 
