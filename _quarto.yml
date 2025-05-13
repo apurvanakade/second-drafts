@@ -33,7 +33,7 @@ website:
   sidebar: 
     style: floating
     search: true
-    contents: auto
+    contents: posts/*
 
   
 
