@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://github.com/apurvanakade/second-drafts/posts/0004 random points in a triangle.html</loc>
-    <lastmod>2025-05-13T01:11:55.107Z</lastmod>
+    <loc>https://github.com/apurvanakade/second-drafts/index.html</loc>
+    <lastmod>2025-05-13T02:22:45.781Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/apurvanakade/second-drafts/posts/0002 barycentric coordinates.html</loc>
-    <lastmod>2025-05-13T01:11:49.877Z</lastmod>
+    <lastmod>2025-05-13T02:22:40.097Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/apurvanakade/second-drafts/posts/0001 begin-again.html</loc>
-    <lastmod>2025-05-13T01:11:49.254Z</lastmod>
+    <lastmod>2025-05-13T02:22:39.196Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/apurvanakade/second-drafts/posts/0003 hopkins-is-a-joke.html</loc>
-    <lastmod>2025-05-13T01:11:50.131Z</lastmod>
+    <lastmod>2025-05-13T02:22:39.480Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/apurvanakade/second-drafts/posts/0004 random points in a triangle.html</loc>
+    <lastmod>2025-05-13T02:22:45.394Z</lastmod>
   </url>
 </urlset>

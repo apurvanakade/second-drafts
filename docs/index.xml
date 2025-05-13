@@ -1,0 +1,3051 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss  xmlns:atom="http://www.w3.org/2005/Atom" 
+      xmlns:media="http://search.yahoo.com/mrss/" 
+      xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+      xmlns:dc="http://purl.org/dc/elements/1.1/" 
+      version="2.0">
+<channel>
+<title>Second Drafts</title>
+<link>https://github.com/apurvanakade/second-drafts/index.html</link>
+<atom:link href="https://github.com/apurvanakade/second-drafts/index.xml" rel="self" type="application/rss+xml"/>
+<description></description>
+<generator>quarto-1.3.450</generator>
+<lastBuildDate>Mon, 12 May 2025 21:22:57 GMT</lastBuildDate>
+<item>
+  <title>Generating random points in a triangle</title>
+  <dc:creator>Apurva Nakade</dc:creator>
+  <link>https://github.com/apurvanakade/second-drafts/posts/0004 random points in a triangle.html</link>
+  <description><![CDATA[ 
+
+
+
+<p>Randomness is a surprisingly hard thing to generate. Any program, by definition has predictable output. The best you can hope for is predictably generate points that look random (pseudo-random) and fool statistical tests.</p>
+<p>All random generation relies on two things:</p>
+<ol type="1">
+<li>a Pseudo-random number generator that outputs a single number that “looks random”</li>
+<li>a mathematical function that converts uniform random variable(s) into random variables with other distributions.</li>
+</ol>
+<p>The mathematical game is to engineer Step 2. Step 1 is of great importance, but is usually delegated to computer scientists and engineers.</p>
+<p>With that preamble, here’s the question: <strong>Generate points randomly inside a triangle.</strong> I need this in order to play around with Sperner’s lemma examples.</p>
+<p>The first step is to generate random points in the “standard triangle” with vertices <img src="https://latex.codecogs.com/png.latex?%5B0,%200%5D,%20%5B1,%200%5D,%20%5B0,%201%5D">. A very simple trick for this is to generate points in the unit square and “reflect the points” across the midpoint of the hypotenuse, <img src="https://latex.codecogs.com/png.latex?%5B0.5,%200.5%5D">.</p>
+<div class="cell" data-execution_count="1">
+<div class="cell-output cell-output-display">
+<p><img src="https://github.com/apurvanakade/second-drafts/posts/0004 random points in a triangle_files/figure-html/cell-2-output-1.png" width="645" height="653"></p>
+</div>
+</div>
+<p>Next we use the <a href="../posts/0002 barycentric coordinates.html">barycentric transformation</a> to transform the standard triangle into the desired triangle, in this case, the equilateral triangle with vertices <img src="https://latex.codecogs.com/png.latex?%5B0,%200%5D,%20%5B1,%200%5D,%20%5B0.5,%20%5Csqrt%7B3%7D/2%5D">.</p>
+<div class="cell" data-execution_count="2">
+<div class="cell-output cell-output-display">
+<p><img src="https://github.com/apurvanakade/second-drafts/posts/0004 random points in a triangle_files/figure-html/cell-3-output-1.png" width="645" height="653"></p>
+</div>
+</div>
+
+
+
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
+  <category>randomness</category>
+  <category>triangles</category>
+  <category>barycentric coordinates</category>
+  <guid>https://github.com/apurvanakade/second-drafts/posts/0004 random points in a triangle.html</guid>
+  <pubDate>Mon, 12 May 2025 21:22:57 GMT</pubDate>
+</item>
+<item>
+  <title>Hopkins is a joke</title>
+  <dc:creator>Apurva Nakade</dc:creator>
+  <link>https://github.com/apurvanakade/second-drafts/posts/0003 hopkins-is-a-joke.html</link>
+  <description><![CDATA[ 
+
+
+
+<p>It’s a crisp sunny day in the middle of way. We are deep into the final exam season. Everyone is stressed, sleep-deprived, over-caffeinated, over-worked. We have an exam for our course at 2 pm.</p>
+<p>We arrive at the classroom to find it has a capacity of 150, and guess how many students we have in the class? 144. On the top of that, many of the chairs are broken. Oh and these are old, old chairs, fixed to the floor, tiny, uncomfortable - perfect for a 3 hour exam.</p>
+<p>Professors have been complaining for years about outdated classrooms and what does Hopkins administration decide to do - build a new student center. The cherry on top is that the library is closed for “renovations” for ages now. So not only do we not have enough classrooms but students also do not have a place to study. Academics is clearly not a priority.</p>
+<p>This is just the way of life here and we have gotten accustomed to it. But today, for something extra special, it being the finals week after all, there was a “Fire Alarm Test” DURING THE EXAM. Mind you, Hopkins really cares about it’s students - all the buildings are locked to provide quiet zones for students. So a fire alarm going on every 5 mins for an hour straight during the exam is totally fine. The administration has done their duty by posting “quite please” signs in the hallways. Now please donate to Hopkins so they can build a world class jacuzzi.</p>
+<p>What. A. Joke.</p>
+
+
+
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
+  <guid>https://github.com/apurvanakade/second-drafts/posts/0003 hopkins-is-a-joke.html</guid>
+  <pubDate>Mon, 12 May 2025 19:27:09 GMT</pubDate>
+</item>
+<item>
+  <title>Barycentric Coordinates</title>
+  <dc:creator>Apurva Nakade</dc:creator>
+  <link>https://github.com/apurvanakade/second-drafts/posts/0002 barycentric coordinates.html</link>
+  <description><![CDATA[ 
+
+
+
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="13" data-source-offset="-29" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 12;"><span id="cb1-13"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">class</span> Triangle {</span>
+<span id="cb1-14">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">constructor</span>(A<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> B<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> C<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> canvasObj) {</span>
+<span id="cb1-15">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">this</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">A</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> A<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-16">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">this</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">B</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> B<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-17">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">this</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">C</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> C<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-18">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">this</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">canvasObj</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> canvasObj<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-19">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">this</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ctx</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> canvasObj<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">getContext</span>()<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-20">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">this</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">CanvasA</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> canvasObj<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">toCanvas</span>(A)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-21">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">this</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">CanvasB</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> canvasObj<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">toCanvas</span>(B)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-22">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">this</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">CanvasC</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> canvasObj<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">toCanvas</span>(C)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-23">  }</span>
+<span id="cb1-24"></span>
+<span id="cb1-25">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">toCanvas</span>(p) {</span>
+<span id="cb1-26">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">return</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">this</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">canvasObj</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">toCanvas</span>(p)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-27">  }</span>
+<span id="cb1-28"></span>
+<span id="cb1-29">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">fromCanvas</span>(p) {</span>
+<span id="cb1-30">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">return</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">this</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">canvasObj</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">fromCanvas</span>(p)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-31">  }</span>
+<span id="cb1-32"></span>
+<span id="cb1-33">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">draw</span>({ fillStyle <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">null</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> strokeStyle <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"black"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> vertexColor <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">null</span> } <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> {}) {</span>
+<span id="cb1-34">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">const</span> { CanvasA<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> CanvasB<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> CanvasC<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> ctx } <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">this</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-35">    ctx<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">beginPath</span>()<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-36">    ctx<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">moveTo</span>(<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">...</span>CanvasA)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-37">    ctx<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">lineTo</span>(<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">...</span>CanvasB)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-38">    ctx<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">lineTo</span>(<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">...</span>CanvasC)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-39">    ctx<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">closePath</span>()<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-40">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> (fillStyle) {</span>
+<span id="cb1-41">      ctx<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fillStyle</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> fillStyle<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-42">      ctx<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">fill</span>()<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-43">    }</span>
+<span id="cb1-44">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> (strokeStyle) {</span>
+<span id="cb1-45">      ctx<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">strokeStyle</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> strokeStyle<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-46">      ctx<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">stroke</span>()<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-47">    }</span>
+<span id="cb1-48">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> (vertexColor) {</span>
+<span id="cb1-49">      [<span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">this</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">CanvasA</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">this</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">CanvasB</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">this</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">CanvasC</span>]<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">forEach</span>(([x<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> y]) <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=&gt;</span> {</span>
+<span id="cb1-50">        ctx<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">beginPath</span>()<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-51">        ctx<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">arc</span>(x<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> y<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">Math</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">PI</span>)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-52">        ctx<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fillStyle</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> vertexColor<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-53">        ctx<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">fill</span>()<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-54">      })<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-55">    }</span>
+<span id="cb1-56">  }</span>
+<span id="cb1-57"></span>
+<span id="cb1-58">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">drawGrid</span>(spacing <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.1</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> color <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"rgba(200,200,200,0.5)"</span>) {</span>
+<span id="cb1-59">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">const</span> { ctx } <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">this</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-60">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">for</span> (<span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">let</span> i <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span> i <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span> i <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+=</span> spacing) {</span>
+<span id="cb1-61">      <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">for</span> (<span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">let</span> j <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span> j <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> i<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span> j <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+=</span> spacing) {</span>
+<span id="cb1-62">        <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">const</span> [x<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> y] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">this</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">toCanvas</span>(<span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">this</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">barycentricToCartesian</span>(i<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> j))<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-63">        <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">const</span> neighbors <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [</span>
+<span id="cb1-64">          [i <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> spacing<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> j]<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-65">          [i<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> j <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> spacing]<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-66">          [i <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> spacing<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> j <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> spacing]</span>
+<span id="cb1-67">        ]<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-68">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">for</span> (<span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">const</span> [ni<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> nj] <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">of</span> neighbors) {</span>
+<span id="cb1-69">          <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> (ni <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&amp;&amp;</span> nj <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&amp;&amp;</span> ni <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> nj <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>) {</span>
+<span id="cb1-70">            <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">const</span> [x2<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> y2] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">this</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">toCanvas</span>(<span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">this</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">barycentricToCartesian</span>(ni<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> nj))<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-71">            ctx<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">beginPath</span>()<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-72">            ctx<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">moveTo</span>(x<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> y)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-73">            ctx<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">lineTo</span>(x2<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> y2)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-74">            ctx<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">strokeStyle</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> color<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-75">            ctx<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">stroke</span>()<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-76">          }</span>
+<span id="cb1-77">        }</span>
+<span id="cb1-78">      }</span>
+<span id="cb1-79">    }</span>
+<span id="cb1-80">  }</span>
+<span id="cb1-81"></span>
+<span id="cb1-82">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">barycentricToCartesian</span>(i<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> j) {</span>
+<span id="cb1-83">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">const</span> k <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> i <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> j<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-84">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">return</span> [</span>
+<span id="cb1-85">      i <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">this</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">A</span>[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> j <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">this</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">B</span>[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> k <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">this</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">C</span>[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>]<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-86">      i <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">this</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">A</span>[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> j <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">this</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">B</span>[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> k <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">this</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">C</span>[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>]</span>
+<span id="cb1-87">    ]<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-88">  }</span>
+<span id="cb1-89"></span>
+<span id="cb1-90">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">cartesianToBarycentric</span>(x<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> y) {</span>
+<span id="cb1-91">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">const</span> [Ax<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> Ay] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">this</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">A</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-92">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">const</span> [Bx<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> By] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">this</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">B</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-93">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">const</span> [Cx<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> Cy] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">this</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">C</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-94">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">const</span> v0 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [Bx <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> Ax<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> By <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> Ay]<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-95">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">const</span> v1 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [Cx <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> Ax<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> Cy <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> Ay]<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-96">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">const</span> v2 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [x <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> Ax<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> y <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> Ay]<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-97">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">const</span> d00 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> v0[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> v0[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> v0[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> v0[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>]<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-98">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">const</span> d01 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> v0[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> v1[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> v0[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> v1[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>]<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-99">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">const</span> d11 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> v1[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> v1[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> v1[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> v1[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>]<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-100">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">const</span> d20 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> v2[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> v0[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> v2[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> v0[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>]<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-101">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">const</span> d21 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> v2[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> v1[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> v2[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> v1[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>]<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-102">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">const</span> denom <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> d00 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> d11 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> d01 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> d01<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-103">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">const</span> j <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> (d11 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> d20 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> d01 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> d21) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> denom<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-104">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">const</span> k <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> (d00 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> d21 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> d01 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> d20) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> denom<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-105">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">const</span> i <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> j <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> k<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-106">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">return</span> [i<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> j]<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-107">  }</span>
+<span id="cb1-108">}</span>
+<span id="cb1-109"></span>
+<span id="cb1-110"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">class</span> DraggableTriangle <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">extends</span> Triangle {</span>
+<span id="cb1-111">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">constructor</span>(A<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> B<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> C<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> canvasObj) {</span>
+<span id="cb1-112">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">super</span>(A<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> B<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> C<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> canvasObj)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-113">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">this</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">draggingIndex</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">null</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-114">  }</span>
+<span id="cb1-115"></span>
+<span id="cb1-116">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">hitTest</span>([mx<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> my]<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> radius <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>) {</span>
+<span id="cb1-117">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">const</span> points <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [<span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">this</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">A</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">this</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">B</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">this</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">C</span>]<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-118">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">return</span> points<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">findIndex</span>(([x<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> y]) <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=&gt;</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">Math</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">hypot</span>(mx <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> x<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> my <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> y) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;</span> radius)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-119">  }</span>
+<span id="cb1-120"></span>
+<span id="cb1-121">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">startDrag</span>([mx<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> my]) {</span>
+<span id="cb1-122">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">this</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">draggingIndex</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">this</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">hitTest</span>([mx<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> my])<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-123">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">return</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">this</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">draggingIndex</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">!==</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-124">  }</span>
+<span id="cb1-125"></span>
+<span id="cb1-126">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">dragTo</span>([mx<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> my]) {</span>
+<span id="cb1-127">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> (<span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">this</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">draggingIndex</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">===</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">null</span>) <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">return</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-128">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">const</span> newCoord <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">this</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">fromCanvas</span>([mx<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> my])<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-129">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> (<span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">this</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">draggingIndex</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">===</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>) <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">this</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">A</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> newCoord<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-130">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">else</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> (<span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">this</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">draggingIndex</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">===</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>) <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">this</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">B</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> newCoord<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-131">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">else</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> (<span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">this</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">draggingIndex</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">===</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>) <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">this</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">C</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> newCoord<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-132"></span>
+<span id="cb1-133">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">this</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">CanvasA</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">this</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">toCanvas</span>(<span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">this</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">A</span>)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-134">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">this</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">CanvasB</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">this</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">toCanvas</span>(<span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">this</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">B</span>)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-135">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">this</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">CanvasC</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">this</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">toCanvas</span>(<span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">this</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">C</span>)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-136">  }</span>
+<span id="cb1-137"></span>
+<span id="cb1-138">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">endDrag</span>() {</span>
+<span id="cb1-139">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">this</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">draggingIndex</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">null</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-140">  }</span>
+<span id="cb1-141">}</span>
+<span id="cb1-142"></span>
+<span id="cb1-143"></span>
+<span id="cb1-144"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">class</span> Canvas {</span>
+<span id="cb1-145">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">constructor</span>(width<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> height<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> scale <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">200</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> offset <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">50</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">250</span>]) {</span>
+<span id="cb1-146">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">this</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">canvas</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">document</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">createElement</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"canvas"</span>)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-147">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">this</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">canvas</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">width</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> width<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-148">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">this</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">canvas</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">height</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> height<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-149">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">this</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ctx</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">this</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">canvas</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">getContext</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"2d"</span>)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-150">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">this</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">scale</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> scale<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-151">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">this</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">offset</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> offset<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-152">  }</span>
+<span id="cb1-153"></span>
+<span id="cb1-154">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">getCanvas</span>() {</span>
+<span id="cb1-155">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">return</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">this</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">canvas</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-156">  }</span>
+<span id="cb1-157"></span>
+<span id="cb1-158">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">getContext</span>() {</span>
+<span id="cb1-159">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">return</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">this</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ctx</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-160">  }</span>
+<span id="cb1-161"></span>
+<span id="cb1-162">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">toCanvas</span>([x<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> y]) {</span>
+<span id="cb1-163">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">return</span> [<span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">this</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">offset</span>[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> x <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">this</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">scale</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">this</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">offset</span>[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> y <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">this</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">scale</span>]<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-164">  }</span>
+<span id="cb1-165"></span>
+<span id="cb1-166">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">fromCanvas</span>([x<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> y]) {</span>
+<span id="cb1-167">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">return</span> [(x <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">this</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">offset</span>[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>]) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">this</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">scale</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> (<span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">this</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">offset</span>[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> y) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">this</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">scale</span>]<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-168">  }</span>
+<span id="cb1-169"></span>
+<span id="cb1-170">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">drawPoint</span>([x<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> y]<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> color <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"black"</span>) {</span>
+<span id="cb1-171">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">const</span> [canvasX<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> canvasY] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">this</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">toCanvas</span>([x<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> y])<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-172">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">this</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ctx</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">beginPath</span>()<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-173">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">this</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ctx</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">arc</span>(canvasX<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> canvasY<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">Math</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">PI</span>)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-174">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">this</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ctx</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fillStyle</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> color<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-175">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">this</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ctx</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">fill</span>()<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-176">  }</span>
+<span id="cb1-177"></span>
+<span id="cb1-178">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">newTriangle</span>(A<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> B<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> C<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> draggable <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">false</span>) {</span>
+<span id="cb1-179">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">return</span> draggable</span>
+<span id="cb1-180">      <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">?</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">new</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">DraggableTriangle</span>(A<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> B<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> C<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">this</span>)</span>
+<span id="cb1-181">      <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">new</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">Triangle</span>(A<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> B<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> C<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">this</span>)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-182">  }</span>
+<span id="cb1-183">}</span>
+<span id="cb1-184"></span>
+<span id="cb1-185"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">// === Observable viewof canvas ===</span></span>
+<span id="cb1-186">viewof canvas <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> {</span>
+<span id="cb1-187">  <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">const</span> width <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">800</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> height <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">400</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-188">  <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">const</span> scale <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">200</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> offset <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">50</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">250</span>]<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-189">  <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">const</span> canvasInstance <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">new</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">Canvas</span>(width<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> height<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> scale<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> offset)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-190">  <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">const</span> canvas <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> canvasInstance<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">getCanvas</span>()<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-191">  <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">const</span> ctx <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> canvasInstance<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">getContext</span>()<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-192"></span>
+<span id="cb1-193">  <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">const</span> A <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>]<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> B <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>]<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> C <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>]<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-194">  <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">let</span> A2 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1.5</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>]<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> B2 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>]<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> C2 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>]<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-195"></span>
+<span id="cb1-196">  <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">let</span> target <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> { <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">i</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.3</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">j</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.3</span> }<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-197">  <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">let</span> current <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> { <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">i</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.3</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">j</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.3</span> }<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-198">  <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">let</span> draggingVertex <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">null</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-199"></span>
+<span id="cb1-200">  <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">function</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">draw</span>() {</span>
+<span id="cb1-201">    ctx<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">clearRect</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> width<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> height)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-202"></span>
+<span id="cb1-203">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">const</span> blackTri <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> canvasInstance<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">newTriangle</span>(A<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> B<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> C)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-204">    blackTri<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">drawGrid</span>()<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-205">    blackTri<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">draw</span>({ <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">fillStyle</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"rgba(0,0,0,0.2)"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">strokeStyle</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"black"</span> })<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-206"></span>
+<span id="cb1-207">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">const</span> redTri <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> canvasInstance<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">newTriangle</span>(A2<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> B2<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> C2)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-208">    redTri<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">drawGrid</span>()<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-209">    redTri<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">draw</span>({ <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">strokeStyle</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"red"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">vertexColor</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"red"</span> })<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-210"></span>
+<span id="cb1-211">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">const</span> k <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> current<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">i</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> current<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">j</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-212">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">const</span> [x<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> y] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> blackTri<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">barycentricToCartesian</span>(current<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">i</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> current<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">j</span>)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-213">    canvasInstance<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">drawPoint</span>([x<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> y]<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"blue"</span>)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-214"></span>
+<span id="cb1-215">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">const</span> [gx<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> gy] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> redTri<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">barycentricToCartesian</span>(current<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">i</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> current<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">j</span>)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-216">    canvasInstance<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">drawPoint</span>([gx<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> gy]<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"green"</span>)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-217"></span>
+<span id="cb1-218">    ctx<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fillStyle</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"black"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-219">    ctx<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">font</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"14px sans-serif"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-220">    ctx<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">fillText</span>(<span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">`i = </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">${</span>current<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">i</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">toFixed</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">, j = </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">${</span>current<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">j</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">toFixed</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">, k = </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">${</span>k<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">toFixed</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">`</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">75</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> height <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100</span>)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-221">    ctx<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">fillText</span>(<span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">`x = </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">${</span>gx<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">toFixed</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">, y = </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">${</span>gy<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">toFixed</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">`</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">420</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> height <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100</span>)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-222">  }</span>
+<span id="cb1-223"></span>
+<span id="cb1-224">  <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">function</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">animate</span>() {</span>
+<span id="cb1-225">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">const</span> alpha <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.2</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-226">    current<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">i</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+=</span> alpha <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> (target<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">i</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> current<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">i</span>)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-227">    current<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">j</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+=</span> alpha <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> (target<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">j</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> current<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">j</span>)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-228">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">draw</span>()<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-229">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">requestAnimationFrame</span>(animate)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-230">  }</span>
+<span id="cb1-231"></span>
+<span id="cb1-232">  <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">function</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">handleMouse</span>(e) {</span>
+<span id="cb1-233">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">const</span> rect <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> canvas<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">getBoundingClientRect</span>()<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-234">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">const</span> mx <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> e<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">clientX</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> rect<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">left</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-235">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">const</span> my <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> e<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">clientY</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> rect<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">top</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-236">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">const</span> [x<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> y] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> canvasInstance<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">fromCanvas</span>([mx<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> my])<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-237">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">const</span> blackTri <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> canvasInstance<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">newTriangle</span>(A<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> B<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> C)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-238">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">const</span> [bi<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> bj] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> blackTri<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">cartesianToBarycentric</span>(x<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> y)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-239">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">const</span> snapTol <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.05</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-240">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">const</span> vertices <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>]<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> [<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>]<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> [<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>]]<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-241">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">const</span> dists <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> vertices<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">map</span>(([vi<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> vj]) <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=&gt;</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">Math</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">hypot</span>(bi <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> vi<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> bj <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> vj))<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-242">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">const</span> minDist <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">Math</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">min</span>(<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">...</span>dists)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-243">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> (minDist <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;</span> snapTol) {</span>
+<span id="cb1-244">      [target<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">i</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> target<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">j</span>] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> vertices[dists<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">indexOf</span>(minDist)]<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-245">    } <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">else</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> (bi <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&amp;&amp;</span> bj <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&amp;&amp;</span> bi <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> bj <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>) {</span>
+<span id="cb1-246">      target<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">i</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> bi<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-247">      target<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">j</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> bj<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-248">    }</span>
+<span id="cb1-249">  }</span>
+<span id="cb1-250"></span>
+<span id="cb1-251">  <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">function</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">handleDrag</span>(e) {</span>
+<span id="cb1-252">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">const</span> rect <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> canvas<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">getBoundingClientRect</span>()<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-253">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">const</span> mx <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> e<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">clientX</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> rect<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">left</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-254">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">const</span> my <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> e<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">clientY</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> rect<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">top</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-255"></span>
+<span id="cb1-256">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> (draggingVertex <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">!==</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">null</span>) {</span>
+<span id="cb1-257">      <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> (draggingVertex <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">===</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>) A2 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> canvasInstance<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">fromCanvas</span>([mx<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> my])<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-258">      <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">else</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> (draggingVertex <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">===</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>) B2 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> canvasInstance<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">fromCanvas</span>([mx<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> my])<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-259">      <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">else</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> (draggingVertex <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">===</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>) C2 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> canvasInstance<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">fromCanvas</span>([mx<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> my])<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-260">      <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">draw</span>()<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-261">    } <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">else</span> {</span>
+<span id="cb1-262">      <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">handleMouse</span>(e)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-263">    }</span>
+<span id="cb1-264">  }</span>
+<span id="cb1-265"></span>
+<span id="cb1-266">  canvas<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">addEventListener</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"mousedown"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> e <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=&gt;</span> {</span>
+<span id="cb1-267">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">const</span> mx <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> e<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">clientX</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> canvas<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">getBoundingClientRect</span>()<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">left</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-268">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">const</span> my <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> e<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">clientY</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> canvas<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">getBoundingClientRect</span>()<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">top</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-269">    draggingVertex <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">null</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-270">    [A2<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> B2<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> C2]<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">forEach</span>(([x<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> y]<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> idx) <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=&gt;</span> {</span>
+<span id="cb1-271">      <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">const</span> [cx<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> cy] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> canvasInstance<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">toCanvas</span>([x<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> y])<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-272">      <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> (<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">Math</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">hypot</span>(mx <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> cx<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> my <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> cy) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>) draggingVertex <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> idx<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-273">    })<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-274"></span>
+<span id="cb1-275">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">handleDrag</span>(e)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-276">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">const</span> move <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> e <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=&gt;</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">handleDrag</span>(e)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-277">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">const</span> up <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> () <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=&gt;</span> {</span>
+<span id="cb1-278">      draggingVertex <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">null</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-279">      <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">window</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">removeEventListener</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"mousemove"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> move)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-280">      <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">window</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">removeEventListener</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"mouseup"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> up)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-281">    }<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-282">    <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">window</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">addEventListener</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"mousemove"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> move)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-283">    <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">window</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">addEventListener</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"mouseup"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> up)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-284">  })<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-285"></span>
+<span id="cb1-286">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">requestAnimationFrame</span>(animate)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-287">  <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">return</span> canvas<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-288">}</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-4" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<p><strong>Barycentric coordinates</strong> are a coordinate system for describing points within a triangle.</p>
+<p>For a triangle with vertices <img src="https://latex.codecogs.com/png.latex?A">, <img src="https://latex.codecogs.com/png.latex?B">, and <img src="https://latex.codecogs.com/png.latex?C">, any point <img src="https://latex.codecogs.com/png.latex?P"> inside the triangle can be expressed as a weighted sum of the vertices: <img src="https://latex.codecogs.com/png.latex?%0AP%20=%20iA%20+%20jB%20+%20kC%0A"> where <img src="https://latex.codecogs.com/png.latex?i">, <img src="https://latex.codecogs.com/png.latex?j">, and <img src="https://latex.codecogs.com/png.latex?k"> are the barycentric coordinates, satisfying <img src="https://latex.codecogs.com/png.latex?i%20+%20j%20+%20k%20=%201"> and <img src="https://latex.codecogs.com/png.latex?i,%20j,%20k%20%5Cgeq%200">. The barycentric coordinates can be interpreted as the relative areas of the sub-triangles formed with the point <img src="https://latex.codecogs.com/png.latex?P"> and the vertices of the triangle.</p>
+<p>There are many ways of seeing why this is true. Here’s one visual interpretation: First consider the triangle with vertices <img src="https://latex.codecogs.com/png.latex?(0,%200)">, <img src="https://latex.codecogs.com/png.latex?(1,%200)">, and <img src="https://latex.codecogs.com/png.latex?(0,%201)">. A point <img src="https://latex.codecogs.com/png.latex?(x,%20y)"> is inside this triangle exactly when: <img src="https://latex.codecogs.com/png.latex?%0A0%20%5Cle%20x,%20%5Cquad%200%20%5Cle%20y,%20%5Cquad%20%5Ctext%7Band%7D%20%5Cquad%20x%20+%20y%20%5Cle%201%0A"> In this case, we can write the point <img src="https://latex.codecogs.com/png.latex?(x,%20y)"> as: <img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Bbmatrix%7D%20x%20%5C%5C%20y%20%5Cend%7Bbmatrix%7D%0A=%0A(1%20-%20x%20-%20y)%20%5Cbegin%7Bbmatrix%7D%200%20%5C%5C%200%20%5Cend%7Bbmatrix%7D%20+%0Ax%20%5Cbegin%7Bbmatrix%7D%201%20%5C%5C%200%20%5Cend%7Bbmatrix%7D%20+%0Ay%20%5Cbegin%7Bbmatrix%7D%200%20%5C%5C%201%20%5Cend%7Bbmatrix%7D%0A"> So the barycentric coordinates of <img src="https://latex.codecogs.com/png.latex?(x,%20y)"> are <img src="https://latex.codecogs.com/png.latex?(1%20-%20x%20-%20y,%20x,%20y)">, all of which are non-negative and sum to 1. Now all you need to do is map <img src="https://latex.codecogs.com/png.latex?(0,%200)">, <img src="https://latex.codecogs.com/png.latex?(1,%200)">, and <img src="https://latex.codecogs.com/png.latex?(0,%201)"> to the vertices of the triangle <img src="https://latex.codecogs.com/png.latex?A">, <img src="https://latex.codecogs.com/png.latex?B">, and <img src="https://latex.codecogs.com/png.latex?C">, respectively, via an affine transformation. The barycentric coordinates of a point <img src="https://latex.codecogs.com/png.latex?P"> inside the triangle with vertices <img src="https://latex.codecogs.com/png.latex?A">, <img src="https://latex.codecogs.com/png.latex?B">, and <img src="https://latex.codecogs.com/png.latex?C"> are given by the same formula as above, with the standard triangle’s vertices replaced by <img src="https://latex.codecogs.com/png.latex?A">, <img src="https://latex.codecogs.com/png.latex?B">, and <img src="https://latex.codecogs.com/png.latex?C">.</p>
+<p>You can see this in the app above: move the blue point around the triangle and watch how the barycentric coordinates change. You can also move the vertices of the red triangle and observe how the coordinates adapt.</p>
+<hr>
+<p>This post was an excuse for me to learn how to use ObservableJS. I was initially planning on using Python and Plotly, but Plotly is absurdly immature in terms of interactivity. Most of the code is generated by ChatGPT. I merely edited it to fit my needs.</p>
+<!-- 
+TODO: Export javascript classes to separate files.
+TODO: Write a little about the javascript implementation.
+TODO: Instead of A, B, C use an array of vertices in the triangle class.
+TODO: Extend triangle class to a draggable triangle class.
+TODO: make app mobile friendly
+ -->
+
+
+
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
+  <category>affine geometry</category>
+  <category>observablejs</category>
+  <category>triangles</category>
+  <category>interactive</category>
+  <category>visualization</category>
+  <guid>https://github.com/apurvanakade/second-drafts/posts/0002 barycentric coordinates.html</guid>
+  <pubDate>Sun, 11 May 2025 06:55:36 GMT</pubDate>
+</item>
+<item>
+  <title>Begin Again</title>
+  <dc:creator>Apurva Nakade</dc:creator>
+  <link>https://github.com/apurvanakade/second-drafts/posts/0001 begin-again.html</link>
+  <description><![CDATA[ 
+
+
+
+<p>I opened this page with a clear idea of what I wanted to write. I’ve now spent the last half hour updating quarto, setting up a new git repository, fixing a git merge issue, figuring out how to render drafts… this was a mistake. When I have something to write, I need to get the words out as soon as possible without worrying about their final destination.</p>
+<hr>
+<p>One of the protagonist in <a href="https://www.goodreads.com/book/show/10357575-1q84">1Q84</a>, Tengo, is a writer. He teaches math at cram schools to make a living but his real passion is writing. At some point in his life he has to decide between writing and math, and he decides to write. Tengo is my alter-ego from a different dimension. He chose writing just as I chose math. Thankfully math pays so I do not have to teach writing for a living.</p>
+<p>I’ve always loved writing. I have had several blogs representing different phrases of my life, each reflective of what I was going through at the time but haven’t maintained one of late for various inane excuses.</p>
+<p>I recently started reading <a href="https://www.goodreads.com/book/show/615570.The_Artist_s_Way">The Artist’s Way</a> and it inspired me to write again. I sometimes get stuck in arguments, trying to find reasons to justify doing or not doing something, analysis paralysis. Very simply though, I just enjoy putting thoughts into words, which is justification enough to write. I heard Neil Gaiman talk about how he likes to write with a fountain pen. Writing here is the equivalent of writing with a fountain pen for me - just watching words magically appear on the screen out of nowhere.</p>
+<p>This journal is going to be a collection of my second drafts - nothing polished or well-thought but not stream-of-conscious either. As Sam Harris says, it’s never late to <a href="https://dynamic.wakingup.com/course/CO7C3B8B5">begin again</a>.</p>
+
+
+
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
+  <guid>https://github.com/apurvanakade/second-drafts/posts/0001 begin-again.html</guid>
+  <pubDate>Sat, 03 May 2025 13:11:32 GMT</pubDate>
+</item>
+</channel>
+</rss>

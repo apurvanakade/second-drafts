@@ -1,10 +1,10 @@
 [
   {
-    "objectID": "posts/0004 random points in a triangle.html",
-    "href": "posts/0004 random points in a triangle.html",
-    "title": "Generating random points in a triangle",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Second Drafts",
     "section": "",
-    "text": "Randomness is a surprisingly hard thing to generate. Any program, by definition has predictable output. The best you can hope for is predictably generate points that look random (pseudo-random) and fool statistical tests.\nAll random generation relies on two things:\n\na Pseudo-random number generator that outputs a single number that “looks random”\na mathematical function that converts uniform random variable(s) into random variables with other distributions.\n\nThe mathematical game is to engineer Step 2. Step 1 is of great importance, but is usually delegated to computer scientists and engineers.\nWith that preamble, here’s the question: Generate points randomly inside a triangle. I need this in order to play around with Sperner’s lemma examples.\nThe first step is to generate random points in the “standard triangle” with vertices \\([0, 0], [1, 0], [0, 1]\\). A very simple trick for this is to generate points in the unit square and “reflect the points” across the midpoint of the hypotenuse, \\([0.5, 0.5]\\).\n\n\n\n\n\nNext we use the barycentric transformation to transform the standard triangle into the desired triangle, in this case, the equilateral triangle with vertices \\([0, 0], [1, 0], [0.5, \\sqrt{3}/2]\\).\n\n\n\n\n\n\n\n\n Back to top"
+    "text": "Generating random points in a triangle\n\n\n\n\n\n\n\nrandomness\n\n\ntriangles\n\n\nbarycentric coordinates\n\n\n\n\n\n\n\n\n\n\n\nMay 12, 2025\n\n\nApurva Nakade\n\n\n\n\n\n\n\n\nHopkins is a joke\n\n\n\n\n\n\n\n\n\n\n\n\nMay 12, 2025\n\n\nApurva Nakade\n\n\n\n\n\n\n\n\nBarycentric Coordinates\n\n\n\n\n\n\n\naffine geometry\n\n\nobservablejs\n\n\ntriangles\n\n\ninteractive\n\n\nvisualization\n\n\n\n\n\n\n\n\n\n\n\nMay 11, 2025\n\n\nApurva Nakade\n\n\n\n\n\n\n\n\nBegin Again\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMay 3, 2025\n\n\nApurva Nakade\n\n\n\n\n\n\nNo matching items\n\n Back to top"
   },
   {
     "objectID": "posts/0002 barycentric coordinates.html",
@@ -26,5 +26,12 @@
     "title": "Hopkins is a joke",
     "section": "",
     "text": "It’s a crisp sunny day in the middle of way. We are deep into the final exam season. Everyone is stressed, sleep-deprived, over-caffeinated, over-worked. We have an exam for our course at 2 pm.\nWe arrive at the classroom to find it has a capacity of 150, and guess how many students we have in the class? 144. On the top of that, many of the chairs are broken. Oh and these are old, old chairs, fixed to the floor, tiny, uncomfortable - perfect for a 3 hour exam.\nProfessors have been complaining for years about outdated classrooms and what does Hopkins administration decide to do - build a new student center. The cherry on top is that the library is closed for “renovations” for ages now. So not only do we not have enough classrooms but students also do not have a place to study. Academics is clearly not a priority.\nThis is just the way of life here and we have gotten accustomed to it. But today, for something extra special, it being the finals week after all, there was a “Fire Alarm Test” DURING THE EXAM. Mind you, Hopkins really cares about it’s students - all the buildings are locked to provide quiet zones for students. So a fire alarm going on every 5 mins for an hour straight during the exam is totally fine. The administration has done their duty by posting “quite please” signs in the hallways. Now please donate to Hopkins so they can build a world class jacuzzi.\nWhat. A. Joke.\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "posts/0004 random points in a triangle.html",
+    "href": "posts/0004 random points in a triangle.html",
+    "title": "Generating random points in a triangle",
+    "section": "",
+    "text": "Randomness is a surprisingly hard thing to generate. Any program, by definition has predictable output. The best you can hope for is predictably generate points that look random (pseudo-random) and fool statistical tests.\nAll random generation relies on two things:\n\na Pseudo-random number generator that outputs a single number that “looks random”\na mathematical function that converts uniform random variable(s) into random variables with other distributions.\n\nThe mathematical game is to engineer Step 2. Step 1 is of great importance, but is usually delegated to computer scientists and engineers.\nWith that preamble, here’s the question: Generate points randomly inside a triangle. I need this in order to play around with Sperner’s lemma examples.\nThe first step is to generate random points in the “standard triangle” with vertices \\([0, 0], [1, 0], [0, 1]\\). A very simple trick for this is to generate points in the unit square and “reflect the points” across the midpoint of the hypotenuse, \\([0.5, 0.5]\\).\n\n\n\n\n\nNext we use the barycentric transformation to transform the standard triangle into the desired triangle, in this case, the equilateral triangle with vertices \\([0, 0], [1, 0], [0.5, \\sqrt{3}/2]\\).\n\n\n\n\n\n\n\n\n Back to top"
   }
 ]

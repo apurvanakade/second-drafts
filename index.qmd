@@ -1,9 +1,9 @@
 ---
 title: Second Drafts
 listing:
-  fields: [date, title, description, categories]
+  fields: [date, title, description, categories, author]
   sort: "date desc"
-  contents: "posts/"
+  contents: "*.qmd"
   sort-ui: false
   filter-ui: false
   categories: true
