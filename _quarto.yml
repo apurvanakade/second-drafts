@@ -29,7 +29,6 @@ website:
     location: navbar
   sidebar: 
     style: floating
-    search: true
     contents: "*.qmd"
 
 format:
