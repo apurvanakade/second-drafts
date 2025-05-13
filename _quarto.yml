@@ -30,9 +30,7 @@ website:
   sidebar: 
     style: floating
     search: true
-    contents: posts/
-
-  
+    contents: "*.qmd"
 
 format:
   html:
