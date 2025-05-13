@@ -18,71 +18,173 @@ With that preamble, here's the question: **Generate points randomly inside a tri
 
 The first step is to generate random points in the "standard triangle" with vertices $[0, 0], [1, 0], [0, 1]$. A very simple trick for this is to generate points in the unit square and "reflect the points" across the midpoint of the hypotenuse, $[0.5, 0.5]$.
 
-```{python}
-import numpy as np
-
-N = 500
-
-# generate N random vectors in 2D
-square_points = np.random.rand(N, 2)
-
-# Plot 1. the unit square, 2. the triangle, 3. the random points
-import matplotlib.pyplot as plt
-
-
-# Separate points into red (inside the triangle) and blue (reflected)
-red_points = square_points[square_points.sum(axis=1) <= 1]
-blue_points = 1 - square_points[square_points.sum(axis=1) > 1]
-
-
-plt.figure(figsize=(8, 8))
-plt.plot([0, 1, 0, 0], [0, 0, 1, 0], 'k-')
-plt.plot([0, 1], [0, 0], 'k--')
-plt.plot([0, 0], [0, 1], 'k--')
-
-# scatter the red points
-plt.scatter(red_points[:, 0], red_points[:, 1], color='red')
-
-# scatter the blue points
-plt.scatter(blue_points[:, 0], blue_points[:, 1], color='blue', label='Reflected points')
-
-# add a legend
-plt.legend()
-# add a title
-plt.title('Random Points in a Triangle')
-
-plt.show()
-```
 
 Next we use the [barycentric transformation](9998%20barycentric%20coordinates.qmd) to transform the standard triangle into the desired triangle, in this case, the equilateral triangle with vertices $[0, 0], [1, 0], [0.5, \sqrt{3}/2]$.
 
-```{python}
 
-vertices = np.array([[0, 0], [1, 0], [0.5, np.sqrt(3)/2]])
-
-# plot the triangle
-plt.figure(figsize=(8, 8))
-plt.plot([vertices[0][0], vertices[1][0], vertices[2][0], vertices[0][0]],
-     [vertices[0][1], vertices[1][1], vertices[2][1], vertices[0][1]], 'k-')
-
-# use red_points as barycentric coordinates
-for point in red_points:
-    # barycentric coordinates
-    barycentric_coords = np.array([1 - point[0] - point[1], point[0], point[1]])
-    # transform the point
-    transformed_point = np.dot(barycentric_coords, vertices)
-    plt.scatter(transformed_point[0], transformed_point[1], color='red')
+```{ojs}
+import {Plot} from "@observablehq/plot"
+import {slider} from "@jashkenas/inputs"
 
 
-# use blue_points as barycentric coordinates
-for point in blue_points:
-    # barycentric coordinates
-    barycentric_coords = np.array([1 - point[0] - point[1], point[0], point[1]])
-    # transform the point
-    transformed_point = np.dot(barycentric_coords, vertices)
-    plt.scatter(transformed_point[0], transformed_point[1], color='blue')
+N = 1000
 
-# add a title
-plt.title('Transformed Random Points in a Triangle')
-plt.show()
+unit_triangle = [
+  {x: 0, y: 0},
+  {x: 1, y: 0},
+  {x: 0, y: 1},
+  {x: 0, y: 0}
+]
+
+equilateral_triangle = [
+  {x: 0, y: 0},
+  {x: 1, y: 0},
+  {x: 0.5, y: Math.sqrt(3) / 2},
+  {x: 0, y: 0}
+]
+
+// Generate N random points in the unit square
+// and label them as "Inside" or "Reflected points"
+random_points = Array.from({length: N}, () => {
+  let x = Math.random();
+  let y = Math.random();
+  if (x + y <= 1) {
+    return {x, y, label: "Inside"};
+  } else {
+    return {x, y, label: "Reflected points"};
+  }
+});
+
+
+// Reflect the points across the midpoint of the hypotenuse
+unit_triangle_points = random_points.map(d => {
+  if (d.label === "Reflected points") {
+    return {x: 1 - d.x, y: 1 - d.y};
+  } else {
+    return {x: d.x, y: d.y};
+  }
+});
+
+// Transform the points to the equilateral triangle using barycentric coordinates
+transformed_points = unit_triangle_points.map(d => {
+  const A = equilateral_triangle[0];
+  const B = equilateral_triangle[1];
+  const C = equilateral_triangle[2];
+  return {
+    x: d.x * A.x + d.y * B.x + (1 - d.x - d.y) * C.x,
+    y: d.x * A.y + d.y * B.y + (1 - d.x - d.y) * C.y
+  };
+});
+
 ```
+
+```{ojs}
+
+
+// Add a slider for M = number of points to plot
+viewof M = slider({
+  min: 0,
+  max: N,
+  step: 1,
+  value: 100,
+  width: 500
+});
+```
+
+```{ojs}
+viewof sideBySidePlots = {
+  // Create the title element
+  const title = document.createElement("h4");
+  title.textContent = "Generate points in a unit square, and reflect the points that lie above the hypotenuse";
+  title.style.marginBottom = "1em";
+
+  // Create the first plot
+  const plot1 = Plot.plot({
+    width: 400,
+    height: 400,
+    x: {domain: [0, 1]},
+    y: {domain: [0, 1]},
+    marks: [
+      Plot.dot(random_points.slice(0, M), {
+        x: "x",
+        y: "y",
+        fill: d => d.label === "Inside" ? "red" : "blue",
+        r: 3
+      }),
+      Plot.lineY(unit_triangle, {x: "x", y: "y", stroke: "black", strokeWidth: 2}),
+      Plot.lineY([{x: 0, y: 0}, {x: 1, y: 0}], {stroke: "black", strokeDasharray: "4,4"}),
+      Plot.lineY([{x: 0, y: 0}, {x: 0, y: 1}], {stroke: "black", strokeDasharray: "4,4"})
+    ]
+  });
+
+  // Create the second plot
+  const plot2 = Plot.plot({
+    width: 400,
+    height: 400,
+    x: {domain: [0, 1]},
+    y: {domain: [0, 1]},
+    marks: [
+      Plot.dot(unit_triangle_points.slice(0, M), {
+        x: "x",
+        y: "y",
+        fill: "black",
+        r: 3
+      }),
+      Plot.lineY(unit_triangle, {x: "x", y: "y", stroke: "black", strokeWidth: 2}),
+      Plot.lineY([{x: 0, y: 0}, {x: 1, y: 0}], {stroke: "black", strokeDasharray: "4,4"}),
+      Plot.lineY([{x: 0, y: 0}, {x: 0, y: 1}], {stroke: "black", strokeDasharray: "4,4"})
+    ]
+  });
+
+  // Layout container
+  const container = document.createElement("div");
+  container.style.display = "flex";
+  container.style.gap = "20px";
+
+  // Outer wrapper with title and plots
+  const wrapper = document.createElement("div");
+  wrapper.append(title, container);
+  container.append(plot1, plot2);
+
+  return wrapper;
+}
+
+
+
+```
+
+```{ojs}
+
+// Plot the first M points and center align it to the screen
+viewof centeredPlot = {
+  // Create the title element
+  const title = document.createElement("h4");
+  title.textContent = "Barycentric transformation to map unit triangle into equilateral triangle";
+  title.style.marginBottom = "1em";
+
+  // Create the plot
+  const plot = Plot.plot({
+    width: 500,
+    height: 500,
+    x: {domain: [0, 1]},
+    y: {domain: [0, Math.sqrt(3) / 2]},
+    marks: [
+      Plot.dot(transformed_points.slice(0, M), {x: "x", y: "y", fill: "black", r: 3}),
+      Plot.lineY(equilateral_triangle, {x: "x", y: "y", stroke: "black", strokeWidth: 2}),
+      Plot.lineY([{x: 0, y: 0}, {x: 1, y: 0}], {stroke: "black", strokeDasharray: "4,4"}),
+      Plot.lineY([{x: 0, y: 0}, {x: 0.5, y: Math.sqrt(3) / 2}], {stroke: "black", strokeDasharray: "4,4"})
+    ]
+  });
+
+  // Center the plot inside a container
+  const container = document.createElement("div");
+  container.style.display = "flex";
+  container.style.flexDirection = "column";
+  container.style.alignItems = "center";
+  container.append(title, plot);
+
+  return container;
+}
+
+```
+
