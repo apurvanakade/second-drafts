@@ -79,8 +79,6 @@ transformed_points = unit_triangle_points.map(d => {
 ```
 
 ```{ojs}
-
-
 // Add a slider for M = number of points to plot
 viewof M = slider({
   min: 0,
