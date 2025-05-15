@@ -7,7 +7,6 @@ draft: true
 ---
 
 ```{ojs}
-
 // Prompt the user to input the value of N with a default of 10
 viewof rawN = Inputs.text({label: "Number of subdivisions: ", value: "10"})
 
@@ -18,7 +17,72 @@ N = rawN ? parseInt(rawN) : 1
 // Generate the array of values
 values = Array.from({length: N}, (_, i) => i + 1)
 
-// Print the values on the html page 
-html`<div>${values.join(", ")}</div>`
+// generate integer pairs (i, j) such that 0 <= i <= j <= N, i + j <= N, and i \le j 
 
+triples = {
+  let result = [];
+  for (let i = 0; i <= N; i++) {
+    for (let j = 0; j <= N - i; j++) {
+      result.push([i, j, N - i - j]);
+    }
+  }
+  return result;
+}
+```
+
+```{ojs}
+
+equilateral_triangle = [
+  {x: 0, y: 0},
+  {x: 1, y: 0},
+  {x: 0.5, y: Math.sqrt(3) / 2},
+  {x: 0, y: 0}
+]
+
+colored_points = triples.map(triple => {
+  const A = equilateral_triangle[0];
+  const B = equilateral_triangle[1];
+  const C = equilateral_triangle[2];
+  return {
+    x: (triple[0] * A.x + triple[1] * B.x + triple[2] * C.x) / N,
+    y: (triple[0] * A.y + triple[1] * B.y + triple[2] * C.y) / N,
+    color: (() => {
+      function randomChoice(colors) {
+        return colors[Math.floor(Math.random() * colors.length)];
+      }
+      const [a, b, c] = triple;
+
+      if (a === 0 && b === 0) return 'red';
+      if (b === 0 && c === 0) return 'green';
+      if (c === 0 && a === 0) return 'blue';
+
+      if (a === 0) return randomChoice(['red', 'blue']);   // on BC edge
+      if (b === 0) return randomChoice(['green', 'red']);  // on AC edge
+      if (c === 0) return randomChoice(['blue', 'green']); // on AB edge
+
+      return randomChoice(['red', 'green', 'blue']);       // inside triangle
+    })()
+  };
+});
+```
+
+```{ojs}
+// plot colored_points in the plane 
+
+viewof plot = Plot.plot({
+  width: 500,
+  height: 500,
+  x: {
+    label: "x",
+    domain: [0, 1]
+  },
+  y: {
+    label: "y",
+    domain: [0, Math.sqrt(3) / 2]
+  },
+  marks: [
+    Plot.line(equilateral_triangle, {x: "x", y: "y", stroke: "black"}),
+    Plot.dot(colored_points, {x: "x", y: "y", fill: d => d.color, r: 5})
+  ]
+})
 ```

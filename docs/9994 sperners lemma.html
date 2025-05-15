@@ -251,17 +251,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="12" data-source-offset="-65"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 11;"><span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>viewof rawN <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">text</span>({<span class="dt">label</span><span class="op">:</span> <span class="st">"Number of subdivisions: "</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="st">"10"</span>})</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co">// Parse the raw input N and handle default</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co">// This creates a new reactive variable 'N' that depends on 'rawN'</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> rawN <span class="op">?</span> <span class="pp">parseInt</span>(rawN) <span class="op">:</span> <span class="dv">1</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co">// Generate the array of values</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>values <span class="op">=</span> <span class="bu">Array</span><span class="op">.</span><span class="fu">from</span>({<span class="dt">length</span><span class="op">:</span> N}<span class="op">,</span> (_<span class="op">,</span> i) <span class="kw">=&gt;</span> i <span class="op">+</span> <span class="dv">1</span>)</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="co">// Print the values on the html page </span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;div&gt;</span><span class="sc">${</span>values<span class="op">.</span><span class="fu">join</span>(<span class="st">", "</span>)<span class="sc">}</span><span class="vs">&lt;/div&gt;`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="11" data-source-offset="-64"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 10;"><span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>viewof rawN <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">text</span>({<span class="dt">label</span><span class="op">:</span> <span class="st">"Number of subdivisions: "</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="st">"10"</span>})</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co">// Parse the raw input N and handle default</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co">// This creates a new reactive variable 'N' that depends on 'rawN'</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> rawN <span class="op">?</span> <span class="pp">parseInt</span>(rawN) <span class="op">:</span> <span class="dv">1</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co">// Generate the array of values</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>values <span class="op">=</span> <span class="bu">Array</span><span class="op">.</span><span class="fu">from</span>({<span class="dt">length</span><span class="op">:</span> N}<span class="op">,</span> (_<span class="op">,</span> i) <span class="kw">=&gt;</span> i <span class="op">+</span> <span class="dv">1</span>)</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="co">// generate integer pairs (i, j) such that 0 &lt;= i &lt;= j &lt;= N, i + j &lt;= N, and i \le j </span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>triples <span class="op">=</span> {</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> result <span class="op">=</span> []<span class="op">;</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;=</span> N<span class="op">;</span> i<span class="op">++</span>) {</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="kw">let</span> j <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> j <span class="op">&lt;=</span> N <span class="op">-</span> i<span class="op">;</span> j<span class="op">++</span>) {</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>      result<span class="op">.</span><span class="fu">push</span>([i<span class="op">,</span> j<span class="op">,</span> N <span class="op">-</span> i <span class="op">-</span> j])<span class="op">;</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> result<span class="op">;</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-1-1" data-nodetype="declaration">
@@ -285,9 +294,82 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-1-4" data-nodetype="expression">
+<div id="ojs-cell-1-4" data-nodetype="declaration">
 
 </div>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb2" data-startfrom="35" data-source-offset="-1"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 34;"><span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>equilateral_triangle <span class="op">=</span> [</span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">x</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="dv">0</span>}<span class="op">,</span></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">x</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="dv">0</span>}<span class="op">,</span></span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">x</span><span class="op">:</span> <span class="fl">0.5</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(<span class="dv">3</span>) <span class="op">/</span> <span class="dv">2</span>}<span class="op">,</span></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">x</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="dv">0</span>}</span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>colored_points <span class="op">=</span> triples<span class="op">.</span><span class="fu">map</span>(triple <span class="kw">=&gt;</span> {</span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> A <span class="op">=</span> equilateral_triangle[<span class="dv">0</span>]<span class="op">;</span></span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> B <span class="op">=</span> equilateral_triangle[<span class="dv">1</span>]<span class="op">;</span></span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> C <span class="op">=</span> equilateral_triangle[<span class="dv">2</span>]<span class="op">;</span></span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> {</span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>    <span class="dt">x</span><span class="op">:</span> (triple[<span class="dv">0</span>] <span class="op">*</span> A<span class="op">.</span><span class="at">x</span> <span class="op">+</span> triple[<span class="dv">1</span>] <span class="op">*</span> B<span class="op">.</span><span class="at">x</span> <span class="op">+</span> triple[<span class="dv">2</span>] <span class="op">*</span> C<span class="op">.</span><span class="at">x</span>) <span class="op">/</span> N<span class="op">,</span></span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>    <span class="dt">y</span><span class="op">:</span> (triple[<span class="dv">0</span>] <span class="op">*</span> A<span class="op">.</span><span class="at">y</span> <span class="op">+</span> triple[<span class="dv">1</span>] <span class="op">*</span> B<span class="op">.</span><span class="at">y</span> <span class="op">+</span> triple[<span class="dv">2</span>] <span class="op">*</span> C<span class="op">.</span><span class="at">y</span>) <span class="op">/</span> N<span class="op">,</span></span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>    <span class="dt">color</span><span class="op">:</span> (() <span class="kw">=&gt;</span> {</span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>      <span class="kw">function</span> <span class="fu">randomChoice</span>(colors) {</span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> colors[<span class="bu">Math</span><span class="op">.</span><span class="fu">floor</span>(<span class="bu">Math</span><span class="op">.</span><span class="fu">random</span>() <span class="op">*</span> colors<span class="op">.</span><span class="at">length</span>)]<span class="op">;</span></span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> [a<span class="op">,</span> b<span class="op">,</span> c] <span class="op">=</span> triple<span class="op">;</span></span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> (a <span class="op">===</span> <span class="dv">0</span> <span class="op">&amp;&amp;</span> b <span class="op">===</span> <span class="dv">0</span>) <span class="cf">return</span> <span class="st">'red'</span><span class="op">;</span></span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> (b <span class="op">===</span> <span class="dv">0</span> <span class="op">&amp;&amp;</span> c <span class="op">===</span> <span class="dv">0</span>) <span class="cf">return</span> <span class="st">'green'</span><span class="op">;</span></span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> (c <span class="op">===</span> <span class="dv">0</span> <span class="op">&amp;&amp;</span> a <span class="op">===</span> <span class="dv">0</span>) <span class="cf">return</span> <span class="st">'blue'</span><span class="op">;</span></span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> (a <span class="op">===</span> <span class="dv">0</span>) <span class="cf">return</span> <span class="fu">randomChoice</span>([<span class="st">'red'</span><span class="op">,</span> <span class="st">'blue'</span>])<span class="op">;</span>   <span class="co">// on BC edge</span></span>
+<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> (b <span class="op">===</span> <span class="dv">0</span>) <span class="cf">return</span> <span class="fu">randomChoice</span>([<span class="st">'green'</span><span class="op">,</span> <span class="st">'red'</span>])<span class="op">;</span>  <span class="co">// on AC edge</span></span>
+<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> (c <span class="op">===</span> <span class="dv">0</span>) <span class="cf">return</span> <span class="fu">randomChoice</span>([<span class="st">'blue'</span><span class="op">,</span> <span class="st">'green'</span>])<span class="op">;</span> <span class="co">// on AB edge</span></span>
+<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span> <span class="fu">randomChoice</span>([<span class="st">'red'</span><span class="op">,</span> <span class="st">'green'</span><span class="op">,</span> <span class="st">'blue'</span>])<span class="op">;</span>       <span class="co">// inside triangle</span></span>
+<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a>    })()</span>
+<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a>  }<span class="op">;</span></span>
+<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb3" data-startfrom="69" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 68;"><span id="cb3-69"><a href="#cb3-69" aria-hidden="true" tabindex="-1"></a><span class="co">// plot colored_points in the plane </span></span>
+<span id="cb3-70"><a href="#cb3-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-71"><a href="#cb3-71" aria-hidden="true" tabindex="-1"></a>viewof plot <span class="op">=</span> Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb3-72"><a href="#cb3-72" aria-hidden="true" tabindex="-1"></a>  <span class="dt">width</span><span class="op">:</span> <span class="dv">500</span><span class="op">,</span></span>
+<span id="cb3-73"><a href="#cb3-73" aria-hidden="true" tabindex="-1"></a>  <span class="dt">height</span><span class="op">:</span> <span class="dv">500</span><span class="op">,</span></span>
+<span id="cb3-74"><a href="#cb3-74" aria-hidden="true" tabindex="-1"></a>  <span class="dt">x</span><span class="op">:</span> {</span>
+<span id="cb3-75"><a href="#cb3-75" aria-hidden="true" tabindex="-1"></a>    <span class="dt">label</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span></span>
+<span id="cb3-76"><a href="#cb3-76" aria-hidden="true" tabindex="-1"></a>    <span class="dt">domain</span><span class="op">:</span> [<span class="dv">0</span><span class="op">,</span> <span class="dv">1</span>]</span>
+<span id="cb3-77"><a href="#cb3-77" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
+<span id="cb3-78"><a href="#cb3-78" aria-hidden="true" tabindex="-1"></a>  <span class="dt">y</span><span class="op">:</span> {</span>
+<span id="cb3-79"><a href="#cb3-79" aria-hidden="true" tabindex="-1"></a>    <span class="dt">label</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span></span>
+<span id="cb3-80"><a href="#cb3-80" aria-hidden="true" tabindex="-1"></a>    <span class="dt">domain</span><span class="op">:</span> [<span class="dv">0</span><span class="op">,</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(<span class="dv">3</span>) <span class="op">/</span> <span class="dv">2</span>]</span>
+<span id="cb3-81"><a href="#cb3-81" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
+<span id="cb3-82"><a href="#cb3-82" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb3-83"><a href="#cb3-83" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">line</span>(equilateral_triangle<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"black"</span>})<span class="op">,</span></span>
+<span id="cb3-84"><a href="#cb3-84" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">dot</span>(colored_points<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">color</span><span class="op">,</span> <span class="dt">r</span><span class="op">:</span> <span class="dv">5</span>})</span>
+<span id="cb3-85"><a href="#cb3-85" aria-hidden="true" tabindex="-1"></a>  ]</span>
+<span id="cb3-86"><a href="#cb3-86" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-3" data-nodetype="declaration">
+
 </div>
 </div>
 </div>
@@ -296,7 +378,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script type="ojs-module-contents">
-{"contents":[{"methodName":"interpret","cellName":"ojs-cell-1","inline":false,"source":"\n// Prompt the user to input the value of N with a default of 10\nviewof rawN = Inputs.text({label: \"Number of subdivisions: \", value: \"10\"})\n\n// Parse the raw input N and handle default\n// This creates a new reactive variable 'N' that depends on 'rawN'\nN = rawN ? parseInt(rawN) : 1\n\n// Generate the array of values\nvalues = Array.from({length: N}, (_, i) => i + 1)\n\n// Print the values on the html page \nhtml`<div>${values.join(\", \")}</div>`\n\n"},{"methodName":"interpretQuiet","source":"shinyInput('rawN')"}]}
+{"contents":[{"methodName":"interpret","cellName":"ojs-cell-1","inline":false,"source":"// Prompt the user to input the value of N with a default of 10\nviewof rawN = Inputs.text({label: \"Number of subdivisions: \", value: \"10\"})\n\n// Parse the raw input N and handle default\n// This creates a new reactive variable 'N' that depends on 'rawN'\nN = rawN ? parseInt(rawN) : 1\n\n// Generate the array of values\nvalues = Array.from({length: N}, (_, i) => i + 1)\n\n// generate integer pairs (i, j) such that 0 <= i <= j <= N, i + j <= N, and i \\le j \n\ntriples = {\n  let result = [];\n  for (let i = 0; i <= N; i++) {\n    for (let j = 0; j <= N - i; j++) {\n      result.push([i, j, N - i - j]);\n    }\n  }\n  return result;\n}\n"},{"methodName":"interpret","cellName":"ojs-cell-2","inline":false,"source":"\nequilateral_triangle = [\n  {x: 0, y: 0},\n  {x: 1, y: 0},\n  {x: 0.5, y: Math.sqrt(3) / 2},\n  {x: 0, y: 0}\n]\n\ncolored_points = triples.map(triple => {\n  const A = equilateral_triangle[0];\n  const B = equilateral_triangle[1];\n  const C = equilateral_triangle[2];\n  return {\n    x: (triple[0] * A.x + triple[1] * B.x + triple[2] * C.x) / N,\n    y: (triple[0] * A.y + triple[1] * B.y + triple[2] * C.y) / N,\n    color: (() => {\n      function randomChoice(colors) {\n        return colors[Math.floor(Math.random() * colors.length)];\n      }\n      const [a, b, c] = triple;\n\n      if (a === 0 && b === 0) return 'red';\n      if (b === 0 && c === 0) return 'green';\n      if (c === 0 && a === 0) return 'blue';\n\n      if (a === 0) return randomChoice(['red', 'blue']);   // on BC edge\n      if (b === 0) return randomChoice(['green', 'red']);  // on AC edge\n      if (c === 0) return randomChoice(['blue', 'green']); // on AB edge\n\n      return randomChoice(['red', 'green', 'blue']);       // inside triangle\n    })()\n  };\n});\n"},{"methodName":"interpret","cellName":"ojs-cell-3","inline":false,"source":"// plot colored_points in the plane \n\nviewof plot = Plot.plot({\n  width: 500,\n  height: 500,\n  x: {\n    label: \"x\",\n    domain: [0, 1]\n  },\n  y: {\n    label: \"y\",\n    domain: [0, Math.sqrt(3) / 2]\n  },\n  marks: [\n    Plot.line(equilateral_triangle, {x: \"x\", y: \"y\", stroke: \"black\"}),\n    Plot.dot(colored_points, {x: \"x\", y: \"y\", fill: d => d.color, r: 5})\n  ]\n})\n"},{"methodName":"interpretQuiet","source":"shinyInput('rawN')"},{"methodName":"interpretQuiet","source":"shinyInput('plot')"}]}
 </script>
 <script type="module">
 if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }

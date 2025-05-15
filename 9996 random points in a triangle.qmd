@@ -59,9 +59,9 @@ random_points = Array.from({length: N}, () => {
 // Reflect the points across the midpoint of the hypotenuse
 unit_triangle_points = random_points.map(d => {
   if (d.label === "Reflected points") {
-    return {x: 1 - d.x, y: 1 - d.y};
+    return {x: 1 - d.x, y: 1 - d.y, label: d.label};
   } else {
-    return {x: d.x, y: d.y};
+    return d;
   }
 });
 
@@ -72,7 +72,8 @@ transformed_points = unit_triangle_points.map(d => {
   const C = equilateral_triangle[2];
   return {
     x: d.x * A.x + d.y * B.x + (1 - d.x - d.y) * C.x,
-    y: d.x * A.y + d.y * B.y + (1 - d.x - d.y) * C.y
+    y: d.x * A.y + d.y * B.y + (1 - d.x - d.y) * C.y,
+    label: d.label
   };
 });
 
@@ -125,7 +126,7 @@ viewof sideBySidePlots = {
       Plot.dot(unit_triangle_points.slice(0, M), {
         x: "x",
         y: "y",
-        fill: "black",
+        fill: d => d.label === "Inside" ? "red" : "blue",
         r: 3
       }),
       Plot.lineY(unit_triangle, {x: "x", y: "y", stroke: "black", strokeWidth: 2}),
@@ -167,7 +168,13 @@ viewof centeredPlot = {
     x: {domain: [0, 1]},
     y: {domain: [0, Math.sqrt(3) / 2]},
     marks: [
-      Plot.dot(transformed_points.slice(0, M), {x: "x", y: "y", fill: "black", r: 3}),
+      
+      Plot.dot(transformed_points.slice(0, M), {
+        x: "x",
+        y: "y",
+        fill: d => d.label === "Inside" ? "red" : "blue",
+        r: 3
+      }),
       Plot.lineY(equilateral_triangle, {x: "x", y: "y", stroke: "black", strokeWidth: 2}),
       Plot.lineY([{x: 0, y: 0}, {x: 1, y: 0}], {stroke: "black", strokeDasharray: "4,4"}),
       Plot.lineY([{x: 0, y: 0}, {x: 0.5, y: Math.sqrt(3) / 2}], {stroke: "black", strokeDasharray: "4,4"})
