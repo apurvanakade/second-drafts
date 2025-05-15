@@ -168,7 +168,6 @@ viewof centeredPlot = {
     x: {domain: [0, 1]},
     y: {domain: [0, Math.sqrt(3) / 2]},
     marks: [
-      
       Plot.dot(transformed_points.slice(0, M), {
         x: "x",
         y: "y",
