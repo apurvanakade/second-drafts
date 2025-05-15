@@ -6,20 +6,34 @@ categories: [combinatorics, triangles, coloring]
 draft: true
 ---
 
+**DRAFT DOCUMENT**
+
 ```{ojs}
-// Prompt the user to input the value of N with a default of 10
-viewof rawN = Inputs.text({label: "Number of subdivisions: ", value: "10"})
+equilateral_triangle = [
+  {x: 0, y: 0},
+  {x: 1, y: 0},
+  {x: 0.5, y: Math.sqrt(3) / 2},
+  {x: 0, y: 0}
+]
+```
 
-// Parse the raw input N and handle default
-// This creates a new reactive variable 'N' that depends on 'rawN'
-N = rawN ? parseInt(rawN) : 1
+```{ojs}
+import {slider} from "@jashkenas/inputs"
 
-// Generate the array of values
-values = Array.from({length: N}, (_, i) => i + 1)
+// Add a slider for M = number of points to plot
+viewof N = slider({
+  min: 5,
+  max: 100,
+  step: 1,
+  value: 10,
+  width: 500,
+  title: "Number of subdivisions"
+});
+```
 
-// generate integer pairs (i, j) such that 0 <= i <= j <= N, i + j <= N, and i \le j 
 
-triples = {
+```{ojs}
+barycentric_coords = {
   let result = [];
   for (let i = 0; i <= N; i++) {
     for (let j = 0; j <= N - i; j++) {
@@ -28,18 +42,8 @@ triples = {
   }
   return result;
 }
-```
 
-```{ojs}
-
-equilateral_triangle = [
-  {x: 0, y: 0},
-  {x: 1, y: 0},
-  {x: 0.5, y: Math.sqrt(3) / 2},
-  {x: 0, y: 0}
-]
-
-colored_points = triples.map(triple => {
+colored_points = barycentric_coords.map(triple => {
   const A = equilateral_triangle[0];
   const B = equilateral_triangle[1];
   const C = equilateral_triangle[2];
@@ -70,8 +74,8 @@ colored_points = triples.map(triple => {
 // plot colored_points in the plane 
 
 viewof plot = Plot.plot({
-  width: 500,
-  height: 500,
+  width: 600,
+  height: 600,
   x: {
     label: "x",
     domain: [0, 1]
@@ -82,7 +86,7 @@ viewof plot = Plot.plot({
   },
   marks: [
     Plot.line(equilateral_triangle, {x: "x", y: "y", stroke: "black"}),
-    Plot.dot(colored_points, {x: "x", y: "y", fill: d => d.color, r: 5})
+    Plot.dot(colored_points, {x: "x", y: "y", fill: d => d.color, r: 2})
   ]
 })
 ```
