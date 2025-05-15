@@ -1,0 +1,24 @@
+---
+title: Sperner's Lemma
+author: Apurva Nakade
+date: 2025-05-14 17:20:25
+categories: [combinatorics, triangles, coloring]
+draft: true
+---
+
+```{ojs}
+
+// Prompt the user to input the value of N with a default of 10
+viewof rawN = Inputs.text({label: "Number of subdivisions: ", value: "10"})
+
+// Parse the raw input N and handle default
+// This creates a new reactive variable 'N' that depends on 'rawN'
+N = rawN ? parseInt(rawN) : 1
+
+// Generate the array of values
+values = Array.from({length: N}, (_, i) => i + 1)
+
+// Print the values on the html page 
+html`<div>${values.join(", ")}</div>`
+
+```

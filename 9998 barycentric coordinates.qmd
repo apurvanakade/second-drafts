@@ -111,8 +111,8 @@ class DraggableTriangle extends Triangle {
   }
 
   hitTest([mx, my], radius = 10) {
-    const points = [this.A, this.B, this.C];
-    return points.findIndex(([x, y]) => Math.hypot(mx - x, my - y) < radius);
+    const canvasPoints = [this.CanvasA, this.CanvasB, this.CanvasC];
+    return canvasPoints.findIndex(([x, y]) => Math.hypot(mx - x, my - y) < radius);
   }
 
   startDrag([mx, my]) {
@@ -136,7 +136,6 @@ class DraggableTriangle extends Triangle {
     this.draggingIndex = null;
   }
 }
-
 
 class Canvas {
   constructor(width, height, scale = 200, offset = [50, 250]) {
@@ -188,11 +187,10 @@ viewof canvas = {
   const ctx = canvasInstance.getContext();
 
   const A = [0, 0], B = [1, 0], C = [0, 1];
-  let A2 = [1.5, 0], B2 = [3, 0], C2 = [2, 1];
+  const redTri = canvasInstance.newTriangle([1.5, 0], [3, 0], [2, 1], true);
 
   let target = { i: 0.3, j: 0.3 };
   let current = { i: 0.3, j: 0.3 };
-  let draggingVertex = null;
 
   function draw() {
     ctx.clearRect(0, 0, width, height);
@@ -201,7 +199,6 @@ viewof canvas = {
     blackTri.drawGrid();
     blackTri.draw({ fillStyle: "rgba(0,0,0,0.2)", strokeStyle: "black" });
 
-    const redTri = canvasInstance.newTriangle(A2, B2, C2);
     redTri.drawGrid();
     redTri.draw({ strokeStyle: "red", vertexColor: "red" });
 
@@ -245,45 +242,60 @@ viewof canvas = {
     }
   }
 
-  function handleDrag(e) {
+  canvas.addEventListener("mousedown", e => {
     const rect = canvas.getBoundingClientRect();
     const mx = e.clientX - rect.left;
     const my = e.clientY - rect.top;
 
-    if (draggingVertex !== null) {
-      if (draggingVertex === 0) A2 = canvasInstance.fromCanvas([mx, my]);
-      else if (draggingVertex === 1) B2 = canvasInstance.fromCanvas([mx, my]);
-      else if (draggingVertex === 2) C2 = canvasInstance.fromCanvas([mx, my]);
-      draw();
+    if (redTri.startDrag([mx, my])) {
+      const move = e => {
+        const mx = e.clientX - rect.left;
+        const my = e.clientY - rect.top;
+        redTri.dragTo([mx, my]);
+        draw();
+      };
+      const up = () => {
+        redTri.endDrag();
+        window.removeEventListener("mousemove", move);
+        window.removeEventListener("mouseup", up);
+      };
+      window.addEventListener("mousemove", move);
+      window.addEventListener("mouseup", up);
     } else {
-      handleMouse(e);
+      // Start tracking movement to update target continuously
+      const move = e => {
+        const mx = e.clientX - rect.left;
+        const my = e.clientY - rect.top;
+        const [x, y] = canvasInstance.fromCanvas([mx, my]);
+        const blackTri = canvasInstance.newTriangle(A, B, C);
+        const [bi, bj] = blackTri.cartesianToBarycentric(x, y);
+        const snapTol = 0.05;
+        const vertices = [[1, 0], [0, 1], [0, 0]];
+        const dists = vertices.map(([vi, vj]) => Math.hypot(bi - vi, bj - vj));
+        const minDist = Math.min(...dists);
+        if (minDist < snapTol) {
+          [target.i, target.j] = vertices[dists.indexOf(minDist)];
+        } else if (bi >= 0 && bj >= 0 && bi + bj <= 1) {
+          target.i = bi;
+          target.j = bj;
+        }
+      };
+      const up = () => {
+        window.removeEventListener("mousemove", move);
+        window.removeEventListener("mouseup", up);
+      };
+      window.addEventListener("mousemove", move);
+      window.addEventListener("mouseup", up);
     }
-  }
-
-  canvas.addEventListener("mousedown", e => {
-    const mx = e.clientX - canvas.getBoundingClientRect().left;
-    const my = e.clientY - canvas.getBoundingClientRect().top;
-    draggingVertex = null;
-    [A2, B2, C2].forEach(([x, y], idx) => {
-      const [cx, cy] = canvasInstance.toCanvas([x, y]);
-      if (Math.hypot(mx - cx, my - cy) < 10) draggingVertex = idx;
-    });
-
-    handleDrag(e);
-    const move = e => handleDrag(e);
-    const up = () => {
-      draggingVertex = null;
-      window.removeEventListener("mousemove", move);
-      window.removeEventListener("mouseup", up);
-    };
-    window.addEventListener("mousemove", move);
-    window.addEventListener("mouseup", up);
   });
 
   requestAnimationFrame(animate);
   return canvas;
 }
+
+
 ```
+
 **Barycentric coordinates** are a coordinate system for describing points within a triangle.  
 
 For a triangle with vertices $A$, $B$, and $C$, any point $P$ inside the triangle can be expressed as a weighted sum of the vertices:
