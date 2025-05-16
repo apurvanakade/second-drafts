@@ -80,9 +80,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-c1fac2584b48ed01fb6e278e36375074.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-a9957ab5e8b7c67643b7e2e6b5c1e54e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-c1fac2584b48ed01fb6e278e36375074.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-05babaf0cfa1e1caed117225af04a19c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-3d3c3807380c683caf11aaf4545bf090.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-05babaf0cfa1e1caed117225af04a19c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -699,7 +699,7 @@ window.Quarto = {
 </ol>
 <p>Mathematicians are mostly interested in engineering Step 2. Step 1 is important, but is usually delegated to computer engineers.</p>
 <p>With that preamble, here’s the question: <strong>Generate points randomly inside a triangle.</strong> I need this in order to play around with Sperner’s lemma examples.</p>
-<p>The first step is to generate random points in the “standard triangle” with vertices <span class="math inline">\([0, 0], [1, 0], [0, 1]\)</span>. A very simple trick for this is to generate points in the unit square and “reflect the points” across the midpoint of the hypotenuse, <span class="math inline">\([0.5, 0.5]\)</span>. Next we use the <a href="9998 barycentric coordinates.qmd">barycentric transformation</a> to transform the standard triangle into the desired triangle, in the above example, the equilateral triangle with vertices <span class="math inline">\([0, 0], [1, 0], [0.5, \sqrt{3}/2]\)</span>.</p>
+<p>The first step is to generate random points in the “standard triangle” with vertices <span class="math inline">\([0, 0], [1, 0], [0, 1]\)</span>. A very simple trick for this is to generate points in the unit square and “reflect the points” across the midpoint of the hypotenuse, <span class="math inline">\([0.5, 0.5]\)</span>. Next we use the <a href="./9998-barycentric-coordinates.html">barycentric transformation</a> to transform the standard triangle into the desired triangle, in the above example, the equilateral triangle with vertices <span class="math inline">\([0, 0], [1, 0], [0.5, \sqrt{3}/2]\)</span>.</p>
 
 
 
