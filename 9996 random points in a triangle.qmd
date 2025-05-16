@@ -92,7 +92,7 @@ viewof sideBySidePlots = {
         fill: d => d.label === "Inside" ? "red" : "blue",
         r: 3
       }),
-      Plot.lineY(unit_triangle, {x: "x", y: "y", stroke: "black", strokeWidth: 2}),
+      Plot.lineY(unit_triangle, {x: "x", y: "y", stroke: "black", strokeWidth: 1}),
       Plot.lineY([{x: 0, y: 0}, {x: 1, y: 0}], {stroke: "black", strokeDasharray: "4,4"}),
       Plot.lineY([{x: 0, y: 0}, {x: 0, y: 1}], {stroke: "black", strokeDasharray: "4,4"})
     ]
@@ -111,7 +111,7 @@ viewof sideBySidePlots = {
         fill: d => d.label === "Inside" ? "red" : "blue",
         r: 3
       }),
-      Plot.lineY(unit_triangle, {x: "x", y: "y", stroke: "black", strokeWidth: 2}),
+      Plot.lineY(unit_triangle, {x: "x", y: "y", stroke: "black", strokeWidth: 1}),
       Plot.lineY([{x: 0, y: 0}, {x: 1, y: 0}], {stroke: "black", strokeDasharray: "4,4"}),
       Plot.lineY([{x: 0, y: 0}, {x: 0, y: 1}], {stroke: "black", strokeDasharray: "4,4"})
     ]
@@ -156,7 +156,7 @@ viewof centeredPlot = {
         fill: d => d.label === "Inside" ? "red" : "blue",
         r: 3
       }),
-      Plot.lineY(equilateral_triangle, {x: "x", y: "y", stroke: "black", strokeWidth: 2}),
+      Plot.lineY(equilateral_triangle, {x: "x", y: "y", stroke: "black", strokeWidth: 1}),
       Plot.lineY([{x: 0, y: 0}, {x: 1, y: 0}], {stroke: "black", strokeDasharray: "4,4"}),
       Plot.lineY([{x: 0, y: 0}, {x: 0.5, y: Math.sqrt(3) / 2}], {stroke: "black", strokeDasharray: "4,4"})
     ]
