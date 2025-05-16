@@ -67,8 +67,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./9997 hopkins-is-a-joke.html" rel="next">
-<link href="./9995 non profits.html" rel="prev">
+<link href="./9997-hopkins-is-a-joke.html" rel="next">
+<link href="./9995-non-profits.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -362,7 +362,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./9996 random points in a triangle.html">Random points in a triangle</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./9996-random-points-in-a-triangle.html">Random points in a triangle</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -376,37 +376,43 @@ window.Quarto = {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./9994 sperners lemma - part 01.html" class="sidebar-item-text sidebar-link">
+  <a href="./9993-sperners-lemma-part-02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Sperner’s Lemma - Part 02</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./9994-sperners-lemma-part-01.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Sperner’s Lemma - Part 01</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./9995 non profits.html" class="sidebar-item-text sidebar-link">
+  <a href="./9995-non-profits.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Non-Profits</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./9996 random points in a triangle.html" class="sidebar-item-text sidebar-link active">
+  <a href="./9996-random-points-in-a-triangle.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Random points in a triangle</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./9997 hopkins-is-a-joke.html" class="sidebar-item-text sidebar-link">
+  <a href="./9997-hopkins-is-a-joke.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Hopkins is a joke</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./9998 barycentric coordinates.html" class="sidebar-item-text sidebar-link">
+  <a href="./9998-barycentric-coordinates.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Barycentric Coordinates</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./9999 begin-again.html" class="sidebar-item-text sidebar-link">
+  <a href="./9999-begin-again.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Begin Again</span></a>
   </div>
 </li>
@@ -693,7 +699,7 @@ window.Quarto = {
 </ol>
 <p>Mathematicians are mostly interested in engineering Step 2. Step 1 is important, but is usually delegated to computer engineers.</p>
 <p>With that preamble, here’s the question: <strong>Generate points randomly inside a triangle.</strong> I need this in order to play around with Sperner’s lemma examples.</p>
-<p>The first step is to generate random points in the “standard triangle” with vertices <span class="math inline">\([0, 0], [1, 0], [0, 1]\)</span>. A very simple trick for this is to generate points in the unit square and “reflect the points” across the midpoint of the hypotenuse, <span class="math inline">\([0.5, 0.5]\)</span>. Next we use the <a href="./9998 barycentric coordinates.html">barycentric transformation</a> to transform the standard triangle into the desired triangle, in the above example, the equilateral triangle with vertices <span class="math inline">\([0, 0], [1, 0], [0.5, \sqrt{3}/2]\)</span>.</p>
+<p>The first step is to generate random points in the “standard triangle” with vertices <span class="math inline">\([0, 0], [1, 0], [0, 1]\)</span>. A very simple trick for this is to generate points in the unit square and “reflect the points” across the midpoint of the hypotenuse, <span class="math inline">\([0.5, 0.5]\)</span>. Next we use the <a href="9998 barycentric coordinates.qmd">barycentric transformation</a> to transform the standard triangle into the desired triangle, in the above example, the equilateral triangle with vertices <span class="math inline">\([0, 0], [1, 0], [0.5, \sqrt{3}/2]\)</span>.</p>
 
 
 
@@ -1123,12 +1129,12 @@ window._ojs.runtime.interpretFromScriptTags();
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./9995 non profits.html" class="pagination-link" aria-label="Non-Profits">
+      <a href="./9995-non-profits.html" class="pagination-link" aria-label="Non-Profits">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Non-Profits</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./9997 hopkins-is-a-joke.html" class="pagination-link" aria-label="Hopkins is a joke">
+      <a href="./9997-hopkins-is-a-joke.html" class="pagination-link" aria-label="Hopkins is a joke">
         <span class="nav-page-text">Hopkins is a joke</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>

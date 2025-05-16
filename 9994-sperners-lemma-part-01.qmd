@@ -192,22 +192,31 @@ viewof plotEmpty = Plot.plot({
 });
 ```
 
+Before I get into Sperner's lemma, here's a curious thing I discovered while drawing these colorful plots. How do you loop over all the sub-triangles in the triangulation?
+Think of an answer before peeking below.
+
+<!-- add large vertical white space equal to screen height -->
+<div style="height: 100vh;"></div>
+
+You have to run two loops! One for the "upward-facing" triangles and one for the "downward-facing" ones. I don't think there is any way to create a single loop for all these triangles. 
+
+---
 
 **Sperner's lemma** is one of the first "non-trivial" theorems I remember hearing about at a summer camp in my high school.
 The theorem goes as follows. Consider a triangulation of a triangle. (Above we consider a regular triangulation of an equilateral triangle, but the theorem holds for any triangulation of a triangle.) We color the vertices of the triangle with three colors, say <span style="color:white; background-color:red">red</span>, <span style="color:white; background-color:green">green</span> and <span style="color:white; background-color:blue">blue</span> with the following conditions:
 
 1. The vertices of the triangle are colored with the three colors: <span style="color:white; background-color:red">red</span>, <span style="color:white; background-color:green">green</span>, and <span style="color:white; background-color:blue">blue</span>.
-2. The vertices that lie on the edges of the triangle are colored with one of the colors of the endpoints of that edge - *this is critical*. 
+2. The vertices that lie on the edges of the triangle are colored with one of the colors of the endpoints of that edge - *this is crucial*. 
 3. The vertices that lie in the interior of the triangle may be colored with any of the three colors.
 
 The conditions 1, 2 are sometimes called the **Sperner condition**. 
 
 ::: {#thm-sperner}
 
-Any triangulation of a triangle satisfying Sperner's condition has at least one triangle whose vertices are colored with all three colors, i.e., there exists at least one triangle with vertices colored <span style="color:white; background-color:red">red</span>, <span style="color:white; background-color:green">green</span>, and <span style="color:white; background-color:blue">blue</span>.
+Any triangulation of a triangle satisfying Sperner's condition has at least one "rainbow" triangle whose vertices are colored with all three colors <span style="color:white; background-color:red">red</span>, <span style="color:white; background-color:green">green</span>, and <span style="color:white; background-color:blue">blue</span>.
 :::
 
-Without peeking below, can you how many "RGB (rainbow) triangles" are there in the above triangulation?
+Without peeking below, can you how many rainbow (RGB) triangles are there in the above triangulation?
 
 <!-- add large vertical white space equal to screen height -->
 <div style="height: 100vh;"></div>
@@ -219,19 +228,7 @@ Without peeking below, can you how many "RGB (rainbow) triangles" are there in t
 getFillColorRGB = (vertexColors) => {
   if (vertexColors.has('red') && vertexColors.has('green') && vertexColors.has('blue')) {
     return 'black'; // Or any color you prefer for RGB triangles
-  } else if (vertexColors.has('red') && vertexColors.has('green')) {
-    return 'none';
-  } else if (vertexColors.has('red') && vertexColors.has('blue')) {
-    return 'none';
-  } else if (vertexColors.has('green') && vertexColors.has('blue')) {
-    return 'none';
-  } else if (vertexColors.has('red')) {
-    return 'none';
-  } else if (vertexColors.has('green')) {
-    return 'none';
-  } else if (vertexColors.has('blue')) {
-    return 'none';
-  }
+  } 
   return 'none'; // Default color
 };
 ```
@@ -305,14 +302,12 @@ viewof plotRGB = Plot.plot({
 ```{ojs}
 // print the number of RGB triangles as a html element
 numRGBTriangles = subTriangles.filter(triangle => triangle.vertex_colors.size === 3).length;
-html`<h3>Number of RGB triangles: ${numRGBTriangles}</h3>`
+html`<p>Number of RGB triangles: ${numRGBTriangles}</p>`
 ```
-
 
 ---
 
 I know a few proofs of this theorem, of varying levels of sophistication. I used to think I understood this theorem really well. And yet, I cannot predict the image below. Here, I'm coloring each triangle using the following mapping:
-
 
 1. `RRR` => <span style="color:white; background-color:red">red</span>
 2. `GGG` => <span style="color:white; background-color:green">green</span>
@@ -330,7 +325,7 @@ import {slider} from "@jashkenas/inputs"
 // Add a slider for M = number of points to plot
 viewof N = slider({
   min: 2,
-  max: 50,
+  max: 20,
   step: 1,
   value: 5,
   width: 500,
@@ -428,5 +423,6 @@ viewof plotALL = Plot.plot({
 
 ```{ojs}
 // print the number of RGB triangles as a html element
-html`<h3>Number of RGB triangles: ${numRGBTriangles}</h3>`
+html`<p>Number of RGB triangles: ${numRGBTriangles}</p>`
 ```
+

@@ -1,0 +1,403 @@
+---
+title: Sperner's Lemma - Part 02
+author: Apurva Nakade
+date: 2025-05-16 09:44:57
+categories: [combinatorics, triangles, coloring]
+---
+
+**DRAFT DOCUMENT**
+
+```{ojs}
+import {slider} from "@jashkenas/inputs"
+
+// Add a slider for M = number of points to plot
+viewof N = slider({
+  min: 2,
+  max: 20,
+  step: 1,
+  value: 5,
+  width: 500,
+  title: "Number of subdivisions"
+});
+```
+
+```{ojs}
+equilateral_triangle_vertices = [
+  {x: 0, y: 0},
+  {x: 1, y: 0},
+  {x: 0.5, y: Math.sqrt(3) / 2}
+]
+```
+
+```{ojs}
+barycentric_coords = {
+  let result = [];
+  for (let i = 0; i <= N; i++) {
+    for (let j = 0; j <= N - i; j++) {
+      result.push([i, j, N - i - j]);
+    }
+  }
+  return result;
+}
+```
+
+
+```{ojs}
+class ColoredPoint {
+  constructor(triple, equilateralTriangleVertices, N) {
+    this.barycentricTriple = triple;
+    const [A, B, C] = equilateralTriangleVertices;
+
+    this.x = (triple[0] * A.x + triple[1] * B.x + triple[2] * C.x) / N;
+    this.y = (triple[0] * A.y + triple[1] * B.y + triple[2] * C.y) / N;
+
+    this.color = this._assignColor(triple);
+  }
+
+  _assignColor(triple) {
+    const [a, b, c] = triple;
+
+    if (a === 0 && b === 0) return 'red';
+    if (b === 0 && c === 0) return 'green';
+    if (c === 0 && a === 0) return 'blue';
+
+    // pick randomly between red and blue
+    if (a === 0) return Math.random() < 0.5 ? 'red' : 'blue';
+    if (b === 0) return Math.random() < 0.5 ? 'red' : 'green';
+    if (c === 0) return Math.random() < 0.5 ? 'blue' : 'green';
+
+    // pick randomly between red, green, and blue
+    return Math.random() < 0.33 ? 'red' : (Math.random() < 0.5 ? 'green' : 'blue');
+  }
+
+  getCoords() {
+    return { x: this.x, y: this.y };
+  }
+
+  getColor() {
+    return this.color;
+  }
+}
+```
+
+```{ojs}
+// A cell to generate all ColoredPoint instances
+// and also create a map for efficient lookup.
+// This cell effectively replaces your `generateColoredPoints` function and the map creation.
+coloredPointsMap = {
+  const coloredPoints = barycentric_coords.map(triple => {
+    return new ColoredPoint(triple, equilateral_triangle_vertices, N);
+  });
+
+  // Create a Map for quick lookup of colored_points by their barycentric triple
+  let coloredPointsMap = new Map();
+  for (const p of coloredPoints) {
+    coloredPointsMap.set(`${p.barycentricTriple[0]},${p.barycentricTriple[1]},${p.barycentricTriple[2]}`, p);
+  }
+
+  // Return both the array and the map
+  return { coloredPoints, coloredPointsMap };
+}
+```
+
+
+```{ojs}
+subTriangles = {
+  let triangles = [];
+  // upward facing triangles
+  for (let i = 0; i < N; i++) {
+    for (let j = 0; j < N - i; j++) {
+      const coordinates = [
+        [i, j, N - i - j],
+        [i + 1, j, N - i - j - 1],
+        [i, j + 1, N - i - j - 1]
+      ];
+      const vertex_colors = new Set([
+        coloredPointsMap.coloredPointsMap.get(`${coordinates[0][0]},${coordinates[0][1]},${coordinates[0][2]}`).getColor(),
+        coloredPointsMap.coloredPointsMap.get(`${coordinates[1][0]},${coordinates[1][1]},${coordinates[1][2]}`).getColor(),
+        coloredPointsMap.coloredPointsMap.get(`${coordinates[2][0]},${coordinates[2][1]},${coordinates[2][2]}`).getColor()
+      ]);
+      triangles.push({ coordinates, vertex_colors }); // Added vertex_colors
+    }
+  }
+  // downward facing triangles
+  for (let i = 0; i < N - 1; i++) {
+    for (let j = 0; j < N - i - 1; j++) {
+      const coordinates = [
+        [i + 1, j, N - i - j - 1],
+        [i + 1, j + 1, N - i - j - 2],
+        [i, j + 1, N - i - j - 1]
+      ];
+      const vertex_colors = new Set([
+        coloredPointsMap.coloredPointsMap.get(`${coordinates[0][0]},${coordinates[0][1]},${coordinates[0][2]}`).getColor(),
+        coloredPointsMap.coloredPointsMap.get(`${coordinates[1][0]},${coordinates[1][1]},${coordinates[1][2]}`).getColor(),
+        coloredPointsMap.coloredPointsMap.get(`${coordinates[2][0]},${coordinates[2][1]},${coordinates[2][2]}`).getColor()
+      ]);
+      triangles.push({ coordinates, vertex_colors }); // Added vertex_colors
+    }
+  }
+  return triangles;
+}
+```
+
+
+```{ojs}
+viewof plotEmpty = Plot.plot({
+  width: 800,
+  height: 800,
+  x: {
+    label: "x",
+    domain: [0, 1]
+  },
+  y: {
+    label: "y",
+    domain: [0, Math.sqrt(3) / 2]
+  },
+  marks: [
+    Plot.line([...equilateral_triangle_vertices, equilateral_triangle_vertices[0]], {
+      x: "x",
+      y: "y",
+      stroke: "black",
+      strokeWidth: 1
+    }),
+    Plot.dot(coloredPointsMap.coloredPoints, {
+      x: "x",
+      y: "y",
+      fill: d => d.color,
+      r: 3
+    }),
+    Plot.geo(
+      {
+        type: "FeatureCollection",
+        features: subTriangles.map(triangle => {
+          let coords = triangle.coordinates.map(coord => coloredPointsMap.coloredPointsMap.get(`${coord[0]},${coord[1]},${coord[2]}`).getCoords());
+          return {
+            type: "Feature",
+            geometry: {
+              type: "Polygon",
+              coordinates: [
+                [coords[0], coords[1], coords[2], coords[0]].map(c => [c.x, c.y])
+              ]
+            },
+            properties: { // empty fill color
+              fillColor: "none",
+              coords: coords, // Store the coordinates
+              vertexColors: Array.from(triangle.vertex_colors) // Store vertex colors as array
+            }
+          };
+        })
+      },
+      {
+        fill: d => d.properties.fillColor, // Use the determined color.
+        stroke: "black",
+        strokeWidth: 1
+      }
+    ),
+    // Add the dots to show all colored points with their assigned color
+    Plot.dot(
+      coloredPointsMap.coloredPoints,
+      {
+        x: "x",
+        y: "y",
+        fill: d => d.color,
+        r: 5 // Slightly larger dots if desired
+      }
+    )
+  ]
+});
+```
+
+
+
+```{ojs}
+// Utility function to calculate the centroid (median point) of a triangle
+centroid = (p1, p2, p3) => {
+  const cx = (p1.x + p2.x + p3.x) / 3;
+  const cy = (p1.y + p2.y + p3.y) / 3;
+  return { x: cx, y: cy };
+};
+```
+
+```{ojs}
+// Filtered triangles and their centroids
+filteredTrianglesData = {
+  const trianglesRG = [];
+  const trianglesRGB = [];
+  const centroidsRG = [];
+  const centroidsRGB = [];
+  const edgeToTrianglesMap = new Map(); // Map to store triangles by their edges
+
+  for (const tri of subTriangles) {
+    const { coordinates, vertex_colors } = tri;
+
+    // Check if the triangle only has R and G vertex colors
+    if (vertex_colors.has('red') && vertex_colors.has('green')) {
+      // Get actual coordinates of the vertices
+      const p1 = coloredPointsMap.coloredPointsMap.get(`${coordinates[0][0]},${coordinates[0][1]},${coordinates[0][2]}`).getCoords();
+      const p2 = coloredPointsMap.coloredPointsMap.get(`${coordinates[1][0]},${coordinates[1][1]},${coordinates[1][2]}`).getCoords();
+      const p3 = coloredPointsMap.coloredPointsMap.get(`${coordinates[2][0]},${coordinates[2][1]},${coordinates[2][2]}`).getCoords();
+
+      const cd = centroid(p1, p2, p3);
+      tri.centroid = cd;
+
+      if (vertex_colors.has('blue')) {
+        trianglesRGB.push(tri);
+        centroidsRGB.push(cd);
+      } else {
+        trianglesRG.push(tri);
+        centroidsRG.push(cd);
+      }
+
+      // Store edges and associate them with the current triangle
+      const edges = [
+        [coordinates[0], coordinates[1]],
+        [coordinates[1], coordinates[2]],
+        [coordinates[2], coordinates[0]]
+      ];
+
+      for (const edge of edges) {
+        // Sort coordinates to create a consistent key for the edge
+        const sortedEdge = edge.map(coord => coord.join(',')).sort().join('|');
+        if (!edgeToTrianglesMap.has(sortedEdge)) {
+          edgeToTrianglesMap.set(sortedEdge, []);
+        }
+        edgeToTrianglesMap.get(sortedEdge).push(tri);
+      }
+    }
+  }
+  return { trianglesRG, centroidsRG, trianglesRGB, centroidsRGB, edgeToTrianglesMap };
+}
+```
+
+```{ojs}
+// Lines connecting centroids of triangles separated by an RG edge
+medianConnectingLines = {
+  const lines = [];
+  const { trianglesRG, edgeToTrianglesMap } = filteredTrianglesData;
+
+  for (const [edgeKey, triangles] of edgeToTrianglesMap.entries()) {
+
+    if (triangles.length === 2) {
+      const [tri1, tri2] = triangles;
+
+      // Ensure both triangles are among our filtered RG triangles and have centroids
+      const isTri1RG = trianglesRG.includes(tri1);
+      const isTri2RG = trianglesRG.includes(tri2);
+
+      if (isTri1RG && isTri2RG && tri1.centroid && tri2.centroid) {
+        // Check if the edge itself is an RG edge (i.e., its endpoints are R or G)
+        const edgeCoords = edgeKey.split('|').map(s => s.split(',').map(Number));
+        const pA = coloredPointsMap.coloredPointsMap.get(`${edgeCoords[0][0]},${edgeCoords[0][1]},${edgeCoords[0][2]}`);
+        const pB = coloredPointsMap.coloredPointsMap.get(`${edgeCoords[1][0]},${edgeCoords[1][1]},${edgeCoords[1][2]}`);
+
+        const colorA = pA.getColor();
+        const colorB = pB.getColor();
+
+        // console.log(`  Edge point A color: ${colorA}, B color: ${colorB}`);
+
+        if ((colorA === 'red' || colorA === 'green') && (colorB === 'red' || colorB === 'green')) {
+            // console.log("  Found an RG edge connecting two RG triangles!");
+            lines.push({
+                x1: tri1.centroid.x,
+                y1: tri1.centroid.y,
+                x2: tri2.centroid.x,
+                y2: tri2.centroid.y
+            });
+        }
+      }
+    }
+  }
+  return lines;
+}
+```
+
+```{ojs}
+// Modified viewof plotEmpty to include new marks
+viewof plotRG = Plot.plot({
+  width: 800,
+  height: 800,
+  x: {
+    label: "x",
+    domain: [0, 1]
+  },
+  y: {
+    label: "y",
+    domain: [0, Math.sqrt(3) / 2]
+  },
+  marks: [
+    Plot.line([...equilateral_triangle_vertices, equilateral_triangle_vertices[0]], {
+      x: "x",
+      y: "y",
+      stroke: "black",
+      strokeWidth: 1
+    }),
+    Plot.dot(coloredPointsMap.coloredPoints, {
+      x: "x",
+      y: "y",
+      fill: d => d.color,
+      r: 3
+    }),
+    Plot.geo(
+      {
+        type: "FeatureCollection",
+        features: subTriangles.map(triangle => {
+          let coords = triangle.coordinates.map(coord => coloredPointsMap.coloredPointsMap.get(`${coord[0]},${coord[1]},${coord[2]}`).getCoords());
+          return {
+            type: "Feature",
+            geometry: {
+              type: "Polygon",
+              coordinates: [
+                [coords[0], coords[1], coords[2], coords[0]].map(c => [c.x, c.y])
+              ]
+            },
+            properties: {
+              // Set fill color for triangles that are only R and G
+              fillColor: filteredTrianglesData.trianglesRG.includes(triangle) ? "rgba(255, 165, 0, 0.3)" : "none", // Orange semi-transparent fill for RG triangles
+              strokeColor: filteredTrianglesData.trianglesRG.includes(triangle) ? "orange" : "black" // Orange stroke for RG triangles
+            }
+          };
+        })
+      },
+      {
+        fill: d => d.properties.fillColor,
+        stroke: d => d.properties.strokeColor,
+        strokeWidth: 1
+      }
+    ),
+    // Plot centroids of the filtered triangles
+    Plot.dot(
+      filteredTrianglesData.centroidsRG,
+      {
+        x: "x",
+        y: "y",
+        fill: "purple", // Color for centroids
+        r: 5,
+        title: "Centroid"
+      }
+    ),
+    // Plot lines connecting centroids
+    Plot.line(
+      medianConnectingLines,
+      {
+        x1: "x1",
+        y1: "y1",
+        x2: "x2",
+        y2: "y2",
+        stroke: "purple", // Color for connecting lines
+        strokeWidth: 2,
+        curve: "linear" // Ensure straight lines
+      }
+    ),
+    // Add the dots to show all colored points with their assigned color (on top)
+    Plot.dot(
+      coloredPointsMap.coloredPoints,
+      {
+        x: "x",
+      y: "y",
+      fill: d => d.color,
+      r: 5
+      }
+    )
+  ]
+});
+```
