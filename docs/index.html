@@ -43,9 +43,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-c1fac2584b48ed01fb6e278e36375074.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-a9957ab5e8b7c67643b7e2e6b5c1e54e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-c1fac2584b48ed01fb6e278e36375074.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-05babaf0cfa1e1caed117225af04a19c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-3d3c3807380c683caf11aaf4545bf090.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-05babaf0cfa1e1caed117225af04a19c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -365,6 +365,12 @@ window.Quarto = {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./9994 sperners lemma - part 01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Sperner’s Lemma - Part 01</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./9995 non profits.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Non-Profits</span></a>
   </div>
@@ -400,7 +406,7 @@ window.Quarto = {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(5)</span></div><div class="category" data-category="YWZmaW5lJTIwZ2VvbWV0cnk=">affine geometry <span class="quarto-category-count">(1)</span></div><div class="category" data-category="YmFyeWNlbnRyaWMlMjBjb29yZGluYXRlcw==">barycentric coordinates <span class="quarto-category-count">(1)</span></div><div class="category" data-category="aW50ZXJhY3RpdmU=">interactive <span class="quarto-category-count">(1)</span></div><div class="category" data-category="b2JzZXJ2YWJsZWpz">observablejs <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cmFuZG9tbmVzcw==">randomness <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dHJpYW5nbGVz">triangles <span class="quarto-category-count">(2)</span></div><div class="category" data-category="dmlzdWFsaXphdGlvbg==">visualization <span class="quarto-category-count">(1)</span></div></div></div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(6)</span></div><div class="category" data-category="YWZmaW5lJTIwZ2VvbWV0cnk=">affine geometry <span class="quarto-category-count">(1)</span></div><div class="category" data-category="YmFyeWNlbnRyaWMlMjBjb29yZGluYXRlcw==">barycentric coordinates <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y29sb3Jpbmc=">coloring <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y29tYmluYXRvcmljcw==">combinatorics <span class="quarto-category-count">(1)</span></div><div class="category" data-category="aW50ZXJhY3RpdmU=">interactive <span class="quarto-category-count">(1)</span></div><div class="category" data-category="b2JzZXJ2YWJsZWpz">observablejs <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cmFuZG9tbmVzcw==">randomness <span class="quarto-category-count">(1)</span></div><div class="category" data-category="UmVzZWFyY2g=">Research <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dHJpYW5nbGVz">triangles <span class="quarto-category-count">(3)</span></div><div class="category" data-category="dmlzdWFsaXphdGlvbg==">visualization <span class="quarto-category-count">(1)</span></div></div></div>
 <!-- main -->
 <main class="content column-body" id="quarto-document-content">
 
@@ -430,7 +436,38 @@ window.Quarto = {
 
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-date-sort="1747147388000" data-listing-file-modified-sort="1747322115166" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="202">
+<div class="quarto-post image-right" data-index="0" data-categories="Y29tYmluYXRvcmljcyUyQ3RyaWFuZ2xlcyUyQ2NvbG9yaW5nJTJDUmVzZWFyY2g=" data-listing-date-sort="1747257625000" data-listing-file-modified-sort="1747361671924" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="15" data-listing-word-count-sort="2939">
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./9994 sperners lemma - part 01.html" class="no-external">Sperner’s Lemma - Part 01</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('Y29tYmluYXRvcmljcw=='); return false;">combinatorics</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('dHJpYW5nbGVz'); return false;">triangles</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Y29sb3Jpbmc='); return false;">coloring</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('UmVzZWFyY2g='); return false;">Research</div>
+
+</div>
+<div class="delink listing-description"><a href="./9994 sperners lemma - part 01.html" class="no-external">
+<strong>Sperner’s lemma</strong> is one of the first “non-trivial” theorem I remember hearing about at some summer camp in my high school. The theorem goes as follows. Consider a…
+</a></div>
+</div>
+<div class="metadata">
+<a href="./9994 sperners lemma - part 01.html" class="no-external">
+<div class="listing-date">
+May 14, 2025
+</div>
+<div class="listing-author">
+Apurva Nakade
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="1" data-listing-date-sort="1747147388000" data-listing-file-modified-sort="1747149489947" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="202">
 <div class="body">
 <h3 class="no-anchor listing-title">
 <a href="./9995 non profits.html" class="no-external">Non-Profits</a>
@@ -450,7 +487,7 @@ Apurva Nakade
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-categories="cmFuZG9tbmVzcyUyQ3RyaWFuZ2xlcyUyQ2JhcnljZW50cmljJTIwY29vcmRpbmF0ZXM=" data-listing-date-sort="1747084977000" data-listing-file-modified-sort="1747322572264" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1063">
+<div class="quarto-post image-right" data-index="2" data-categories="cmFuZG9tbmVzcyUyQ3RyaWFuZ2xlcyUyQ2JhcnljZW50cmljJTIwY29vcmRpbmF0ZXM=" data-listing-date-sort="1747084977000" data-listing-file-modified-sort="1747353681354" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1063">
 <div class="body">
 <h3 class="no-anchor listing-title">
 <a href="./9996 random points in a triangle.html" class="no-external">Random points in a triangle</a>
@@ -479,7 +516,7 @@ Apurva Nakade
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="2" data-listing-date-sort="1747078029000" data-listing-file-modified-sort="1747322115167" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="256">
+<div class="quarto-post image-right" data-index="3" data-listing-date-sort="1747078029000" data-listing-file-modified-sort="1747102286945" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="256">
 <div class="body">
 <h3 class="no-anchor listing-title">
 <a href="./9997 hopkins-is-a-joke.html" class="no-external">Hopkins is a joke</a>
@@ -499,7 +536,7 @@ Apurva Nakade
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="3" data-categories="YWZmaW5lJTIwZ2VvbWV0cnklMkNvYnNlcnZhYmxlanMlMkN0cmlhbmdsZXMlMkNpbnRlcmFjdGl2ZSUyQ3Zpc3VhbGl6YXRpb24=" data-listing-date-sort="1746946536000" data-listing-file-modified-sort="1747322115167" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="12" data-listing-word-count-sort="2374">
+<div class="quarto-post image-right" data-index="4" data-categories="YWZmaW5lJTIwZ2VvbWV0cnklMkNvYnNlcnZhYmxlanMlMkN0cmlhbmdsZXMlMkNpbnRlcmFjdGl2ZSUyQ3Zpc3VhbGl6YXRpb24=" data-listing-date-sort="1746946536000" data-listing-file-modified-sort="1747308718022" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="12" data-listing-word-count-sort="2374">
 <div class="body">
 <h3 class="no-anchor listing-title">
 <a href="./9998 barycentric coordinates.html" class="no-external">Barycentric Coordinates</a>
@@ -532,7 +569,7 @@ Apurva Nakade
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="4" data-categories="" data-listing-date-sort="1746277892000" data-listing-file-modified-sort="1747322115167" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="296">
+<div class="quarto-post image-right" data-index="5" data-categories="" data-listing-date-sort="1746277892000" data-listing-file-modified-sort="1747146934493" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="296">
 <div class="body">
 <h3 class="no-anchor listing-title">
 <a href="./9999 begin-again.html" class="no-external">Begin Again</a>
@@ -970,38 +1007,6 @@ Apurva Nakade
     }
   });
   </script>
-<input type="hidden" id="giscus-base-theme" value="light">
-<input type="hidden" id="giscus-alt-theme" value="dark">
-<script>
-  function loadGiscus() {
-    // Function to get the theme based on body class
-    const getTheme = () => {
-      let baseTheme = document.getElementById('giscus-base-theme').value;
-      let altTheme = document.getElementById('giscus-alt-theme').value;
-      if (authorPrefersDark) {
-          [baseTheme, altTheme] = [altTheme, baseTheme];
-      }
-      return document.body.classList.contains('quarto-dark') ? altTheme : baseTheme;
-    };
-    const script = document.createElement("script");
-    script.src = "https://giscus.app/client.js";
-    script.async = true;
-    script.dataset.repo = "apurvanakade/second-drafts";
-    script.dataset.repoId = "R_kgDOOkDcyQ";
-    script.dataset.category = "General";
-    script.dataset.categoryId = "DIC_kwDOOkDcyc4CqHnN";
-    script.dataset.mapping = "title";
-    script.dataset.reactionsEnabled = "1";
-    script.dataset.emitMetadata = "0";
-    script.dataset.inputPosition = "top";
-    script.dataset.theme = getTheme();
-    script.dataset.lang = "en";
-    script.crossOrigin = "anonymous";
-    // Append the script to the desired div instead of at the end of the body
-    document.getElementById("quarto-content").appendChild(script);
-  }
-  loadGiscus();
-</script>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
