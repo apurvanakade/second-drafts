@@ -103,19 +103,48 @@ generateTriangleData = (coordinates, cpMap) => {
   const [p0, p1, p2] = coordinates.map(coord => cpMap.get(coord.join(',')));
   const colors = [p0, p1, p2].map(p => p.getColor());
   const vertex_colors = new Set(colors);
-  let midpoints = [];
+  let edges = [];
+  let special_points = [];
 
   if (vertex_colors.has('#E74C3C') && vertex_colors.has('#27AE60') && !vertex_colors.has('#2980B9')) {
     for (let k = 0; k < 3; k++) {
       if (colors[k] !== colors[(k + 1) % 3]) {
         const c1 = [p0, p1, p2][k].getCoords();
         const c2 = [p0, p1, p2][(k + 1) % 3].getCoords();
-        midpoints.push({ x: (c1.x + c2.x) / 2, y: (c1.y + c2.y) / 2 });
+        const midpoint = {
+          x: (c1.x + c2.x) / 2,
+          y: (c1.y + c2.y) / 2
+        };
+        edges.push(midpoint);
+
+        // check if the edge is an RG boundary edge
+        // TODO: Fix this
+        if (coordinates[k][0] === 0 && coordinates[(k + 1) % 3][0] === 0) {
+          special_points.push(midpoint);
+        }
       }
     }
   }
 
-  return { coordinates, vertex_colors, midpoints };
+  if (vertex_colors.has('#E74C3C') && vertex_colors.has('#27AE60') && vertex_colors.has('#2980B9')) {
+    for (let k = 0; k < 3; k++) {
+        if ((colors[k] === '#E74C3C' && colors[(k + 1) % 3] === '#27AE60')) {
+          const c1 = [p0, p1, p2][k].getCoords();
+          const c2 = [p0, p1, p2][(k + 1) % 3].getCoords();
+          edges.push({ x: (c1.x + c2.x) / 2, y: (c1.y + c2.y) / 2 });
+        }
+        else if (colors[k] === '#E74C3C' && colors[(k + 2) % 3] === '#27AE60') {
+          const c1 = [p0, p1, p2][k].getCoords();
+          const c2 = [p0, p1, p2][(k + 2) % 3].getCoords();
+          edges.push({ x: (c1.x + c2.x) / 2, y: (c1.y + c2.y) / 2 });
+        }
+      }
+      const centroidPoint = centroid(p0.getCoords(), p1.getCoords(), p2.getCoords());
+      edges.push(centroidPoint);
+      special_points.push(centroidPoint);
+  }
+
+  return { coordinates, vertex_colors, edges, special_points };
 }
 ```
 
@@ -179,7 +208,7 @@ viewof plotALL = {
     });
 
   const edgeLines = subTriangles.trianglesRG.flatMap(tri => {
-    return tri.midpoints.map((pt, i, arr) => {
+    return tri.edges.map((pt, i, arr) => {
       const next = arr[(i + 1) % arr.length];
       return Plot.line([pt, next], {
         x: "x",
@@ -190,12 +219,52 @@ viewof plotALL = {
     });
   });
 
+  const edgeLinesRGB = subTriangles.trianglesRGB.flatMap(tri => {
+    return tri.edges.map((pt, i, arr) => {
+      const next = arr[(i + 1) % arr.length];
+      return Plot.line([pt, next], {
+        x: "x",
+        y: "y",
+        stroke: "black",
+        strokeWidth: 5
+      });
+    });
+  });
+
+  const special_points = subTriangles.trianglesRG.flatMap(tri => {
+    return tri.special_points.map(pt => {
+      if (pt && pt.x !== undefined && pt.y !== undefined) {
+        return Plot.dot(pt, { x: "x", y: "y", fill: "black", r: 15 });
+      }
+      return null;
+    }).filter(Boolean);
+  });
+
+  const special_pointsRGB = subTriangles.trianglesRGB.flatMap(tri => {
+    return tri.special_points.map(pt => {
+      if (pt && pt.x !== undefined && pt.y !== undefined) {
+        return Plot.dot(pt, { x: "x", y: "y", fill: "black", r: 15 });
+      }
+      return null;
+    }).filter(Boolean);
+  });
+
   return Plot.plot({
     width: 800,
     height: 800,
     x: { label: "x", domain: [0, 1] },
     y: { label: "y", domain: [0, Math.sqrt(3) / 2] },
     marks: [
+      Plot.geo(
+        { type: "FeatureCollection", features: triangleFeatures(subTriangles.trianglesRG, "rgba(255, 215, 0, 0.7)") },
+        { fill: d => d.properties.fillColor, stroke: "black", strokeWidth: 0 }
+      ),
+      Plot.geo(
+        { type: "FeatureCollection", features: triangleFeatures(subTriangles.trianglesRGB, "rgba(179, 20, 207, 0.5)") },
+        { fill: d => d.properties.fillColor, stroke: "black", strokeWidth: 0 }
+      ),
+      ...edgeLines,
+      ...edgeLinesRGB,
       Plot.dot(
         coloredPointsMap.coloredPoints.map(d => ({
           ...d,
@@ -209,19 +278,15 @@ viewof plotALL = {
           title: "title"
         }
       ),
-      Plot.geo(
-        { type: "FeatureCollection", features: triangleFeatures(subTriangles.trianglesRG, "rgba(255, 215, 0, 0.7)") },
-        { fill: d => d.properties.fillColor, stroke: "black", strokeWidth: 0 }
-      ),
-      ...edgeLines,
-      Plot.geo(
-        { type: "FeatureCollection", features: triangleFeatures(subTriangles.trianglesRGB, "rgba(255, 127, 80, 0.5)") },
-        { fill: d => d.properties.fillColor, stroke: "black", strokeWidth: 0 }
-      )
+      // plot the special points
+      ...special_points,
+      ...special_pointsRGB
     ]
   });
 }
 ```
+
+// TODO: Special points are not being plotted correctly
 
 
 
