@@ -192,16 +192,6 @@ viewof plotEmpty = Plot.plot({
 });
 ```
 
-Before I get into Sperner's lemma, here's a curious thing I discovered while drawing these colorful plots. How do you loop over all the sub-triangles in the triangulation?
-Think of an answer before peeking below.
-
-<!-- add large vertical white space equal to screen height -->
-<div style="height: 100vh;"></div>
-
-You have to run two loops! One for the "upward-facing" triangles and one for the "downward-facing" ones. I don't think there is any way to create a single loop for all these triangles. 
-
----
-
 **Sperner's lemma** is one of the first "non-trivial" theorems I remember hearing about at a summer camp in my high school.
 The theorem goes as follows. Consider a triangulation of a triangle. (Above we consider a regular triangulation of an equilateral triangle, but the theorem holds for any triangulation of a triangle.) We color the vertices of the triangle with three colors, say <span style="color:white; background-color:red">red</span>, <span style="color:white; background-color:green">green</span> and <span style="color:white; background-color:blue">blue</span> with the following conditions:
 
@@ -426,3 +416,12 @@ viewof plotALL = Plot.plot({
 html`<p>Number of RGB triangles: ${numRGBTriangles}</p>`
 ```
 
+---
+
+**Remark.** Here's a curious thing I discovered while drawing these colorful plots. How do you loop over all the sub-triangles in the triangulation?
+Think of an answer before peeking below.
+
+<!-- add large vertical white space equal to screen height -->
+<div style="height: 100vh;"></div>
+
+You have to run two loops! One for the "upward-facing" triangles and one for the "downward-facing" ones. I don't think there is any way to create a single loop for all these triangles. 
