@@ -63,13 +63,13 @@ class ColoredPoint {
   }
 
   _assignColor([a, b, c]) {
-    if (a === 0 && b === 0) return '#E74C3C';
-    if (b === 0 && c === 0) return '#27AE60';
-    if (c === 0 && a === 0) return '#2980B9';
-    if (a === 0) return randomChoice(['#E74C3C', '#2980B9']);
-    if (b === 0) return randomChoice(['#E74C3C', '#27AE60']);
-    if (c === 0) return randomChoice(['#27AE60', '#2980B9']);
-    return randomChoice(['#E74C3C', '#27AE60', '#2980B9']);
+    if (a === 0 && b === 0) return 'red';
+    if (b === 0 && c === 0) return 'green';
+    if (c === 0 && a === 0) return 'blue';
+    if (a === 0) return randomChoice(['red', 'blue']);
+    if (b === 0) return randomChoice(['red', 'green']);
+    if (c === 0) return randomChoice(['green', 'blue']);
+    return randomChoice(['red', 'green', 'blue']);
   }
 
   getCoords() {
@@ -100,50 +100,59 @@ coloredPointsMap = {
 
 ```{ojs}
 generateTriangleData = (coordinates, cpMap) => {
-  const [p0, p1, p2] = coordinates.map(coord => cpMap.get(coord.join(',')));
-  const colors = [p0, p1, p2].map(p => p.getColor());
+  const points = coordinates.map(coord => cpMap.get(coord.join(',')));
+  const colors = points.map(p => p.getColor());
   const vertex_colors = new Set(colors);
+
   let edges = [];
   let special_points = [];
 
-  if (vertex_colors.has('#E74C3C') && vertex_colors.has('#27AE60') && !vertex_colors.has('#2980B9')) {
-    for (let k = 0; k < 3; k++) {
-      if (colors[k] !== colors[(k + 1) % 3]) {
-        const c1 = [p0, p1, p2][k].getCoords();
-        const c2 = [p0, p1, p2][(k + 1) % 3].getCoords();
-        const midpoint = {
-          x: (c1.x + c2.x) / 2,
-          y: (c1.y + c2.y) / 2
-        };
-        edges.push(midpoint);
+  const computeMidpoint = (a, b) => {
+    const c1 = a.getCoords();
+    const c2 = b.getCoords();
+    return {
+      x: (c1.x + c2.x) / 2,
+      y: (c1.y + c2.y) / 2
+    };
+  };
 
-        // check if the edge is an RG boundary edge
-        // TODO: Fix this
-        if (coordinates[k][0] === 0 && coordinates[(k + 1) % 3][0] === 0) {
-          special_points.push(midpoint);
-        }
+  const isSpecial = (a, b) => a.barycentricTriple[1] === 0 && b.barycentricTriple[1] === 0;
+
+  const RED = 'red', GREEN = 'green', BLUE = 'blue';
+
+  if (vertex_colors.has(RED) && vertex_colors.has(GREEN) && !vertex_colors.has(BLUE)) {
+    for (let k = 0; k < 3; k++) {
+      const a = points[k], b = points[(k + 1) % 3];
+      if (colors[k] !== colors[(k + 1) % 3]) {
+        const midpoint = computeMidpoint(a, b);
+        edges.push(midpoint);
+        if (isSpecial(a, b)) special_points.push(midpoint);
       }
     }
   }
 
-  if (vertex_colors.has('#E74C3C') && vertex_colors.has('#27AE60') && vertex_colors.has('#2980B9')) {
+  if (vertex_colors.has(RED) && vertex_colors.has(GREEN) && vertex_colors.has(BLUE)) {
     for (let k = 0; k < 3; k++) {
-        if ((colors[k] === '#E74C3C' && colors[(k + 1) % 3] === '#27AE60')) {
-          const c1 = [p0, p1, p2][k].getCoords();
-          const c2 = [p0, p1, p2][(k + 1) % 3].getCoords();
-          edges.push({ x: (c1.x + c2.x) / 2, y: (c1.y + c2.y) / 2 });
-        }
-        else if (colors[k] === '#E74C3C' && colors[(k + 2) % 3] === '#27AE60') {
-          const c1 = [p0, p1, p2][k].getCoords();
-          const c2 = [p0, p1, p2][(k + 2) % 3].getCoords();
-          edges.push({ x: (c1.x + c2.x) / 2, y: (c1.y + c2.y) / 2 });
+      const pairs = [
+        [k, (k + 1) % 3],
+        [k, (k + 2) % 3]
+      ];
+
+      for (const [i, j] of pairs) {
+        if (colors[i] === RED && colors[j] === GREEN) {
+          const a = points[i], b = points[j];
+          const midpoint = computeMidpoint(a, b);
+          edges.push(midpoint);
+          if (isSpecial(a, b)) special_points.push(midpoint);
         }
       }
-      const centroidPoint = centroid(p0.getCoords(), p1.getCoords(), p2.getCoords());
-      edges.push(centroidPoint);
-      special_points.push(centroidPoint);
+    }
+    const centroidPoint = centroid(...points.map(p => p.getCoords()));
+    edges.push(centroidPoint);
+    special_points.push(centroidPoint);
   }
 
+  console.log(special_points);
   return { coordinates, vertex_colors, edges, special_points };
 }
 ```
@@ -164,8 +173,8 @@ subTriangles = {
       ];
       const data = generateTriangleData(coords, cpMap);
       triangles.push(data);
-      if (data.vertex_colors.has('#E74C3C') && data.vertex_colors.has('#27AE60')) {
-        data.vertex_colors.has('#2980B9') ? trianglesRGB.push(data) : trianglesRG.push(data);
+      if (data.vertex_colors.has('red') && data.vertex_colors.has('green')) {
+        data.vertex_colors.has('blue') ? trianglesRGB.push(data) : trianglesRG.push(data);
       }
     }
   }
@@ -180,8 +189,8 @@ subTriangles = {
       ];
       const data = generateTriangleData(coords, cpMap);
       triangles.push(data);
-      if (data.vertex_colors.has('#E74C3C') && data.vertex_colors.has('#27AE60')) {
-        data.vertex_colors.has('#2980B9') ? trianglesRGB.push(data) : trianglesRG.push(data);
+      if (data.vertex_colors.has('red') && data.vertex_colors.has('green')) {
+        data.vertex_colors.has('blue') ? trianglesRGB.push(data) : trianglesRG.push(data);
       }
     }
   }
@@ -195,7 +204,7 @@ viewof plotALL = {
   const cpMap = coloredPointsMap.coloredPointsMap;
 
   const triangleFeatures = (triangles, fillColor) =>
-    triangles.map(({ coordinates, vertex_colors }) => {
+    triangles.map(({ coordinates }) => {
       const pts = coordinates.map(c => cpMap.get(c.join(',')).getCoords());
       return {
         type: "Feature",
@@ -207,47 +216,34 @@ viewof plotALL = {
       };
     });
 
-  const edgeLines = subTriangles.trianglesRG.flatMap(tri => {
-    return tri.edges.map((pt, i, arr) => {
-      const next = arr[(i + 1) % arr.length];
-      return Plot.line([pt, next], {
-        x: "x",
-        y: "y",
-        stroke: "black",
-        strokeWidth: 5
-      });
-    });
-  });
+  const makeEdgeLines = triangles =>
+    triangles.flatMap(tri =>
+      tri.edges.map((pt, i, arr) => {
+        const next = arr[(i + 1) % arr.length];
+        return Plot.line([pt, next], {
+          x: "x",
+          y: "y",
+          stroke: "black",
+          strokeWidth: 5
+        });
+      })
+    );
 
-  const edgeLinesRGB = subTriangles.trianglesRGB.flatMap(tri => {
-    return tri.edges.map((pt, i, arr) => {
-      const next = arr[(i + 1) % arr.length];
-      return Plot.line([pt, next], {
-        x: "x",
-        y: "y",
-        stroke: "black",
-        strokeWidth: 5
-      });
-    });
-  });
+  const makeSpecialPoints = triangles =>
+    triangles.flatMap(tri =>
+      tri.special_points
+        .map(pt =>
+          pt && pt.x !== undefined && pt.y !== undefined
+            ? Plot.dot([pt], { x: "x", y: "y", fill: "white", stroke: "black", r: 5 })
+            : null
+        )
+        .filter(Boolean)
+    );
 
-  const special_points = subTriangles.trianglesRG.flatMap(tri => {
-    return tri.special_points.map(pt => {
-      if (pt && pt.x !== undefined && pt.y !== undefined) {
-        return Plot.dot(pt, { x: "x", y: "y", fill: "black", r: 15 });
-      }
-      return null;
-    }).filter(Boolean);
-  });
-
-  const special_pointsRGB = subTriangles.trianglesRGB.flatMap(tri => {
-    return tri.special_points.map(pt => {
-      if (pt && pt.x !== undefined && pt.y !== undefined) {
-        return Plot.dot(pt, { x: "x", y: "y", fill: "black", r: 15 });
-      }
-      return null;
-    }).filter(Boolean);
-  });
+  const edgeLines = makeEdgeLines(subTriangles.trianglesRG);
+  const edgeLinesRGB = makeEdgeLines(subTriangles.trianglesRGB);
+  const special_pointsRG = makeSpecialPoints(subTriangles.trianglesRG);
+  const special_pointsRGB = makeSpecialPoints(subTriangles.trianglesRGB);
 
   return Plot.plot({
     width: 800,
@@ -256,12 +252,16 @@ viewof plotALL = {
     y: { label: "y", domain: [0, Math.sqrt(3) / 2] },
     marks: [
       Plot.geo(
-        { type: "FeatureCollection", features: triangleFeatures(subTriangles.trianglesRG, "rgba(255, 215, 0, 0.7)") },
-        { fill: d => d.properties.fillColor, stroke: "black", strokeWidth: 0 }
+        { type: "FeatureCollection", features: triangleFeatures(subTriangles.triangles, "white") },
+        { fill: d => d.properties.fillColor, stroke: "black", strokeWidth: 1 }
       ),
       Plot.geo(
-        { type: "FeatureCollection", features: triangleFeatures(subTriangles.trianglesRGB, "rgba(179, 20, 207, 0.5)") },
-        { fill: d => d.properties.fillColor, stroke: "black", strokeWidth: 0 }
+        { type: "FeatureCollection", features: triangleFeatures(subTriangles.trianglesRG, "rgba(255, 215, 0, 0.7)") },
+        { fill: d => d.properties.fillColor, stroke: "black", strokeWidth: 1 }
+      ),
+      Plot.geo(
+        { type: "FeatureCollection", features: triangleFeatures(subTriangles.trianglesRGB, "rgba(0, 0, 0, 0.25)") },
+        { fill: d => d.properties.fillColor, stroke: "black", strokeWidth: 1 }
       ),
       ...edgeLines,
       ...edgeLinesRGB,
@@ -274,19 +274,17 @@ viewof plotALL = {
           x: "x",
           y: "y",
           fill: "color",
-          r: 5 * (5 / N),
+          r: 5,
           title: "title"
         }
       ),
-      // plot the special points
-      ...special_points,
+      ...special_pointsRG,
       ...special_pointsRGB
     ]
   });
 }
 ```
 
-// TODO: Special points are not being plotted correctly
 
 
 
