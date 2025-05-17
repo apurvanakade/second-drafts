@@ -8,9 +8,8 @@ categories: [combinatorics, triangles, coloring]
 **DRAFT DOCUMENT**
 
 ```{ojs}
-import {slider} from "@jashkenas/inputs"
+import { slider } from "@jashkenas/inputs"
 
-// Add a slider for M = number of points to plot
 viewof N = slider({
   min: 2,
   max: 20,
@@ -18,7 +17,7 @@ viewof N = slider({
   value: 5,
   width: 500,
   title: "Number of subdivisions"
-});
+})
 ```
 
 ```{ojs}
@@ -43,19 +42,19 @@ barycentric_coords = {
 
 
 ```{ojs}
-// Utility function to calculate the centroid (median point) of a triangle
-centroid = (p1, p2, p3) => {
-  const cx = (p1.x + p2.x + p3.x) / 3;
-  const cy = (p1.y + p2.y + p3.y) / 3;
-  return { x: cx, y: cy };
-};
+centroid = (p1, p2, p3) => ({
+  x: (p1.x + p2.x + p3.x) / 3,
+  y: (p1.y + p2.y + p3.y) / 3
+});
 ```
 
 ```{ojs}
+randomChoice = (choices) => choices[Math.floor(Math.random() * choices.length)];
+
 class ColoredPoint {
-  constructor(triple, equilateralTriangleVertices, N) {
+  constructor(triple, vertices, N) {
     this.barycentricTriple = triple;
-    const [A, B, C] = equilateralTriangleVertices;
+    const [A, B, C] = vertices;
 
     this.x = (triple[0] * A.x + triple[1] * B.x + triple[2] * C.x) / N;
     this.y = (triple[0] * A.y + triple[1] * B.y + triple[2] * C.y) / N;
@@ -63,20 +62,14 @@ class ColoredPoint {
     this.color = this._assignColor(triple);
   }
 
-  _assignColor(triple) {
-    const [a, b, c] = triple;
-
-    if (a === 0 && b === 0) return 'red';
-    if (b === 0 && c === 0) return 'green';
-    if (c === 0 && a === 0) return 'blue';
-
-    // pick randomly between red and blue
-    if (a === 0) return Math.random() < 0.5 ? 'red' : 'blue';
-    if (b === 0) return Math.random() < 0.5 ? 'red' : 'green';
-    if (c === 0) return Math.random() < 0.5 ? 'blue' : 'green';
-
-    // pick randomly between red, green, and blue
-    return Math.random() < 0.33 ? 'red' : (Math.random() < 0.5 ? 'green' : 'blue');
+  _assignColor([a, b, c]) {
+    if (a === 0 && b === 0) return '#E74C3C';
+    if (b === 0 && c === 0) return '#27AE60';
+    if (c === 0 && a === 0) return '#2980B9';
+    if (a === 0) return randomChoice(['#E74C3C', '#2980B9']);
+    if (b === 0) return randomChoice(['#E74C3C', '#27AE60']);
+    if (c === 0) return randomChoice(['#27AE60', '#2980B9']);
+    return randomChoice(['#E74C3C', '#27AE60', '#2980B9']);
   }
 
   getCoords() {
@@ -90,243 +83,144 @@ class ColoredPoint {
 ```
 
 ```{ojs}
-// A cell to generate all ColoredPoint instances
-// and also create a map for efficient lookup.
-// This cell effectively replaces your `generateColoredPoints` function and the map creation.
 coloredPointsMap = {
-  const coloredPoints = barycentric_coords.map(triple => {
-    return new ColoredPoint(triple, equilateral_triangle_vertices, N);
-  });
+  const coloredPoints = barycentric_coords.map(triple =>
+    new ColoredPoint(triple, equilateral_triangle_vertices, N)
+  );
 
-  // Create a Map for quick lookup of colored_points by their barycentric triple
-  let coloredPointsMap = new Map();
+  const map = new Map();
   for (const p of coloredPoints) {
-    coloredPointsMap.set(`${p.barycentricTriple[0]},${p.barycentricTriple[1]},${p.barycentricTriple[2]}`, p);
+    map.set(p.barycentricTriple.join(','), p);
   }
 
-  // Return both the array and the map
-  return { coloredPoints, coloredPointsMap };
+  return { coloredPoints, coloredPointsMap: map };
+}
+```
+
+
+```{ojs}
+generateTriangleData = (coordinates, cpMap) => {
+  const [p0, p1, p2] = coordinates.map(coord => cpMap.get(coord.join(',')));
+  const colors = [p0, p1, p2].map(p => p.getColor());
+  const vertex_colors = new Set(colors);
+  let midpoints = [];
+
+  if (vertex_colors.has('#E74C3C') && vertex_colors.has('#27AE60') && !vertex_colors.has('#2980B9')) {
+    for (let k = 0; k < 3; k++) {
+      if (colors[k] !== colors[(k + 1) % 3]) {
+        const c1 = [p0, p1, p2][k].getCoords();
+        const c2 = [p0, p1, p2][(k + 1) % 3].getCoords();
+        midpoints.push({ x: (c1.x + c2.x) / 2, y: (c1.y + c2.y) / 2 });
+      }
+    }
+  }
+
+  return { coordinates, vertex_colors, midpoints };
 }
 ```
 
 
 ```{ojs}
 subTriangles = {
-  let triangles = [];
-  let trianglesRG = [];
-  let trianglesRGB = [];
-  
-  // upward facing triangles
+  const triangles = [], trianglesRG = [], trianglesRGB = [];
+  const cpMap = coloredPointsMap.coloredPointsMap;
+
+  // Upward
   for (let i = 0; i < N; i++) {
     for (let j = 0; j < N - i; j++) {
-      const coordinates = [
+      const coords = [
         [i, j, N - i - j],
         [i + 1, j, N - i - j - 1],
         [i, j + 1, N - i - j - 1]
       ];
-      // first save colors in an array
-      // then convert to a set to remove duplicates
-
-      const ordered_vertex_colors = [
-        coloredPointsMap.coloredPointsMap.get(`${coordinates[0][0]},${coordinates[0][1]},${coordinates[0][2]}`).getColor(),
-        coloredPointsMap.coloredPointsMap.get(`${coordinates[1][0]},${coordinates[1][1]},${coordinates[1][2]}`).getColor(),
-        coloredPointsMap.coloredPointsMap.get(`${coordinates[2][0]},${coordinates[2][1]},${coordinates[2][2]}`).getColor()
-      ];
-      const vertex_colors = new Set(ordered_vertex_colors);
-
-      triangles.push({ coordinates, vertex_colors }); // Added vertex_colors
-
-      // Check for red-green triangles
-      if (vertex_colors.has('red') && vertex_colors.has('green')) {
-        if (vertex_colors.has('blue')) {
-          trianglesRGB.push({ coordinates, vertex_colors });
-        } else {
-          // find midpoints of vertices with different colors
-          const midpoints = [];
-          for (let k = 0; k < coordinates.length; k++) {
-            const p1 = coloredPointsMap.coloredPointsMap.get(`${coordinates[k][0]},${coordinates[k][1]},${coordinates[k][2]}`);
-            const p2 = coloredPointsMap.coloredPointsMap.get(`${coordinates[(k + 1) % coordinates.length][0]},${coordinates[(k + 1) % coordinates.length][1]},${coordinates[(k + 1) % coordinates.length][2]}`);
-            if (p1.getColor() !== p2.getColor()) {
-              midpoints.push({
-                x: (p1.getCoords().x + p2.getCoords().x) / 2,
-                y: (p1.getCoords().y + p2.getCoords().y) / 2
-              });
-            }
-          }
-          trianglesRG.push({ coordinates, vertex_colors, midpoints }); // Added vertex_colors and midpoints
-        } 
+      const data = generateTriangleData(coords, cpMap);
+      triangles.push(data);
+      if (data.vertex_colors.has('#E74C3C') && data.vertex_colors.has('#27AE60')) {
+        data.vertex_colors.has('#2980B9') ? trianglesRGB.push(data) : trianglesRG.push(data);
       }
     }
   }
-  // downward facing triangles
+
+  // Downward
   for (let i = 0; i < N - 1; i++) {
     for (let j = 0; j < N - i - 1; j++) {
-      const coordinates = [
+      const coords = [
         [i + 1, j, N - i - j - 1],
         [i + 1, j + 1, N - i - j - 2],
         [i, j + 1, N - i - j - 1]
       ];
-      const ordered_vertex_colors = [
-        coloredPointsMap.coloredPointsMap.get(`${coordinates[0][0]},${coordinates[0][1]},${coordinates[0][2]}`).getColor(),
-        coloredPointsMap.coloredPointsMap.get(`${coordinates[1][0]},${coordinates[1][1]},${coordinates[1][2]}`).getColor(),
-        coloredPointsMap.coloredPointsMap.get(`${coordinates[2][0]},${coordinates[2][1]},${coordinates[2][2]}`).getColor()
-      ];
-      const vertex_colors = new Set(ordered_vertex_colors);
-
-      triangles.push({ coordinates, vertex_colors }); // Added vertex_colors
-
-      // Check for red-green triangles
-      if (vertex_colors.has('red') && vertex_colors.has('green')) {
-        if (vertex_colors.has('blue')) {
-          trianglesRGB.push({ coordinates, vertex_colors });
-        } else {
-          // find midpoints of vertices with different colors
-          const midpoints = [];
-          for (let k = 0; k < coordinates.length; k++) {
-            const p1 = coloredPointsMap.coloredPointsMap.get(`${coordinates[k][0]},${coordinates[k][1]},${coordinates[k][2]}`);
-            const p2 = coloredPointsMap.coloredPointsMap.get(`${coordinates[(k + 1) % coordinates.length][0]},${coordinates[(k + 1) % coordinates.length][1]},${coordinates[(k + 1) % coordinates.length][2]}`);
-            if (p1.getColor() !== p2.getColor()) {
-                midpoints.push({
-                x: (p1.getCoords().x + p2.getCoords().x) / 2,
-                y: (p1.getCoords().y + p2.getCoords().y) / 2
-                });
-            }
-          }
-          trianglesRG.push({ coordinates, vertex_colors, midpoints }); // Added vertex_colors and midpoints
-        } 
+      const data = generateTriangleData(coords, cpMap);
+      triangles.push(data);
+      if (data.vertex_colors.has('#E74C3C') && data.vertex_colors.has('#27AE60')) {
+        data.vertex_colors.has('#2980B9') ? trianglesRGB.push(data) : trianglesRG.push(data);
       }
     }
   }
-  return {
-    triangles,
-    trianglesRG,
-    trianglesRGB
-  };
+
+  return { triangles, trianglesRG, trianglesRGB };
 }
 ```
 
-
 ```{ojs}
-// Determine the fill color based on the vertex colors.
-getFillColorALL = (vertexColors) => {
-  if (vertexColors.has('red') && vertexColors.has('green') && vertexColors.has('blue')) {
-    return 'orange'; // Or any color you prefer for RGB triangles
-  } else if (vertexColors.has('red') && vertexColors.has('green')) {
-    return 'yellow';
-  }
-  return 'none'; // Default color
-};
-```
+viewof plotALL = {
+  const cpMap = coloredPointsMap.coloredPointsMap;
 
-```{ojs}
-viewof plotALL = Plot.plot({
-  width: 800,
-  height: 800,
-  x: {
-    label: "x",
-    domain: [0, 1]
-  },
-  y: {
-    label: "y",
-    domain: [0, Math.sqrt(3) / 2]
-  },
-  marks: [
-    // Plot.line([...equilateral_triangle_vertices, equilateral_triangle_vertices[0]], {
-    //   x: "x",
-    //   y: "y",
-    //   stroke: "black",
-    //   strokeWidth: 1
-    // }),
-    Plot.dot(coloredPointsMap.coloredPoints, {
-      x: "x",
-      y: "y",
-      fill: d => d.color,
-      r: 3
-    }),
-    Plot.geo(
-      {
-        type: "FeatureCollection",
-        features: subTriangles.trianglesRG.map(triangle => {
-          let coords = triangle.coordinates.map(coord => coloredPointsMap.coloredPointsMap.get(`${coord[0]},${coord[1]},${coord[2]}`).getCoords());
-          return {
-            type: "Feature",
-            geometry: {
-              type: "Polygon",
-              coordinates: [
-                [coords[0], coords[1], coords[2], coords[0]].map(c => [c.x, c.y])
-              ]
-            },
-            properties: { // Store the vertex colors for use in the fill
-              fillColor: 'yellow',
-              coords: coords, // Store the coordinates
-              vertexColors: Array.from(triangle.vertex_colors) // Store vertex colors as array
-            }
-          };
-        })
-      },
-      {
-        fill: d => d.properties.fillColor, // Use the determined color.
-        stroke: "black",
-        strokeWidth: 0
-      }
-    ),
-    // Plot the edges connecting the midpoints of the triangles with red-green coloring
-    ...subTriangles.trianglesRG.flatMap(triangle => {
-      return triangle.midpoints.map((coord, index) => {
-      const nextCoord = triangle.midpoints[(index + 1) % triangle.midpoints.length];
-      return Plot.line(
-        [
-        { x: coord.x, y: coord.y },
-        { x: nextCoord.x, y: nextCoord.y }
-        ],
-        {
+  const triangleFeatures = (triangles, fillColor) =>
+    triangles.map(({ coordinates, vertex_colors }) => {
+      const pts = coordinates.map(c => cpMap.get(c.join(',')).getCoords());
+      return {
+        type: "Feature",
+        geometry: {
+          type: "Polygon",
+          coordinates: [[...pts, pts[0]].map(p => [p.x, p.y])]
+        },
+        properties: { fillColor }
+      };
+    });
+
+  const edgeLines = subTriangles.trianglesRG.flatMap(tri => {
+    return tri.midpoints.map((pt, i, arr) => {
+      const next = arr[(i + 1) % arr.length];
+      return Plot.line([pt, next], {
         x: "x",
         y: "y",
         stroke: "black",
         strokeWidth: 5
-        }
-      );
       });
-    }),
-    Plot.geo(
-      {
-        type: "FeatureCollection",
-        features: subTriangles.trianglesRGB.map(triangle => {
-          let coords = triangle.coordinates.map(coord => coloredPointsMap.coloredPointsMap.get(`${coord[0]},${coord[1]},${coord[2]}`).getCoords());
-          return {
-            type: "Feature",
-            geometry: {
-              type: "Polygon",
-              coordinates: [
-                [coords[0], coords[1], coords[2], coords[0]].map(c => [c.x, c.y])
-              ]
-            },
-            properties: { // Store the vertex colors for use in the fill
-                fillColor: 'rgba(0, 0, 0, 0.05)',
-              coords: coords, // Store the coordinates
-              vertexColors: Array.from(triangle.vertex_colors) // Store vertex colors as array
-            }
-          };
-        })
-      },
-      {
-        fill: d => d.properties.fillColor, // Use the determined color.
-        stroke: "black",
-        strokeWidth: 0
-      }
-    ),
-    // Add the dots to show all colored points with their assigned color
-    Plot.dot(
-      coloredPointsMap.coloredPoints,
-      {
-        x: "x",
-        y: "y",
-        fill: d => d.color,
-        r: 5 * (5 / N) // Decrease r as N increases
-      }
-    )
-  ]
-});
+    });
+  });
+
+  return Plot.plot({
+    width: 800,
+    height: 800,
+    x: { label: "x", domain: [0, 1] },
+    y: { label: "y", domain: [0, Math.sqrt(3) / 2] },
+    marks: [
+      Plot.dot(
+        coloredPointsMap.coloredPoints.map(d => ({
+          ...d,
+          title: `(${d.barycentricTriple.join(", ")})`
+        })),
+        {
+          x: "x",
+          y: "y",
+          fill: "color",
+          r: 5 * (5 / N),
+          title: "title"
+        }
+      ),
+      Plot.geo(
+        { type: "FeatureCollection", features: triangleFeatures(subTriangles.trianglesRG, "rgba(255, 215, 0, 0.7)") },
+        { fill: d => d.properties.fillColor, stroke: "black", strokeWidth: 0 }
+      ),
+      ...edgeLines,
+      Plot.geo(
+        { type: "FeatureCollection", features: triangleFeatures(subTriangles.trianglesRGB, "rgba(255, 127, 80, 0.5)") },
+        { fill: d => d.properties.fillColor, stroke: "black", strokeWidth: 0 }
+      )
+    ]
+  });
+}
 ```
 
 
