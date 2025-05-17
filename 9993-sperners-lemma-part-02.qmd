@@ -14,7 +14,7 @@ viewof N = slider({
   min: 2,
   max: 25,
   step: 1,
-  value: 20,
+  value: 15,
   width: 500,
   title: "Number of subdivisions"
 })
