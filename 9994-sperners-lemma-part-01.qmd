@@ -8,9 +8,9 @@ categories: [combinatorics, triangles, coloring, Research]
 
 ```{ojs}
 equilateral_triangle_vertices = [
-  {x: 0, y: 0},
   {x: 1, y: 0},
-  {x: 0.5, y: Math.sqrt(3) / 2}
+  {x: 0.5, y: Math.sqrt(3) / 2},
+  {x: 0, y: 0},
 ]
 ```
 
