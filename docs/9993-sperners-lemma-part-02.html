@@ -762,6 +762,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+<p>This picture is the proof of <a href="./9994-sperners-lemma-part-01.html">Sperner’s Lemma</a>. Think of each of the small triangles a room with three walls. Here’s a weird trick - we think of each <code>RG</code> edge as being a door. Here’s the first interesting observation:</p>
+<ol type="1">
+<li><code>RGB</code> triangular rooms have only <strong>one</strong> door.</li>
+<li><code>RGG</code> and <code>RRG</code> triangular rooms have <strong>two</strong> doors.</li>
+<li>All other triangular rooms have <strong>no</strong> doors.</li>
+</ol>
+<p>Thus we already have a way to quantify <code>RGB</code> triangles - they are exactly the rooms with <strong>odd</strong> number of doors. So, we can restate Sperner’s lemma as stating that if Sperner’s condition is satisfied, there must be at least one room with odd number of doors.</p>
 
 
 

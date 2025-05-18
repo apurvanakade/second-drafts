@@ -285,6 +285,10 @@ viewof plotALL = {
 }
 ```
 
+This picture is the proof of [Sperner's Lemma](./9994-sperners-lemma-part-01.qmd). Think of each of the small triangles a room with three walls. Here's a weird trick - we think of each `RG` edge as being a door. Here's the first interesting observation:
 
+1. `RGB` triangular rooms have only **one** door.
+2. `RGG` and `RRG` triangular rooms have **two** doors.
+3. All other triangular rooms have **no** doors. 
 
-
+Thus we already have a way to quantify `RGB` triangles - they are exactly the rooms with **odd** number of doors. So, we can restate Sperner's lemma as stating that if Sperner's condition is satisfied, there must be at least one room with odd number of doors.
