@@ -285,10 +285,44 @@ viewof plotALL = {
 }
 ```
 
-This picture is the proof of [Sperner's Lemma](./9994-sperners-lemma-part-01.qmd). Think of each of the small triangles a room with three walls. Here's a weird trick - we think of each `RG` edge as being a door. Here's the first interesting observation:
+This picture is the proof of [Sperner's Lemma](./9994-sperners-lemma-part-01.qmd).  
+Think of each of the small triangles as a room with three walls. Here's a weird trick — we think of each `RG` edge as being a **door**. Here's the first interesting observation:
 
-1. `RGB` triangular rooms have only **one** door.
-2. `RGG` and `RRG` triangular rooms have **two** doors.
-3. All other triangular rooms have **no** doors. 
+1. <span style="background-color:rgba(0, 0, 0, 0.25)">**RGB**</span> triangular rooms have **only one** door.
+2. <span style="background-color:rgba(255, 215, 0, 1)">**RGG**</span> and <span style="background-color:rgba(255, 215, 0, 1)">**RRG**</span> triangular rooms have **two** doors.
+3. All other triangular rooms have **no** doors.
 
-Thus we already have a way to quantify `RGB` triangles - they are exactly the rooms with **odd** number of doors. So, we can restate Sperner's lemma as stating that if Sperner's condition is satisfied, there must be at least one room with odd number of doors.
+Thus, we already have a way to quantify <span style="background-color:rgba(0, 0, 0, 0.25)">**RGB**</span> triangles — they are exactly the rooms with an **odd** number of doors. So, we can restate Sperner's Lemma as saying:
+
+> **If Sperner's condition is satisfied, there must be at least one room with an odd number of doors.**
+
+We will prove a related version.
+
+---
+
+Imagine tracing all the possible paths in the triangular grid — the black paths in the diagram above are an example.  
+The <span style="background-color:rgba(255, 215, 0, 1)">yellow</span> rooms have a path going across them from one `RG` door to another, while the <span style="background-color:rgba(0, 0, 0, 0.25)">**RGB**</span> rooms have only one door to both enter and exit.
+
+Here are a few things you can immediately deduce using pure logic:
+
+1. No two paths can intersect.
+2. Some paths are loops with no endpoints.
+3. The paths that are not loops have exactly **two endpoints**. Hence, the total number of endpoints is **even**.
+4. Each endpoint can be exactly one of the following:  
+   a. An `RG` door on the boundary of the original triangle.  
+   b. An <span style="background-color:rgba(0, 0, 0, 0.25)">**RGB**</span> triangular room.
+
+> **Note:** The last statement is where we use **Sperner's condition**.
+
+Combining these facts, we obtain the following result:
+
+:::{#thm-even}
+
+The sum of:
+
+- the number of `RG` edges on the boundary of the triangle, and  
+- the number of <span style="background-color:rgba(0, 0, 0, 0.25)">**RGB**</span> triangles  
+
+must be an **even number**.
+
+:::

@@ -79,9 +79,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-c1fac2584b48ed01fb6e278e36375074.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-a9957ab5e8b7c67643b7e2e6b5c1e54e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-c1fac2584b48ed01fb6e278e36375074.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-05babaf0cfa1e1caed117225af04a19c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-3d3c3807380c683caf11aaf4545bf090.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-05babaf0cfa1e1caed117225af04a19c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -762,13 +762,46 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>This picture is the proof of <a href="./9994-sperners-lemma-part-01.html">Sperner’s Lemma</a>. Think of each of the small triangles a room with three walls. Here’s a weird trick - we think of each <code>RG</code> edge as being a door. Here’s the first interesting observation:</p>
+<p>This picture is the proof of <a href="./9994-sperners-lemma-part-01.html">Sperner’s Lemma</a>.<br>
+Think of each of the small triangles as a room with three walls. Here’s a weird trick — we think of each <code>RG</code> edge as being a <strong>door</strong>. Here’s the first interesting observation:</p>
 <ol type="1">
-<li><code>RGB</code> triangular rooms have only <strong>one</strong> door.</li>
-<li><code>RGG</code> and <code>RRG</code> triangular rooms have <strong>two</strong> doors.</li>
+<li><span style="background-color:rgba(0, 0, 0, 0.25)"><strong>RGB</strong></span> triangular rooms have <strong>only one</strong> door.</li>
+<li><span style="background-color:rgba(255, 215, 0, 1)"><strong>RGG</strong></span> and <span style="background-color:rgba(255, 215, 0, 1)"><strong>RRG</strong></span> triangular rooms have <strong>two</strong> doors.</li>
 <li>All other triangular rooms have <strong>no</strong> doors.</li>
 </ol>
-<p>Thus we already have a way to quantify <code>RGB</code> triangles - they are exactly the rooms with <strong>odd</strong> number of doors. So, we can restate Sperner’s lemma as stating that if Sperner’s condition is satisfied, there must be at least one room with odd number of doors.</p>
+<p>Thus, we already have a way to quantify <span style="background-color:rgba(0, 0, 0, 0.25)"><strong>RGB</strong></span> triangles — they are exactly the rooms with an <strong>odd</strong> number of doors. So, we can restate Sperner’s Lemma as saying:</p>
+<blockquote class="blockquote">
+<p><strong>If Sperner’s condition is satisfied, there must be at least one room with an odd number of doors.</strong></p>
+</blockquote>
+<p>We will prove a related version.</p>
+<hr>
+<p>Imagine tracing all the possible paths in the triangular grid — the black paths in the diagram above are an example.<br>
+The <span style="background-color:rgba(255, 215, 0, 1)">yellow</span> rooms have a path going across them from one <code>RG</code> door to another, while the <span style="background-color:rgba(0, 0, 0, 0.25)"><strong>RGB</strong></span> rooms have only one door to both enter and exit.</p>
+<p>Here are a few things you can immediately deduce using pure logic:</p>
+<ol type="1">
+<li>No two paths can intersect.</li>
+<li>Some paths are loops with no endpoints.</li>
+<li>The paths that are not loops have exactly <strong>two endpoints</strong>. Hence, the total number of endpoints is <strong>even</strong>.</li>
+<li>Each endpoint can be exactly one of the following:
+<ol type="a">
+<li>An <code>RG</code> door on the boundary of the original triangle.<br>
+</li>
+<li>An <span style="background-color:rgba(0, 0, 0, 0.25)"><strong>RGB</strong></span> triangular room.</li>
+</ol></li>
+</ol>
+<blockquote class="blockquote">
+<p><strong>Note:</strong> The last statement is where we use <strong>Sperner’s condition</strong>.</p>
+</blockquote>
+<p>Combining these facts, we obtain the following result:</p>
+<div id="thm-even" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 1</strong></span> The sum of:</p>
+<ul>
+<li>the number of <code>RG</code> edges on the boundary of the triangle, and<br>
+</li>
+<li>the number of <span style="background-color:rgba(0, 0, 0, 0.25)"><strong>RGB</strong></span> triangles</li>
+</ul>
+<p>must be an <strong>even number</strong>.</p>
+</div>
 
 
 
