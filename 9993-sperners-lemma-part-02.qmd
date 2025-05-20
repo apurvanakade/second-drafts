@@ -285,44 +285,103 @@ viewof plotALL = {
 }
 ```
 
-This picture is the proof of [Sperner's Lemma](./9994-sperners-lemma-part-01.qmd).  
-Think of each of the small triangles as a room with three walls. Here's a weird trick — we think of each `RG` edge as being a **door**. Here's the first interesting observation:
+This picture is the proof of [Sperner's Lemma](./9994-sperners-lemma-part-01.qmd). Imagine each small triangle as a **room with three walls**. Now here’s a clever twist: treat each `RG` edge as a **door**. Here’s what we observe:
 
-1. <span style="background-color:rgba(0, 0, 0, 0.25)">**RGB**</span> triangular rooms have **only one** door.
-2. <span style="background-color:rgba(255, 215, 0, 1)">**RGG**</span> and <span style="background-color:rgba(255, 215, 0, 1)">**RRG**</span> triangular rooms have **two** doors.
-3. All other triangular rooms have **no** doors.
+1. <span style="background-color:rgba(0, 0, 0, 0.25)">**RGB**</span> triangles have **exactly one** door.  
+2. <span style="background-color:rgba(255, 215, 0, 1)">**RGG**</span> and <span style="background-color:rgba(255, 215, 0, 1)">**RRG**</span> triangles have **two** doors.  
+3. All other triangles have **no** doors.
 
-Thus, we already have a way to quantify <span style="background-color:rgba(0, 0, 0, 0.25)">**RGB**</span> triangles — they are exactly the rooms with an **odd** number of doors. So, we can restate Sperner's Lemma as saying:
+In other words, we can identify <span style="background-color:rgba(0, 0, 0, 0.25)">**RGB**</span> triangles as the rooms with an **odd** number of doors. Sperner’s Lemma, then, can be restated in a more visual way:
 
-> **If Sperner's condition is satisfied, there must be at least one room with an odd number of doors.**
+> **If Sperner’s condition holds, there is at least one room with an odd number of doors.**
 
-We will prove a related version.
+We’ll prove a related version of this statement.
 
 ---
 
-Imagine tracing all the possible paths in the triangular grid — the black paths in the diagram above are an example.  
-The <span style="background-color:rgba(255, 215, 0, 1)">yellow</span> rooms have a path going across them from one `RG` door to another, while the <span style="background-color:rgba(0, 0, 0, 0.25)">**RGB**</span> rooms have only one door to both enter and exit.
+Now picture all the possible paths that can be formed by stepping through these `RG` doors — the black lines in the diagram represent some of these paths.
 
-Here are a few things you can immediately deduce using pure logic:
+- The <span style="background-color:rgba(255, 215, 0, 1)">yellow</span> triangles have paths that **enter through one door and exit through another** — like hallways.  
+- The <span style="background-color:rgba(0, 0, 0, 0.25)">**RGB**</span> triangles have **only one door**, so they are endpoints — there's no way to pass through.
 
-1. No two paths can intersect.
-2. Some paths are loops with no endpoints.
-3. The paths that are not loops have exactly **two endpoints**. Hence, the total number of endpoints is **even**.
-4. Each endpoint can be exactly one of the following:  
-   a. An `RG` door on the boundary of the original triangle.  
-   b. An <span style="background-color:rgba(0, 0, 0, 0.25)">**RGB**</span> triangular room.
+Using simple logic, we can deduce the following:
 
-> **Note:** The last statement is where we use **Sperner's condition**.
+1. No two paths intersect.  
+2. Some paths form **closed loops**.  
+3. Paths that do not form loops must have **two endpoints**, so the **total number of endpoints is even**.  
+4. The **only possible endpoints** are:  
+   a. An `RG` door on the outer boundary of the big triangle  
+   b. An <span style="background-color:rgba(0, 0, 0, 0.25)">**RGB**</span> triangle
 
-Combining these facts, we obtain the following result:
+> This is where **Sperner’s condition** comes in — it controls which boundary edges are allowed.
+
+Putting this all together gives us a key result:
 
 :::{#thm-even}
 
-The sum of:
-
-- the number of `RG` edges on the boundary of the triangle, and  
-- the number of <span style="background-color:rgba(0, 0, 0, 0.25)">**RGB**</span> triangles  
-
-must be an **even number**.
+The sum of the number of `RG` boundary edges, and the number of <span style="background-color:rgba(0, 0, 0, 0.25)">**RGB**</span> triangles must be **even**.
 
 :::
+
+From this, we immediately get:
+
+:::{#thm-same-parity}
+
+The number of <span style="background-color:rgba(0, 0, 0, 0.25)">**RGB**</span> triangles is **odd** if and only if the number of `RG` edges on the boundary is **odd**.
+
+:::
+
+So to conclude the proof, all that remains is to show: **The number of `RG` boundary edges is odd.** This final step uses induction. The proof itself is short, but there’s a subtle trick — it's easy to overlook unless you write it out carefully. Give it a shot!
+
+&nbsp;
+
+```{ojs}
+viewof M = slider({
+  min: 1,
+  max: 25,
+  step: 1,
+  value: 5,
+  width: 500,
+  title: "Number of subdivisions"
+})
+```
+
+```{ojs}
+viewof plot = {
+  const colors = Array.from({length: M + 1}, (_, i) => {
+    if (i === 0) return "red";
+    if (i === M) return "green";
+    return Math.random() < 0.5 ? "red" : "green";
+  });
+  const x = d3.scaleLinear().domain([0, M]).range([20, 580]);
+  const svg = d3.create("svg").attr("width", 600).attr("height", 100);
+  let boldCount = 0;
+
+  for (let i = 0; i < M; i++) {
+    const c1 = colors[i], c2 = colors[i + 1];
+    const bold = c1 !== c2;
+    if (bold) boldCount++;
+    svg.append("line")
+      .attr("x1", x(i)).attr("x2", x(i + 1))
+      .attr("y1", 50).attr("y2", 50)
+      .attr("stroke", "black")
+      .attr("stroke-width", bold ? 6 : 1);
+  }
+
+  svg.selectAll("circle")
+    .data(colors)
+    .join("circle")
+    .attr("cx", (_, i) => x(i))
+    .attr("cy", 50)
+    .attr("r", 5)
+    .attr("fill", d => d)
+    .attr("stroke", "black");
+
+  svg.append("text")
+    .attr("x", 150).attr("y", 15)
+    .text(`Number of RG edges: ${boldCount}`)
+    .attr("font-size", 20);
+
+  return svg.node();
+}
+```

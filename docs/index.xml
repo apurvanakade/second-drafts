@@ -2612,45 +2612,570 @@ font-style: inherit;">;</span></span>
 </div>
 </div>
 </div>
-<p>This picture is the proof of <a href="./9994-sperners-lemma-part-01.html">Sperner’s Lemma</a>.<br>
-Think of each of the small triangles as a room with three walls. Here’s a weird trick — we think of each <code>RG</code> edge as being a <strong>door</strong>. Here’s the first interesting observation:</p>
+<p>This picture is the proof of <a href="./9994-sperners-lemma-part-01.html">Sperner’s Lemma</a>. Imagine each small triangle as a <strong>room with three walls</strong>. Now here’s a clever twist: treat each <code>RG</code> edge as a <strong>door</strong>. Here’s what we observe:</p>
 <ol type="1">
-<li><span style="background-color:rgba(0, 0, 0, 0.25)"><strong>RGB</strong></span> triangular rooms have <strong>only one</strong> door.</li>
-<li><span style="background-color:rgba(255, 215, 0, 1)"><strong>RGG</strong></span> and <span style="background-color:rgba(255, 215, 0, 1)"><strong>RRG</strong></span> triangular rooms have <strong>two</strong> doors.</li>
-<li>All other triangular rooms have <strong>no</strong> doors.</li>
-</ol>
-<p>Thus, we already have a way to quantify <span style="background-color:rgba(0, 0, 0, 0.25)"><strong>RGB</strong></span> triangles — they are exactly the rooms with an <strong>odd</strong> number of doors. So, we can restate Sperner’s Lemma as saying:</p>
-<blockquote class="blockquote">
-<p><strong>If Sperner’s condition is satisfied, there must be at least one room with an odd number of doors.</strong></p>
-</blockquote>
-<p>We will prove a related version.</p>
-<hr>
-<p>Imagine tracing all the possible paths in the triangular grid — the black paths in the diagram above are an example.<br>
-The <span style="background-color:rgba(255, 215, 0, 1)">yellow</span> rooms have a path going across them from one <code>RG</code> door to another, while the <span style="background-color:rgba(0, 0, 0, 0.25)"><strong>RGB</strong></span> rooms have only one door to both enter and exit.</p>
-<p>Here are a few things you can immediately deduce using pure logic:</p>
-<ol type="1">
-<li>No two paths can intersect.</li>
-<li>Some paths are loops with no endpoints.</li>
-<li>The paths that are not loops have exactly <strong>two endpoints</strong>. Hence, the total number of endpoints is <strong>even</strong>.</li>
-<li>Each endpoint can be exactly one of the following:
-<ol type="a">
-<li>An <code>RG</code> door on the boundary of the original triangle.<br>
+<li><span style="background-color:rgba(0, 0, 0, 0.25)"><strong>RGB</strong></span> triangles have <strong>exactly one</strong> door.<br>
 </li>
-<li>An <span style="background-color:rgba(0, 0, 0, 0.25)"><strong>RGB</strong></span> triangular room.</li>
+<li><span style="background-color:rgba(255, 215, 0, 1)"><strong>RGG</strong></span> and <span style="background-color:rgba(255, 215, 0, 1)"><strong>RRG</strong></span> triangles have <strong>two</strong> doors.<br>
+</li>
+<li>All other triangles have <strong>no</strong> doors.</li>
+</ol>
+<p>In other words, we can identify <span style="background-color:rgba(0, 0, 0, 0.25)"><strong>RGB</strong></span> triangles as the rooms with an <strong>odd</strong> number of doors. Sperner’s Lemma, then, can be restated in a more visual way:</p>
+<blockquote class="blockquote">
+<p><strong>If Sperner’s condition holds, there is at least one room with an odd number of doors.</strong></p>
+</blockquote>
+<p>We’ll prove a related version of this statement.</p>
+<hr>
+<p>Now picture all the possible paths that can be formed by stepping through these <code>RG</code> doors — the black lines in the diagram represent some of these paths.</p>
+<ul>
+<li>The <span style="background-color:rgba(255, 215, 0, 1)">yellow</span> triangles have paths that <strong>enter through one door and exit through another</strong> — like hallways.<br>
+</li>
+<li>The <span style="background-color:rgba(0, 0, 0, 0.25)"><strong>RGB</strong></span> triangles have <strong>only one door</strong>, so they are endpoints — there’s no way to pass through.</li>
+</ul>
+<p>Using simple logic, we can deduce the following:</p>
+<ol type="1">
+<li>No two paths intersect.<br>
+</li>
+<li>Some paths form <strong>closed loops</strong>.<br>
+</li>
+<li>Paths that do not form loops must have <strong>two endpoints</strong>, so the <strong>total number of endpoints is even</strong>.<br>
+</li>
+<li>The <strong>only possible endpoints</strong> are:
+<ol type="a">
+<li>An <code>RG</code> door on the outer boundary of the big triangle<br>
+</li>
+<li>An <span style="background-color:rgba(0, 0, 0, 0.25)"><strong>RGB</strong></span> triangle</li>
 </ol></li>
 </ol>
 <blockquote class="blockquote">
-<p><strong>Note:</strong> The last statement is where we use <strong>Sperner’s condition</strong>.</p>
+<p>This is where <strong>Sperner’s condition</strong> comes in — it controls which boundary edges are allowed.</p>
 </blockquote>
-<p>Combining these facts, we obtain the following result:</p>
+<p>Putting this all together gives us a key result:</p>
 <div id="thm-even" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 1</strong></span> The sum of:</p>
-<ul>
-<li>the number of <code>RG</code> edges on the boundary of the triangle, and<br>
-</li>
-<li>the number of <span style="background-color:rgba(0, 0, 0, 0.25)"><strong>RGB</strong></span> triangles</li>
-</ul>
-<p>must be an <strong>even number</strong>.</p>
+<p><span class="theorem-title"><strong>Theorem 1</strong></span> The sum of the number of <code>RG</code> boundary edges, and the number of <span style="background-color:rgba(0, 0, 0, 0.25)"><strong>RGB</strong></span> triangles must be <strong>even</strong>.</p>
+</div>
+<p>From this, we immediately get:</p>
+<div id="thm-same-parity" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 2</strong></span> The number of <span style="background-color:rgba(0, 0, 0, 0.25)"><strong>RGB</strong></span> triangles is <strong>odd</strong> if and only if the number of <code>RG</code> edges on the boundary is <strong>odd</strong>.</p>
+</div>
+<p>So to conclude the proof, all that remains is to show: <strong>The number of <code>RG</code> boundary edges is odd.</strong> This final step uses induction. The proof itself is short, but there’s a subtle trick — it’s easy to overlook unless you write it out carefully. Give it a shot!</p>
+<p>&nbsp;</p>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb10" data-startfrom="338" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 337;"><span id="cb10-338">viewof M <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">slider</span>({</span>
+<span id="cb10-339">  <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">min</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb10-340">  <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">max</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">25</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb10-341">  <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">step</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb10-342">  <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">value</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb10-343">  <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">width</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">500</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb10-344">  <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">title</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Number of subdivisions"</span></span>
+<span id="cb10-345">})</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-10" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb11" data-startfrom="349" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 348;"><span id="cb11-349">viewof plot <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> {</span>
+<span id="cb11-350">  <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">const</span> colors <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">Array</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">from</span>({<span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">length</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> M <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>}<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> (_<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> i) <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">=&gt;</span> {</span>
+<span id="cb11-351">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> (i <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">===</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>) <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"red"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb11-352">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> (i <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">===</span> M) <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"green"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb11-353">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">Math</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">random</span>() <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.5</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">?</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"red"</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"green"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb11-354">  })<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb11-355">  <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">const</span> x <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> d3<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scaleLinear</span>()<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">domain</span>([<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> M])<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">range</span>([<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">20</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">580</span>])<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb11-356">  <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">const</span> svg <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> d3<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">create</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"svg"</span>)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">attr</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"width"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">600</span>)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">attr</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"height"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100</span>)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb11-357">  <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">let</span> boldCount <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb11-358"></span>
+<span id="cb11-359">  <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> (<span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">let</span> i <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span> i <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;</span> M<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span> i<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">++</span>) {</span>
+<span id="cb11-360">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">const</span> c1 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> colors[i]<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> c2 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> colors[i <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>]<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb11-361">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">const</span> bold <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> c1 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">!==</span> c2<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb11-362">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> (bold) boldCount<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">++;</span></span>
+<span id="cb11-363">    svg<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">append</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"line"</span>)</span>
+<span id="cb11-364">      <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">attr</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"x1"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">x</span>(i))<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">attr</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"x2"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">x</span>(i <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>))</span>
+<span id="cb11-365">      <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">attr</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"y1"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">50</span>)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">attr</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"y2"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">50</span>)</span>
+<span id="cb11-366">      <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">attr</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"stroke"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"black"</span>)</span>
+<span id="cb11-367">      <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">attr</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"stroke-width"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> bold <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">?</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">6</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb11-368">  }</span>
+<span id="cb11-369"></span>
+<span id="cb11-370">  svg<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">selectAll</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"circle"</span>)</span>
+<span id="cb11-371">    <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">data</span>(colors)</span>
+<span id="cb11-372">    <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">join</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"circle"</span>)</span>
+<span id="cb11-373">    <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">attr</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"cx"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> (_<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> i) <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">=&gt;</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">x</span>(i))</span>
+<span id="cb11-374">    <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">attr</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"cy"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">50</span>)</span>
+<span id="cb11-375">    <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">attr</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"r"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>)</span>
+<span id="cb11-376">    <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">attr</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"fill"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> d <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">=&gt;</span> d)</span>
+<span id="cb11-377">    <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">attr</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"stroke"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"black"</span>)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb11-378"></span>
+<span id="cb11-379">  svg<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">append</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"text"</span>)</span>
+<span id="cb11-380">    <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">attr</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"x"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">150</span>)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">attr</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"y"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">15</span>)</span>
+<span id="cb11-381">    <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">text</span>(<span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">`Number of RG edges: </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">${</span>boldCount<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">`</span>)</span>
+<span id="cb11-382">    <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">attr</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"font-size"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">20</span>)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb11-383"></span>
+<span id="cb11-384">  <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> svg<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">node</span>()<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb11-385">}</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-11" data-nodetype="declaration">
+
+</div>
+</div>
 </div>
 
 
