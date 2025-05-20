@@ -3183,6 +3183,9 @@ font-style: inherit;">;</span></span>
   <category>combinatorics</category>
   <category>triangles</category>
   <category>coloring</category>
+  <category>visualization</category>
+  <category>interactive</category>
+  <category>observablejs</category>
   <guid>https://github.com/apurvanakade/second-drafts/9993-sperners-lemma-part-02.html</guid>
   <pubDate>Fri, 16 May 2025 13:44:57 GMT</pubDate>
 </item>
@@ -6523,7 +6526,10 @@ font-style: inherit;">&lt;/p&gt;`</span></span></code></pre></div>
   <category>combinatorics</category>
   <category>triangles</category>
   <category>coloring</category>
-  <category>Research</category>
+  <category>research</category>
+  <category>visualization</category>
+  <category>interactive</category>
+  <category>observablejs</category>
   <guid>https://github.com/apurvanakade/second-drafts/9994-sperners-lemma-part-01.html</guid>
   <pubDate>Wed, 14 May 2025 21:20:25 GMT</pubDate>
 </item>

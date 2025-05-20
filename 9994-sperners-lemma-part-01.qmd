@@ -2,7 +2,7 @@
 title: Sperner's Lemma - Part 01
 author: Apurva Nakade
 date: 2025-05-14 17:20:25
-categories: [combinatorics, triangles, coloring, Research]
+categories: [combinatorics, triangles, coloring, research, visualization, interactive, observablejs]
 ---
 
 
