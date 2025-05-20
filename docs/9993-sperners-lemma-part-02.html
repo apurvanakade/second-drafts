@@ -874,11 +874,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <section id="questions" class="level2">
 <h2 class="anchored" data-anchor-id="questions">Questions</h2>
-<p>The app at the top of this page demonstrates the proof by dividing a triangle uniformly into smaller triangles. However, Sperner’s Lemma is much more general: it applies to <strong>any triangulation</strong> of a triangle, as long as the vertices are colored according to Sperner’s condition. The proof itself never relies on the triangulation being uniform — so it holds for <em>any</em> triangulation. That said, the app is harder to generalize for arbitrary triangulations. This raises an interesting practical question:</p>
+<p>The app at the top of this page demonstrates the proof by dividing a triangle uniformly into smaller triangles. However, Sperner’s Lemma is much more general: it applies to <strong>any triangulation</strong> of a triangle, as long as the vertices are colored according to Sperner’s condition. The proof itself never relies on the triangulation being uniform — so it holds for <em>any</em> triangulation. That said, the app is harder to generalize for arbitrary triangulations.</p>
 <ul>
 <li><strong>How does one generate random triangulations?</strong></li>
 </ul>
-<p>One natural approach is to use <strong>Delaunay triangulations</strong>, which are well-studied and widely implemented in computational geometry libraries. Once you have such a triangulation, the next step is:</p>
+<p>One natural approach is to use <strong>Delaunay triangulations</strong>, but how random are these triangulations? Once you have such a triangulation, the next step is:</p>
 <ul>
 <li><strong>How do you efficiently loop through all the triangles?</strong></li>
 </ul>
