@@ -5,8 +5,6 @@ date: 2025-05-16 09:44:57
 categories: [combinatorics, triangles, coloring]
 ---
 
-**DRAFT DOCUMENT**
-
 ```{ojs}
 import { slider } from "@jashkenas/inputs"
 
