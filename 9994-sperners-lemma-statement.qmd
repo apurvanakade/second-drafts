@@ -1,5 +1,5 @@
 ---
-title: Sperner's Lemma - Part 01
+title: Sperner's Lemma - Statement
 author: Apurva Nakade
 date: 2025-05-14 17:20:25
 categories: [combinatorics, triangles, coloring, questions, visualization, interactive, observablejs]
