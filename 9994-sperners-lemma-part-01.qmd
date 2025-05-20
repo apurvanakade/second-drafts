@@ -2,7 +2,7 @@
 title: Sperner's Lemma - Part 01
 author: Apurva Nakade
 date: 2025-05-14 17:20:25
-categories: [combinatorics, triangles, coloring, research, visualization, interactive, observablejs]
+categories: [combinatorics, triangles, coloring, questions, visualization, interactive, observablejs]
 ---
 
 
@@ -306,6 +306,8 @@ I know a few proofs of this theorem, of varying levels of sophistication. I used
 5. `RBB` and `RRB` => <span style="color:white; background-color:magenta">magenta</span>
 6. `GGB` and `GBB` => <span style="color:white; background-color:cyan">cyan</span>
 7. `RGB` => <span style="color:white; background-color:black">black</span>
+
+## Questions 
 
 When you learn abstract mathematics, it is easy to lose touch with the concrete. What is going on here? What patterns can you see? Why are there so many RGB triangles? **What is the expected number of such triangles?** What about the other colored triangles?
 

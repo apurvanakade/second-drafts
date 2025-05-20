@@ -406,6 +406,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div class="quarto-category">visualization</div>
     <div class="quarto-category">interactive</div>
     <div class="quarto-category">observablejs</div>
+    <div class="quarto-category">questions</div>
   </div>
   </div>
 
@@ -871,8 +872,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+<section id="questions" class="level2">
+<h2 class="anchored" data-anchor-id="questions">Questions</h2>
+<p>The app at the top of this page demonstrates the proof by dividing a triangle uniformly into smaller triangles. However, Sperner’s Lemma is much more general: it applies to <strong>any triangulation</strong> of a triangle, as long as the vertices are colored according to Sperner’s condition. The proof itself never relies on the triangulation being uniform — so it holds for <em>any</em> triangulation. That said, the app is harder to generalize for arbitrary triangulations. This raises an interesting practical question:</p>
+<ul>
+<li><strong>How does one generate random triangulations?</strong></li>
+</ul>
+<p>One natural approach is to use <strong>Delaunay triangulations</strong>, which are well-studied and widely implemented in computational geometry libraries. Once you have such a triangulation, the next step is:</p>
+<ul>
+<li><strong>How do you efficiently loop through all the triangles?</strong></li>
+</ul>
+<p>While this isn’t a research question, implementing a general Sperner’s Lemma checker on arbitrary triangulations would be a neat exercise, combining computational geometry with combinatorics.</p>
 
 
+</section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script type="ojs-module-contents">

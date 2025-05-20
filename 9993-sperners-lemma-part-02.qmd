@@ -2,7 +2,7 @@
 title: Sperner's Lemma - Part 02
 author: Apurva Nakade
 date: 2025-05-16 09:44:57
-categories: [combinatorics, triangles, coloring, visualization, interactive, observablejs]
+categories: [combinatorics, triangles, coloring, visualization, interactive, observablejs, questions]
 ---
 
 ```{ojs}
@@ -283,17 +283,17 @@ viewof plotALL = {
 }
 ```
 
-This picture is the proof of [Sperner's Lemma](./9994-sperners-lemma-part-01.qmd). Imagine each small triangle as a **room with three walls**. Now here’s a clever twist: treat each `RG` edge as a **door**. Here’s what we observe:
+This picture is the proof of [Sperner's Lemma](./9994-sperners-lemma-part-01.qmd). Imagine each small triangle as a **room with three walls**. Now here's a clever twist: treat each `RG` edge as a **door**. Here's what we observe:
 
 1. <span style="background-color:rgba(0, 0, 0, 0.25)">**RGB**</span> triangles have **exactly one** door.  
 2. <span style="background-color:rgba(255, 215, 0, 1)">**RGG**</span> and <span style="background-color:rgba(255, 215, 0, 1)">**RRG**</span> triangles have **two** doors.  
 3. All other triangles have **no** doors.
 
-In other words, we can identify <span style="background-color:rgba(0, 0, 0, 0.25)">**RGB**</span> triangles as the rooms with an **odd** number of doors. Sperner’s Lemma, then, can be restated in a more visual way:
+In other words, we can identify <span style="background-color:rgba(0, 0, 0, 0.25)">**RGB**</span> triangles as the rooms with an **odd** number of doors. Sperner's Lemma, then, can be restated in a more visual way:
 
-> **If Sperner’s condition holds, there is at least one room with an odd number of doors.**
+> **If Sperner's condition holds, there is at least one room with an odd number of doors.**
 
-We’ll prove a related version of this statement.
+We'll prove a related version of this statement.
 
 ---
 
@@ -311,7 +311,7 @@ Using simple logic, we can deduce the following:
    a. An `RG` door on the outer boundary of the big triangle  
    b. An <span style="background-color:rgba(0, 0, 0, 0.25)">**RGB**</span> triangle
 
-> This is where **Sperner’s condition** comes in — it controls which boundary edges are allowed.
+> This is where **Sperner's condition** comes in — it controls which boundary edges are allowed.
 
 Putting this all together gives us a key result:
 
@@ -383,3 +383,15 @@ viewof plot = {
   return svg.node();
 }
 ```
+
+## Questions
+
+The app at the top of this page demonstrates the proof by dividing a triangle uniformly into smaller triangles. However, Sperner's Lemma is much more general: it applies to **any triangulation** of a triangle, as long as the vertices are colored according to Sperner's condition. The proof itself never relies on the triangulation being uniform — so it holds for *any* triangulation. That said, the app is harder to generalize for arbitrary triangulations. This raises an interesting practical question:
+
+- **How does one generate random triangulations?**
+
+One natural approach is to use **Delaunay triangulations**, which are well-studied and widely implemented in computational geometry libraries. Once you have such a triangulation, the next step is:
+
+- **How do you efficiently loop through all the triangles?**
+
+While this isn't a research question, implementing a general Sperner's Lemma checker on arbitrary triangulations would be a neat exercise, combining computational geometry with combinatorics. 
