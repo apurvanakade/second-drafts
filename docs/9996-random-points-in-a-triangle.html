@@ -692,14 +692,15 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<p>Randomness is a surprisingly hard thing to simulate. Any program, by definition has a predictable output. The best you can hope for is to predictably generate points that look random (pseudo-random) and fool some statistical tests. All random generation relies on two things:</p>
+<p>Randomness is a surprisingly hard thing to simulate. Any program, by definition, has a predictable output. The best you can hope for is to predictably generate points that <em>look</em> random (pseudo-random) and fool some statistical tests. All random generation relies on two things:</p>
 <ol type="1">
-<li>a pseudo-random number generator that outputs a stream of numbers that “looks random”,</li>
-<li>a mathematical function that converts uniform random variable(s) into random variables with other distributions.</li>
+<li>A pseudo-random number generator that outputs a stream of numbers that “looks random”</li>
+<li>A mathematical function that converts uniform random variable(s) into random variables with other distributions</li>
 </ol>
-<p>Mathematicians are mostly interested in engineering Step 2. Step 1 is important, but is usually delegated to computer engineers.</p>
+<p>Mathematicians are mostly interested in engineering Step 2. Step 1 is important but is usually delegated to computer engineers.</p>
 <p>With that preamble, here’s the question: <strong>Generate points randomly inside a triangle.</strong> I need this in order to play around with Sperner’s lemma examples.</p>
-<p>The first step is to generate random points in the “standard triangle” with vertices <span class="math inline">\([0, 0], [1, 0], [0, 1]\)</span>. A very simple trick for this is to generate points in the unit square and “reflect the points” across the midpoint of the hypotenuse, <span class="math inline">\([0.5, 0.5]\)</span>. Next we use the <a href="./9998-barycentric-coordinates.html">barycentric transformation</a> to transform the standard triangle into the desired triangle, in the above example, the equilateral triangle with vertices <span class="math inline">\([0, 0], [1, 0], [0.5, \sqrt{3}/2]\)</span>.</p>
+<p>The first step is to generate random points in the “standard triangle” with vertices <span class="math inline">\([0, 0], [1, 0], [0, 1]\)</span>. A very simple trick for this is to generate points in the unit square and “reflect the points” across the midpoint of the hypotenuse, <span class="math inline">\([0.5, 0.5]\)</span>.</p>
+<p>Next, we use the <a href="./9998-barycentric-coordinates.html">barycentric transformation</a> to transform the standard triangle into the desired triangle—in the example above, the equilateral triangle with vertices <span class="math inline">\([0, 0], [1, 0], [0.5, \sqrt{3}/2]\)</span>.</p>
 
 
 
