@@ -16,8 +16,8 @@ website:
         href: https://apurvanakade.github.io/
       - text: Class Notes
         href: https://apurvanakade.github.io/notes.html
-      - text: Second Drafts
-        href: https://apurvanakade.github.io/second-drafts/
+      - text: (Math) Blog
+        href: index.qmd
       - text: CV 
         href: https://apurvanakade.github.io/CV.html
     right:

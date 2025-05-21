@@ -298,19 +298,22 @@ html`<p>Number of RGB triangles: ${numRGBTriangles}</p>`
 
 ---
 
-I know a few proofs of this theorem, of varying levels of sophistication. I used to think I understood this theorem really well. And yet, I cannot predict the image below. Here, I'm coloring each triangle using the following mapping:
+I know a few proofs of this theorem, of varying levels of sophistication. I used to think I understood this theorem really well. And yet, I cannot predict the image below. 
 
-1. `RRR` => <span style="color:white; background-color:red">red</span>
-2. `GGG` => <span style="color:white; background-color:green">green</span>
-3. `BBB` => <span style="color:white; background-color:blue">blue</span>
-4. `RGG` and `RRG` => <span style="color:white; background-color:yellow">yellow</span>
-5. `RBB` and `RRB` => <span style="color:white; background-color:magenta">magenta</span>
-6. `GGB` and `GBB` => <span style="color:white; background-color:cyan">cyan</span>
-7. `RGB` => <span style="color:white; background-color:black">black</span>
+Here, I'm coloring each triangle using the following mapping:
 
-## Questions 
+1. `RRR` → <span style="color:white; background-color:red">red</span>  
+2. `GGG` → <span style="color:white; background-color:green">green</span>  
+3. `BBB` → <span style="color:white; background-color:blue">blue</span>  
+4. `RGG` and `RRG` → <span style="color:white; background-color:yellow">yellow</span>  
+5. `RBB` and `RRB` → <span style="color:white; background-color:magenta">magenta</span>  
+6. `GGB` and `GBB` → <span style="color:white; background-color:cyan">cyan</span>  
+7. `RGB` → <span style="color:white; background-color:black">black</span>  
 
-When you learn abstract mathematics, it is easy to lose touch with the concrete. What is going on here? What patterns can you see? Why are there so many RGB triangles? **What is the expected number of such triangles?** What about the other colored triangles?
+## Questions
+
+When you learn abstract mathematics, it's easy to lose touch with the concrete. What is going on here? What patterns can you see? Why are there so many RGB triangles? **What is the expected number of such triangles?** What about the other colored triangles?
+
 
 ```{ojs}
 import {slider} from "@jashkenas/inputs"
@@ -421,10 +424,11 @@ html`<p>Number of RGB triangles: ${numRGBTriangles}</p>`
 
 ---
 
-**Remark.** Here's a curious thing I discovered while drawing these colorful plots. How do you loop over all the sub-triangles in the triangulation?
+**Remark.** Here's a curious thing I discovered while drawing these colorful plots. How do you loop over all the sub-triangles in the triangulation?  
 Think of an answer before peeking below.
 
 <!-- add large vertical white space equal to screen height -->
 <div style="height: 100vh;"></div>
 
-You have to run two loops! One for the "upward-facing" triangles and one for the "downward-facing" ones. I don't think there is any way to create a single loop for all these triangles. 
+You have to run two loops—one for the "upward-facing" triangles and one for the "downward-facing" ones.  
+I don't think there's any way to create a single loop for all these triangles.
