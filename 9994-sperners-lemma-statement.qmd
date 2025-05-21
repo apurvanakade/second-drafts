@@ -192,21 +192,22 @@ viewof plotEmpty = Plot.plot({
 });
 ```
 
-**Sperner's lemma** is one of the first "non-trivial" theorems I remember hearing about at a summer camp in my high school.
-The theorem goes as follows. Consider a triangulation of a triangle. (Above we consider a regular triangulation of an equilateral triangle, but the theorem holds for any triangulation of a triangle.) We color the vertices of the triangle with three colors, say <span style="color:white; background-color:red">red</span>, <span style="color:white; background-color:green">green</span> and <span style="color:white; background-color:blue">blue</span> with the following conditions:
+**Sperner's lemma** is one of the first "non-trivial" theorems I remember hearing about at a high school summer camp.  
+It goes like this: consider a triangulation of a triangle. (Above, we show a regular triangulation of an equilateral triangle, but the theorem applies to *any* triangulation of a triangle.) We color the vertices of the triangle with three colors—say, <span style="color:white; background-color:red">red</span>, <span style="color:white; background-color:green">green</span>, and <span style="color:white; background-color:blue">blue</span>—with the following conditions:
 
 1. The vertices of the triangle are colored with the three colors: <span style="color:white; background-color:red">red</span>, <span style="color:white; background-color:green">green</span>, and <span style="color:white; background-color:blue">blue</span>.
-2. The vertices that lie on the edges of the triangle are colored with one of the colors of the endpoints of that edge - *this is crucial*. 
+2. The vertices that lie on the edges of the triangle are colored with one of the colors of the endpoints of that edge—*this is crucial*.
 3. The vertices that lie in the interior of the triangle may be colored with any of the three colors.
 
-The conditions 1, 2 are sometimes called the **Sperner condition**. 
+Conditions 1 and 2 are often referred to as the **Sperner condition**.
 
 ::: {#thm-sperner}
 
-Any triangulation of a triangle satisfying Sperner's condition has at least one "rainbow" triangle whose vertices are colored with all three colors <span style="color:white; background-color:red">red</span>, <span style="color:white; background-color:green">green</span>, and <span style="color:white; background-color:blue">blue</span>.
+Any triangulation of a triangle satisfying Sperner's condition has at least one "rainbow" triangle whose vertices are colored with all three colors: <span style="color:white; background-color:red">red</span>, <span style="color:white; background-color:green">green</span>, and <span style="color:white; background-color:blue">blue</span>.
+
 :::
 
-Without peeking below, can you how many rainbow (RGB) triangles are there in the above triangulation?
+Without peeking below, can you count how many rainbow (RGB) triangles there are in the above triangulation?
 
 <!-- add large vertical white space equal to screen height -->
 <div style="height: 100vh;"></div>
