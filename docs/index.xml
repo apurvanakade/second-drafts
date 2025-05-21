@@ -12,9 +12,9 @@
 <generator>quarto-1.7.31</generator>
 <lastBuildDate>Fri, 16 May 2025 13:44:57 GMT</lastBuildDate>
 <item>
-  <title>Sperner’s Lemma - Part 02</title>
+  <title>Sperner’s Lemma - Combinatorial Proof</title>
   <dc:creator>Apurva Nakade</dc:creator>
-  <link>https://github.com/apurvanakade/second-drafts/9993-sperners-lemma-part-02.html</link>
+  <link>https://github.com/apurvanakade/second-drafts/9993-sperners-lemma-combinatorial-proof.html</link>
   <description><![CDATA[ 
 
 
@@ -2611,7 +2611,7 @@ font-style: inherit;">;</span></span>
 </div>
 </div>
 </div>
-<p>This picture is a combinatorial proof of <a href="./9994-sperners-lemma-part-01.html">Sperner’s Lemma</a>.</p>
+<p>This picture is a combinatorial proof of <a href="./9994-sperners-lemma-statement.html">Sperner’s Lemma</a>.</p>
 <p>Imagine each small triangle as a <strong>room with three walls</strong>. Next we do a trick that I do not know how to motivate: treat each <code>RG</code> edge as a <strong>door</strong>. Here’s what we observe:</p>
 <ol type="1">
 <li><span style="background-color:rgba(0, 0, 0, 0.25)"><strong>RGB</strong></span> triangles have <strong>exactly one</strong> door.<br>
@@ -4043,13 +4043,13 @@ font-style: inherit;">;</span></span>
   <category>interactive</category>
   <category>observablejs</category>
   <category>questions</category>
-  <guid>https://github.com/apurvanakade/second-drafts/9993-sperners-lemma-part-02.html</guid>
+  <guid>https://github.com/apurvanakade/second-drafts/9993-sperners-lemma-combinatorial-proof.html</guid>
   <pubDate>Fri, 16 May 2025 13:44:57 GMT</pubDate>
 </item>
 <item>
-  <title>Sperner’s Lemma - Part 01</title>
+  <title>Sperner’s Lemma - Statement</title>
   <dc:creator>Apurva Nakade</dc:creator>
-  <link>https://github.com/apurvanakade/second-drafts/9994-sperners-lemma-part-01.html</link>
+  <link>https://github.com/apurvanakade/second-drafts/9994-sperners-lemma-statement.html</link>
   <description><![CDATA[ 
 
 
@@ -7390,7 +7390,7 @@ font-style: inherit;">&lt;/p&gt;`</span></span></code></pre></div>
   <category>visualization</category>
   <category>interactive</category>
   <category>observablejs</category>
-  <guid>https://github.com/apurvanakade/second-drafts/9994-sperners-lemma-part-01.html</guid>
+  <guid>https://github.com/apurvanakade/second-drafts/9994-sperners-lemma-statement.html</guid>
   <pubDate>Wed, 14 May 2025 21:20:25 GMT</pubDate>
 </item>
 <item>
