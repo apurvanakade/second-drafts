@@ -114,6 +114,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <link rel="stylesheet" href="styles.css">
 <meta property="og:title" content="Sperner’s Lemma - Geometric Proof – Second Drafts">
+<meta property="og:description" content="">
 <meta property="og:site_name" content="Second Drafts">
 </head>
 
@@ -440,43 +441,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<p><strong>DRAFT DOCUMENT</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="9" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 8;"><span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> {slider} <span class="im">from</span> <span class="st">"@jashkenas/inputs"</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">// Add a  for M = number of points to plot</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>viewof N <span class="op">=</span> <span class="fu">slider</span>({</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="dt">min</span><span class="op">:</span> <span class="dv">2</span><span class="op">,</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  <span class="dt">max</span><span class="op">:</span> <span class="dv">20</span><span class="op">,</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  <span class="dt">value</span><span class="op">:</span> <span class="dv">5</span><span class="op">,</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  <span class="dt">width</span><span class="op">:</span> <span class="dv">500</span><span class="op">,</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  <span class="dt">title</span><span class="op">:</span> <span class="st">"Number of subdivisions"</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="10" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 9;"><span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> {slider} <span class="im">from</span> <span class="st">"@jashkenas/inputs"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div>
-<div id="ojs-cell-1-1" data-nodetype="declaration">
+<div id="ojs-cell-1" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
-<div class="cell-output cell-output-display">
-<div>
-<div id="ojs-cell-1-2" data-nodetype="declaration">
-
-</div>
-</div>
-</div>
-</div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb2" data-startfrom="22" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 21;"><span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="co">// make a slider from 0 to 1</span></span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>viewof t <span class="op">=</span> <span class="fu">slider</span>({</span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>  <span class="dt">min</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span></span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>  <span class="dt">max</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span></span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>  <span class="dt">step</span><span class="op">:</span> <span class="fl">0.01</span><span class="op">,</span></span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>  <span class="dt">value</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span></span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>  <span class="dt">width</span><span class="op">:</span> <span class="dv">500</span><span class="op">,</span></span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>  <span class="dt">title</span><span class="op">:</span> <span class="st">"time"</span></span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb2" data-startfrom="14" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 13;"><span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>viewof N <span class="op">=</span> <span class="fu">slider</span>({</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  <span class="dt">min</span><span class="op">:</span> <span class="dv">2</span><span class="op">,</span> <span class="dt">max</span><span class="op">:</span> <span class="dv">10</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">2</span><span class="op">,</span> <span class="dt">width</span><span class="op">:</span> <span class="dv">500</span><span class="op">,</span> <span class="dt">title</span><span class="op">:</span> <span class="st">"Number of subdivisions"</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-2" data-nodetype="declaration">
 
@@ -484,11 +461,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb3" data-startfrom="34" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 33;"><span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>equilateral_triangle_vertices <span class="op">=</span> [</span>
-<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">x</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="dv">0</span>}<span class="op">,</span></span>
-<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">x</span><span class="op">:</span> <span class="fl">0.5</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(<span class="dv">3</span>) <span class="op">/</span> <span class="dv">2</span>}<span class="op">,</span></span>
-<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">x</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="dv">0</span>}<span class="op">,</span></span>
-<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb3" data-startfrom="20" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 19;"><span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>viewof t <span class="op">=</span> <span class="fu">slider</span>({</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>  <span class="dt">min</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">max</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="fl">0.01</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">width</span><span class="op">:</span> <span class="dv">500</span><span class="op">,</span> <span class="dt">title</span><span class="op">:</span> <span class="st">"time"</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-3" data-nodetype="declaration">
 
@@ -496,15 +471,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb4" data-startfrom="42" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 41;"><span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>barycentric_coords <span class="op">=</span> {</span>
-<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> result <span class="op">=</span> []<span class="op">;</span></span>
-<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;=</span> N<span class="op">;</span> i<span class="op">++</span>) {</span>
-<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="kw">let</span> j <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> j <span class="op">&lt;=</span> N <span class="op">-</span> i<span class="op">;</span> j<span class="op">++</span>) {</span>
-<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>      result<span class="op">.</span><span class="fu">push</span>([i<span class="op">,</span> j<span class="op">,</span> N <span class="op">-</span> i <span class="op">-</span> j])<span class="op">;</span></span>
-<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> result<span class="op">;</span></span>
-<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb4" data-startfrom="26" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 25;"><span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>equilateralTriangleVertices <span class="op">=</span> [</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">x</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="dv">0</span>}<span class="op">,</span></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">x</span><span class="op">:</span> <span class="fl">0.5</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(<span class="dv">3</span>) <span class="op">/</span> <span class="dv">2</span>}<span class="op">,</span></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">x</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="dv">0</span>}<span class="op">,</span></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-4" data-nodetype="declaration">
 
@@ -512,77 +483,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb5" data-startfrom="54" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 53;"><span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a>colorMap <span class="op">=</span> {</span>
-<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> map <span class="op">=</span> <span class="kw">new</span> <span class="bu">Map</span>()<span class="op">;</span></span>
-<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;=</span> N<span class="op">;</span> i<span class="op">++</span>) {</span>
-<span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="kw">let</span> j <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> j <span class="op">&lt;=</span> N <span class="op">-</span> i<span class="op">;</span> j<span class="op">++</span>) {</span>
-<span id="cb5-59"><a href="#cb5-59" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> k <span class="op">=</span> N <span class="op">-</span> i <span class="op">-</span> j<span class="op">;</span></span>
-<span id="cb5-60"><a href="#cb5-60" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> triple <span class="op">=</span> [i<span class="op">,</span> j<span class="op">,</span> k]<span class="op">;</span></span>
-<span id="cb5-61"><a href="#cb5-61" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> [a<span class="op">,</span> b<span class="op">,</span> c] <span class="op">=</span> triple<span class="op">;</span></span>
-<span id="cb5-62"><a href="#cb5-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-63"><a href="#cb5-63" aria-hidden="true" tabindex="-1"></a>      <span class="kw">let</span> color<span class="op">;</span></span>
-<span id="cb5-64"><a href="#cb5-64" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> (a <span class="op">===</span> <span class="dv">0</span> <span class="op">&amp;&amp;</span> b <span class="op">===</span> <span class="dv">0</span>) color <span class="op">=</span> <span class="st">'red'</span><span class="op">;</span></span>
-<span id="cb5-65"><a href="#cb5-65" aria-hidden="true" tabindex="-1"></a>      <span class="cf">else</span> <span class="cf">if</span> (b <span class="op">===</span> <span class="dv">0</span> <span class="op">&amp;&amp;</span> c <span class="op">===</span> <span class="dv">0</span>) color <span class="op">=</span> <span class="st">'green'</span><span class="op">;</span></span>
-<span id="cb5-66"><a href="#cb5-66" aria-hidden="true" tabindex="-1"></a>      <span class="cf">else</span> <span class="cf">if</span> (c <span class="op">===</span> <span class="dv">0</span> <span class="op">&amp;&amp;</span> a <span class="op">===</span> <span class="dv">0</span>) color <span class="op">=</span> <span class="st">'blue'</span><span class="op">;</span></span>
-<span id="cb5-67"><a href="#cb5-67" aria-hidden="true" tabindex="-1"></a>      <span class="cf">else</span> <span class="cf">if</span> (a <span class="op">===</span> <span class="dv">0</span>) color <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">random</span>() <span class="op">&lt;</span> <span class="fl">0.5</span> <span class="op">?</span> <span class="st">'red'</span> <span class="op">:</span> <span class="st">'blue'</span><span class="op">;</span></span>
-<span id="cb5-68"><a href="#cb5-68" aria-hidden="true" tabindex="-1"></a>      <span class="cf">else</span> <span class="cf">if</span> (b <span class="op">===</span> <span class="dv">0</span>) color <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">random</span>() <span class="op">&lt;</span> <span class="fl">0.5</span> <span class="op">?</span> <span class="st">'red'</span> <span class="op">:</span> <span class="st">'green'</span><span class="op">;</span></span>
-<span id="cb5-69"><a href="#cb5-69" aria-hidden="true" tabindex="-1"></a>      <span class="cf">else</span> <span class="cf">if</span> (c <span class="op">===</span> <span class="dv">0</span>) color <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">random</span>() <span class="op">&lt;</span> <span class="fl">0.5</span> <span class="op">?</span> <span class="st">'blue'</span> <span class="op">:</span> <span class="st">'green'</span><span class="op">;</span></span>
-<span id="cb5-70"><a href="#cb5-70" aria-hidden="true" tabindex="-1"></a>      <span class="cf">else</span> {</span>
-<span id="cb5-71"><a href="#cb5-71" aria-hidden="true" tabindex="-1"></a>        <span class="kw">const</span> r <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">random</span>()<span class="op">;</span></span>
-<span id="cb5-72"><a href="#cb5-72" aria-hidden="true" tabindex="-1"></a>        color <span class="op">=</span> r <span class="op">&lt;</span> <span class="fl">0.33</span> <span class="op">?</span> <span class="st">'red'</span> <span class="op">:</span> (r <span class="op">&lt;</span> <span class="fl">0.66</span> <span class="op">?</span> <span class="st">'green'</span> <span class="op">:</span> <span class="st">'blue'</span>)<span class="op">;</span></span>
-<span id="cb5-73"><a href="#cb5-73" aria-hidden="true" tabindex="-1"></a>      }</span>
-<span id="cb5-74"><a href="#cb5-74" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-75"><a href="#cb5-75" aria-hidden="true" tabindex="-1"></a>      map<span class="op">.</span><span class="fu">set</span>(<span class="vs">`</span><span class="sc">${</span>a<span class="sc">}</span><span class="vs">,</span><span class="sc">${</span>b<span class="sc">}</span><span class="vs">,</span><span class="sc">${</span>c<span class="sc">}</span><span class="vs">`</span><span class="op">,</span> color)<span class="op">;</span></span>
-<span id="cb5-76"><a href="#cb5-76" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb5-77"><a href="#cb5-77" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb5-78"><a href="#cb5-78" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-79"><a href="#cb5-79" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> map<span class="op">;</span></span>
-<span id="cb5-80"><a href="#cb5-80" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb5" data-startfrom="35" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 34;"><span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>generateBarycentricCoords <span class="op">=</span> N <span class="kw">=&gt;</span> {</span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> coords <span class="op">=</span> []</span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;=</span> N<span class="op">;</span> i<span class="op">++</span>) {</span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="kw">let</span> j <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> j <span class="op">&lt;=</span> N <span class="op">-</span> i<span class="op">;</span> j<span class="op">++</span>) {</span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>      coords<span class="op">.</span><span class="fu">push</span>([i<span class="op">,</span> j<span class="op">,</span> N <span class="op">-</span> i <span class="op">-</span> j])</span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> coords</span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a>barycentricCoords <span class="op">=</span> <span class="fu">generateBarycentricCoords</span>(N)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="ojs-cell-5" data-nodetype="declaration">
+<div>
+<div id="ojs-cell-5-1" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-5-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb6" data-startfrom="84" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 83;"><span id="cb6-84"><a href="#cb6-84" aria-hidden="true" tabindex="-1"></a>morphedColoredPointsMap <span class="op">=</span> {</span>
-<span id="cb6-85"><a href="#cb6-85" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> vertexMap <span class="op">=</span> {</span>
-<span id="cb6-86"><a href="#cb6-86" aria-hidden="true" tabindex="-1"></a>    <span class="dt">red</span><span class="op">:</span> equilateral_triangle_vertices[<span class="dv">2</span>]<span class="op">,</span></span>
-<span id="cb6-87"><a href="#cb6-87" aria-hidden="true" tabindex="-1"></a>    <span class="dt">green</span><span class="op">:</span> equilateral_triangle_vertices[<span class="dv">0</span>]<span class="op">,</span></span>
-<span id="cb6-88"><a href="#cb6-88" aria-hidden="true" tabindex="-1"></a>    <span class="dt">blue</span><span class="op">:</span> equilateral_triangle_vertices[<span class="dv">1</span>]</span>
-<span id="cb6-89"><a href="#cb6-89" aria-hidden="true" tabindex="-1"></a>  }<span class="op">;</span></span>
-<span id="cb6-90"><a href="#cb6-90" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-91"><a href="#cb6-91" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> barycentric_coords <span class="op">=</span> []<span class="op">;</span></span>
-<span id="cb6-92"><a href="#cb6-92" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;=</span> N<span class="op">;</span> i<span class="op">++</span>) {</span>
-<span id="cb6-93"><a href="#cb6-93" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="kw">let</span> j <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> j <span class="op">&lt;=</span> N <span class="op">-</span> i<span class="op">;</span> j<span class="op">++</span>) {</span>
-<span id="cb6-94"><a href="#cb6-94" aria-hidden="true" tabindex="-1"></a>      barycentric_coords<span class="op">.</span><span class="fu">push</span>([i<span class="op">,</span> j<span class="op">,</span> N <span class="op">-</span> i <span class="op">-</span> j])<span class="op">;</span></span>
-<span id="cb6-95"><a href="#cb6-95" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb6-96"><a href="#cb6-96" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb6-97"><a href="#cb6-97" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-98"><a href="#cb6-98" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> morphedPoints <span class="op">=</span> []<span class="op">;</span></span>
-<span id="cb6-99"><a href="#cb6-99" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> morphedMap <span class="op">=</span> <span class="kw">new</span> <span class="bu">Map</span>()<span class="op">;</span></span>
-<span id="cb6-100"><a href="#cb6-100" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> [A<span class="op">,</span> B<span class="op">,</span> C] <span class="op">=</span> equilateral_triangle_vertices<span class="op">;</span></span>
-<span id="cb6-101"><a href="#cb6-101" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-102"><a href="#cb6-102" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (<span class="kw">const</span> triple <span class="kw">of</span> barycentric_coords) {</span>
-<span id="cb6-103"><a href="#cb6-103" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> [a<span class="op">,</span> b<span class="op">,</span> c] <span class="op">=</span> triple<span class="op">;</span></span>
-<span id="cb6-104"><a href="#cb6-104" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> x0 <span class="op">=</span> (a <span class="op">*</span> A<span class="op">.</span><span class="at">x</span> <span class="op">+</span> b <span class="op">*</span> B<span class="op">.</span><span class="at">x</span> <span class="op">+</span> c <span class="op">*</span> C<span class="op">.</span><span class="at">x</span>) <span class="op">/</span> N<span class="op">;</span></span>
-<span id="cb6-105"><a href="#cb6-105" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> y0 <span class="op">=</span> (a <span class="op">*</span> A<span class="op">.</span><span class="at">y</span> <span class="op">+</span> b <span class="op">*</span> B<span class="op">.</span><span class="at">y</span> <span class="op">+</span> c <span class="op">*</span> C<span class="op">.</span><span class="at">y</span>) <span class="op">/</span> N<span class="op">;</span></span>
-<span id="cb6-106"><a href="#cb6-106" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-107"><a href="#cb6-107" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> color <span class="op">=</span> colorMap<span class="op">.</span><span class="fu">get</span>(<span class="vs">`</span><span class="sc">${</span>a<span class="sc">}</span><span class="vs">,</span><span class="sc">${</span>b<span class="sc">}</span><span class="vs">,</span><span class="sc">${</span>c<span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></span>
-<span id="cb6-108"><a href="#cb6-108" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> vertex <span class="op">=</span> vertexMap[color]<span class="op">;</span></span>
-<span id="cb6-109"><a href="#cb6-109" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-110"><a href="#cb6-110" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> x <span class="op">=</span> t <span class="op">*</span> x0 <span class="op">+</span> (<span class="dv">1</span> <span class="op">-</span> t) <span class="op">*</span> vertex<span class="op">.</span><span class="at">x</span><span class="op">;</span></span>
-<span id="cb6-111"><a href="#cb6-111" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> y <span class="op">=</span> t <span class="op">*</span> y0 <span class="op">+</span> (<span class="dv">1</span> <span class="op">-</span> t) <span class="op">*</span> vertex<span class="op">.</span><span class="at">y</span><span class="op">;</span></span>
-<span id="cb6-112"><a href="#cb6-112" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-113"><a href="#cb6-113" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> point <span class="op">=</span> { x<span class="op">,</span> y<span class="op">,</span> color<span class="op">,</span> <span class="dt">barycentricTriple</span><span class="op">:</span> triple }<span class="op">;</span></span>
-<span id="cb6-114"><a href="#cb6-114" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-115"><a href="#cb6-115" aria-hidden="true" tabindex="-1"></a>    morphedPoints<span class="op">.</span><span class="fu">push</span>(point)<span class="op">;</span></span>
-<span id="cb6-116"><a href="#cb6-116" aria-hidden="true" tabindex="-1"></a>    morphedMap<span class="op">.</span><span class="fu">set</span>(<span class="vs">`</span><span class="sc">${</span>a<span class="sc">}</span><span class="vs">,</span><span class="sc">${</span>b<span class="sc">}</span><span class="vs">,</span><span class="sc">${</span>c<span class="sc">}</span><span class="vs">`</span><span class="op">,</span> point)<span class="op">;</span></span>
-<span id="cb6-117"><a href="#cb6-117" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb6-118"><a href="#cb6-118" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-119"><a href="#cb6-119" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> { morphedPoints<span class="op">,</span> morphedMap }<span class="op">;</span></span>
-<span id="cb6-120"><a href="#cb6-120" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb6" data-startfrom="48" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 47;"><span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a>pickRandomColor <span class="op">=</span> (<span class="op">...</span>options) <span class="kw">=&gt;</span> options[<span class="bu">Math</span><span class="op">.</span><span class="fu">floor</span>(<span class="bu">Math</span><span class="op">.</span><span class="fu">random</span>() <span class="op">*</span> options<span class="op">.</span><span class="at">length</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-6" data-nodetype="declaration">
 
@@ -590,35 +518,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb7" data-startfrom="124" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 123;"><span id="cb7-124"><a href="#cb7-124" aria-hidden="true" tabindex="-1"></a>subTriangles <span class="op">=</span> {</span>
-<span id="cb7-125"><a href="#cb7-125" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> triangles <span class="op">=</span> []<span class="op">;</span></span>
-<span id="cb7-126"><a href="#cb7-126" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-127"><a href="#cb7-127" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> N<span class="op">;</span> i<span class="op">++</span>) {</span>
-<span id="cb7-128"><a href="#cb7-128" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="kw">let</span> j <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> j <span class="op">&lt;</span> N <span class="op">-</span> i<span class="op">;</span> j<span class="op">++</span>) {</span>
-<span id="cb7-129"><a href="#cb7-129" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> coords <span class="op">=</span> [</span>
-<span id="cb7-130"><a href="#cb7-130" aria-hidden="true" tabindex="-1"></a>        [i<span class="op">,</span> j<span class="op">,</span> N <span class="op">-</span> i <span class="op">-</span> j]<span class="op">,</span></span>
-<span id="cb7-131"><a href="#cb7-131" aria-hidden="true" tabindex="-1"></a>        [i <span class="op">+</span> <span class="dv">1</span><span class="op">,</span> j<span class="op">,</span> N <span class="op">-</span> i <span class="op">-</span> j <span class="op">-</span> <span class="dv">1</span>]<span class="op">,</span></span>
-<span id="cb7-132"><a href="#cb7-132" aria-hidden="true" tabindex="-1"></a>        [i<span class="op">,</span> j <span class="op">+</span> <span class="dv">1</span><span class="op">,</span> N <span class="op">-</span> i <span class="op">-</span> j <span class="op">-</span> <span class="dv">1</span>]</span>
-<span id="cb7-133"><a href="#cb7-133" aria-hidden="true" tabindex="-1"></a>      ]<span class="op">;</span></span>
-<span id="cb7-134"><a href="#cb7-134" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> vertex_colors <span class="op">=</span> coords<span class="op">.</span><span class="fu">map</span>(c <span class="kw">=&gt;</span> morphedColoredPointsMap<span class="op">.</span><span class="at">morphedMap</span><span class="op">.</span><span class="fu">get</span>(<span class="vs">`</span><span class="sc">${</span>c[<span class="dv">0</span>]<span class="sc">}</span><span class="vs">,</span><span class="sc">${</span>c[<span class="dv">1</span>]<span class="sc">}</span><span class="vs">,</span><span class="sc">${</span>c[<span class="dv">2</span>]<span class="sc">}</span><span class="vs">`</span>)<span class="op">.</span><span class="at">color</span>)<span class="op">;</span></span>
-<span id="cb7-135"><a href="#cb7-135" aria-hidden="true" tabindex="-1"></a>      triangles<span class="op">.</span><span class="fu">push</span>({ <span class="dt">coordinates</span><span class="op">:</span> coords<span class="op">,</span> vertex_colors })<span class="op">;</span></span>
-<span id="cb7-136"><a href="#cb7-136" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb7-137"><a href="#cb7-137" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb7-138"><a href="#cb7-138" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-139"><a href="#cb7-139" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> N <span class="op">-</span> <span class="dv">1</span><span class="op">;</span> i<span class="op">++</span>) {</span>
-<span id="cb7-140"><a href="#cb7-140" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="kw">let</span> j <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> j <span class="op">&lt;</span> N <span class="op">-</span> i <span class="op">-</span> <span class="dv">1</span><span class="op">;</span> j<span class="op">++</span>) {</span>
-<span id="cb7-141"><a href="#cb7-141" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> coords <span class="op">=</span> [</span>
-<span id="cb7-142"><a href="#cb7-142" aria-hidden="true" tabindex="-1"></a>        [i <span class="op">+</span> <span class="dv">1</span><span class="op">,</span> j<span class="op">,</span> N <span class="op">-</span> i <span class="op">-</span> j <span class="op">-</span> <span class="dv">1</span>]<span class="op">,</span></span>
-<span id="cb7-143"><a href="#cb7-143" aria-hidden="true" tabindex="-1"></a>        [i <span class="op">+</span> <span class="dv">1</span><span class="op">,</span> j <span class="op">+</span> <span class="dv">1</span><span class="op">,</span> N <span class="op">-</span> i <span class="op">-</span> j <span class="op">-</span> <span class="dv">2</span>]<span class="op">,</span></span>
-<span id="cb7-144"><a href="#cb7-144" aria-hidden="true" tabindex="-1"></a>        [i<span class="op">,</span> j <span class="op">+</span> <span class="dv">1</span><span class="op">,</span> N <span class="op">-</span> i <span class="op">-</span> j <span class="op">-</span> <span class="dv">1</span>]</span>
-<span id="cb7-145"><a href="#cb7-145" aria-hidden="true" tabindex="-1"></a>      ]<span class="op">;</span></span>
-<span id="cb7-146"><a href="#cb7-146" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> vertex_colors <span class="op">=</span> coords<span class="op">.</span><span class="fu">map</span>(c <span class="kw">=&gt;</span> morphedColoredPointsMap<span class="op">.</span><span class="at">morphedMap</span><span class="op">.</span><span class="fu">get</span>(<span class="vs">`</span><span class="sc">${</span>c[<span class="dv">0</span>]<span class="sc">}</span><span class="vs">,</span><span class="sc">${</span>c[<span class="dv">1</span>]<span class="sc">}</span><span class="vs">,</span><span class="sc">${</span>c[<span class="dv">2</span>]<span class="sc">}</span><span class="vs">`</span>)<span class="op">.</span><span class="at">color</span>)<span class="op">;</span></span>
-<span id="cb7-147"><a href="#cb7-147" aria-hidden="true" tabindex="-1"></a>      triangles<span class="op">.</span><span class="fu">push</span>({ <span class="dt">coordinates</span><span class="op">:</span> coords<span class="op">,</span> vertex_colors })<span class="op">;</span></span>
-<span id="cb7-148"><a href="#cb7-148" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb7-149"><a href="#cb7-149" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb7-150"><a href="#cb7-150" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-151"><a href="#cb7-151" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> triangles<span class="op">;</span></span>
-<span id="cb7-152"><a href="#cb7-152" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb7" data-startfrom="52" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 51;"><span id="cb7-52"><a href="#cb7-52" aria-hidden="true" tabindex="-1"></a>assignColor <span class="op">=</span> (a<span class="op">,</span> b<span class="op">,</span> c) <span class="kw">=&gt;</span> {</span>
+<span id="cb7-53"><a href="#cb7-53" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (a <span class="op">===</span> <span class="dv">0</span> <span class="op">&amp;&amp;</span> b <span class="op">===</span> <span class="dv">0</span>) <span class="cf">return</span> <span class="st">'red'</span></span>
+<span id="cb7-54"><a href="#cb7-54" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (b <span class="op">===</span> <span class="dv">0</span> <span class="op">&amp;&amp;</span> c <span class="op">===</span> <span class="dv">0</span>) <span class="cf">return</span> <span class="st">'green'</span></span>
+<span id="cb7-55"><a href="#cb7-55" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (c <span class="op">===</span> <span class="dv">0</span> <span class="op">&amp;&amp;</span> a <span class="op">===</span> <span class="dv">0</span>) <span class="cf">return</span> <span class="st">'blue'</span></span>
+<span id="cb7-56"><a href="#cb7-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-57"><a href="#cb7-57" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (a <span class="op">===</span> <span class="dv">0</span>) <span class="cf">return</span> <span class="fu">pickRandomColor</span>(<span class="st">'red'</span><span class="op">,</span> <span class="st">'blue'</span>)</span>
+<span id="cb7-58"><a href="#cb7-58" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (b <span class="op">===</span> <span class="dv">0</span>) <span class="cf">return</span> <span class="fu">pickRandomColor</span>(<span class="st">'red'</span><span class="op">,</span> <span class="st">'green'</span>)</span>
+<span id="cb7-59"><a href="#cb7-59" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (c <span class="op">===</span> <span class="dv">0</span>) <span class="cf">return</span> <span class="fu">pickRandomColor</span>(<span class="st">'blue'</span><span class="op">,</span> <span class="st">'green'</span>)</span>
+<span id="cb7-60"><a href="#cb7-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-61"><a href="#cb7-61" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="fu">pickRandomColor</span>(<span class="st">'red'</span><span class="op">,</span> <span class="st">'green'</span><span class="op">,</span> <span class="st">'blue'</span>)</span>
+<span id="cb7-62"><a href="#cb7-62" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-7" data-nodetype="declaration">
 
@@ -626,104 +536,242 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb8" data-startfrom="156" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 155;"><span id="cb8-156"><a href="#cb8-156" aria-hidden="true" tabindex="-1"></a>getFillColorRGB <span class="op">=</span> (vertexColorsOrdered) <span class="kw">=&gt;</span> {</span>
-<span id="cb8-157"><a href="#cb8-157" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Map full color names to single-letter codes</span></span>
-<span id="cb8-158"><a href="#cb8-158" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> colorMap <span class="op">=</span> {</span>
-<span id="cb8-159"><a href="#cb8-159" aria-hidden="true" tabindex="-1"></a>    <span class="dt">red</span><span class="op">:</span> <span class="st">'R'</span><span class="op">,</span></span>
-<span id="cb8-160"><a href="#cb8-160" aria-hidden="true" tabindex="-1"></a>    <span class="dt">green</span><span class="op">:</span> <span class="st">'G'</span><span class="op">,</span></span>
-<span id="cb8-161"><a href="#cb8-161" aria-hidden="true" tabindex="-1"></a>    <span class="dt">blue</span><span class="op">:</span> <span class="st">'B'</span></span>
-<span id="cb8-162"><a href="#cb8-162" aria-hidden="true" tabindex="-1"></a>  }<span class="op">;</span></span>
-<span id="cb8-163"><a href="#cb8-163" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-164"><a href="#cb8-164" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Convert full names to letters</span></span>
-<span id="cb8-165"><a href="#cb8-165" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> orientation <span class="op">=</span> vertexColorsOrdered<span class="op">.</span><span class="fu">map</span>(c <span class="kw">=&gt;</span> colorMap[c<span class="op">.</span><span class="fu">toLowerCase</span>()] <span class="op">||</span> <span class="st">''</span>)<span class="op">.</span><span class="fu">join</span>(<span class="st">''</span>)<span class="op">.</span><span class="fu">toUpperCase</span>()<span class="op">;</span></span>
-<span id="cb8-166"><a href="#cb8-166" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-167"><a href="#cb8-167" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> group1 <span class="op">=</span> <span class="kw">new</span> <span class="bu">Set</span>([<span class="st">'RGB'</span><span class="op">,</span> <span class="st">'GBR'</span><span class="op">,</span> <span class="st">'BRG'</span>])<span class="op">;</span></span>
-<span id="cb8-168"><a href="#cb8-168" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> group2 <span class="op">=</span> <span class="kw">new</span> <span class="bu">Set</span>([<span class="st">'RBG'</span><span class="op">,</span> <span class="st">'BGR'</span><span class="op">,</span> <span class="st">'GRB'</span>])<span class="op">;</span></span>
-<span id="cb8-169"><a href="#cb8-169" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-170"><a href="#cb8-170" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (group1<span class="op">.</span><span class="fu">has</span>(orientation)) {</span>
-<span id="cb8-171"><a href="#cb8-171" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="st">'rgba(255, 255, 0, 0.4)'</span><span class="op">;</span>  <span class="co">// semi-transparent yellow</span></span>
-<span id="cb8-172"><a href="#cb8-172" aria-hidden="true" tabindex="-1"></a>  } </span>
-<span id="cb8-173"><a href="#cb8-173" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span> <span class="cf">if</span> (group2<span class="op">.</span><span class="fu">has</span>(orientation)) {</span>
-<span id="cb8-174"><a href="#cb8-174" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="st">'rgba(255, 0, 255, 0.4)'</span><span class="op">;</span>  <span class="co">// semi-transparent teal</span></span>
-<span id="cb8-175"><a href="#cb8-175" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb8-176"><a href="#cb8-176" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-177"><a href="#cb8-177" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="st">'none'</span><span class="op">;</span></span>
-<span id="cb8-178"><a href="#cb8-178" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb8" data-startfrom="67" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 66;"><span id="cb8-67"><a href="#cb8-67" aria-hidden="true" tabindex="-1"></a>buildColorMap <span class="op">=</span> N <span class="kw">=&gt;</span> {</span>
+<span id="cb8-68"><a href="#cb8-68" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> map <span class="op">=</span> <span class="kw">new</span> <span class="bu">Map</span>()</span>
+<span id="cb8-69"><a href="#cb8-69" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> baryCoords <span class="op">=</span> <span class="fu">generateBarycentricCoords</span>(N)</span>
+<span id="cb8-70"><a href="#cb8-70" aria-hidden="true" tabindex="-1"></a>  baryCoords<span class="op">.</span><span class="fu">forEach</span>(([a<span class="op">,</span> b<span class="op">,</span> c]) <span class="kw">=&gt;</span> {</span>
+<span id="cb8-71"><a href="#cb8-71" aria-hidden="true" tabindex="-1"></a>    map<span class="op">.</span><span class="fu">set</span>(<span class="vs">`</span><span class="sc">${</span>a<span class="sc">}</span><span class="vs">,</span><span class="sc">${</span>b<span class="sc">}</span><span class="vs">,</span><span class="sc">${</span>c<span class="sc">}</span><span class="vs">`</span><span class="op">,</span> <span class="fu">assignColor</span>(a<span class="op">,</span> b<span class="op">,</span> c))</span>
+<span id="cb8-72"><a href="#cb8-72" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb8-73"><a href="#cb8-73" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> map</span>
+<span id="cb8-74"><a href="#cb8-74" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-75"><a href="#cb8-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-76"><a href="#cb8-76" aria-hidden="true" tabindex="-1"></a>colorMap <span class="op">=</span> <span class="fu">buildColorMap</span>(N)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="ojs-cell-8" data-nodetype="declaration">
+<div>
+<div id="ojs-cell-8-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-8-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb9" data-startfrom="81" data-source-offset="-52"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 80;"><span id="cb9-81"><a href="#cb9-81" aria-hidden="true" tabindex="-1"></a>sinusoidalEase <span class="op">=</span> t <span class="kw">=&gt;</span> (<span class="dv">1</span> <span class="op">-</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">cos</span>(<span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span> <span class="op">*</span> t)) <span class="op">/</span> <span class="dv">2</span><span class="op">;</span></span>
+<span id="cb9-82"><a href="#cb9-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-83"><a href="#cb9-83" aria-hidden="true" tabindex="-1"></a>smoothstepEase <span class="op">=</span> t <span class="kw">=&gt;</span> (<span class="dv">3</span> <span class="op">*</span> t <span class="op">*</span> t <span class="op">-</span> <span class="dv">2</span> <span class="op">*</span> t <span class="op">*</span> t <span class="op">*</span> t)<span class="op">;</span></span>
+<span id="cb9-84"><a href="#cb9-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-85"><a href="#cb9-85" aria-hidden="true" tabindex="-1"></a>smootherstepEase <span class="op">=</span> t <span class="kw">=&gt;</span> (<span class="dv">6</span> <span class="op">*</span> t<span class="op">**</span><span class="dv">5</span> <span class="op">-</span> <span class="dv">15</span> <span class="op">*</span> t<span class="op">**</span><span class="dv">4</span> <span class="op">+</span> <span class="dv">10</span> <span class="op">*</span> t<span class="op">**</span><span class="dv">3</span>)<span class="op">;</span></span>
+<span id="cb9-86"><a href="#cb9-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-87"><a href="#cb9-87" aria-hidden="true" tabindex="-1"></a><span class="co">// In your interpolatePoints method</span></span>
+<span id="cb9-88"><a href="#cb9-88" aria-hidden="true" tabindex="-1"></a>interpolatePoints <span class="op">=</span> (t<span class="op">,</span> baryCoords<span class="op">,</span> vertices<span class="op">,</span> colorMap) <span class="kw">=&gt;</span> {</span>
+<span id="cb9-89"><a href="#cb9-89" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> vertexMap <span class="op">=</span> {</span>
+<span id="cb9-90"><a href="#cb9-90" aria-hidden="true" tabindex="-1"></a>    <span class="dt">red</span><span class="op">:</span> vertices[<span class="dv">2</span>]<span class="op">,</span></span>
+<span id="cb9-91"><a href="#cb9-91" aria-hidden="true" tabindex="-1"></a>    <span class="dt">green</span><span class="op">:</span> vertices[<span class="dv">0</span>]<span class="op">,</span></span>
+<span id="cb9-92"><a href="#cb9-92" aria-hidden="true" tabindex="-1"></a>    <span class="dt">blue</span><span class="op">:</span> vertices[<span class="dv">1</span>]<span class="op">,</span></span>
+<span id="cb9-93"><a href="#cb9-93" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb9-94"><a href="#cb9-94" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> [A<span class="op">,</span> B<span class="op">,</span> C] <span class="op">=</span> vertices</span>
+<span id="cb9-95"><a href="#cb9-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-96"><a href="#cb9-96" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> s <span class="op">=</span> <span class="fu">smootherstepEase</span>(t)<span class="op">;</span></span>
+<span id="cb9-97"><a href="#cb9-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-98"><a href="#cb9-98" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> morphedPoints <span class="op">=</span> baryCoords<span class="op">.</span><span class="fu">map</span>(([a<span class="op">,</span> b<span class="op">,</span> c]) <span class="kw">=&gt;</span> {</span>
+<span id="cb9-99"><a href="#cb9-99" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> sum <span class="op">=</span> a <span class="op">+</span> b <span class="op">+</span> c<span class="op">;</span></span>
+<span id="cb9-100"><a href="#cb9-100" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> x0 <span class="op">=</span> (a <span class="op">*</span> A<span class="op">.</span><span class="at">x</span> <span class="op">+</span> b <span class="op">*</span> B<span class="op">.</span><span class="at">x</span> <span class="op">+</span> c <span class="op">*</span> C<span class="op">.</span><span class="at">x</span>) <span class="op">/</span> sum<span class="op">;</span></span>
+<span id="cb9-101"><a href="#cb9-101" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> y0 <span class="op">=</span> (a <span class="op">*</span> A<span class="op">.</span><span class="at">y</span> <span class="op">+</span> b <span class="op">*</span> B<span class="op">.</span><span class="at">y</span> <span class="op">+</span> c <span class="op">*</span> C<span class="op">.</span><span class="at">y</span>) <span class="op">/</span> sum<span class="op">;</span></span>
+<span id="cb9-102"><a href="#cb9-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-103"><a href="#cb9-103" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> color <span class="op">=</span> colorMap<span class="op">.</span><span class="fu">get</span>(<span class="vs">`</span><span class="sc">${</span>a<span class="sc">}</span><span class="vs">,</span><span class="sc">${</span>b<span class="sc">}</span><span class="vs">,</span><span class="sc">${</span>c<span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></span>
+<span id="cb9-104"><a href="#cb9-104" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> vertex <span class="op">=</span> vertexMap[color]<span class="op">;</span></span>
+<span id="cb9-105"><a href="#cb9-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-106"><a href="#cb9-106" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {</span>
+<span id="cb9-107"><a href="#cb9-107" aria-hidden="true" tabindex="-1"></a>      <span class="dt">x</span><span class="op">:</span> (<span class="dv">1</span> <span class="op">-</span> s) <span class="op">*</span> x0 <span class="op">+</span> s <span class="op">*</span> vertex<span class="op">.</span><span class="at">x</span><span class="op">,</span></span>
+<span id="cb9-108"><a href="#cb9-108" aria-hidden="true" tabindex="-1"></a>      <span class="dt">y</span><span class="op">:</span> (<span class="dv">1</span> <span class="op">-</span> s) <span class="op">*</span> y0 <span class="op">+</span> s <span class="op">*</span> vertex<span class="op">.</span><span class="at">y</span><span class="op">,</span></span>
+<span id="cb9-109"><a href="#cb9-109" aria-hidden="true" tabindex="-1"></a>      color<span class="op">,</span></span>
+<span id="cb9-110"><a href="#cb9-110" aria-hidden="true" tabindex="-1"></a>      <span class="dt">barycentricTriple</span><span class="op">:</span> [a<span class="op">,</span> b<span class="op">,</span> c]</span>
+<span id="cb9-111"><a href="#cb9-111" aria-hidden="true" tabindex="-1"></a>    }<span class="op">;</span></span>
+<span id="cb9-112"><a href="#cb9-112" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span>
+<span id="cb9-113"><a href="#cb9-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-114"><a href="#cb9-114" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> morphedMap <span class="op">=</span> <span class="kw">new</span> <span class="bu">Map</span>(morphedPoints<span class="op">.</span><span class="fu">map</span>(p <span class="kw">=&gt;</span> [</span>
+<span id="cb9-115"><a href="#cb9-115" aria-hidden="true" tabindex="-1"></a>    p<span class="op">.</span><span class="at">barycentricTriple</span><span class="op">.</span><span class="fu">join</span>(<span class="st">','</span>)<span class="op">,</span> p</span>
+<span id="cb9-116"><a href="#cb9-116" aria-hidden="true" tabindex="-1"></a>  ]))<span class="op">;</span></span>
+<span id="cb9-117"><a href="#cb9-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-118"><a href="#cb9-118" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> { morphedPoints<span class="op">,</span> morphedMap }<span class="op">;</span></span>
+<span id="cb9-119"><a href="#cb9-119" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb9-120"><a href="#cb9-120" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-121"><a href="#cb9-121" aria-hidden="true" tabindex="-1"></a>morphedColoredPointsMap <span class="op">=</span> <span class="fu">interpolatePoints</span>(t<span class="op">,</span> barycentricCoords<span class="op">,</span> equilateralTriangleVertices<span class="op">,</span> colorMap)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-9-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-9-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-9-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-9-4" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-9-5" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb10" data-startfrom="124" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 123;"><span id="cb10-124"><a href="#cb10-124" aria-hidden="true" tabindex="-1"></a>generateSubTriangles <span class="op">=</span> (N<span class="op">,</span> morphedMap) <span class="kw">=&gt;</span> {</span>
+<span id="cb10-125"><a href="#cb10-125" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> triangles <span class="op">=</span> []</span>
+<span id="cb10-126"><a href="#cb10-126" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-127"><a href="#cb10-127" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> N<span class="op">;</span> i<span class="op">++</span>) {</span>
+<span id="cb10-128"><a href="#cb10-128" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="kw">let</span> j <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> j <span class="op">&lt;</span> N <span class="op">-</span> i<span class="op">;</span> j<span class="op">++</span>) {</span>
+<span id="cb10-129"><a href="#cb10-129" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> coords1 <span class="op">=</span> [</span>
+<span id="cb10-130"><a href="#cb10-130" aria-hidden="true" tabindex="-1"></a>        [i<span class="op">,</span> j<span class="op">,</span> N <span class="op">-</span> i <span class="op">-</span> j]<span class="op">,</span></span>
+<span id="cb10-131"><a href="#cb10-131" aria-hidden="true" tabindex="-1"></a>        [i <span class="op">+</span> <span class="dv">1</span><span class="op">,</span> j<span class="op">,</span> N <span class="op">-</span> i <span class="op">-</span> j <span class="op">-</span> <span class="dv">1</span>]<span class="op">,</span></span>
+<span id="cb10-132"><a href="#cb10-132" aria-hidden="true" tabindex="-1"></a>        [i<span class="op">,</span> j <span class="op">+</span> <span class="dv">1</span><span class="op">,</span> N <span class="op">-</span> i <span class="op">-</span> j <span class="op">-</span> <span class="dv">1</span>]</span>
+<span id="cb10-133"><a href="#cb10-133" aria-hidden="true" tabindex="-1"></a>      ]</span>
+<span id="cb10-134"><a href="#cb10-134" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> vertex_colors1 <span class="op">=</span> coords1<span class="op">.</span><span class="fu">map</span>(c <span class="kw">=&gt;</span> morphedMap<span class="op">.</span><span class="fu">get</span>(c<span class="op">.</span><span class="fu">join</span>(<span class="st">','</span>))<span class="op">.</span><span class="at">color</span>)</span>
+<span id="cb10-135"><a href="#cb10-135" aria-hidden="true" tabindex="-1"></a>      triangles<span class="op">.</span><span class="fu">push</span>({ <span class="dt">coordinates</span><span class="op">:</span> coords1<span class="op">,</span> <span class="dt">vertex_colors</span><span class="op">:</span> vertex_colors1 })</span>
+<span id="cb10-136"><a href="#cb10-136" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb10-137"><a href="#cb10-137" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb10-138"><a href="#cb10-138" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-139"><a href="#cb10-139" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> N <span class="op">-</span> <span class="dv">1</span><span class="op">;</span> i<span class="op">++</span>) {</span>
+<span id="cb10-140"><a href="#cb10-140" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="kw">let</span> j <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> j <span class="op">&lt;</span> N <span class="op">-</span> i <span class="op">-</span> <span class="dv">1</span><span class="op">;</span> j<span class="op">++</span>) {</span>
+<span id="cb10-141"><a href="#cb10-141" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> coords2 <span class="op">=</span> [</span>
+<span id="cb10-142"><a href="#cb10-142" aria-hidden="true" tabindex="-1"></a>        [i <span class="op">+</span> <span class="dv">1</span><span class="op">,</span> j<span class="op">,</span> N <span class="op">-</span> i <span class="op">-</span> j <span class="op">-</span> <span class="dv">1</span>]<span class="op">,</span></span>
+<span id="cb10-143"><a href="#cb10-143" aria-hidden="true" tabindex="-1"></a>        [i <span class="op">+</span> <span class="dv">1</span><span class="op">,</span> j <span class="op">+</span> <span class="dv">1</span><span class="op">,</span> N <span class="op">-</span> i <span class="op">-</span> j <span class="op">-</span> <span class="dv">2</span>]<span class="op">,</span></span>
+<span id="cb10-144"><a href="#cb10-144" aria-hidden="true" tabindex="-1"></a>        [i<span class="op">,</span> j <span class="op">+</span> <span class="dv">1</span><span class="op">,</span> N <span class="op">-</span> i <span class="op">-</span> j <span class="op">-</span> <span class="dv">1</span>]</span>
+<span id="cb10-145"><a href="#cb10-145" aria-hidden="true" tabindex="-1"></a>      ]</span>
+<span id="cb10-146"><a href="#cb10-146" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> vertex_colors2 <span class="op">=</span> coords2<span class="op">.</span><span class="fu">map</span>(c <span class="kw">=&gt;</span> morphedMap<span class="op">.</span><span class="fu">get</span>(c<span class="op">.</span><span class="fu">join</span>(<span class="st">','</span>))<span class="op">.</span><span class="at">color</span>)</span>
+<span id="cb10-147"><a href="#cb10-147" aria-hidden="true" tabindex="-1"></a>      triangles<span class="op">.</span><span class="fu">push</span>({ <span class="dt">coordinates</span><span class="op">:</span> coords2<span class="op">,</span> <span class="dt">vertex_colors</span><span class="op">:</span> vertex_colors2 })</span>
+<span id="cb10-148"><a href="#cb10-148" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb10-149"><a href="#cb10-149" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb10-150"><a href="#cb10-150" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-151"><a href="#cb10-151" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> triangles</span>
+<span id="cb10-152"><a href="#cb10-152" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-10" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb9" data-startfrom="182" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 181;"><span id="cb9-182"><a href="#cb9-182" aria-hidden="true" tabindex="-1"></a>viewof plotRGB <span class="op">=</span> Plot<span class="op">.</span><span class="fu">plot</span>({</span>
-<span id="cb9-183"><a href="#cb9-183" aria-hidden="true" tabindex="-1"></a>  <span class="dt">width</span><span class="op">:</span> <span class="dv">800</span><span class="op">,</span></span>
-<span id="cb9-184"><a href="#cb9-184" aria-hidden="true" tabindex="-1"></a>  <span class="dt">height</span><span class="op">:</span> <span class="dv">800</span><span class="op">,</span></span>
-<span id="cb9-185"><a href="#cb9-185" aria-hidden="true" tabindex="-1"></a>  <span class="dt">x</span><span class="op">:</span> {</span>
-<span id="cb9-186"><a href="#cb9-186" aria-hidden="true" tabindex="-1"></a>    <span class="dt">label</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span></span>
-<span id="cb9-187"><a href="#cb9-187" aria-hidden="true" tabindex="-1"></a>    <span class="dt">domain</span><span class="op">:</span> [<span class="dv">0</span><span class="op">,</span> <span class="dv">1</span>]</span>
-<span id="cb9-188"><a href="#cb9-188" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
-<span id="cb9-189"><a href="#cb9-189" aria-hidden="true" tabindex="-1"></a>  <span class="dt">y</span><span class="op">:</span> {</span>
-<span id="cb9-190"><a href="#cb9-190" aria-hidden="true" tabindex="-1"></a>    <span class="dt">label</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span></span>
-<span id="cb9-191"><a href="#cb9-191" aria-hidden="true" tabindex="-1"></a>    <span class="dt">domain</span><span class="op">:</span> [<span class="dv">0</span><span class="op">,</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(<span class="dv">3</span>) <span class="op">/</span> <span class="dv">2</span>]</span>
-<span id="cb9-192"><a href="#cb9-192" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
-<span id="cb9-193"><a href="#cb9-193" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marks</span><span class="op">:</span> [</span>
-<span id="cb9-194"><a href="#cb9-194" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">line</span>([<span class="op">...</span>equilateral_triangle_vertices<span class="op">,</span> equilateral_triangle_vertices[<span class="dv">0</span>]]<span class="op">,</span> {</span>
-<span id="cb9-195"><a href="#cb9-195" aria-hidden="true" tabindex="-1"></a>      <span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span></span>
-<span id="cb9-196"><a href="#cb9-196" aria-hidden="true" tabindex="-1"></a>      <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span></span>
-<span id="cb9-197"><a href="#cb9-197" aria-hidden="true" tabindex="-1"></a>      <span class="dt">stroke</span><span class="op">:</span> <span class="st">"black"</span><span class="op">,</span></span>
-<span id="cb9-198"><a href="#cb9-198" aria-hidden="true" tabindex="-1"></a>      <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">1</span></span>
-<span id="cb9-199"><a href="#cb9-199" aria-hidden="true" tabindex="-1"></a>    })<span class="op">,</span></span>
-<span id="cb9-200"><a href="#cb9-200" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-201"><a href="#cb9-201" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">geo</span>(</span>
-<span id="cb9-202"><a href="#cb9-202" aria-hidden="true" tabindex="-1"></a>      {</span>
-<span id="cb9-203"><a href="#cb9-203" aria-hidden="true" tabindex="-1"></a>        <span class="dt">type</span><span class="op">:</span> <span class="st">"FeatureCollection"</span><span class="op">,</span></span>
-<span id="cb9-204"><a href="#cb9-204" aria-hidden="true" tabindex="-1"></a>        <span class="dt">features</span><span class="op">:</span> subTriangles<span class="op">.</span><span class="fu">map</span>(triangle <span class="kw">=&gt;</span> {</span>
-<span id="cb9-205"><a href="#cb9-205" aria-hidden="true" tabindex="-1"></a>          <span class="kw">let</span> coords <span class="op">=</span> triangle<span class="op">.</span><span class="at">coordinates</span><span class="op">.</span><span class="fu">map</span>(coord <span class="kw">=&gt;</span> {</span>
-<span id="cb9-206"><a href="#cb9-206" aria-hidden="true" tabindex="-1"></a>            <span class="kw">const</span> point <span class="op">=</span> morphedColoredPointsMap<span class="op">.</span><span class="at">morphedMap</span><span class="op">.</span><span class="fu">get</span>(<span class="vs">`</span><span class="sc">${</span>coord[<span class="dv">0</span>]<span class="sc">}</span><span class="vs">,</span><span class="sc">${</span>coord[<span class="dv">1</span>]<span class="sc">}</span><span class="vs">,</span><span class="sc">${</span>coord[<span class="dv">2</span>]<span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></span>
-<span id="cb9-207"><a href="#cb9-207" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> point <span class="op">?</span> { <span class="dt">x</span><span class="op">:</span> point<span class="op">.</span><span class="at">x</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> point<span class="op">.</span><span class="at">y</span> } <span class="op">:</span> { <span class="dt">x</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="dv">0</span> }<span class="op">;</span> <span class="co">// fallback for safety</span></span>
-<span id="cb9-208"><a href="#cb9-208" aria-hidden="true" tabindex="-1"></a>          })<span class="op">;</span></span>
-<span id="cb9-209"><a href="#cb9-209" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-210"><a href="#cb9-210" aria-hidden="true" tabindex="-1"></a>          <span class="cf">return</span> {</span>
-<span id="cb9-211"><a href="#cb9-211" aria-hidden="true" tabindex="-1"></a>            <span class="dt">type</span><span class="op">:</span> <span class="st">"Feature"</span><span class="op">,</span></span>
-<span id="cb9-212"><a href="#cb9-212" aria-hidden="true" tabindex="-1"></a>            <span class="dt">geometry</span><span class="op">:</span> {</span>
-<span id="cb9-213"><a href="#cb9-213" aria-hidden="true" tabindex="-1"></a>              <span class="dt">type</span><span class="op">:</span> <span class="st">"Polygon"</span><span class="op">,</span></span>
-<span id="cb9-214"><a href="#cb9-214" aria-hidden="true" tabindex="-1"></a>              <span class="dt">coordinates</span><span class="op">:</span> [[</span>
-<span id="cb9-215"><a href="#cb9-215" aria-hidden="true" tabindex="-1"></a>                [coords[<span class="dv">0</span>]<span class="op">.</span><span class="at">x</span><span class="op">,</span> coords[<span class="dv">0</span>]<span class="op">.</span><span class="at">y</span>]<span class="op">,</span></span>
-<span id="cb9-216"><a href="#cb9-216" aria-hidden="true" tabindex="-1"></a>                [coords[<span class="dv">1</span>]<span class="op">.</span><span class="at">x</span><span class="op">,</span> coords[<span class="dv">1</span>]<span class="op">.</span><span class="at">y</span>]<span class="op">,</span></span>
-<span id="cb9-217"><a href="#cb9-217" aria-hidden="true" tabindex="-1"></a>                [coords[<span class="dv">2</span>]<span class="op">.</span><span class="at">x</span><span class="op">,</span> coords[<span class="dv">2</span>]<span class="op">.</span><span class="at">y</span>]<span class="op">,</span></span>
-<span id="cb9-218"><a href="#cb9-218" aria-hidden="true" tabindex="-1"></a>                [coords[<span class="dv">0</span>]<span class="op">.</span><span class="at">x</span><span class="op">,</span> coords[<span class="dv">0</span>]<span class="op">.</span><span class="at">y</span>]</span>
-<span id="cb9-219"><a href="#cb9-219" aria-hidden="true" tabindex="-1"></a>              ]]</span>
-<span id="cb9-220"><a href="#cb9-220" aria-hidden="true" tabindex="-1"></a>            }<span class="op">,</span></span>
-<span id="cb9-221"><a href="#cb9-221" aria-hidden="true" tabindex="-1"></a>            <span class="dt">properties</span><span class="op">:</span> {</span>
-<span id="cb9-222"><a href="#cb9-222" aria-hidden="true" tabindex="-1"></a>              <span class="dt">fillColor</span><span class="op">:</span> <span class="fu">getFillColorRGB</span>(triangle<span class="op">.</span><span class="at">vertex_colors</span>)<span class="op">,</span>  <span class="co">// now an array</span></span>
-<span id="cb9-223"><a href="#cb9-223" aria-hidden="true" tabindex="-1"></a>              <span class="dt">coords</span><span class="op">:</span> coords<span class="op">,</span></span>
-<span id="cb9-224"><a href="#cb9-224" aria-hidden="true" tabindex="-1"></a>              <span class="dt">vertexColors</span><span class="op">:</span> triangle<span class="op">.</span><span class="at">vertex_colors</span>  <span class="co">// already an array, no conversion needed</span></span>
-<span id="cb9-225"><a href="#cb9-225" aria-hidden="true" tabindex="-1"></a>            }<span class="op">,</span></span>
-<span id="cb9-226"><a href="#cb9-226" aria-hidden="true" tabindex="-1"></a>          }<span class="op">;</span></span>
-<span id="cb9-227"><a href="#cb9-227" aria-hidden="true" tabindex="-1"></a>        })</span>
-<span id="cb9-228"><a href="#cb9-228" aria-hidden="true" tabindex="-1"></a>      }<span class="op">,</span></span>
-<span id="cb9-229"><a href="#cb9-229" aria-hidden="true" tabindex="-1"></a>      {</span>
-<span id="cb9-230"><a href="#cb9-230" aria-hidden="true" tabindex="-1"></a>        <span class="dt">fill</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">properties</span><span class="op">.</span><span class="at">fillColor</span><span class="op">,</span></span>
-<span id="cb9-231"><a href="#cb9-231" aria-hidden="true" tabindex="-1"></a>        <span class="dt">stroke</span><span class="op">:</span> <span class="st">"black"</span><span class="op">,</span></span>
-<span id="cb9-232"><a href="#cb9-232" aria-hidden="true" tabindex="-1"></a>        <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">1</span></span>
-<span id="cb9-233"><a href="#cb9-233" aria-hidden="true" tabindex="-1"></a>      }</span>
-<span id="cb9-234"><a href="#cb9-234" aria-hidden="true" tabindex="-1"></a>    )<span class="op">,</span></span>
-<span id="cb9-235"><a href="#cb9-235" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-236"><a href="#cb9-236" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Plot morphed colored points</span></span>
-<span id="cb9-237"><a href="#cb9-237" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">dot</span>(</span>
-<span id="cb9-238"><a href="#cb9-238" aria-hidden="true" tabindex="-1"></a>      morphedColoredPointsMap<span class="op">.</span><span class="at">morphedPoints</span><span class="op">,</span></span>
-<span id="cb9-239"><a href="#cb9-239" aria-hidden="true" tabindex="-1"></a>      {</span>
-<span id="cb9-240"><a href="#cb9-240" aria-hidden="true" tabindex="-1"></a>        <span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span></span>
-<span id="cb9-241"><a href="#cb9-241" aria-hidden="true" tabindex="-1"></a>        <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span></span>
-<span id="cb9-242"><a href="#cb9-242" aria-hidden="true" tabindex="-1"></a>        <span class="dt">fill</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">color</span><span class="op">,</span></span>
-<span id="cb9-243"><a href="#cb9-243" aria-hidden="true" tabindex="-1"></a>        <span class="dt">r</span><span class="op">:</span> <span class="dv">5</span> <span class="op">*</span> (<span class="dv">5</span> <span class="op">/</span> N)</span>
-<span id="cb9-244"><a href="#cb9-244" aria-hidden="true" tabindex="-1"></a>      }</span>
-<span id="cb9-245"><a href="#cb9-245" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb9-246"><a href="#cb9-246" aria-hidden="true" tabindex="-1"></a>  ]</span>
-<span id="cb9-247"><a href="#cb9-247" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb11" data-startfrom="156" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 155;"><span id="cb11-156"><a href="#cb11-156" aria-hidden="true" tabindex="-1"></a>subTriangles <span class="op">=</span> <span class="fu">generateSubTriangles</span>(N<span class="op">,</span> morphedColoredPointsMap<span class="op">.</span><span class="at">morphedMap</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="ojs-cell-9" data-nodetype="declaration">
+<div id="ojs-cell-11" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb12" data-startfrom="160" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 159;"><span id="cb12-160"><a href="#cb12-160" aria-hidden="true" tabindex="-1"></a>fillColorGroups <span class="op">=</span> {</span>
+<span id="cb12-161"><a href="#cb12-161" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> group1 <span class="op">=</span> <span class="kw">new</span> <span class="bu">Set</span>([<span class="st">'RGB'</span><span class="op">,</span> <span class="st">'GBR'</span><span class="op">,</span> <span class="st">'BRG'</span>])</span>
+<span id="cb12-162"><a href="#cb12-162" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> group2 <span class="op">=</span> <span class="kw">new</span> <span class="bu">Set</span>([<span class="st">'RBG'</span><span class="op">,</span> <span class="st">'BGR'</span><span class="op">,</span> <span class="st">'GRB'</span>])</span>
+<span id="cb12-163"><a href="#cb12-163" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> { group1<span class="op">,</span> group2 }</span>
+<span id="cb12-164"><a href="#cb12-164" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-12" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb13" data-startfrom="168" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 167;"><span id="cb13-168"><a href="#cb13-168" aria-hidden="true" tabindex="-1"></a>getFillColorRGB <span class="op">=</span> vertexColors <span class="kw">=&gt;</span> {</span>
+<span id="cb13-169"><a href="#cb13-169" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> map <span class="op">=</span> { <span class="dt">red</span><span class="op">:</span> <span class="st">'R'</span><span class="op">,</span> <span class="dt">green</span><span class="op">:</span> <span class="st">'G'</span><span class="op">,</span> <span class="dt">blue</span><span class="op">:</span> <span class="st">'B'</span> }</span>
+<span id="cb13-170"><a href="#cb13-170" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> orientation <span class="op">=</span> vertexColors<span class="op">.</span><span class="fu">map</span>(c <span class="kw">=&gt;</span> map[c<span class="op">.</span><span class="fu">toLowerCase</span>()] <span class="op">||</span> <span class="st">''</span>)<span class="op">.</span><span class="fu">join</span>(<span class="st">''</span>)<span class="op">.</span><span class="fu">toUpperCase</span>()</span>
+<span id="cb13-171"><a href="#cb13-171" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-172"><a href="#cb13-172" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (fillColorGroups<span class="op">.</span><span class="at">group1</span><span class="op">.</span><span class="fu">has</span>(orientation)) <span class="cf">return</span> <span class="st">'rgba(255, 145, 0, 0.25)'</span></span>
+<span id="cb13-173"><a href="#cb13-173" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (fillColorGroups<span class="op">.</span><span class="at">group2</span><span class="op">.</span><span class="fu">has</span>(orientation)) <span class="cf">return</span> <span class="st">'rgba(0, 128, 128, 0.25)'</span></span>
+<span id="cb13-174"><a href="#cb13-174" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="st">'none'</span></span>
+<span id="cb13-175"><a href="#cb13-175" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-13" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb14" data-startfrom="179" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 178;"><span id="cb14-179"><a href="#cb14-179" aria-hidden="true" tabindex="-1"></a>createFeature <span class="op">=</span> (triangle<span class="op">,</span> morphedMap) <span class="kw">=&gt;</span> {</span>
+<span id="cb14-180"><a href="#cb14-180" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> coords <span class="op">=</span> triangle<span class="op">.</span><span class="at">coordinates</span><span class="op">.</span><span class="fu">map</span>(c <span class="kw">=&gt;</span> {</span>
+<span id="cb14-181"><a href="#cb14-181" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> p <span class="op">=</span> morphedMap<span class="op">.</span><span class="fu">get</span>(c<span class="op">.</span><span class="fu">join</span>(<span class="st">','</span>)) <span class="op">||</span> { <span class="dt">x</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="dv">0</span> }</span>
+<span id="cb14-182"><a href="#cb14-182" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> { <span class="dt">x</span><span class="op">:</span> p<span class="op">.</span><span class="at">x</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> p<span class="op">.</span><span class="at">y</span> }</span>
+<span id="cb14-183"><a href="#cb14-183" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb14-184"><a href="#cb14-184" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-185"><a href="#cb14-185" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> {</span>
+<span id="cb14-186"><a href="#cb14-186" aria-hidden="true" tabindex="-1"></a>    <span class="dt">type</span><span class="op">:</span> <span class="st">"Feature"</span><span class="op">,</span></span>
+<span id="cb14-187"><a href="#cb14-187" aria-hidden="true" tabindex="-1"></a>    <span class="dt">geometry</span><span class="op">:</span> {</span>
+<span id="cb14-188"><a href="#cb14-188" aria-hidden="true" tabindex="-1"></a>      <span class="dt">type</span><span class="op">:</span> <span class="st">"Polygon"</span><span class="op">,</span></span>
+<span id="cb14-189"><a href="#cb14-189" aria-hidden="true" tabindex="-1"></a>      <span class="dt">coordinates</span><span class="op">:</span> [[</span>
+<span id="cb14-190"><a href="#cb14-190" aria-hidden="true" tabindex="-1"></a>        [coords[<span class="dv">0</span>]<span class="op">.</span><span class="at">x</span><span class="op">,</span> coords[<span class="dv">0</span>]<span class="op">.</span><span class="at">y</span>]<span class="op">,</span></span>
+<span id="cb14-191"><a href="#cb14-191" aria-hidden="true" tabindex="-1"></a>        [coords[<span class="dv">1</span>]<span class="op">.</span><span class="at">x</span><span class="op">,</span> coords[<span class="dv">1</span>]<span class="op">.</span><span class="at">y</span>]<span class="op">,</span></span>
+<span id="cb14-192"><a href="#cb14-192" aria-hidden="true" tabindex="-1"></a>        [coords[<span class="dv">2</span>]<span class="op">.</span><span class="at">x</span><span class="op">,</span> coords[<span class="dv">2</span>]<span class="op">.</span><span class="at">y</span>]<span class="op">,</span></span>
+<span id="cb14-193"><a href="#cb14-193" aria-hidden="true" tabindex="-1"></a>        [coords[<span class="dv">0</span>]<span class="op">.</span><span class="at">x</span><span class="op">,</span> coords[<span class="dv">0</span>]<span class="op">.</span><span class="at">y</span>]<span class="op">,</span></span>
+<span id="cb14-194"><a href="#cb14-194" aria-hidden="true" tabindex="-1"></a>      ]]<span class="op">,</span></span>
+<span id="cb14-195"><a href="#cb14-195" aria-hidden="true" tabindex="-1"></a>    }<span class="op">,</span></span>
+<span id="cb14-196"><a href="#cb14-196" aria-hidden="true" tabindex="-1"></a>    <span class="dt">properties</span><span class="op">:</span> {</span>
+<span id="cb14-197"><a href="#cb14-197" aria-hidden="true" tabindex="-1"></a>      <span class="dt">fillColor</span><span class="op">:</span> <span class="fu">getFillColorRGB</span>(triangle<span class="op">.</span><span class="at">vertex_colors</span>)<span class="op">,</span></span>
+<span id="cb14-198"><a href="#cb14-198" aria-hidden="true" tabindex="-1"></a>      coords<span class="op">,</span></span>
+<span id="cb14-199"><a href="#cb14-199" aria-hidden="true" tabindex="-1"></a>      <span class="dt">vertexColors</span><span class="op">:</span> triangle<span class="op">.</span><span class="at">vertex_colors</span><span class="op">,</span></span>
+<span id="cb14-200"><a href="#cb14-200" aria-hidden="true" tabindex="-1"></a>    }<span class="op">,</span></span>
+<span id="cb14-201"><a href="#cb14-201" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb14-202"><a href="#cb14-202" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-14" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb15" data-startfrom="206" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 205;"><span id="cb15-206"><a href="#cb15-206" aria-hidden="true" tabindex="-1"></a>viewof plotRGB <span class="op">=</span> Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb15-207"><a href="#cb15-207" aria-hidden="true" tabindex="-1"></a>  <span class="dt">width</span><span class="op">:</span> <span class="dv">800</span><span class="op">,</span></span>
+<span id="cb15-208"><a href="#cb15-208" aria-hidden="true" tabindex="-1"></a>  <span class="dt">height</span><span class="op">:</span> <span class="dv">800</span><span class="op">,</span></span>
+<span id="cb15-209"><a href="#cb15-209" aria-hidden="true" tabindex="-1"></a>  <span class="dt">x</span><span class="op">:</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">domain</span><span class="op">:</span> [<span class="dv">0</span><span class="op">,</span> <span class="dv">1</span>]}<span class="op">,</span></span>
+<span id="cb15-210"><a href="#cb15-210" aria-hidden="true" tabindex="-1"></a>  <span class="dt">y</span><span class="op">:</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">domain</span><span class="op">:</span> [<span class="dv">0</span><span class="op">,</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(<span class="dv">3</span>) <span class="op">/</span> <span class="dv">2</span>]}<span class="op">,</span></span>
+<span id="cb15-211"><a href="#cb15-211" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb15-212"><a href="#cb15-212" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">line</span>([<span class="op">...</span>equilateralTriangleVertices<span class="op">,</span> equilateralTriangleVertices[<span class="dv">0</span>]]<span class="op">,</span> {</span>
+<span id="cb15-213"><a href="#cb15-213" aria-hidden="true" tabindex="-1"></a>      <span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span></span>
+<span id="cb15-214"><a href="#cb15-214" aria-hidden="true" tabindex="-1"></a>      <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span></span>
+<span id="cb15-215"><a href="#cb15-215" aria-hidden="true" tabindex="-1"></a>      <span class="dt">stroke</span><span class="op">:</span> <span class="st">"black"</span><span class="op">,</span></span>
+<span id="cb15-216"><a href="#cb15-216" aria-hidden="true" tabindex="-1"></a>      <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">1</span></span>
+<span id="cb15-217"><a href="#cb15-217" aria-hidden="true" tabindex="-1"></a>    })<span class="op">,</span></span>
+<span id="cb15-218"><a href="#cb15-218" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">geo</span>({</span>
+<span id="cb15-219"><a href="#cb15-219" aria-hidden="true" tabindex="-1"></a>      <span class="dt">type</span><span class="op">:</span> <span class="st">"FeatureCollection"</span><span class="op">,</span></span>
+<span id="cb15-220"><a href="#cb15-220" aria-hidden="true" tabindex="-1"></a>      <span class="dt">features</span><span class="op">:</span> subTriangles<span class="op">.</span><span class="fu">map</span>(tri <span class="kw">=&gt;</span> <span class="fu">createFeature</span>(tri<span class="op">,</span> morphedColoredPointsMap<span class="op">.</span><span class="at">morphedMap</span>))</span>
+<span id="cb15-221"><a href="#cb15-221" aria-hidden="true" tabindex="-1"></a>    }<span class="op">,</span> {</span>
+<span id="cb15-222"><a href="#cb15-222" aria-hidden="true" tabindex="-1"></a>      <span class="dt">fill</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">properties</span><span class="op">.</span><span class="at">fillColor</span><span class="op">,</span></span>
+<span id="cb15-223"><a href="#cb15-223" aria-hidden="true" tabindex="-1"></a>      <span class="dt">stroke</span><span class="op">:</span> <span class="st">"black"</span><span class="op">,</span></span>
+<span id="cb15-224"><a href="#cb15-224" aria-hidden="true" tabindex="-1"></a>      <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">1</span></span>
+<span id="cb15-225"><a href="#cb15-225" aria-hidden="true" tabindex="-1"></a>    })<span class="op">,</span></span>
+<span id="cb15-226"><a href="#cb15-226" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">dot</span>(morphedColoredPointsMap<span class="op">.</span><span class="at">morphedPoints</span><span class="op">,</span> {</span>
+<span id="cb15-227"><a href="#cb15-227" aria-hidden="true" tabindex="-1"></a>      <span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span></span>
+<span id="cb15-228"><a href="#cb15-228" aria-hidden="true" tabindex="-1"></a>      <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span></span>
+<span id="cb15-229"><a href="#cb15-229" aria-hidden="true" tabindex="-1"></a>      <span class="dt">fill</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">color</span><span class="op">,</span></span>
+<span id="cb15-230"><a href="#cb15-230" aria-hidden="true" tabindex="-1"></a>      <span class="dt">r</span><span class="op">:</span> <span class="dv">5</span> <span class="op">*</span> (<span class="dv">5</span> <span class="op">/</span> N)</span>
+<span id="cb15-231"><a href="#cb15-231" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb15-232"><a href="#cb15-232" aria-hidden="true" tabindex="-1"></a>  ]</span>
+<span id="cb15-233"><a href="#cb15-233" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-15" data-nodetype="declaration">
 
 </div>
 </div>
@@ -733,7 +781,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script type="ojs-module-contents">
-eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6ImltcG9ydCB7c2xpZGVyfSBmcm9tIFwiQGphc2hrZW5hcy9pbnB1dHNcIlxuXG4vLyBBZGQgYSAgZm9yIE0gPSBudW1iZXIgb2YgcG9pbnRzIHRvIHBsb3RcbnZpZXdvZiBOID0gc2xpZGVyKHtcbiAgbWluOiAyLFxuICBtYXg6IDIwLFxuICBzdGVwOiAxLFxuICB2YWx1ZTogNSxcbiAgd2lkdGg6IDUwMCxcbiAgdGl0bGU6IFwiTnVtYmVyIG9mIHN1YmRpdmlzaW9uc1wiXG59KTtcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMiIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6Ii8vIG1ha2UgYSBzbGlkZXIgZnJvbSAwIHRvIDFcbnZpZXdvZiB0ID0gc2xpZGVyKHtcbiAgbWluOiAwLFxuICBtYXg6IDEsXG4gIHN0ZXA6IDAuMDEsXG4gIHZhbHVlOiAxLFxuICB3aWR0aDogNTAwLFxuICB0aXRsZTogXCJ0aW1lXCJcbn0pO1xuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0zIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiZXF1aWxhdGVyYWxfdHJpYW5nbGVfdmVydGljZXMgPSBbXG4gIHt4OiAxLCB5OiAwfSxcbiAge3g6IDAuNSwgeTogTWF0aC5zcXJ0KDMpIC8gMn0sXG4gIHt4OiAwLCB5OiAwfSxcbl1cbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtNCIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6ImJhcnljZW50cmljX2Nvb3JkcyA9IHtcbiAgbGV0IHJlc3VsdCA9IFtdO1xuICBmb3IgKGxldCBpID0gMDsgaSA8PSBOOyBpKyspIHtcbiAgICBmb3IgKGxldCBqID0gMDsgaiA8PSBOIC0gaTsgaisrKSB7XG4gICAgICByZXN1bHQucHVzaChbaSwgaiwgTiAtIGkgLSBqXSk7XG4gICAgfVxuICB9XG4gIHJldHVybiByZXN1bHQ7XG59XG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTUiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJjb2xvck1hcCA9IHtcbiAgY29uc3QgbWFwID0gbmV3IE1hcCgpO1xuXG4gIGZvciAobGV0IGkgPSAwOyBpIDw9IE47IGkrKykge1xuICAgIGZvciAobGV0IGogPSAwOyBqIDw9IE4gLSBpOyBqKyspIHtcbiAgICAgIGNvbnN0IGsgPSBOIC0gaSAtIGo7XG4gICAgICBjb25zdCB0cmlwbGUgPSBbaSwgaiwga107XG4gICAgICBjb25zdCBbYSwgYiwgY10gPSB0cmlwbGU7XG5cbiAgICAgIGxldCBjb2xvcjtcbiAgICAgIGlmIChhID09PSAwICYmIGIgPT09IDApIGNvbG9yID0gJ3JlZCc7XG4gICAgICBlbHNlIGlmIChiID09PSAwICYmIGMgPT09IDApIGNvbG9yID0gJ2dyZWVuJztcbiAgICAgIGVsc2UgaWYgKGMgPT09IDAgJiYgYSA9PT0gMCkgY29sb3IgPSAnYmx1ZSc7XG4gICAgICBlbHNlIGlmIChhID09PSAwKSBjb2xvciA9IE1hdGgucmFuZG9tKCkgPCAwLjUgPyAncmVkJyA6ICdibHVlJztcbiAgICAgIGVsc2UgaWYgKGIgPT09IDApIGNvbG9yID0gTWF0aC5yYW5kb20oKSA8IDAuNSA/ICdyZWQnIDogJ2dyZWVuJztcbiAgICAgIGVsc2UgaWYgKGMgPT09IDApIGNvbG9yID0gTWF0aC5yYW5kb20oKSA8IDAuNSA/ICdibHVlJyA6ICdncmVlbic7XG4gICAgICBlbHNlIHtcbiAgICAgICAgY29uc3QgciA9IE1hdGgucmFuZG9tKCk7XG4gICAgICAgIGNvbG9yID0gciA8IDAuMzMgPyAncmVkJyA6IChyIDwgMC42NiA/ICdncmVlbicgOiAnYmx1ZScpO1xuICAgICAgfVxuXG4gICAgICBtYXAuc2V0KGAke2F9LCR7Yn0sJHtjfWAsIGNvbG9yKTtcbiAgICB9XG4gIH1cblxuICByZXR1cm4gbWFwO1xufVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC02IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoibW9ycGhlZENvbG9yZWRQb2ludHNNYXAgPSB7XG4gIGNvbnN0IHZlcnRleE1hcCA9IHtcbiAgICByZWQ6IGVxdWlsYXRlcmFsX3RyaWFuZ2xlX3ZlcnRpY2VzWzJdLFxuICAgIGdyZWVuOiBlcXVpbGF0ZXJhbF90cmlhbmdsZV92ZXJ0aWNlc1swXSxcbiAgICBibHVlOiBlcXVpbGF0ZXJhbF90cmlhbmdsZV92ZXJ0aWNlc1sxXVxuICB9O1xuXG4gIGNvbnN0IGJhcnljZW50cmljX2Nvb3JkcyA9IFtdO1xuICBmb3IgKGxldCBpID0gMDsgaSA8PSBOOyBpKyspIHtcbiAgICBmb3IgKGxldCBqID0gMDsgaiA8PSBOIC0gaTsgaisrKSB7XG4gICAgICBiYXJ5Y2VudHJpY19jb29yZHMucHVzaChbaSwgaiwgTiAtIGkgLSBqXSk7XG4gICAgfVxuICB9XG5cbiAgY29uc3QgbW9ycGhlZFBvaW50cyA9IFtdO1xuICBjb25zdCBtb3JwaGVkTWFwID0gbmV3IE1hcCgpO1xuICBjb25zdCBbQSwgQiwgQ10gPSBlcXVpbGF0ZXJhbF90cmlhbmdsZV92ZXJ0aWNlcztcblxuICBmb3IgKGNvbnN0IHRyaXBsZSBvZiBiYXJ5Y2VudHJpY19jb29yZHMpIHtcbiAgICBjb25zdCBbYSwgYiwgY10gPSB0cmlwbGU7XG4gICAgY29uc3QgeDAgPSAoYSAqIEEueCArIGIgKiBCLnggKyBjICogQy54KSAvIE47XG4gICAgY29uc3QgeTAgPSAoYSAqIEEueSArIGIgKiBCLnkgKyBjICogQy55KSAvIE47XG5cbiAgICBjb25zdCBjb2xvciA9IGNvbG9yTWFwLmdldChgJHthfSwke2J9LCR7Y31gKTtcbiAgICBjb25zdCB2ZXJ0ZXggPSB2ZXJ0ZXhNYXBbY29sb3JdO1xuXG4gICAgY29uc3QgeCA9IHQgKiB4MCArICgxIC0gdCkgKiB2ZXJ0ZXgueDtcbiAgICBjb25zdCB5ID0gdCAqIHkwICsgKDEgLSB0KSAqIHZlcnRleC55O1xuXG4gICAgY29uc3QgcG9pbnQgPSB7IHgsIHksIGNvbG9yLCBiYXJ5Y2VudHJpY1RyaXBsZTogdHJpcGxlIH07XG5cbiAgICBtb3JwaGVkUG9pbnRzLnB1c2gocG9pbnQpO1xuICAgIG1vcnBoZWRNYXAuc2V0KGAke2F9LCR7Yn0sJHtjfWAsIHBvaW50KTtcbiAgfVxuXG4gIHJldHVybiB7IG1vcnBoZWRQb2ludHMsIG1vcnBoZWRNYXAgfTtcbn1cbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtNyIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InN1YlRyaWFuZ2xlcyA9IHtcbiAgbGV0IHRyaWFuZ2xlcyA9IFtdO1xuXG4gIGZvciAobGV0IGkgPSAwOyBpIDwgTjsgaSsrKSB7XG4gICAgZm9yIChsZXQgaiA9IDA7IGogPCBOIC0gaTsgaisrKSB7XG4gICAgICBjb25zdCBjb29yZHMgPSBbXG4gICAgICAgIFtpLCBqLCBOIC0gaSAtIGpdLFxuICAgICAgICBbaSArIDEsIGosIE4gLSBpIC0gaiAtIDFdLFxuICAgICAgICBbaSwgaiArIDEsIE4gLSBpIC0gaiAtIDFdXG4gICAgICBdO1xuICAgICAgY29uc3QgdmVydGV4X2NvbG9ycyA9IGNvb3Jkcy5tYXAoYyA9PiBtb3JwaGVkQ29sb3JlZFBvaW50c01hcC5tb3JwaGVkTWFwLmdldChgJHtjWzBdfSwke2NbMV19LCR7Y1syXX1gKS5jb2xvcik7XG4gICAgICB0cmlhbmdsZXMucHVzaCh7IGNvb3JkaW5hdGVzOiBjb29yZHMsIHZlcnRleF9jb2xvcnMgfSk7XG4gICAgfVxuICB9XG5cbiAgZm9yIChsZXQgaSA9IDA7IGkgPCBOIC0gMTsgaSsrKSB7XG4gICAgZm9yIChsZXQgaiA9IDA7IGogPCBOIC0gaSAtIDE7IGorKykge1xuICAgICAgY29uc3QgY29vcmRzID0gW1xuICAgICAgICBbaSArIDEsIGosIE4gLSBpIC0gaiAtIDFdLFxuICAgICAgICBbaSArIDEsIGogKyAxLCBOIC0gaSAtIGogLSAyXSxcbiAgICAgICAgW2ksIGogKyAxLCBOIC0gaSAtIGogLSAxXVxuICAgICAgXTtcbiAgICAgIGNvbnN0IHZlcnRleF9jb2xvcnMgPSBjb29yZHMubWFwKGMgPT4gbW9ycGhlZENvbG9yZWRQb2ludHNNYXAubW9ycGhlZE1hcC5nZXQoYCR7Y1swXX0sJHtjWzFdfSwke2NbMl19YCkuY29sb3IpO1xuICAgICAgdHJpYW5nbGVzLnB1c2goeyBjb29yZGluYXRlczogY29vcmRzLCB2ZXJ0ZXhfY29sb3JzIH0pO1xuICAgIH1cbiAgfVxuXG4gIHJldHVybiB0cmlhbmdsZXM7XG59XG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTgiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJnZXRGaWxsQ29sb3JSR0IgPSAodmVydGV4Q29sb3JzT3JkZXJlZCkgPT4ge1xuICAvLyBNYXAgZnVsbCBjb2xvciBuYW1lcyB0byBzaW5nbGUtbGV0dGVyIGNvZGVzXG4gIGNvbnN0IGNvbG9yTWFwID0ge1xuICAgIHJlZDogJ1InLFxuICAgIGdyZWVuOiAnRycsXG4gICAgYmx1ZTogJ0InXG4gIH07XG5cbiAgLy8gQ29udmVydCBmdWxsIG5hbWVzIHRvIGxldHRlcnNcbiAgY29uc3Qgb3JpZW50YXRpb24gPSB2ZXJ0ZXhDb2xvcnNPcmRlcmVkLm1hcChjID0+IGNvbG9yTWFwW2MudG9Mb3dlckNhc2UoKV0gfHwgJycpLmpvaW4oJycpLnRvVXBwZXJDYXNlKCk7XG5cbiAgY29uc3QgZ3JvdXAxID0gbmV3IFNldChbJ1JHQicsICdHQlInLCAnQlJHJ10pO1xuICBjb25zdCBncm91cDIgPSBuZXcgU2V0KFsnUkJHJywgJ0JHUicsICdHUkInXSk7XG5cbiAgaWYgKGdyb3VwMS5oYXMob3JpZW50YXRpb24pKSB7XG4gICAgcmV0dXJuICdyZ2JhKDI1NSwgMjU1LCAwLCAwLjQpJzsgIC8vIHNlbWktdHJhbnNwYXJlbnQgeWVsbG93XG4gIH0gXG4gIGVsc2UgaWYgKGdyb3VwMi5oYXMob3JpZW50YXRpb24pKSB7XG4gICAgcmV0dXJuICdyZ2JhKDI1NSwgMCwgMjU1LCAwLjQpJzsgIC8vIHNlbWktdHJhbnNwYXJlbnQgdGVhbFxuICB9XG5cbiAgcmV0dXJuICdub25lJztcbn07XG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTkiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJ2aWV3b2YgcGxvdFJHQiA9IFBsb3QucGxvdCh7XG4gIHdpZHRoOiA4MDAsXG4gIGhlaWdodDogODAwLFxuICB4OiB7XG4gICAgbGFiZWw6IFwieFwiLFxuICAgIGRvbWFpbjogWzAsIDFdXG4gIH0sXG4gIHk6IHtcbiAgICBsYWJlbDogXCJ5XCIsXG4gICAgZG9tYWluOiBbMCwgTWF0aC5zcXJ0KDMpIC8gMl1cbiAgfSxcbiAgbWFya3M6IFtcbiAgICBQbG90LmxpbmUoWy4uLmVxdWlsYXRlcmFsX3RyaWFuZ2xlX3ZlcnRpY2VzLCBlcXVpbGF0ZXJhbF90cmlhbmdsZV92ZXJ0aWNlc1swXV0sIHtcbiAgICAgIHg6IFwieFwiLFxuICAgICAgeTogXCJ5XCIsXG4gICAgICBzdHJva2U6IFwiYmxhY2tcIixcbiAgICAgIHN0cm9rZVdpZHRoOiAxXG4gICAgfSksXG5cbiAgICBQbG90LmdlbyhcbiAgICAgIHtcbiAgICAgICAgdHlwZTogXCJGZWF0dXJlQ29sbGVjdGlvblwiLFxuICAgICAgICBmZWF0dXJlczogc3ViVHJpYW5nbGVzLm1hcCh0cmlhbmdsZSA9PiB7XG4gICAgICAgICAgbGV0IGNvb3JkcyA9IHRyaWFuZ2xlLmNvb3JkaW5hdGVzLm1hcChjb29yZCA9PiB7XG4gICAgICAgICAgICBjb25zdCBwb2ludCA9IG1vcnBoZWRDb2xvcmVkUG9pbnRzTWFwLm1vcnBoZWRNYXAuZ2V0KGAke2Nvb3JkWzBdfSwke2Nvb3JkWzFdfSwke2Nvb3JkWzJdfWApO1xuICAgICAgICAgICAgcmV0dXJuIHBvaW50ID8geyB4OiBwb2ludC54LCB5OiBwb2ludC55IH0gOiB7IHg6IDAsIHk6IDAgfTsgLy8gZmFsbGJhY2sgZm9yIHNhZmV0eVxuICAgICAgICAgIH0pO1xuXG4gICAgICAgICAgcmV0dXJuIHtcbiAgICAgICAgICAgIHR5cGU6IFwiRmVhdHVyZVwiLFxuICAgICAgICAgICAgZ2VvbWV0cnk6IHtcbiAgICAgICAgICAgICAgdHlwZTogXCJQb2x5Z29uXCIsXG4gICAgICAgICAgICAgIGNvb3JkaW5hdGVzOiBbW1xuICAgICAgICAgICAgICAgIFtjb29yZHNbMF0ueCwgY29vcmRzWzBdLnldLFxuICAgICAgICAgICAgICAgIFtjb29yZHNbMV0ueCwgY29vcmRzWzFdLnldLFxuICAgICAgICAgICAgICAgIFtjb29yZHNbMl0ueCwgY29vcmRzWzJdLnldLFxuICAgICAgICAgICAgICAgIFtjb29yZHNbMF0ueCwgY29vcmRzWzBdLnldXG4gICAgICAgICAgICAgIF1dXG4gICAgICAgICAgICB9LFxuICAgICAgICAgICAgcHJvcGVydGllczoge1xuICAgICAgICAgICAgICBmaWxsQ29sb3I6IGdldEZpbGxDb2xvclJHQih0cmlhbmdsZS52ZXJ0ZXhfY29sb3JzKSwgIC8vIG5vdyBhbiBhcnJheVxuICAgICAgICAgICAgICBjb29yZHM6IGNvb3JkcyxcbiAgICAgICAgICAgICAgdmVydGV4Q29sb3JzOiB0cmlhbmdsZS52ZXJ0ZXhfY29sb3JzICAvLyBhbHJlYWR5IGFuIGFycmF5LCBubyBjb252ZXJzaW9uIG5lZWRlZFxuICAgICAgICAgICAgfSxcbiAgICAgICAgICB9O1xuICAgICAgICB9KVxuICAgICAgfSxcbiAgICAgIHtcbiAgICAgICAgZmlsbDogZCA9PiBkLnByb3BlcnRpZXMuZmlsbENvbG9yLFxuICAgICAgICBzdHJva2U6IFwiYmxhY2tcIixcbiAgICAgICAgc3Ryb2tlV2lkdGg6IDFcbiAgICAgIH1cbiAgICApLFxuXG4gICAgLy8gUGxvdCBtb3JwaGVkIGNvbG9yZWQgcG9pbnRzXG4gICAgUGxvdC5kb3QoXG4gICAgICBtb3JwaGVkQ29sb3JlZFBvaW50c01hcC5tb3JwaGVkUG9pbnRzLFxuICAgICAge1xuICAgICAgICB4OiBcInhcIixcbiAgICAgICAgeTogXCJ5XCIsXG4gICAgICAgIGZpbGw6IGQgPT4gZC5jb2xvcixcbiAgICAgICAgcjogNSAqICg1IC8gTilcbiAgICAgIH1cbiAgICApXG4gIF1cbn0pO1xuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdOJykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ3QnKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgncGxvdFJHQicpIn1dfQ==
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6ImltcG9ydCB7c2xpZGVyfSBmcm9tIFwiQGphc2hrZW5hcy9pbnB1dHNcIlxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0yIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoidmlld29mIE4gPSBzbGlkZXIoe1xuICBtaW46IDIsIG1heDogMTAsIHN0ZXA6IDEsIHZhbHVlOiAyLCB3aWR0aDogNTAwLCB0aXRsZTogXCJOdW1iZXIgb2Ygc3ViZGl2aXNpb25zXCJcbn0pXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTMiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJ2aWV3b2YgdCA9IHNsaWRlcih7XG4gIG1pbjogMCwgbWF4OiAxLCBzdGVwOiAwLjAxLCB2YWx1ZTogMCwgd2lkdGg6IDUwMCwgdGl0bGU6IFwidGltZVwiXG59KVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC00IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiZXF1aWxhdGVyYWxUcmlhbmdsZVZlcnRpY2VzID0gW1xuICB7eDogMSwgeTogMH0sXG4gIHt4OiAwLjUsIHk6IE1hdGguc3FydCgzKSAvIDJ9LFxuICB7eDogMCwgeTogMH0sXG5dXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTUiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJnZW5lcmF0ZUJhcnljZW50cmljQ29vcmRzID0gTiA9PiB7XG4gIGNvbnN0IGNvb3JkcyA9IFtdXG4gIGZvciAobGV0IGkgPSAwOyBpIDw9IE47IGkrKykge1xuICAgIGZvciAobGV0IGogPSAwOyBqIDw9IE4gLSBpOyBqKyspIHtcbiAgICAgIGNvb3Jkcy5wdXNoKFtpLCBqLCBOIC0gaSAtIGpdKVxuICAgIH1cbiAgfVxuICByZXR1cm4gY29vcmRzXG59XG5cbmJhcnljZW50cmljQ29vcmRzID0gZ2VuZXJhdGVCYXJ5Y2VudHJpY0Nvb3JkcyhOKVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC02IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoicGlja1JhbmRvbUNvbG9yID0gKC4uLm9wdGlvbnMpID0+IG9wdGlvbnNbTWF0aC5mbG9vcihNYXRoLnJhbmRvbSgpICogb3B0aW9ucy5sZW5ndGgpXVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC03IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiYXNzaWduQ29sb3IgPSAoYSwgYiwgYykgPT4ge1xuICBpZiAoYSA9PT0gMCAmJiBiID09PSAwKSByZXR1cm4gJ3JlZCdcbiAgaWYgKGIgPT09IDAgJiYgYyA9PT0gMCkgcmV0dXJuICdncmVlbidcbiAgaWYgKGMgPT09IDAgJiYgYSA9PT0gMCkgcmV0dXJuICdibHVlJ1xuXG4gIGlmIChhID09PSAwKSByZXR1cm4gcGlja1JhbmRvbUNvbG9yKCdyZWQnLCAnYmx1ZScpXG4gIGlmIChiID09PSAwKSByZXR1cm4gcGlja1JhbmRvbUNvbG9yKCdyZWQnLCAnZ3JlZW4nKVxuICBpZiAoYyA9PT0gMCkgcmV0dXJuIHBpY2tSYW5kb21Db2xvcignYmx1ZScsICdncmVlbicpXG5cbiAgcmV0dXJuIHBpY2tSYW5kb21Db2xvcigncmVkJywgJ2dyZWVuJywgJ2JsdWUnKVxufVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC04IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiYnVpbGRDb2xvck1hcCA9IE4gPT4ge1xuICBjb25zdCBtYXAgPSBuZXcgTWFwKClcbiAgY29uc3QgYmFyeUNvb3JkcyA9IGdlbmVyYXRlQmFyeWNlbnRyaWNDb29yZHMoTilcbiAgYmFyeUNvb3Jkcy5mb3JFYWNoKChbYSwgYiwgY10pID0+IHtcbiAgICBtYXAuc2V0KGAke2F9LCR7Yn0sJHtjfWAsIGFzc2lnbkNvbG9yKGEsIGIsIGMpKVxuICB9KVxuICByZXR1cm4gbWFwXG59XG5cbmNvbG9yTWFwID0gYnVpbGRDb2xvck1hcChOKVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC05IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiLy8gU2ludXNvaWRhbCBlYXNpbmcgZnVuY3Rpb24gbWFwcGluZyBbMCwxXSDihpIgWzAsMV1cbnNpbnVzb2lkYWxFYXNlID0gdCA9PiAoMSAtIE1hdGguY29zKE1hdGguUEkgKiB0KSkgLyAyO1xuXG5zbW9vdGhzdGVwRWFzZSA9IHQgPT4gKDMgKiB0ICogdCAtIDIgKiB0ICogdCAqIHQpO1xuXG5zbW9vdGhlcnN0ZXBFYXNlID0gdCA9PiAoNiAqIHQqKjUgLSAxNSAqIHQqKjQgKyAxMCAqIHQqKjMpO1xuXG4vLyBJbiB5b3VyIGludGVycG9sYXRlUG9pbnRzIG1ldGhvZFxuaW50ZXJwb2xhdGVQb2ludHMgPSAodCwgYmFyeUNvb3JkcywgdmVydGljZXMsIGNvbG9yTWFwKSA9PiB7XG4gIGNvbnN0IHZlcnRleE1hcCA9IHtcbiAgICByZWQ6IHZlcnRpY2VzWzJdLFxuICAgIGdyZWVuOiB2ZXJ0aWNlc1swXSxcbiAgICBibHVlOiB2ZXJ0aWNlc1sxXSxcbiAgfVxuICBjb25zdCBbQSwgQiwgQ10gPSB2ZXJ0aWNlc1xuXG4gIGNvbnN0IHMgPSBzbW9vdGhlcnN0ZXBFYXNlKHQpO1xuXG4gIGNvbnN0IG1vcnBoZWRQb2ludHMgPSBiYXJ5Q29vcmRzLm1hcCgoW2EsIGIsIGNdKSA9PiB7XG4gICAgY29uc3Qgc3VtID0gYSArIGIgKyBjO1xuICAgIGNvbnN0IHgwID0gKGEgKiBBLnggKyBiICogQi54ICsgYyAqIEMueCkgLyBzdW07XG4gICAgY29uc3QgeTAgPSAoYSAqIEEueSArIGIgKiBCLnkgKyBjICogQy55KSAvIHN1bTtcblxuICAgIGNvbnN0IGNvbG9yID0gY29sb3JNYXAuZ2V0KGAke2F9LCR7Yn0sJHtjfWApO1xuICAgIGNvbnN0IHZlcnRleCA9IHZlcnRleE1hcFtjb2xvcl07XG5cbiAgICByZXR1cm4ge1xuICAgICAgeDogKDEgLSBzKSAqIHgwICsgcyAqIHZlcnRleC54LFxuICAgICAgeTogKDEgLSBzKSAqIHkwICsgcyAqIHZlcnRleC55LFxuICAgICAgY29sb3IsXG4gICAgICBiYXJ5Y2VudHJpY1RyaXBsZTogW2EsIGIsIGNdXG4gICAgfTtcbiAgfSk7XG5cbiAgY29uc3QgbW9ycGhlZE1hcCA9IG5ldyBNYXAobW9ycGhlZFBvaW50cy5tYXAocCA9PiBbXG4gICAgcC5iYXJ5Y2VudHJpY1RyaXBsZS5qb2luKCcsJyksIHBcbiAgXSkpO1xuXG4gIHJldHVybiB7IG1vcnBoZWRQb2ludHMsIG1vcnBoZWRNYXAgfTtcbn1cblxubW9ycGhlZENvbG9yZWRQb2ludHNNYXAgPSBpbnRlcnBvbGF0ZVBvaW50cyh0LCBiYXJ5Y2VudHJpY0Nvb3JkcywgZXF1aWxhdGVyYWxUcmlhbmdsZVZlcnRpY2VzLCBjb2xvck1hcClcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMTAiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJnZW5lcmF0ZVN1YlRyaWFuZ2xlcyA9IChOLCBtb3JwaGVkTWFwKSA9PiB7XG4gIGNvbnN0IHRyaWFuZ2xlcyA9IFtdXG5cbiAgZm9yIChsZXQgaSA9IDA7IGkgPCBOOyBpKyspIHtcbiAgICBmb3IgKGxldCBqID0gMDsgaiA8IE4gLSBpOyBqKyspIHtcbiAgICAgIGNvbnN0IGNvb3JkczEgPSBbXG4gICAgICAgIFtpLCBqLCBOIC0gaSAtIGpdLFxuICAgICAgICBbaSArIDEsIGosIE4gLSBpIC0gaiAtIDFdLFxuICAgICAgICBbaSwgaiArIDEsIE4gLSBpIC0gaiAtIDFdXG4gICAgICBdXG4gICAgICBjb25zdCB2ZXJ0ZXhfY29sb3JzMSA9IGNvb3JkczEubWFwKGMgPT4gbW9ycGhlZE1hcC5nZXQoYy5qb2luKCcsJykpLmNvbG9yKVxuICAgICAgdHJpYW5nbGVzLnB1c2goeyBjb29yZGluYXRlczogY29vcmRzMSwgdmVydGV4X2NvbG9yczogdmVydGV4X2NvbG9yczEgfSlcbiAgICB9XG4gIH1cblxuICBmb3IgKGxldCBpID0gMDsgaSA8IE4gLSAxOyBpKyspIHtcbiAgICBmb3IgKGxldCBqID0gMDsgaiA8IE4gLSBpIC0gMTsgaisrKSB7XG4gICAgICBjb25zdCBjb29yZHMyID0gW1xuICAgICAgICBbaSArIDEsIGosIE4gLSBpIC0gaiAtIDFdLFxuICAgICAgICBbaSArIDEsIGogKyAxLCBOIC0gaSAtIGogLSAyXSxcbiAgICAgICAgW2ksIGogKyAxLCBOIC0gaSAtIGogLSAxXVxuICAgICAgXVxuICAgICAgY29uc3QgdmVydGV4X2NvbG9yczIgPSBjb29yZHMyLm1hcChjID0+IG1vcnBoZWRNYXAuZ2V0KGMuam9pbignLCcpKS5jb2xvcilcbiAgICAgIHRyaWFuZ2xlcy5wdXNoKHsgY29vcmRpbmF0ZXM6IGNvb3JkczIsIHZlcnRleF9jb2xvcnM6IHZlcnRleF9jb2xvcnMyIH0pXG4gICAgfVxuICB9XG5cbiAgcmV0dXJuIHRyaWFuZ2xlc1xufVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0xMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InN1YlRyaWFuZ2xlcyA9IGdlbmVyYXRlU3ViVHJpYW5nbGVzKE4sIG1vcnBoZWRDb2xvcmVkUG9pbnRzTWFwLm1vcnBoZWRNYXApXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTEyIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiZmlsbENvbG9yR3JvdXBzID0ge1xuICBjb25zdCBncm91cDEgPSBuZXcgU2V0KFsnUkdCJywgJ0dCUicsICdCUkcnXSlcbiAgY29uc3QgZ3JvdXAyID0gbmV3IFNldChbJ1JCRycsICdCR1InLCAnR1JCJ10pXG4gIHJldHVybiB7IGdyb3VwMSwgZ3JvdXAyIH1cbn1cbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMTMiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJnZXRGaWxsQ29sb3JSR0IgPSB2ZXJ0ZXhDb2xvcnMgPT4ge1xuICBjb25zdCBtYXAgPSB7IHJlZDogJ1InLCBncmVlbjogJ0cnLCBibHVlOiAnQicgfVxuICBjb25zdCBvcmllbnRhdGlvbiA9IHZlcnRleENvbG9ycy5tYXAoYyA9PiBtYXBbYy50b0xvd2VyQ2FzZSgpXSB8fCAnJykuam9pbignJykudG9VcHBlckNhc2UoKVxuXG4gIGlmIChmaWxsQ29sb3JHcm91cHMuZ3JvdXAxLmhhcyhvcmllbnRhdGlvbikpIHJldHVybiAncmdiYSgyNTUsIDE0NSwgMCwgMC4yNSknXG4gIGlmIChmaWxsQ29sb3JHcm91cHMuZ3JvdXAyLmhhcyhvcmllbnRhdGlvbikpIHJldHVybiAncmdiYSgwLCAxMjgsIDEyOCwgMC4yNSknXG4gIHJldHVybiAnbm9uZSdcbn1cbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMTQiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJjcmVhdGVGZWF0dXJlID0gKHRyaWFuZ2xlLCBtb3JwaGVkTWFwKSA9PiB7XG4gIGNvbnN0IGNvb3JkcyA9IHRyaWFuZ2xlLmNvb3JkaW5hdGVzLm1hcChjID0+IHtcbiAgICBjb25zdCBwID0gbW9ycGhlZE1hcC5nZXQoYy5qb2luKCcsJykpIHx8IHsgeDogMCwgeTogMCB9XG4gICAgcmV0dXJuIHsgeDogcC54LCB5OiBwLnkgfVxuICB9KVxuXG4gIHJldHVybiB7XG4gICAgdHlwZTogXCJGZWF0dXJlXCIsXG4gICAgZ2VvbWV0cnk6IHtcbiAgICAgIHR5cGU6IFwiUG9seWdvblwiLFxuICAgICAgY29vcmRpbmF0ZXM6IFtbXG4gICAgICAgIFtjb29yZHNbMF0ueCwgY29vcmRzWzBdLnldLFxuICAgICAgICBbY29vcmRzWzFdLngsIGNvb3Jkc1sxXS55XSxcbiAgICAgICAgW2Nvb3Jkc1syXS54LCBjb29yZHNbMl0ueV0sXG4gICAgICAgIFtjb29yZHNbMF0ueCwgY29vcmRzWzBdLnldLFxuICAgICAgXV0sXG4gICAgfSxcbiAgICBwcm9wZXJ0aWVzOiB7XG4gICAgICBmaWxsQ29sb3I6IGdldEZpbGxDb2xvclJHQih0cmlhbmdsZS52ZXJ0ZXhfY29sb3JzKSxcbiAgICAgIGNvb3JkcyxcbiAgICAgIHZlcnRleENvbG9yczogdHJpYW5nbGUudmVydGV4X2NvbG9ycyxcbiAgICB9LFxuICB9XG59XG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTE1IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoidmlld29mIHBsb3RSR0IgPSBQbG90LnBsb3Qoe1xuICB3aWR0aDogODAwLFxuICBoZWlnaHQ6IDgwMCxcbiAgeDoge2xhYmVsOiBcInhcIiwgZG9tYWluOiBbMCwgMV19LFxuICB5OiB7bGFiZWw6IFwieVwiLCBkb21haW46IFswLCBNYXRoLnNxcnQoMykgLyAyXX0sXG4gIG1hcmtzOiBbXG4gICAgUGxvdC5saW5lKFsuLi5lcXVpbGF0ZXJhbFRyaWFuZ2xlVmVydGljZXMsIGVxdWlsYXRlcmFsVHJpYW5nbGVWZXJ0aWNlc1swXV0sIHtcbiAgICAgIHg6IFwieFwiLFxuICAgICAgeTogXCJ5XCIsXG4gICAgICBzdHJva2U6IFwiYmxhY2tcIixcbiAgICAgIHN0cm9rZVdpZHRoOiAxXG4gICAgfSksXG4gICAgUGxvdC5nZW8oe1xuICAgICAgdHlwZTogXCJGZWF0dXJlQ29sbGVjdGlvblwiLFxuICAgICAgZmVhdHVyZXM6IHN1YlRyaWFuZ2xlcy5tYXAodHJpID0+IGNyZWF0ZUZlYXR1cmUodHJpLCBtb3JwaGVkQ29sb3JlZFBvaW50c01hcC5tb3JwaGVkTWFwKSlcbiAgICB9LCB7XG4gICAgICBmaWxsOiBkID0+IGQucHJvcGVydGllcy5maWxsQ29sb3IsXG4gICAgICBzdHJva2U6IFwiYmxhY2tcIixcbiAgICAgIHN0cm9rZVdpZHRoOiAxXG4gICAgfSksXG4gICAgUGxvdC5kb3QobW9ycGhlZENvbG9yZWRQb2ludHNNYXAubW9ycGhlZFBvaW50cywge1xuICAgICAgeDogXCJ4XCIsXG4gICAgICB5OiBcInlcIixcbiAgICAgIGZpbGw6IGQgPT4gZC5jb2xvcixcbiAgICAgIHI6IDUgKiAoNSAvIE4pXG4gICAgfSlcbiAgXVxufSlcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgnTicpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCd0JykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ3Bsb3RSR0InKSJ9XX0=
 </script>
 <script type="module">
 if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }

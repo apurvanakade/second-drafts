@@ -5,34 +5,26 @@ date: 2025-05-22 10:23:17
 categories: [triangles, coloring, questions, visualization, interactive, observablejs]
 ---
 
+**DRAFT DOCUMENT**
+
 ```{ojs}
 import {slider} from "@jashkenas/inputs"
+```
 
-// Add a  for M = number of points to plot
+```{ojs}
 viewof N = slider({
-  min: 2,
-  max: 20,
-  step: 1,
-  value: 5,
-  width: 500,
-  title: "Number of subdivisions"
-});
+  min: 2, max: 10, step: 1, value: 2, width: 500, title: "Number of subdivisions"
+})
 ```
 
 ```{ojs}
-// make a slider from 0 to 1
 viewof t = slider({
-  min: 0,
-  max: 1,
-  step: 0.01,
-  value: 1,
-  width: 500,
-  title: "time"
-});
+  min: 0, max: 1, step: 0.01, value: 0, width: 500, title: "time"
+})
 ```
 
 ```{ojs}
-equilateral_triangle_vertices = [
+equilateralTriangleVertices = [
   {x: 1, y: 0},
   {x: 0.5, y: Math.sqrt(3) / 2},
   {x: 0, y: 0},
@@ -40,210 +32,204 @@ equilateral_triangle_vertices = [
 ```
 
 ```{ojs}
-barycentric_coords = {
-  let result = [];
+generateBarycentricCoords = N => {
+  const coords = []
   for (let i = 0; i <= N; i++) {
     for (let j = 0; j <= N - i; j++) {
-      result.push([i, j, N - i - j]);
+      coords.push([i, j, N - i - j])
     }
   }
-  return result;
+  return coords
+}
+
+barycentricCoords = generateBarycentricCoords(N)
+```
+
+```{ojs}
+pickRandomColor = (...options) => options[Math.floor(Math.random() * options.length)]
+```
+
+```{ojs}
+assignColor = (a, b, c) => {
+  if (a === 0 && b === 0) return 'red'
+  if (b === 0 && c === 0) return 'green'
+  if (c === 0 && a === 0) return 'blue'
+
+  if (a === 0) return pickRandomColor('red', 'blue')
+  if (b === 0) return pickRandomColor('red', 'green')
+  if (c === 0) return pickRandomColor('blue', 'green')
+
+  return pickRandomColor('red', 'green', 'blue')
 }
 ```
 
 ```{ojs}
-colorMap = {
-  const map = new Map();
-
-  for (let i = 0; i <= N; i++) {
-    for (let j = 0; j <= N - i; j++) {
-      const k = N - i - j;
-      const triple = [i, j, k];
-      const [a, b, c] = triple;
-
-      let color;
-      if (a === 0 && b === 0) color = 'red';
-      else if (b === 0 && c === 0) color = 'green';
-      else if (c === 0 && a === 0) color = 'blue';
-      else if (a === 0) color = Math.random() < 0.5 ? 'red' : 'blue';
-      else if (b === 0) color = Math.random() < 0.5 ? 'red' : 'green';
-      else if (c === 0) color = Math.random() < 0.5 ? 'blue' : 'green';
-      else {
-        const r = Math.random();
-        color = r < 0.33 ? 'red' : (r < 0.66 ? 'green' : 'blue');
-      }
-
-      map.set(`${a},${b},${c}`, color);
-    }
-  }
-
-  return map;
+buildColorMap = N => {
+  const map = new Map()
+  const baryCoords = generateBarycentricCoords(N)
+  baryCoords.forEach(([a, b, c]) => {
+    map.set(`${a},${b},${c}`, assignColor(a, b, c))
+  })
+  return map
 }
+
+colorMap = buildColorMap(N)
 ```
 
 ```{ojs}
-morphedColoredPointsMap = {
+// Sinusoidal easing function mapping [0,1] → [0,1]
+sinusoidalEase = t => (1 - Math.cos(Math.PI * t)) / 2;
+
+smoothstepEase = t => (3 * t * t - 2 * t * t * t);
+
+smootherstepEase = t => (6 * t**5 - 15 * t**4 + 10 * t**3);
+
+// In your interpolatePoints method
+interpolatePoints = (t, baryCoords, vertices, colorMap) => {
   const vertexMap = {
-    red: equilateral_triangle_vertices[2],
-    green: equilateral_triangle_vertices[0],
-    blue: equilateral_triangle_vertices[1]
-  };
-
-  const barycentric_coords = [];
-  for (let i = 0; i <= N; i++) {
-    for (let j = 0; j <= N - i; j++) {
-      barycentric_coords.push([i, j, N - i - j]);
-    }
+    red: vertices[2],
+    green: vertices[0],
+    blue: vertices[1],
   }
+  const [A, B, C] = vertices
 
-  const morphedPoints = [];
-  const morphedMap = new Map();
-  const [A, B, C] = equilateral_triangle_vertices;
+  const s = smootherstepEase(t);
 
-  for (const triple of barycentric_coords) {
-    const [a, b, c] = triple;
-    const x0 = (a * A.x + b * B.x + c * C.x) / N;
-    const y0 = (a * A.y + b * B.y + c * C.y) / N;
+  const morphedPoints = baryCoords.map(([a, b, c]) => {
+    const sum = a + b + c;
+    const x0 = (a * A.x + b * B.x + c * C.x) / sum;
+    const y0 = (a * A.y + b * B.y + c * C.y) / sum;
 
     const color = colorMap.get(`${a},${b},${c}`);
     const vertex = vertexMap[color];
 
-    const x = t * x0 + (1 - t) * vertex.x;
-    const y = t * y0 + (1 - t) * vertex.y;
+    return {
+      x: (1 - s) * x0 + s * vertex.x,
+      y: (1 - s) * y0 + s * vertex.y,
+      color,
+      barycentricTriple: [a, b, c]
+    };
+  });
 
-    const point = { x, y, color, barycentricTriple: triple };
-
-    morphedPoints.push(point);
-    morphedMap.set(`${a},${b},${c}`, point);
-  }
+  const morphedMap = new Map(morphedPoints.map(p => [
+    p.barycentricTriple.join(','), p
+  ]));
 
   return { morphedPoints, morphedMap };
 }
+
+morphedColoredPointsMap = interpolatePoints(t, barycentricCoords, equilateralTriangleVertices, colorMap)
 ```
 
 ```{ojs}
-subTriangles = {
-  let triangles = [];
+generateSubTriangles = (N, morphedMap) => {
+  const triangles = []
 
   for (let i = 0; i < N; i++) {
     for (let j = 0; j < N - i; j++) {
-      const coords = [
+      const coords1 = [
         [i, j, N - i - j],
         [i + 1, j, N - i - j - 1],
         [i, j + 1, N - i - j - 1]
-      ];
-      const vertex_colors = coords.map(c => morphedColoredPointsMap.morphedMap.get(`${c[0]},${c[1]},${c[2]}`).color);
-      triangles.push({ coordinates: coords, vertex_colors });
+      ]
+      const vertex_colors1 = coords1.map(c => morphedMap.get(c.join(',')).color)
+      triangles.push({ coordinates: coords1, vertex_colors: vertex_colors1 })
     }
   }
 
   for (let i = 0; i < N - 1; i++) {
     for (let j = 0; j < N - i - 1; j++) {
-      const coords = [
+      const coords2 = [
         [i + 1, j, N - i - j - 1],
         [i + 1, j + 1, N - i - j - 2],
         [i, j + 1, N - i - j - 1]
-      ];
-      const vertex_colors = coords.map(c => morphedColoredPointsMap.morphedMap.get(`${c[0]},${c[1]},${c[2]}`).color);
-      triangles.push({ coordinates: coords, vertex_colors });
+      ]
+      const vertex_colors2 = coords2.map(c => morphedMap.get(c.join(',')).color)
+      triangles.push({ coordinates: coords2, vertex_colors: vertex_colors2 })
     }
   }
 
-  return triangles;
+  return triangles
 }
 ```
 
 ```{ojs}
-getFillColorRGB = (vertexColorsOrdered) => {
-  // Map full color names to single-letter codes
-  const colorMap = {
-    red: 'R',
-    green: 'G',
-    blue: 'B'
-  };
+subTriangles = generateSubTriangles(N, morphedColoredPointsMap.morphedMap)
+```
 
-  // Convert full names to letters
-  const orientation = vertexColorsOrdered.map(c => colorMap[c.toLowerCase()] || '').join('').toUpperCase();
+```{ojs}
+fillColorGroups = {
+  const group1 = new Set(['RGB', 'GBR', 'BRG'])
+  const group2 = new Set(['RBG', 'BGR', 'GRB'])
+  return { group1, group2 }
+}
+```
 
-  const group1 = new Set(['RGB', 'GBR', 'BRG']);
-  const group2 = new Set(['RBG', 'BGR', 'GRB']);
+```{ojs}
+getFillColorRGB = vertexColors => {
+  const map = { red: 'R', green: 'G', blue: 'B' }
+  const orientation = vertexColors.map(c => map[c.toLowerCase()] || '').join('').toUpperCase()
 
-  if (group1.has(orientation)) {
-    return 'rgba(255, 255, 0, 0.4)';  // semi-transparent yellow
-  } 
-  else if (group2.has(orientation)) {
-    return 'rgba(255, 0, 255, 0.4)';  // semi-transparent teal
+  if (fillColorGroups.group1.has(orientation)) return 'rgba(255, 145, 0, 0.25)'
+  if (fillColorGroups.group2.has(orientation)) return 'rgba(0, 128, 128, 0.25)'
+  return 'none'
+}
+```
+
+```{ojs}
+createFeature = (triangle, morphedMap) => {
+  const coords = triangle.coordinates.map(c => {
+    const p = morphedMap.get(c.join(',')) || { x: 0, y: 0 }
+    return { x: p.x, y: p.y }
+  })
+
+  return {
+    type: "Feature",
+    geometry: {
+      type: "Polygon",
+      coordinates: [[
+        [coords[0].x, coords[0].y],
+        [coords[1].x, coords[1].y],
+        [coords[2].x, coords[2].y],
+        [coords[0].x, coords[0].y],
+      ]],
+    },
+    properties: {
+      fillColor: getFillColorRGB(triangle.vertex_colors),
+      coords,
+      vertexColors: triangle.vertex_colors,
+    },
   }
-
-  return 'none';
-};
+}
 ```
 
 ```{ojs}
 viewof plotRGB = Plot.plot({
   width: 800,
   height: 800,
-  x: {
-    label: "x",
-    domain: [0, 1]
-  },
-  y: {
-    label: "y",
-    domain: [0, Math.sqrt(3) / 2]
-  },
+  x: {label: "x", domain: [0, 1]},
+  y: {label: "y", domain: [0, Math.sqrt(3) / 2]},
   marks: [
-    Plot.line([...equilateral_triangle_vertices, equilateral_triangle_vertices[0]], {
+    Plot.line([...equilateralTriangleVertices, equilateralTriangleVertices[0]], {
       x: "x",
       y: "y",
       stroke: "black",
       strokeWidth: 1
     }),
-
-    Plot.geo(
-      {
-        type: "FeatureCollection",
-        features: subTriangles.map(triangle => {
-          let coords = triangle.coordinates.map(coord => {
-            const point = morphedColoredPointsMap.morphedMap.get(`${coord[0]},${coord[1]},${coord[2]}`);
-            return point ? { x: point.x, y: point.y } : { x: 0, y: 0 }; // fallback for safety
-          });
-
-          return {
-            type: "Feature",
-            geometry: {
-              type: "Polygon",
-              coordinates: [[
-                [coords[0].x, coords[0].y],
-                [coords[1].x, coords[1].y],
-                [coords[2].x, coords[2].y],
-                [coords[0].x, coords[0].y]
-              ]]
-            },
-            properties: {
-              fillColor: getFillColorRGB(triangle.vertex_colors),  // now an array
-              coords: coords,
-              vertexColors: triangle.vertex_colors  // already an array, no conversion needed
-            },
-          };
-        })
-      },
-      {
-        fill: d => d.properties.fillColor,
-        stroke: "black",
-        strokeWidth: 1
-      }
-    ),
-
-    // Plot morphed colored points
-    Plot.dot(
-      morphedColoredPointsMap.morphedPoints,
-      {
-        x: "x",
-        y: "y",
-        fill: d => d.color,
-        r: 5 * (5 / N)
-      }
-    )
+    Plot.geo({
+      type: "FeatureCollection",
+      features: subTriangles.map(tri => createFeature(tri, morphedColoredPointsMap.morphedMap))
+    }, {
+      fill: d => d.properties.fillColor,
+      stroke: "black",
+      strokeWidth: 1
+    }),
+    Plot.dot(morphedColoredPointsMap.morphedPoints, {
+      x: "x",
+      y: "y",
+      fill: d => d.color,
+      r: 5 * (5 / N)
+    })
   ]
-});
+})
 ```
