@@ -387,13 +387,9 @@ svg = {
 ```
 
 
-In other words, we can identify <span style="background-color:rgba(0, 0, 0, 0.25)">**RGB**</span> triangles as the rooms with an **odd** number of doors. Sperner's Lemma, then, can be restated in a more visual way:
+In other words, we can identify <span style="background-color:rgba(0, 0, 0, 0.25)">**RGB**</span> triangles as the rooms with an **odd** number of doors. Sperner's Lemma, then, can be restated in a more visual way: **If Sperner's condition holds, there is at least one room with an odd number of doors.** We'll prove a related version of this statement.
 
-> **If Sperner's condition holds, there is at least one room with an odd number of doors.**
-
-We'll prove a related version of this statement.
-
----
+## Following the Doors
 
 Picture all the possible paths that can be formed by stepping through these `RG` doors — the black lines in the diagram represent all of these paths.
 
@@ -407,11 +403,9 @@ Using simple logic, we can deduce the following:
 3. Paths that do not form loops must have **two endpoints**, so the **total number of endpoints is even**.  
 4. The **only possible endpoints** are:  
    a. An `RG` door on the outer boundary of the big triangle  
-   b. An <span style="background-color:rgba(0, 0, 0, 0.25)">**RGB**</span> triangle
+   b. An <span style="background-color:rgba(0, 0, 0, 0.25)">**RGB**</span> triangle.
 
-> This is where **Sperner's condition** comes in — it controls which boundary edges are allowed.
-
-Putting this all together gives us a key result:
+The last point is where **Sperner's condition** comes in — it controls which boundary edges are allowed (do you see why?). Putting this all together gives us a key result:
 
 :::{#thm-even}
 
@@ -427,7 +421,15 @@ The number of <span style="background-color:rgba(0, 0, 0, 0.25)">**RGB**</span> 
 
 :::
 
-So to conclude the proof, all that remains is to show: **The number of `RG` boundary edges is odd.** This final step uses induction. The proof itself is short, but there’s a subtle trick — it's easy to overlook unless you write it out carefully. Give it a shot!
+So to conclude the proof, all that remains is to show: 
+
+:::{#cnj-boundary-odd}
+
+The number of `RG` boundary edges is odd.
+
+:::
+
+This is indeed a true statement and can be proven by various simple but subtle tricks. Give it a shot! Be careful though, it is easy to convince yourself that you have a proof when you don't.
 
 &nbsp;
 

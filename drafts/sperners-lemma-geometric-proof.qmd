@@ -3,6 +3,7 @@ title: Sperner's Lemma - Geometric Proof
 author: Apurva Nakade
 date: 2025-05-22 10:23:17
 categories: [triangles, coloring, questions, visualization, interactive, observablejs]
+draft: true
 ---
 
 **DRAFT DOCUMENT**
