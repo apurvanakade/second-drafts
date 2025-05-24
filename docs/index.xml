@@ -1690,7 +1690,7 @@ font-style: inherit;">/</span> N)</span>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb7" data-startfrom="193" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 192;"><span id="cb7-193">viewof N <span class="op" style="color: #5E5E5E;
+<div class="sourceCode cell-code hidden" id="cb7" data-startfrom="193" data-source-offset="-0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 192;"><span id="cb7-193">viewof N <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -1742,54 +1742,14 @@ background-color: null;
 font-style: inherit;">:</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Number of subdivisions"</span></span>
-<span id="cb7-195">})</span></code></pre></div>
-<div class="cell-output cell-output-display">
-<div id="ojs-cell-7" data-nodetype="declaration">
-
-</div>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code hidden" id="cb8" data-startfrom="200" data-source-offset="-0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 199;"><span id="cb8-200">morpher1 <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">createTriangleMorpher</span>(N<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span> equilateralTriangleVertices<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span> defaultAssignColor)</span>
-<span id="cb8-201">morpher2 <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">createTriangleMorpher</span>(N<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span> equilateralTriangleVertices<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span> simplerAssignColor)</span></code></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<div id="ojs-cell-8-1" data-nodetype="declaration">
-
-</div>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<div id="ojs-cell-8-2" data-nodetype="declaration">
-
-</div>
-</div>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code hidden" id="cb9" data-startfrom="205" data-source-offset="-0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 204;"><span id="cb9-205">viewof t <span class="op" style="color: #5E5E5E;
+<span id="cb7-195">})</span>
+<span id="cb7-196"></span>
+<span id="cb7-197">viewof t <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">slider</span>({</span>
-<span id="cb9-206">  <span class="dt" style="color: #AD0000;
+<span id="cb7-198">  <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">min</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1817,9 +1777,9 @@ font-style: inherit;">,</span> <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">value</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">:</span> <span class="dv" style="color: #AD0000;
+font-style: inherit;">:</span> <span class="fl" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">0</span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">0.15</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> <span class="dt" style="color: #AD0000;
 background-color: null;
@@ -1836,16 +1796,27 @@ background-color: null;
 font-style: inherit;">:</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Time"</span></span>
-<span id="cb9-207">})</span>
-<span id="cb9-208"></span>
-<span id="cb9-209">colorMap1 <span class="op" style="color: #5E5E5E;
+<span id="cb7-199">})</span>
+<span id="cb7-200"></span>
+<span id="cb7-201">morpher1 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">createTriangleMorpher</span>(N<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> equilateralTriangleVertices<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> defaultAssignColor)</span>
+<span id="cb7-202"></span>
+<span id="cb7-203"></span>
+<span id="cb7-204">colorMap1 <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> morpher1<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">buildColorMap</span>()</span>
-<span id="cb9-210">morphedMap1 <span class="op" style="color: #5E5E5E;
+<span id="cb7-205">morphedMap1 <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> morpher1<span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1854,7 +1825,7 @@ background-color: null;
 font-style: inherit;">interpolatePoints</span>(t<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> colorMap1)</span>
-<span id="cb9-211">triangles1 <span class="op" style="color: #5E5E5E;
+<span id="cb7-206">triangles1 <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> morpher1<span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1865,8 +1836,8 @@ background-color: null;
 font-style: inherit;">.</span><span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">morphedMap</span>)</span>
-<span id="cb9-212"></span>
-<span id="cb9-213">viewof plot1 <span class="op" style="color: #5E5E5E;
+<span id="cb7-207"></span>
+<span id="cb7-208">viewof plot1 <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -1877,47 +1848,115 @@ background-color: null;
 font-style: inherit;">,</span> equilateralTriangleVertices)</span></code></pre></div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-9-1" data-nodetype="declaration">
+<div id="ojs-cell-7-1" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-9-2" data-nodetype="declaration">
+<div id="ojs-cell-7-2" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-9-3" data-nodetype="declaration">
+<div id="ojs-cell-7-3" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-9-4" data-nodetype="declaration">
+<div id="ojs-cell-7-4" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-9-5" data-nodetype="declaration">
+<div id="ojs-cell-7-5" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-7-6" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-7-7" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb10" data-startfrom="218" data-source-offset="-0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 217;"><span id="cb10-218">viewof s <span class="op" style="color: #5E5E5E;
+<div class="sourceCode cell-code hidden" id="cb8" data-startfrom="213" data-source-offset="-0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 212;"><span id="cb8-213">viewof M <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">slider</span>({</span>
-<span id="cb10-219">  <span class="dt" style="color: #AD0000;
+<span id="cb8-214">  <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">min</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">max</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">step</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">value</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">width</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">500</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">title</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Number of subdivisions"</span></span>
+<span id="cb8-215">})</span>
+<span id="cb8-216"></span>
+<span id="cb8-217">viewof s <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">slider</span>({</span>
+<span id="cb8-218">  <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">min</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1945,9 +1984,9 @@ font-style: inherit;">,</span> <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">value</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">:</span> <span class="dv" style="color: #AD0000;
+font-style: inherit;">:</span> <span class="fl" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">0</span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">0.15</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> <span class="dt" style="color: #AD0000;
 background-color: null;
@@ -1963,17 +2002,27 @@ font-style: inherit;">title</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"Time (2nd plot)"</span></span>
-<span id="cb10-220">})</span>
-<span id="cb10-221"></span>
-<span id="cb10-222">colorMap2 <span class="op" style="color: #5E5E5E;
+font-style: inherit;">"Time"</span></span>
+<span id="cb8-219">})</span>
+<span id="cb8-220"></span>
+<span id="cb8-221">morpher2 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">createTriangleMorpher</span>(M<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> equilateralTriangleVertices<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> simplerAssignColor)</span>
+<span id="cb8-222"></span>
+<span id="cb8-223">colorMap2 <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> morpher2<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">buildColorMap</span>()</span>
-<span id="cb10-223">morphedMap2 <span class="op" style="color: #5E5E5E;
+<span id="cb8-224">morphedMap2 <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> morpher2<span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1982,7 +2031,7 @@ background-color: null;
 font-style: inherit;">interpolatePoints</span>(s<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> colorMap2)</span>
-<span id="cb10-224">triangles2 <span class="op" style="color: #5E5E5E;
+<span id="cb8-225">triangles2 <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> morpher2<span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1993,8 +2042,8 @@ background-color: null;
 font-style: inherit;">.</span><span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">morphedMap</span>)</span>
-<span id="cb10-225"></span>
-<span id="cb10-226">viewof plot2 <span class="op" style="color: #5E5E5E;
+<span id="cb8-226"></span>
+<span id="cb8-227">viewof plot2 <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -2005,35 +2054,49 @@ background-color: null;
 font-style: inherit;">,</span> equilateralTriangleVertices)</span></code></pre></div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-10-1" data-nodetype="declaration">
+<div id="ojs-cell-8-1" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-10-2" data-nodetype="declaration">
+<div id="ojs-cell-8-2" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-10-3" data-nodetype="declaration">
+<div id="ojs-cell-8-3" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-10-4" data-nodetype="declaration">
+<div id="ojs-cell-8-4" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-10-5" data-nodetype="declaration">
+<div id="ojs-cell-8-5" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-8-6" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-8-7" data-nodetype="declaration">
 
 </div>
 </div>
