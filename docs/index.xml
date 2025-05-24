@@ -2353,7 +2353,7 @@ background-color: null;
 font-style: inherit;">;</span></span>
 <span id="cb2-36">}</span>
 <span id="cb2-37"></span>
-<span id="cb2-38">isEdgeSpecial <span class="op" style="color: #5E5E5E;
+<span id="cb2-38">isEdgeBoundary <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> (a<span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -3391,7 +3391,7 @@ font-style: inherit;">&amp;&amp;</span> b <span class="op" style="color: #5E5E5E
 background-color: null;
 font-style: inherit;">&amp;&amp;</span> <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">isEdgeSpecial</span>(a<span class="op" style="color: #5E5E5E;
+font-style: inherit;">isEdgeBoundary</span>(a<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> b)) {</span>
 <span id="cb5-142">      specials<span class="op" style="color: #5E5E5E;

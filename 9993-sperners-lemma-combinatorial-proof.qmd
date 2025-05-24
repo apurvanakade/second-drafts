@@ -35,7 +35,7 @@ midpoint = (a, b) => {
   };
 }
 
-isEdgeSpecial = (a, b) =>
+isEdgeBoundary = (a, b) =>
   [0, 1, 2].some(i => a.barycentricTriple[i] === 0 && b.barycentricTriple[i] === 0)
 ```
 
@@ -138,7 +138,7 @@ getSpecialPoints = (edges, classification) => {
 
   for (const edge of edges) {
     const [a, b] = edge.source || [];
-    if (a && b && isEdgeSpecial(a, b)) {
+    if (a && b && isEdgeBoundary(a, b)) {
       specials.push(edge.point);
     }
   }
