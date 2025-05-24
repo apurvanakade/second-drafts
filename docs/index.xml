@@ -10,7 +10,17 @@
 <atom:link href="https://github.com/apurvanakade/second-drafts/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.7.31</generator>
-<lastBuildDate>Thu, 22 May 2025 14:23:17 GMT</lastBuildDate>
+<lastBuildDate>Fri, 23 May 2025 00:49:05 GMT</lastBuildDate>
+<item>
+  <title></title>
+  <dc:creator>Apurva Nakade</dc:creator>
+  <link>https://github.com/apurvanakade/second-drafts/drafts/architects-gardeners.html</link>
+  <description><![CDATA[ undefined ]]></description>
+  <category>philosophy</category>
+  <category>teaching</category>
+  <guid>https://github.com/apurvanakade/second-drafts/drafts/architects-gardeners.html</guid>
+  <pubDate>Fri, 23 May 2025 00:49:05 GMT</pubDate>
+</item>
 <item>
   <title>Sperner’s Lemma - Geometric Proof</title>
   <dc:creator>Apurva Nakade</dc:creator>
@@ -1709,7 +1719,7 @@ font-style: inherit;">max</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> <span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">10</span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">20</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> <span class="dt" style="color: #AD0000;
 background-color: null;
@@ -1916,7 +1926,7 @@ font-style: inherit;">max</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> <span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">10</span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">20</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> <span class="dt" style="color: #AD0000;
 background-color: null;

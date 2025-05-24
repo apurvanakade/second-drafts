@@ -191,7 +191,7 @@ function plotTriangles(triangles, morphedPoints, vertices) {
 
 ```{ojs}
 viewof N = slider({
-  min: 2, max: 10, step: 1, value: 10, width: 500, title: "Number of subdivisions"
+  min: 2, max: 20, step: 1, value: 10, width: 500, title: "Number of subdivisions"
 })
 
 viewof t = slider({
@@ -211,7 +211,7 @@ viewof plot1 = plotTriangles(triangles1, morphedMap1, equilateralTriangleVertice
 
 ```{ojs}
 viewof M = slider({
-  min: 2, max: 10, step: 1, value: 10, width: 500, title: "Number of subdivisions"
+  min: 2, max: 20, step: 1, value: 10, width: 500, title: "Number of subdivisions"
 })
 
 viewof s = slider({
