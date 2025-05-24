@@ -1,0 +1,1307 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.31">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Apurva Nakade">
+<meta name="dcterms.date" content="2025-05-22">
+
+<title>Sperner’s Lemma - Geometric Proof – Second Drafts</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./9993-sperners-lemma-combinatorial-proof.html" rel="next">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-8ef56b68f8fa1e9d2ba328e99e439f80.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-05babaf0cfa1e1caed117225af04a19c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-3d3c3807380c683caf11aaf4545bf090.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-05babaf0cfa1e1caed117225af04a19c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script type="module" src="site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+<link href="site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="styles.css">
+<meta property="og:title" content="Sperner’s Lemma - Geometric Proof – Second Drafts">
+<meta property="og:description" content="">
+<meta property="og:site_name" content="Second Drafts">
+</head>
+
+<body class="nav-sidebar floating nav-fixed fullcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Second Drafts</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://apurvanakade.github.io/"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://apurvanakade.github.io/notes.html"> 
+<span class="menu-text">Class Notes</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">(Math) Blog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://apurvanakade.github.io/CV.html"> 
+<span class="menu-text">CV</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/apurvanakade/"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./9992-sperners-lemma-geometric-proof.html">Sperner’s Lemma - Geometric Proof</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./9992-sperners-lemma-geometric-proof.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Sperner’s Lemma - Geometric Proof</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./9993-sperners-lemma-combinatorial-proof.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Sperner’s Lemma - Combinatorial Proof</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./9994-sperners-lemma-statement.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Sperner’s Lemma - Statement</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./9995-non-profits.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Non-Profits</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./9996-random-points-in-a-triangle.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Random points in a triangle</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./9997-hopkins-is-a-joke.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Hopkins is a joke</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./9998-barycentric-coordinates.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Barycentric Coordinates</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./9999-begin-again.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Begin Again</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Drafts</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Sperner’s Lemma - Geometric Proof</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">triangles</div>
+    <div class="quarto-category">coloring</div>
+    <div class="quarto-category">questions</div>
+    <div class="quarto-category">visualization</div>
+    <div class="quarto-category">interactive</div>
+    <div class="quarto-category">observablejs</div>
+  </div>
+  </div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Apurva Nakade </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">May 22, 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><strong>DRAFT DOCUMENT</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="10" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 9;"><span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> {slider} <span class="im">from</span> <span class="st">"@jashkenas/inputs"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb2" data-startfrom="15" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 14;"><span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>equilateralTriangleVertices <span class="op">=</span> [</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">x</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="dv">0</span>}<span class="op">,</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">x</span><span class="op">:</span> <span class="fl">0.5</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(<span class="dv">3</span>) <span class="op">/</span> <span class="dv">2</span>}<span class="op">,</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">x</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="dv">0</span>}<span class="op">,</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>generateBarycentricCoords <span class="op">=</span> N <span class="kw">=&gt;</span> {</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> coords <span class="op">=</span> []</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;=</span> N<span class="op">;</span> i<span class="op">++</span>) {</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="kw">let</span> j <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> j <span class="op">&lt;=</span> N <span class="op">-</span> i<span class="op">;</span> j<span class="op">++</span>) {</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>      coords<span class="op">.</span><span class="fu">push</span>([i<span class="op">,</span> j<span class="op">,</span> N <span class="op">-</span> i <span class="op">-</span> j])</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> coords</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>pickRandomColor <span class="op">=</span> (<span class="op">...</span>options) <span class="kw">=&gt;</span> options[<span class="bu">Math</span><span class="op">.</span><span class="fu">floor</span>(<span class="bu">Math</span><span class="op">.</span><span class="fu">random</span>() <span class="op">*</span> options<span class="op">.</span><span class="at">length</span>)]</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>smoothstepEase <span class="op">=</span> t <span class="kw">=&gt;</span> <span class="dv">3</span> <span class="op">*</span> t <span class="op">**</span> <span class="dv">2</span> <span class="op">-</span> <span class="dv">2</span> <span class="op">*</span> t <span class="op">**</span> <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-4" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb3" data-startfrom="38" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 37;"><span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>defaultAssignColor <span class="op">=</span> (a<span class="op">,</span> b<span class="op">,</span> c) <span class="kw">=&gt;</span> {</span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (a <span class="op">===</span> <span class="dv">0</span> <span class="op">&amp;&amp;</span> b <span class="op">===</span> <span class="dv">0</span>) <span class="cf">return</span> <span class="st">'red'</span></span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (b <span class="op">===</span> <span class="dv">0</span> <span class="op">&amp;&amp;</span> c <span class="op">===</span> <span class="dv">0</span>) <span class="cf">return</span> <span class="st">'green'</span></span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (c <span class="op">===</span> <span class="dv">0</span> <span class="op">&amp;&amp;</span> a <span class="op">===</span> <span class="dv">0</span>) <span class="cf">return</span> <span class="st">'blue'</span></span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (a <span class="op">===</span> <span class="dv">0</span>) <span class="cf">return</span> <span class="fu">pickRandomColor</span>(<span class="st">'red'</span><span class="op">,</span> <span class="st">'blue'</span>)</span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (b <span class="op">===</span> <span class="dv">0</span>) <span class="cf">return</span> <span class="fu">pickRandomColor</span>(<span class="st">'red'</span><span class="op">,</span> <span class="st">'green'</span>)</span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (c <span class="op">===</span> <span class="dv">0</span>) <span class="cf">return</span> <span class="fu">pickRandomColor</span>(<span class="st">'blue'</span><span class="op">,</span> <span class="st">'green'</span>)</span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="fu">pickRandomColor</span>(<span class="st">'red'</span><span class="op">,</span> <span class="st">'green'</span><span class="op">,</span> <span class="st">'blue'</span>)</span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>simplerAssignColor <span class="op">=</span> (a<span class="op">,</span> b<span class="op">,</span> c) <span class="kw">=&gt;</span> {</span>
+<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (a <span class="op">===</span> <span class="dv">0</span> <span class="op">&amp;&amp;</span> b <span class="op">===</span> <span class="dv">0</span>) <span class="cf">return</span> <span class="st">'red'</span></span>
+<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (b <span class="op">===</span> <span class="dv">0</span> <span class="op">&amp;&amp;</span> c <span class="op">===</span> <span class="dv">0</span>) <span class="cf">return</span> <span class="st">'green'</span></span>
+<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (c <span class="op">===</span> <span class="dv">0</span> <span class="op">&amp;&amp;</span> a <span class="op">===</span> <span class="dv">0</span>) <span class="cf">return</span> <span class="st">'blue'</span></span>
+<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="fu">pickRandomColor</span>(<span class="st">'red'</span><span class="op">,</span> <span class="st">'green'</span><span class="op">,</span> <span class="st">'blue'</span>)</span>
+<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-3-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-3-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb4" data-startfrom="56" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 55;"><span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">createTriangleMorpher</span>(N<span class="op">,</span> vertices<span class="op">,</span> assignColor<span class="op">,</span> easing <span class="op">=</span> smoothstepEase) {</span>
+<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> baryCoords <span class="op">=</span> <span class="fu">generateBarycentricCoords</span>(N)</span>
+<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-59"><a href="#cb4-59" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> buildColorMap <span class="op">=</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> map <span class="op">=</span> <span class="kw">new</span> <span class="bu">Map</span>()</span>
+<span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="kw">const</span> [a<span class="op">,</span> b<span class="op">,</span> c] <span class="kw">of</span> baryCoords) {</span>
+<span id="cb4-62"><a href="#cb4-62" aria-hidden="true" tabindex="-1"></a>      map<span class="op">.</span><span class="fu">set</span>(<span class="vs">`</span><span class="sc">${</span>a<span class="sc">}</span><span class="vs">,</span><span class="sc">${</span>b<span class="sc">}</span><span class="vs">,</span><span class="sc">${</span>c<span class="sc">}</span><span class="vs">`</span><span class="op">,</span> <span class="fu">assignColor</span>(a<span class="op">,</span> b<span class="op">,</span> c))</span>
+<span id="cb4-63"><a href="#cb4-63" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb4-64"><a href="#cb4-64" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> map</span>
+<span id="cb4-65"><a href="#cb4-65" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb4-66"><a href="#cb4-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-67"><a href="#cb4-67" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> interpolatePoints <span class="op">=</span> (t<span class="op">,</span> colorMap) <span class="kw">=&gt;</span> {</span>
+<span id="cb4-68"><a href="#cb4-68" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> [A<span class="op">,</span> B<span class="op">,</span> C] <span class="op">=</span> vertices</span>
+<span id="cb4-69"><a href="#cb4-69" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> vertexMap <span class="op">=</span> { <span class="dt">red</span><span class="op">:</span> C<span class="op">,</span> <span class="dt">green</span><span class="op">:</span> A<span class="op">,</span> <span class="dt">blue</span><span class="op">:</span> B }</span>
+<span id="cb4-70"><a href="#cb4-70" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> s <span class="op">=</span> <span class="fu">easing</span>(t)</span>
+<span id="cb4-71"><a href="#cb4-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-72"><a href="#cb4-72" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> morphedPoints <span class="op">=</span> baryCoords<span class="op">.</span><span class="fu">map</span>(([a<span class="op">,</span> b<span class="op">,</span> c]) <span class="kw">=&gt;</span> {</span>
+<span id="cb4-73"><a href="#cb4-73" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> sum <span class="op">=</span> a <span class="op">+</span> b <span class="op">+</span> c</span>
+<span id="cb4-74"><a href="#cb4-74" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> x0 <span class="op">=</span> (a <span class="op">*</span> A<span class="op">.</span><span class="at">x</span> <span class="op">+</span> b <span class="op">*</span> B<span class="op">.</span><span class="at">x</span> <span class="op">+</span> c <span class="op">*</span> C<span class="op">.</span><span class="at">x</span>) <span class="op">/</span> sum</span>
+<span id="cb4-75"><a href="#cb4-75" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> y0 <span class="op">=</span> (a <span class="op">*</span> A<span class="op">.</span><span class="at">y</span> <span class="op">+</span> b <span class="op">*</span> B<span class="op">.</span><span class="at">y</span> <span class="op">+</span> c <span class="op">*</span> C<span class="op">.</span><span class="at">y</span>) <span class="op">/</span> sum</span>
+<span id="cb4-76"><a href="#cb4-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-77"><a href="#cb4-77" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> color <span class="op">=</span> colorMap<span class="op">.</span><span class="fu">get</span>(<span class="vs">`</span><span class="sc">${</span>a<span class="sc">}</span><span class="vs">,</span><span class="sc">${</span>b<span class="sc">}</span><span class="vs">,</span><span class="sc">${</span>c<span class="sc">}</span><span class="vs">`</span>)</span>
+<span id="cb4-78"><a href="#cb4-78" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> target <span class="op">=</span> vertexMap[color]</span>
+<span id="cb4-79"><a href="#cb4-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-80"><a href="#cb4-80" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span> {</span>
+<span id="cb4-81"><a href="#cb4-81" aria-hidden="true" tabindex="-1"></a>        <span class="dt">x</span><span class="op">:</span> (<span class="dv">1</span> <span class="op">-</span> s) <span class="op">*</span> x0 <span class="op">+</span> s <span class="op">*</span> target<span class="op">.</span><span class="at">x</span><span class="op">,</span></span>
+<span id="cb4-82"><a href="#cb4-82" aria-hidden="true" tabindex="-1"></a>        <span class="dt">y</span><span class="op">:</span> (<span class="dv">1</span> <span class="op">-</span> s) <span class="op">*</span> y0 <span class="op">+</span> s <span class="op">*</span> target<span class="op">.</span><span class="at">y</span><span class="op">,</span></span>
+<span id="cb4-83"><a href="#cb4-83" aria-hidden="true" tabindex="-1"></a>        color<span class="op">,</span></span>
+<span id="cb4-84"><a href="#cb4-84" aria-hidden="true" tabindex="-1"></a>        <span class="dt">barycentricTriple</span><span class="op">:</span> [a<span class="op">,</span> b<span class="op">,</span> c]</span>
+<span id="cb4-85"><a href="#cb4-85" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb4-86"><a href="#cb4-86" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb4-87"><a href="#cb4-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-88"><a href="#cb4-88" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> morphedMap <span class="op">=</span> <span class="kw">new</span> <span class="bu">Map</span>(morphedPoints<span class="op">.</span><span class="fu">map</span>(p <span class="kw">=&gt;</span> [p<span class="op">.</span><span class="at">barycentricTriple</span><span class="op">.</span><span class="fu">join</span>(<span class="st">','</span>)<span class="op">,</span> p]))</span>
+<span id="cb4-89"><a href="#cb4-89" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> { morphedPoints<span class="op">,</span> morphedMap }</span>
+<span id="cb4-90"><a href="#cb4-90" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb4-91"><a href="#cb4-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-92"><a href="#cb4-92" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> generateSubTriangles <span class="op">=</span> morphedMap <span class="kw">=&gt;</span> {</span>
+<span id="cb4-93"><a href="#cb4-93" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> triangles <span class="op">=</span> []</span>
+<span id="cb4-94"><a href="#cb4-94" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> N<span class="op">;</span> i<span class="op">++</span>) {</span>
+<span id="cb4-95"><a href="#cb4-95" aria-hidden="true" tabindex="-1"></a>      <span class="cf">for</span> (<span class="kw">let</span> j <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> j <span class="op">&lt;</span> N <span class="op">-</span> i<span class="op">;</span> j<span class="op">++</span>) {</span>
+<span id="cb4-96"><a href="#cb4-96" aria-hidden="true" tabindex="-1"></a>        <span class="kw">const</span> a <span class="op">=</span> [i<span class="op">,</span> j<span class="op">,</span> N <span class="op">-</span> i <span class="op">-</span> j]</span>
+<span id="cb4-97"><a href="#cb4-97" aria-hidden="true" tabindex="-1"></a>        <span class="kw">const</span> b <span class="op">=</span> [i <span class="op">+</span> <span class="dv">1</span><span class="op">,</span> j<span class="op">,</span> N <span class="op">-</span> i <span class="op">-</span> j <span class="op">-</span> <span class="dv">1</span>]</span>
+<span id="cb4-98"><a href="#cb4-98" aria-hidden="true" tabindex="-1"></a>        <span class="kw">const</span> c <span class="op">=</span> [i<span class="op">,</span> j <span class="op">+</span> <span class="dv">1</span><span class="op">,</span> N <span class="op">-</span> i <span class="op">-</span> j <span class="op">-</span> <span class="dv">1</span>]</span>
+<span id="cb4-99"><a href="#cb4-99" aria-hidden="true" tabindex="-1"></a>        triangles<span class="op">.</span><span class="fu">push</span>({ <span class="dt">coordinates</span><span class="op">:</span> [a<span class="op">,</span> b<span class="op">,</span> c] })</span>
+<span id="cb4-100"><a href="#cb4-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-101"><a href="#cb4-101" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (i <span class="op">+</span> j <span class="op">&lt;</span> N <span class="op">-</span> <span class="dv">1</span>) {</span>
+<span id="cb4-102"><a href="#cb4-102" aria-hidden="true" tabindex="-1"></a>          <span class="kw">const</span> d <span class="op">=</span> [i <span class="op">+</span> <span class="dv">1</span><span class="op">,</span> j <span class="op">+</span> <span class="dv">1</span><span class="op">,</span> N <span class="op">-</span> i <span class="op">-</span> j <span class="op">-</span> <span class="dv">2</span>]</span>
+<span id="cb4-103"><a href="#cb4-103" aria-hidden="true" tabindex="-1"></a>          triangles<span class="op">.</span><span class="fu">push</span>({ <span class="dt">coordinates</span><span class="op">:</span> [b<span class="op">,</span> d<span class="op">,</span> c] })</span>
+<span id="cb4-104"><a href="#cb4-104" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb4-105"><a href="#cb4-105" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb4-106"><a href="#cb4-106" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb4-107"><a href="#cb4-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-108"><a href="#cb4-108" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> triangles<span class="op">.</span><span class="fu">map</span>(tri <span class="kw">=&gt;</span> {</span>
+<span id="cb4-109"><a href="#cb4-109" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> vertex_colors <span class="op">=</span> tri<span class="op">.</span><span class="at">coordinates</span><span class="op">.</span><span class="fu">map</span>(c <span class="kw">=&gt;</span> morphedMap<span class="op">.</span><span class="fu">get</span>(c<span class="op">.</span><span class="fu">join</span>(<span class="st">','</span>))<span class="op">.</span><span class="at">color</span>)</span>
+<span id="cb4-110"><a href="#cb4-110" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span> { <span class="op">...</span>tri<span class="op">,</span> vertex_colors }</span>
+<span id="cb4-111"><a href="#cb4-111" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb4-112"><a href="#cb4-112" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb4-113"><a href="#cb4-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-114"><a href="#cb4-114" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> {</span>
+<span id="cb4-115"><a href="#cb4-115" aria-hidden="true" tabindex="-1"></a>    baryCoords<span class="op">,</span></span>
+<span id="cb4-116"><a href="#cb4-116" aria-hidden="true" tabindex="-1"></a>    buildColorMap<span class="op">,</span></span>
+<span id="cb4-117"><a href="#cb4-117" aria-hidden="true" tabindex="-1"></a>    interpolatePoints<span class="op">,</span></span>
+<span id="cb4-118"><a href="#cb4-118" aria-hidden="true" tabindex="-1"></a>    generateSubTriangles</span>
+<span id="cb4-119"><a href="#cb4-119" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb4-120"><a href="#cb4-120" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-4" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb5" data-startfrom="126" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 125;"><span id="cb5-126"><a href="#cb5-126" aria-hidden="true" tabindex="-1"></a>fillColorGroups <span class="op">=</span> {</span>
+<span id="cb5-127"><a href="#cb5-127" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> group1 <span class="op">=</span> <span class="kw">new</span> <span class="bu">Set</span>([<span class="st">'RGB'</span><span class="op">,</span> <span class="st">'GBR'</span><span class="op">,</span> <span class="st">'BRG'</span>])</span>
+<span id="cb5-128"><a href="#cb5-128" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> group2 <span class="op">=</span> <span class="kw">new</span> <span class="bu">Set</span>([<span class="st">'RBG'</span><span class="op">,</span> <span class="st">'BGR'</span><span class="op">,</span> <span class="st">'GRB'</span>])</span>
+<span id="cb5-129"><a href="#cb5-129" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> { group1<span class="op">,</span> group2 }</span>
+<span id="cb5-130"><a href="#cb5-130" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-131"><a href="#cb5-131" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-132"><a href="#cb5-132" aria-hidden="true" tabindex="-1"></a>getFillColor <span class="op">=</span> vertexColors <span class="kw">=&gt;</span> {</span>
+<span id="cb5-133"><a href="#cb5-133" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> map <span class="op">=</span> { <span class="dt">red</span><span class="op">:</span> <span class="st">'R'</span><span class="op">,</span> <span class="dt">green</span><span class="op">:</span> <span class="st">'G'</span><span class="op">,</span> <span class="dt">blue</span><span class="op">:</span> <span class="st">'B'</span> }</span>
+<span id="cb5-134"><a href="#cb5-134" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> key <span class="op">=</span> vertexColors<span class="op">.</span><span class="fu">map</span>(c <span class="kw">=&gt;</span> map[c<span class="op">.</span><span class="fu">toLowerCase</span>()] <span class="op">||</span> <span class="st">''</span>)<span class="op">.</span><span class="fu">join</span>(<span class="st">''</span>)</span>
+<span id="cb5-135"><a href="#cb5-135" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-136"><a href="#cb5-136" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (fillColorGroups<span class="op">.</span><span class="at">group1</span><span class="op">.</span><span class="fu">has</span>(key)) {</span>
+<span id="cb5-137"><a href="#cb5-137" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="st">'rgba(255, 99, 71, 0.5)'</span> <span class="co">// Tomato</span></span>
+<span id="cb5-138"><a href="#cb5-138" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb5-139"><a href="#cb5-139" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-140"><a href="#cb5-140" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (fillColorGroups<span class="op">.</span><span class="at">group2</span><span class="op">.</span><span class="fu">has</span>(key)) {</span>
+<span id="cb5-141"><a href="#cb5-141" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="st">'rgba(72, 209, 204, 0.5)'</span> <span class="co">// Medium turquoise</span></span>
+<span id="cb5-142"><a href="#cb5-142" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb5-143"><a href="#cb5-143" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-144"><a href="#cb5-144" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Neutral group (fallback): soft gray</span></span>
+<span id="cb5-145"><a href="#cb5-145" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="st">'rgba(160, 160, 160, 0.25)'</span></span>
+<span id="cb5-146"><a href="#cb5-146" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-5-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-5-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb6" data-startfrom="149" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 148;"><span id="cb6-149"><a href="#cb6-149" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">plotTriangles</span>(triangles<span class="op">,</span> morphedPoints<span class="op">,</span> vertices) {</span>
+<span id="cb6-150"><a href="#cb6-150" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb6-151"><a href="#cb6-151" aria-hidden="true" tabindex="-1"></a>    <span class="dt">width</span><span class="op">:</span> <span class="dv">800</span><span class="op">,</span></span>
+<span id="cb6-152"><a href="#cb6-152" aria-hidden="true" tabindex="-1"></a>    <span class="dt">height</span><span class="op">:</span> <span class="dv">800</span><span class="op">,</span></span>
+<span id="cb6-153"><a href="#cb6-153" aria-hidden="true" tabindex="-1"></a>    <span class="dt">x</span><span class="op">:</span> {<span class="dt">domain</span><span class="op">:</span> [<span class="dv">0</span><span class="op">,</span> <span class="dv">1</span>]<span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">'x'</span>}<span class="op">,</span></span>
+<span id="cb6-154"><a href="#cb6-154" aria-hidden="true" tabindex="-1"></a>    <span class="dt">y</span><span class="op">:</span> {<span class="dt">domain</span><span class="op">:</span> [<span class="dv">0</span><span class="op">,</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(<span class="dv">3</span>) <span class="op">/</span> <span class="dv">2</span>]<span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">'y'</span>}<span class="op">,</span></span>
+<span id="cb6-155"><a href="#cb6-155" aria-hidden="true" tabindex="-1"></a>    <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb6-156"><a href="#cb6-156" aria-hidden="true" tabindex="-1"></a>      <span class="co">// Plot.line([...vertices, vertices[0]], {x: "x", y: "y", stroke: "black", strokeWidth: 1}),</span></span>
+<span id="cb6-157"><a href="#cb6-157" aria-hidden="true" tabindex="-1"></a>      Plot<span class="op">.</span><span class="fu">geo</span>({</span>
+<span id="cb6-158"><a href="#cb6-158" aria-hidden="true" tabindex="-1"></a>        <span class="dt">type</span><span class="op">:</span> <span class="st">"FeatureCollection"</span><span class="op">,</span></span>
+<span id="cb6-159"><a href="#cb6-159" aria-hidden="true" tabindex="-1"></a>        <span class="dt">features</span><span class="op">:</span> triangles<span class="op">.</span><span class="fu">map</span>(tri <span class="kw">=&gt;</span> ({</span>
+<span id="cb6-160"><a href="#cb6-160" aria-hidden="true" tabindex="-1"></a>          <span class="dt">type</span><span class="op">:</span> <span class="st">"Feature"</span><span class="op">,</span></span>
+<span id="cb6-161"><a href="#cb6-161" aria-hidden="true" tabindex="-1"></a>          <span class="dt">geometry</span><span class="op">:</span> {</span>
+<span id="cb6-162"><a href="#cb6-162" aria-hidden="true" tabindex="-1"></a>            <span class="dt">type</span><span class="op">:</span> <span class="st">"Polygon"</span><span class="op">,</span></span>
+<span id="cb6-163"><a href="#cb6-163" aria-hidden="true" tabindex="-1"></a>            <span class="dt">coordinates</span><span class="op">:</span> [[</span>
+<span id="cb6-164"><a href="#cb6-164" aria-hidden="true" tabindex="-1"></a>              <span class="op">...</span>tri<span class="op">.</span><span class="at">coordinates</span><span class="op">.</span><span class="fu">map</span>(c <span class="kw">=&gt;</span> {</span>
+<span id="cb6-165"><a href="#cb6-165" aria-hidden="true" tabindex="-1"></a>                <span class="kw">const</span> p <span class="op">=</span> morphedPoints<span class="op">.</span><span class="at">morphedMap</span><span class="op">.</span><span class="fu">get</span>(c<span class="op">.</span><span class="fu">join</span>(<span class="st">','</span>))</span>
+<span id="cb6-166"><a href="#cb6-166" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span> [p<span class="op">.</span><span class="at">x</span><span class="op">,</span> p<span class="op">.</span><span class="at">y</span>]</span>
+<span id="cb6-167"><a href="#cb6-167" aria-hidden="true" tabindex="-1"></a>              })<span class="op">,</span></span>
+<span id="cb6-168"><a href="#cb6-168" aria-hidden="true" tabindex="-1"></a>              (() <span class="kw">=&gt;</span> {</span>
+<span id="cb6-169"><a href="#cb6-169" aria-hidden="true" tabindex="-1"></a>                <span class="kw">const</span> p <span class="op">=</span> morphedPoints<span class="op">.</span><span class="at">morphedMap</span><span class="op">.</span><span class="fu">get</span>(tri<span class="op">.</span><span class="at">coordinates</span>[<span class="dv">0</span>]<span class="op">.</span><span class="fu">join</span>(<span class="st">','</span>))</span>
+<span id="cb6-170"><a href="#cb6-170" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span> [p<span class="op">.</span><span class="at">x</span><span class="op">,</span> p<span class="op">.</span><span class="at">y</span>]</span>
+<span id="cb6-171"><a href="#cb6-171" aria-hidden="true" tabindex="-1"></a>              })()</span>
+<span id="cb6-172"><a href="#cb6-172" aria-hidden="true" tabindex="-1"></a>            ]]</span>
+<span id="cb6-173"><a href="#cb6-173" aria-hidden="true" tabindex="-1"></a>          }<span class="op">,</span></span>
+<span id="cb6-174"><a href="#cb6-174" aria-hidden="true" tabindex="-1"></a>          <span class="dt">properties</span><span class="op">:</span> {</span>
+<span id="cb6-175"><a href="#cb6-175" aria-hidden="true" tabindex="-1"></a>            <span class="dt">fillColor</span><span class="op">:</span> <span class="fu">getFillColor</span>(tri<span class="op">.</span><span class="at">vertex_colors</span>)</span>
+<span id="cb6-176"><a href="#cb6-176" aria-hidden="true" tabindex="-1"></a>          }</span>
+<span id="cb6-177"><a href="#cb6-177" aria-hidden="true" tabindex="-1"></a>        }))</span>
+<span id="cb6-178"><a href="#cb6-178" aria-hidden="true" tabindex="-1"></a>      }<span class="op">,</span> {</span>
+<span id="cb6-179"><a href="#cb6-179" aria-hidden="true" tabindex="-1"></a>        <span class="dt">fill</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">properties</span><span class="op">.</span><span class="at">fillColor</span><span class="op">,</span></span>
+<span id="cb6-180"><a href="#cb6-180" aria-hidden="true" tabindex="-1"></a>        <span class="dt">stroke</span><span class="op">:</span> <span class="st">"black"</span><span class="op">,</span></span>
+<span id="cb6-181"><a href="#cb6-181" aria-hidden="true" tabindex="-1"></a>        <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">1</span></span>
+<span id="cb6-182"><a href="#cb6-182" aria-hidden="true" tabindex="-1"></a>      })<span class="op">,</span></span>
+<span id="cb6-183"><a href="#cb6-183" aria-hidden="true" tabindex="-1"></a>      Plot<span class="op">.</span><span class="fu">dot</span>(morphedPoints<span class="op">.</span><span class="at">morphedPoints</span><span class="op">,</span> {</span>
+<span id="cb6-184"><a href="#cb6-184" aria-hidden="true" tabindex="-1"></a>        <span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"color"</span><span class="op">,</span> <span class="dt">r</span><span class="op">:</span> <span class="dv">5</span> <span class="op">*</span> (<span class="dv">5</span> <span class="op">/</span> N)</span>
+<span id="cb6-185"><a href="#cb6-185" aria-hidden="true" tabindex="-1"></a>      })</span>
+<span id="cb6-186"><a href="#cb6-186" aria-hidden="true" tabindex="-1"></a>    ]</span>
+<span id="cb6-187"><a href="#cb6-187" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb6-188"><a href="#cb6-188" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-6" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb7" data-startfrom="193" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 192;"><span id="cb7-193"><a href="#cb7-193" aria-hidden="true" tabindex="-1"></a>viewof N <span class="op">=</span> <span class="fu">slider</span>({</span>
+<span id="cb7-194"><a href="#cb7-194" aria-hidden="true" tabindex="-1"></a>  <span class="dt">min</span><span class="op">:</span> <span class="dv">2</span><span class="op">,</span> <span class="dt">max</span><span class="op">:</span> <span class="dv">10</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">10</span><span class="op">,</span> <span class="dt">width</span><span class="op">:</span> <span class="dv">500</span><span class="op">,</span> <span class="dt">title</span><span class="op">:</span> <span class="st">"Number of subdivisions"</span></span>
+<span id="cb7-195"><a href="#cb7-195" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-7" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb8" data-startfrom="200" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 199;"><span id="cb8-200"><a href="#cb8-200" aria-hidden="true" tabindex="-1"></a>morpher1 <span class="op">=</span> <span class="fu">createTriangleMorpher</span>(N<span class="op">,</span> equilateralTriangleVertices<span class="op">,</span> defaultAssignColor)</span>
+<span id="cb8-201"><a href="#cb8-201" aria-hidden="true" tabindex="-1"></a>morpher2 <span class="op">=</span> <span class="fu">createTriangleMorpher</span>(N<span class="op">,</span> equilateralTriangleVertices<span class="op">,</span> simplerAssignColor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-8-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-8-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb9" data-startfrom="205" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 204;"><span id="cb9-205"><a href="#cb9-205" aria-hidden="true" tabindex="-1"></a>viewof t <span class="op">=</span> <span class="fu">slider</span>({</span>
+<span id="cb9-206"><a href="#cb9-206" aria-hidden="true" tabindex="-1"></a>  <span class="dt">min</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">max</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="fl">0.01</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">width</span><span class="op">:</span> <span class="dv">500</span><span class="op">,</span> <span class="dt">title</span><span class="op">:</span> <span class="st">"Time"</span></span>
+<span id="cb9-207"><a href="#cb9-207" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb9-208"><a href="#cb9-208" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-209"><a href="#cb9-209" aria-hidden="true" tabindex="-1"></a>colorMap1 <span class="op">=</span> morpher1<span class="op">.</span><span class="fu">buildColorMap</span>()</span>
+<span id="cb9-210"><a href="#cb9-210" aria-hidden="true" tabindex="-1"></a>morphedMap1 <span class="op">=</span> morpher1<span class="op">.</span><span class="fu">interpolatePoints</span>(t<span class="op">,</span> colorMap1)</span>
+<span id="cb9-211"><a href="#cb9-211" aria-hidden="true" tabindex="-1"></a>triangles1 <span class="op">=</span> morpher1<span class="op">.</span><span class="fu">generateSubTriangles</span>(morphedMap1<span class="op">.</span><span class="at">morphedMap</span>)</span>
+<span id="cb9-212"><a href="#cb9-212" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-213"><a href="#cb9-213" aria-hidden="true" tabindex="-1"></a>viewof plot1 <span class="op">=</span> <span class="fu">plotTriangles</span>(triangles1<span class="op">,</span> morphedMap1<span class="op">,</span> equilateralTriangleVertices)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-9-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-9-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-9-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-9-4" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-9-5" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb10" data-startfrom="218" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 217;"><span id="cb10-218"><a href="#cb10-218" aria-hidden="true" tabindex="-1"></a>viewof s <span class="op">=</span> <span class="fu">slider</span>({</span>
+<span id="cb10-219"><a href="#cb10-219" aria-hidden="true" tabindex="-1"></a>  <span class="dt">min</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">max</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="fl">0.01</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">width</span><span class="op">:</span> <span class="dv">500</span><span class="op">,</span> <span class="dt">title</span><span class="op">:</span> <span class="st">"Time (2nd plot)"</span></span>
+<span id="cb10-220"><a href="#cb10-220" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb10-221"><a href="#cb10-221" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-222"><a href="#cb10-222" aria-hidden="true" tabindex="-1"></a>colorMap2 <span class="op">=</span> morpher2<span class="op">.</span><span class="fu">buildColorMap</span>()</span>
+<span id="cb10-223"><a href="#cb10-223" aria-hidden="true" tabindex="-1"></a>morphedMap2 <span class="op">=</span> morpher2<span class="op">.</span><span class="fu">interpolatePoints</span>(s<span class="op">,</span> colorMap2)</span>
+<span id="cb10-224"><a href="#cb10-224" aria-hidden="true" tabindex="-1"></a>triangles2 <span class="op">=</span> morpher2<span class="op">.</span><span class="fu">generateSubTriangles</span>(morphedMap2<span class="op">.</span><span class="at">morphedMap</span>)</span>
+<span id="cb10-225"><a href="#cb10-225" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-226"><a href="#cb10-226" aria-hidden="true" tabindex="-1"></a>viewof plot2 <span class="op">=</span> <span class="fu">plotTriangles</span>(triangles2<span class="op">,</span> morphedMap2<span class="op">,</span> equilateralTriangleVertices)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-10-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-10-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-10-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-10-4" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-10-5" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6ImltcG9ydCB7c2xpZGVyfSBmcm9tIFwiQGphc2hrZW5hcy9pbnB1dHNcIlxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0yIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiZXF1aWxhdGVyYWxUcmlhbmdsZVZlcnRpY2VzID0gW1xuICB7eDogMSwgeTogMH0sXG4gIHt4OiAwLjUsIHk6IE1hdGguc3FydCgzKSAvIDJ9LFxuICB7eDogMCwgeTogMH0sXG5dXG5cbmdlbmVyYXRlQmFyeWNlbnRyaWNDb29yZHMgPSBOID0+IHtcbiAgY29uc3QgY29vcmRzID0gW11cbiAgZm9yIChsZXQgaSA9IDA7IGkgPD0gTjsgaSsrKSB7XG4gICAgZm9yIChsZXQgaiA9IDA7IGogPD0gTiAtIGk7IGorKykge1xuICAgICAgY29vcmRzLnB1c2goW2ksIGosIE4gLSBpIC0gal0pXG4gICAgfVxuICB9XG4gIHJldHVybiBjb29yZHNcbn1cblxucGlja1JhbmRvbUNvbG9yID0gKC4uLm9wdGlvbnMpID0+IG9wdGlvbnNbTWF0aC5mbG9vcihNYXRoLnJhbmRvbSgpICogb3B0aW9ucy5sZW5ndGgpXVxuXG5zbW9vdGhzdGVwRWFzZSA9IHQgPT4gMyAqIHQgKiogMiAtIDIgKiB0ICoqIDNcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMyIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6ImRlZmF1bHRBc3NpZ25Db2xvciA9IChhLCBiLCBjKSA9PiB7XG4gIGlmIChhID09PSAwICYmIGIgPT09IDApIHJldHVybiAncmVkJ1xuICBpZiAoYiA9PT0gMCAmJiBjID09PSAwKSByZXR1cm4gJ2dyZWVuJ1xuICBpZiAoYyA9PT0gMCAmJiBhID09PSAwKSByZXR1cm4gJ2JsdWUnXG4gIGlmIChhID09PSAwKSByZXR1cm4gcGlja1JhbmRvbUNvbG9yKCdyZWQnLCAnYmx1ZScpXG4gIGlmIChiID09PSAwKSByZXR1cm4gcGlja1JhbmRvbUNvbG9yKCdyZWQnLCAnZ3JlZW4nKVxuICBpZiAoYyA9PT0gMCkgcmV0dXJuIHBpY2tSYW5kb21Db2xvcignYmx1ZScsICdncmVlbicpXG4gIHJldHVybiBwaWNrUmFuZG9tQ29sb3IoJ3JlZCcsICdncmVlbicsICdibHVlJylcbn1cblxuc2ltcGxlckFzc2lnbkNvbG9yID0gKGEsIGIsIGMpID0+IHtcbiAgaWYgKGEgPT09IDAgJiYgYiA9PT0gMCkgcmV0dXJuICdyZWQnXG4gIGlmIChiID09PSAwICYmIGMgPT09IDApIHJldHVybiAnZ3JlZW4nXG4gIGlmIChjID09PSAwICYmIGEgPT09IDApIHJldHVybiAnYmx1ZSdcbiAgcmV0dXJuIHBpY2tSYW5kb21Db2xvcigncmVkJywgJ2dyZWVuJywgJ2JsdWUnKVxufVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC00IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiZnVuY3Rpb24gY3JlYXRlVHJpYW5nbGVNb3JwaGVyKE4sIHZlcnRpY2VzLCBhc3NpZ25Db2xvciwgZWFzaW5nID0gc21vb3Roc3RlcEVhc2UpIHtcbiAgY29uc3QgYmFyeUNvb3JkcyA9IGdlbmVyYXRlQmFyeWNlbnRyaWNDb29yZHMoTilcblxuICBjb25zdCBidWlsZENvbG9yTWFwID0gKCkgPT4ge1xuICAgIGNvbnN0IG1hcCA9IG5ldyBNYXAoKVxuICAgIGZvciAoY29uc3QgW2EsIGIsIGNdIG9mIGJhcnlDb29yZHMpIHtcbiAgICAgIG1hcC5zZXQoYCR7YX0sJHtifSwke2N9YCwgYXNzaWduQ29sb3IoYSwgYiwgYykpXG4gICAgfVxuICAgIHJldHVybiBtYXBcbiAgfVxuXG4gIGNvbnN0IGludGVycG9sYXRlUG9pbnRzID0gKHQsIGNvbG9yTWFwKSA9PiB7XG4gICAgY29uc3QgW0EsIEIsIENdID0gdmVydGljZXNcbiAgICBjb25zdCB2ZXJ0ZXhNYXAgPSB7IHJlZDogQywgZ3JlZW46IEEsIGJsdWU6IEIgfVxuICAgIGNvbnN0IHMgPSBlYXNpbmcodClcblxuICAgIGNvbnN0IG1vcnBoZWRQb2ludHMgPSBiYXJ5Q29vcmRzLm1hcCgoW2EsIGIsIGNdKSA9PiB7XG4gICAgICBjb25zdCBzdW0gPSBhICsgYiArIGNcbiAgICAgIGNvbnN0IHgwID0gKGEgKiBBLnggKyBiICogQi54ICsgYyAqIEMueCkgLyBzdW1cbiAgICAgIGNvbnN0IHkwID0gKGEgKiBBLnkgKyBiICogQi55ICsgYyAqIEMueSkgLyBzdW1cblxuICAgICAgY29uc3QgY29sb3IgPSBjb2xvck1hcC5nZXQoYCR7YX0sJHtifSwke2N9YClcbiAgICAgIGNvbnN0IHRhcmdldCA9IHZlcnRleE1hcFtjb2xvcl1cblxuICAgICAgcmV0dXJuIHtcbiAgICAgICAgeDogKDEgLSBzKSAqIHgwICsgcyAqIHRhcmdldC54LFxuICAgICAgICB5OiAoMSAtIHMpICogeTAgKyBzICogdGFyZ2V0LnksXG4gICAgICAgIGNvbG9yLFxuICAgICAgICBiYXJ5Y2VudHJpY1RyaXBsZTogW2EsIGIsIGNdXG4gICAgICB9XG4gICAgfSlcblxuICAgIGNvbnN0IG1vcnBoZWRNYXAgPSBuZXcgTWFwKG1vcnBoZWRQb2ludHMubWFwKHAgPT4gW3AuYmFyeWNlbnRyaWNUcmlwbGUuam9pbignLCcpLCBwXSkpXG4gICAgcmV0dXJuIHsgbW9ycGhlZFBvaW50cywgbW9ycGhlZE1hcCB9XG4gIH1cblxuICBjb25zdCBnZW5lcmF0ZVN1YlRyaWFuZ2xlcyA9IG1vcnBoZWRNYXAgPT4ge1xuICAgIGNvbnN0IHRyaWFuZ2xlcyA9IFtdXG4gICAgZm9yIChsZXQgaSA9IDA7IGkgPCBOOyBpKyspIHtcbiAgICAgIGZvciAobGV0IGogPSAwOyBqIDwgTiAtIGk7IGorKykge1xuICAgICAgICBjb25zdCBhID0gW2ksIGosIE4gLSBpIC0gal1cbiAgICAgICAgY29uc3QgYiA9IFtpICsgMSwgaiwgTiAtIGkgLSBqIC0gMV1cbiAgICAgICAgY29uc3QgYyA9IFtpLCBqICsgMSwgTiAtIGkgLSBqIC0gMV1cbiAgICAgICAgdHJpYW5nbGVzLnB1c2goeyBjb29yZGluYXRlczogW2EsIGIsIGNdIH0pXG5cbiAgICAgICAgaWYgKGkgKyBqIDwgTiAtIDEpIHtcbiAgICAgICAgICBjb25zdCBkID0gW2kgKyAxLCBqICsgMSwgTiAtIGkgLSBqIC0gMl1cbiAgICAgICAgICB0cmlhbmdsZXMucHVzaCh7IGNvb3JkaW5hdGVzOiBbYiwgZCwgY10gfSlcbiAgICAgICAgfVxuICAgICAgfVxuICAgIH1cblxuICAgIHJldHVybiB0cmlhbmdsZXMubWFwKHRyaSA9PiB7XG4gICAgICBjb25zdCB2ZXJ0ZXhfY29sb3JzID0gdHJpLmNvb3JkaW5hdGVzLm1hcChjID0+IG1vcnBoZWRNYXAuZ2V0KGMuam9pbignLCcpKS5jb2xvcilcbiAgICAgIHJldHVybiB7IC4uLnRyaSwgdmVydGV4X2NvbG9ycyB9XG4gICAgfSlcbiAgfVxuXG4gIHJldHVybiB7XG4gICAgYmFyeUNvb3JkcyxcbiAgICBidWlsZENvbG9yTWFwLFxuICAgIGludGVycG9sYXRlUG9pbnRzLFxuICAgIGdlbmVyYXRlU3ViVHJpYW5nbGVzXG4gIH1cbn1cbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtNSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6ImZpbGxDb2xvckdyb3VwcyA9IHtcbiAgY29uc3QgZ3JvdXAxID0gbmV3IFNldChbJ1JHQicsICdHQlInLCAnQlJHJ10pXG4gIGNvbnN0IGdyb3VwMiA9IG5ldyBTZXQoWydSQkcnLCAnQkdSJywgJ0dSQiddKVxuICByZXR1cm4geyBncm91cDEsIGdyb3VwMiB9XG59XG5cbmdldEZpbGxDb2xvciA9IHZlcnRleENvbG9ycyA9PiB7XG4gIGNvbnN0IG1hcCA9IHsgcmVkOiAnUicsIGdyZWVuOiAnRycsIGJsdWU6ICdCJyB9XG4gIGNvbnN0IGtleSA9IHZlcnRleENvbG9ycy5tYXAoYyA9PiBtYXBbYy50b0xvd2VyQ2FzZSgpXSB8fCAnJykuam9pbignJylcblxuICBpZiAoZmlsbENvbG9yR3JvdXBzLmdyb3VwMS5oYXMoa2V5KSkge1xuICAgIHJldHVybiAncmdiYSgyNTUsIDk5LCA3MSwgMC41KScgLy8gVG9tYXRvXG4gIH1cblxuICBpZiAoZmlsbENvbG9yR3JvdXBzLmdyb3VwMi5oYXMoa2V5KSkge1xuICAgIHJldHVybiAncmdiYSg3MiwgMjA5LCAyMDQsIDAuNSknIC8vIE1lZGl1bSB0dXJxdW9pc2VcbiAgfVxuXG4gIC8vIE5ldXRyYWwgZ3JvdXAgKGZhbGxiYWNrKTogc29mdCBncmF5XG4gIHJldHVybiAncmdiYSgxNjAsIDE2MCwgMTYwLCAwLjI1KSdcbn1cbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtNiIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6ImZ1bmN0aW9uIHBsb3RUcmlhbmdsZXModHJpYW5nbGVzLCBtb3JwaGVkUG9pbnRzLCB2ZXJ0aWNlcykge1xuICByZXR1cm4gUGxvdC5wbG90KHtcbiAgICB3aWR0aDogODAwLFxuICAgIGhlaWdodDogODAwLFxuICAgIHg6IHtkb21haW46IFswLCAxXSwgbGFiZWw6ICd4J30sXG4gICAgeToge2RvbWFpbjogWzAsIE1hdGguc3FydCgzKSAvIDJdLCBsYWJlbDogJ3knfSxcbiAgICBtYXJrczogW1xuICAgICAgLy8gUGxvdC5saW5lKFsuLi52ZXJ0aWNlcywgdmVydGljZXNbMF1dLCB7eDogXCJ4XCIsIHk6IFwieVwiLCBzdHJva2U6IFwiYmxhY2tcIiwgc3Ryb2tlV2lkdGg6IDF9KSxcbiAgICAgIFBsb3QuZ2VvKHtcbiAgICAgICAgdHlwZTogXCJGZWF0dXJlQ29sbGVjdGlvblwiLFxuICAgICAgICBmZWF0dXJlczogdHJpYW5nbGVzLm1hcCh0cmkgPT4gKHtcbiAgICAgICAgICB0eXBlOiBcIkZlYXR1cmVcIixcbiAgICAgICAgICBnZW9tZXRyeToge1xuICAgICAgICAgICAgdHlwZTogXCJQb2x5Z29uXCIsXG4gICAgICAgICAgICBjb29yZGluYXRlczogW1tcbiAgICAgICAgICAgICAgLi4udHJpLmNvb3JkaW5hdGVzLm1hcChjID0+IHtcbiAgICAgICAgICAgICAgICBjb25zdCBwID0gbW9ycGhlZFBvaW50cy5tb3JwaGVkTWFwLmdldChjLmpvaW4oJywnKSlcbiAgICAgICAgICAgICAgICByZXR1cm4gW3AueCwgcC55XVxuICAgICAgICAgICAgICB9KSxcbiAgICAgICAgICAgICAgKCgpID0+IHtcbiAgICAgICAgICAgICAgICBjb25zdCBwID0gbW9ycGhlZFBvaW50cy5tb3JwaGVkTWFwLmdldCh0cmkuY29vcmRpbmF0ZXNbMF0uam9pbignLCcpKVxuICAgICAgICAgICAgICAgIHJldHVybiBbcC54LCBwLnldXG4gICAgICAgICAgICAgIH0pKClcbiAgICAgICAgICAgIF1dXG4gICAgICAgICAgfSxcbiAgICAgICAgICBwcm9wZXJ0aWVzOiB7XG4gICAgICAgICAgICBmaWxsQ29sb3I6IGdldEZpbGxDb2xvcih0cmkudmVydGV4X2NvbG9ycylcbiAgICAgICAgICB9XG4gICAgICAgIH0pKVxuICAgICAgfSwge1xuICAgICAgICBmaWxsOiBkID0+IGQucHJvcGVydGllcy5maWxsQ29sb3IsXG4gICAgICAgIHN0cm9rZTogXCJibGFja1wiLFxuICAgICAgICBzdHJva2VXaWR0aDogMVxuICAgICAgfSksXG4gICAgICBQbG90LmRvdChtb3JwaGVkUG9pbnRzLm1vcnBoZWRQb2ludHMsIHtcbiAgICAgICAgeDogXCJ4XCIsIHk6IFwieVwiLCBmaWxsOiBcImNvbG9yXCIsIHI6IDUgKiAoNSAvIE4pXG4gICAgICB9KVxuICAgIF1cbiAgfSlcbn1cbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtNyIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InZpZXdvZiBOID0gc2xpZGVyKHtcbiAgbWluOiAyLCBtYXg6IDEwLCBzdGVwOiAxLCB2YWx1ZTogMTAsIHdpZHRoOiA1MDAsIHRpdGxlOiBcIk51bWJlciBvZiBzdWJkaXZpc2lvbnNcIlxufSlcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtOCIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6Im1vcnBoZXIxID0gY3JlYXRlVHJpYW5nbGVNb3JwaGVyKE4sIGVxdWlsYXRlcmFsVHJpYW5nbGVWZXJ0aWNlcywgZGVmYXVsdEFzc2lnbkNvbG9yKVxubW9ycGhlcjIgPSBjcmVhdGVUcmlhbmdsZU1vcnBoZXIoTiwgZXF1aWxhdGVyYWxUcmlhbmdsZVZlcnRpY2VzLCBzaW1wbGVyQXNzaWduQ29sb3IpXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTkiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJ2aWV3b2YgdCA9IHNsaWRlcih7XG4gIG1pbjogMCwgbWF4OiAxLCBzdGVwOiAwLjAxLCB2YWx1ZTogMCwgd2lkdGg6IDUwMCwgdGl0bGU6IFwiVGltZVwiXG59KVxuXG5jb2xvck1hcDEgPSBtb3JwaGVyMS5idWlsZENvbG9yTWFwKClcbm1vcnBoZWRNYXAxID0gbW9ycGhlcjEuaW50ZXJwb2xhdGVQb2ludHModCwgY29sb3JNYXAxKVxudHJpYW5nbGVzMSA9IG1vcnBoZXIxLmdlbmVyYXRlU3ViVHJpYW5nbGVzKG1vcnBoZWRNYXAxLm1vcnBoZWRNYXApXG5cbnZpZXdvZiBwbG90MSA9IHBsb3RUcmlhbmdsZXModHJpYW5nbGVzMSwgbW9ycGhlZE1hcDEsIGVxdWlsYXRlcmFsVHJpYW5nbGVWZXJ0aWNlcylcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMTAiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJ2aWV3b2YgcyA9IHNsaWRlcih7XG4gIG1pbjogMCwgbWF4OiAxLCBzdGVwOiAwLjAxLCB2YWx1ZTogMCwgd2lkdGg6IDUwMCwgdGl0bGU6IFwiVGltZSAoMm5kIHBsb3QpXCJcbn0pXG5cbmNvbG9yTWFwMiA9IG1vcnBoZXIyLmJ1aWxkQ29sb3JNYXAoKVxubW9ycGhlZE1hcDIgPSBtb3JwaGVyMi5pbnRlcnBvbGF0ZVBvaW50cyhzLCBjb2xvck1hcDIpXG50cmlhbmdsZXMyID0gbW9ycGhlcjIuZ2VuZXJhdGVTdWJUcmlhbmdsZXMobW9ycGhlZE1hcDIubW9ycGhlZE1hcClcblxudmlld29mIHBsb3QyID0gcGxvdFRyaWFuZ2xlcyh0cmlhbmdsZXMyLCBtb3JwaGVkTWFwMiwgZXF1aWxhdGVyYWxUcmlhbmdsZVZlcnRpY2VzKVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdOJykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ3QnKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgncGxvdDEnKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgncycpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdwbG90MicpIn1dfQ==
+</script>
+<script type="module">
+if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+window._ojs.paths.runtimeToDoc = "../..";
+window._ojs.paths.runtimeToRoot = "../..";
+window._ojs.paths.docToRoot = "";
+window._ojs.selfContained = false;
+window._ojs.runtime.interpretFromScriptTags();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/github\.com\/apurvanakade\/second-drafts\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<input type="hidden" id="giscus-base-theme" value="light">
+<input type="hidden" id="giscus-alt-theme" value="dark">
+<script>
+  function loadGiscus() {
+    // Function to get the theme based on body class
+    const getTheme = () => {
+      let baseTheme = document.getElementById('giscus-base-theme').value;
+      let altTheme = document.getElementById('giscus-alt-theme').value;
+      if (authorPrefersDark) {
+          [baseTheme, altTheme] = [altTheme, baseTheme];
+      }
+      return document.body.classList.contains('quarto-dark') ? altTheme : baseTheme;
+    };
+    const script = document.createElement("script");
+    script.src = "https://giscus.app/client.js";
+    script.async = true;
+    script.dataset.repo = "apurvanakade/second-drafts";
+    script.dataset.repoId = "R_kgDOOkDcyQ";
+    script.dataset.category = "General";
+    script.dataset.categoryId = "DIC_kwDOOkDcyc4CqHnN";
+    script.dataset.mapping = "title";
+    script.dataset.reactionsEnabled = "1";
+    script.dataset.emitMetadata = "0";
+    script.dataset.inputPosition = "top";
+    script.dataset.theme = getTheme();
+    script.dataset.lang = "en";
+    script.crossOrigin = "anonymous";
+    // Append the script to the desired div instead of at the end of the body
+    document.getElementById("quarto-content").appendChild(script);
+  }
+  loadGiscus();
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./9993-sperners-lemma-combinatorial-proof.html" class="pagination-link" aria-label="Sperner's Lemma - Combinatorial Proof">
+        <span class="nav-page-text">Sperner’s Lemma - Combinatorial Proof</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>Copyright 2025, Apurva Nakade</p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

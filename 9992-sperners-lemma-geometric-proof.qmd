@@ -1,0 +1,227 @@
+---
+title: Sperner's Lemma - Geometric Proof
+author: Apurva Nakade
+date: 2025-05-22 10:23:17
+categories: [triangles, coloring, questions, visualization, interactive, observablejs]
+---
+
+**DRAFT DOCUMENT**
+
+```{ojs}
+import {slider} from "@jashkenas/inputs"
+```
+
+```{ojs}
+equilateralTriangleVertices = [
+  {x: 1, y: 0},
+  {x: 0.5, y: Math.sqrt(3) / 2},
+  {x: 0, y: 0},
+]
+
+generateBarycentricCoords = N => {
+  const coords = []
+  for (let i = 0; i <= N; i++) {
+    for (let j = 0; j <= N - i; j++) {
+      coords.push([i, j, N - i - j])
+    }
+  }
+  return coords
+}
+
+pickRandomColor = (...options) => options[Math.floor(Math.random() * options.length)]
+
+smoothstepEase = t => 3 * t ** 2 - 2 * t ** 3
+```
+
+
+```{ojs}
+defaultAssignColor = (a, b, c) => {
+  if (a === 0 && b === 0) return 'red'
+  if (b === 0 && c === 0) return 'green'
+  if (c === 0 && a === 0) return 'blue'
+  if (a === 0) return pickRandomColor('red', 'blue')
+  if (b === 0) return pickRandomColor('red', 'green')
+  if (c === 0) return pickRandomColor('blue', 'green')
+  return pickRandomColor('red', 'green', 'blue')
+}
+
+simplerAssignColor = (a, b, c) => {
+  if (a === 0 && b === 0) return 'red'
+  if (b === 0 && c === 0) return 'green'
+  if (c === 0 && a === 0) return 'blue'
+  return pickRandomColor('red', 'green', 'blue')
+}
+```
+
+```{ojs}
+function createTriangleMorpher(N, vertices, assignColor, easing = smoothstepEase) {
+  const baryCoords = generateBarycentricCoords(N)
+
+  const buildColorMap = () => {
+    const map = new Map()
+    for (const [a, b, c] of baryCoords) {
+      map.set(`${a},${b},${c}`, assignColor(a, b, c))
+    }
+    return map
+  }
+
+  const interpolatePoints = (t, colorMap) => {
+    const [A, B, C] = vertices
+    const vertexMap = { red: C, green: A, blue: B }
+    const s = easing(t)
+
+    const morphedPoints = baryCoords.map(([a, b, c]) => {
+      const sum = a + b + c
+      const x0 = (a * A.x + b * B.x + c * C.x) / sum
+      const y0 = (a * A.y + b * B.y + c * C.y) / sum
+
+      const color = colorMap.get(`${a},${b},${c}`)
+      const target = vertexMap[color]
+
+      return {
+        x: (1 - s) * x0 + s * target.x,
+        y: (1 - s) * y0 + s * target.y,
+        color,
+        barycentricTriple: [a, b, c]
+      }
+    })
+
+    const morphedMap = new Map(morphedPoints.map(p => [p.barycentricTriple.join(','), p]))
+    return { morphedPoints, morphedMap }
+  }
+
+  const generateSubTriangles = morphedMap => {
+    const triangles = []
+    for (let i = 0; i < N; i++) {
+      for (let j = 0; j < N - i; j++) {
+        const a = [i, j, N - i - j]
+        const b = [i + 1, j, N - i - j - 1]
+        const c = [i, j + 1, N - i - j - 1]
+        triangles.push({ coordinates: [a, b, c] })
+
+        if (i + j < N - 1) {
+          const d = [i + 1, j + 1, N - i - j - 2]
+          triangles.push({ coordinates: [b, d, c] })
+        }
+      }
+    }
+
+    return triangles.map(tri => {
+      const vertex_colors = tri.coordinates.map(c => morphedMap.get(c.join(',')).color)
+      return { ...tri, vertex_colors }
+    })
+  }
+
+  return {
+    baryCoords,
+    buildColorMap,
+    interpolatePoints,
+    generateSubTriangles
+  }
+}
+```
+
+
+```{ojs}
+fillColorGroups = {
+  const group1 = new Set(['RGB', 'GBR', 'BRG'])
+  const group2 = new Set(['RBG', 'BGR', 'GRB'])
+  return { group1, group2 }
+}
+
+getFillColor = vertexColors => {
+  const map = { red: 'R', green: 'G', blue: 'B' }
+  const key = vertexColors.map(c => map[c.toLowerCase()] || '').join('')
+
+  if (fillColorGroups.group1.has(key)) {
+    return 'rgba(255, 99, 71, 0.5)' // Tomato
+  }
+
+  if (fillColorGroups.group2.has(key)) {
+    return 'rgba(72, 209, 204, 0.5)' // Medium turquoise
+  }
+
+  // Neutral group (fallback): soft gray
+  return 'rgba(160, 160, 160, 0.25)'
+}
+```
+
+```{ojs}
+function plotTriangles(triangles, morphedPoints, vertices) {
+  return Plot.plot({
+    width: 800,
+    height: 800,
+    x: {domain: [0, 1], label: 'x'},
+    y: {domain: [0, Math.sqrt(3) / 2], label: 'y'},
+    marks: [
+      // Plot.line([...vertices, vertices[0]], {x: "x", y: "y", stroke: "black", strokeWidth: 1}),
+      Plot.geo({
+        type: "FeatureCollection",
+        features: triangles.map(tri => ({
+          type: "Feature",
+          geometry: {
+            type: "Polygon",
+            coordinates: [[
+              ...tri.coordinates.map(c => {
+                const p = morphedPoints.morphedMap.get(c.join(','))
+                return [p.x, p.y]
+              }),
+              (() => {
+                const p = morphedPoints.morphedMap.get(tri.coordinates[0].join(','))
+                return [p.x, p.y]
+              })()
+            ]]
+          },
+          properties: {
+            fillColor: getFillColor(tri.vertex_colors)
+          }
+        }))
+      }, {
+        fill: d => d.properties.fillColor,
+        stroke: "black",
+        strokeWidth: 1
+      }),
+      Plot.dot(morphedPoints.morphedPoints, {
+        x: "x", y: "y", fill: "color", r: 5 * (5 / N)
+      })
+    ]
+  })
+}
+```
+
+
+```{ojs}
+viewof N = slider({
+  min: 2, max: 10, step: 1, value: 10, width: 500, title: "Number of subdivisions"
+})
+```
+
+```{ojs}
+morpher1 = createTriangleMorpher(N, equilateralTriangleVertices, defaultAssignColor)
+morpher2 = createTriangleMorpher(N, equilateralTriangleVertices, simplerAssignColor)
+```
+
+```{ojs}
+viewof t = slider({
+  min: 0, max: 1, step: 0.01, value: 0, width: 500, title: "Time"
+})
+
+colorMap1 = morpher1.buildColorMap()
+morphedMap1 = morpher1.interpolatePoints(t, colorMap1)
+triangles1 = morpher1.generateSubTriangles(morphedMap1.morphedMap)
+
+viewof plot1 = plotTriangles(triangles1, morphedMap1, equilateralTriangleVertices)
+```
+
+
+```{ojs}
+viewof s = slider({
+  min: 0, max: 1, step: 0.01, value: 0, width: 500, title: "Time (2nd plot)"
+})
+
+colorMap2 = morpher2.buildColorMap()
+morphedMap2 = morpher2.interpolatePoints(s, colorMap2)
+triangles2 = morpher2.generateSubTriangles(morphedMap2.morphedMap)
+
+viewof plot2 = plotTriangles(triangles2, morphedMap2, equilateralTriangleVertices)
+```
