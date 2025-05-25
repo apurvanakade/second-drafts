@@ -10,7 +10,7 @@
 <atom:link href="https://github.com/apurvanakade/second-drafts/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.7.31</generator>
-<lastBuildDate>Thu, 22 May 2025 14:23:17 GMT</lastBuildDate>
+<lastBuildDate>Sun, 25 May 2025 16:08:45 GMT</lastBuildDate>
 <item>
   <title>Sperner’s Lemma - Geometric Proof</title>
   <dc:creator>Apurva Nakade</dc:creator>
@@ -21,9 +21,9 @@
 
 
 
-<p><strong>DRAFT DOCUMENT</strong></p>
+<p>This is my new favorite proof of <a href="./9994-sperners-lemma-statement.html">Sperner’s lemma</a>. In the following app the vertices are slowly morphed to the “cardinal” <code>R</code>, <code>G</code>, <code>B</code> vertices with time while preserving the adjacency relations. The <span style="background-color:rgba(255, 99, 71, 0.5)">red</span> triangles are oriented counter-clockwise and the <span style="background-color:rgba(72, 209, 204, 0.5)">blue</span> triangles are oriented clockwise. Can you come up with the proof yourself without peeking below? You can try reducing the number of subdivisions to get a sense of what’s going on.</p>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="10" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 9;"><span id="cb1-10"><span class="im" style="color: #00769E;
+<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="11" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 10;"><span id="cb1-11"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> {slider} <span class="im" style="color: #00769E;
 background-color: null;
@@ -37,10 +37,10 @@ font-style: inherit;">"@jashkenas/inputs"</span></span></code></pre></div>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb2" data-startfrom="15" data-source-offset="-0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 14;"><span id="cb2-15">equilateralTriangleVertices <span class="op" style="color: #5E5E5E;
+<div class="sourceCode cell-code hidden" id="cb2" data-startfrom="16" data-source-offset="-0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 15;"><span id="cb2-16">equilateralTriangleVertices <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> [</span>
-<span id="cb2-16">  {<span class="dt" style="color: #AD0000;
+<span id="cb2-17">  {<span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">x</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -57,7 +57,7 @@ background-color: null;
 font-style: inherit;">0</span>}<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb2-17">  {<span class="dt" style="color: #AD0000;
+<span id="cb2-18">  {<span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">x</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -84,7 +84,7 @@ background-color: null;
 font-style: inherit;">2</span>}<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb2-18">  {<span class="dt" style="color: #AD0000;
+<span id="cb2-19">  {<span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">x</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -101,23 +101,23 @@ background-color: null;
 font-style: inherit;">0</span>}<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb2-19">]<span class="op" style="color: #5E5E5E;
+<span id="cb2-20">]<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb2-20"></span>
-<span id="cb2-21">generateBarycentricCoords <span class="op" style="color: #5E5E5E;
+<span id="cb2-21"></span>
+<span id="cb2-22">generateBarycentricCoords <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> N <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">=&gt;</span> {</span>
-<span id="cb2-22">  <span class="kw" style="color: #003B4F;
+<span id="cb2-23">  <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">const</span> coords <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> []</span>
-<span id="cb2-23">  <span class="cf" style="color: #003B4F;
+<span id="cb2-24">  <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">for</span> (<span class="kw" style="color: #003B4F;
@@ -136,7 +136,7 @@ background-color: null;
 font-style: inherit;">;</span> i<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">++</span>) {</span>
-<span id="cb2-24">    <span class="cf" style="color: #003B4F;
+<span id="cb2-25">    <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">for</span> (<span class="kw" style="color: #003B4F;
@@ -157,7 +157,7 @@ background-color: null;
 font-style: inherit;">;</span> j<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">++</span>) {</span>
-<span id="cb2-25">      coords<span class="op" style="color: #5E5E5E;
+<span id="cb2-26">      coords<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -170,17 +170,17 @@ background-color: null;
 font-style: inherit;">-</span> i <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">-</span> j])</span>
-<span id="cb2-26">    }</span>
-<span id="cb2-27">  }</span>
-<span id="cb2-28">  <span class="cf" style="color: #003B4F;
+<span id="cb2-27">    }</span>
+<span id="cb2-28">  }</span>
+<span id="cb2-29">  <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">return</span> coords</span>
-<span id="cb2-29">}<span class="op" style="color: #5E5E5E;
+<span id="cb2-30">}<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb2-30"></span>
-<span id="cb2-31">pickRandomColor <span class="op" style="color: #5E5E5E;
+<span id="cb2-31"></span>
+<span id="cb2-32">pickRandomColor <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> (<span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -208,8 +208,8 @@ background-color: null;
 font-style: inherit;">length</span>)]<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb2-32"></span>
-<span id="cb2-33">smoothstepEase <span class="op" style="color: #5E5E5E;
+<span id="cb2-33"></span>
+<span id="cb2-34">smoothstepEase <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> t <span class="kw" style="color: #003B4F;
 background-color: null;
@@ -275,7 +275,7 @@ font-style: inherit;">;</span></span></code></pre></div>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb3" data-startfrom="38" data-source-offset="-0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 37;"><span id="cb3-38">defaultAssignColor <span class="op" style="color: #5E5E5E;
+<div class="sourceCode cell-code hidden" id="cb3" data-startfrom="39" data-source-offset="-0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 38;"><span id="cb3-39">defaultAssignColor <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> (a<span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -285,7 +285,7 @@ font-style: inherit;">,</span> c) <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">=&gt;</span> {</span>
-<span id="cb3-39">  <span class="cf" style="color: #003B4F;
+<span id="cb3-40">  <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">if</span> (a <span class="op" style="color: #5E5E5E;
@@ -304,7 +304,7 @@ font-weight: bold;
 font-style: inherit;">return</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'red'</span></span>
-<span id="cb3-40">  <span class="cf" style="color: #003B4F;
+<span id="cb3-41">  <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">if</span> (b <span class="op" style="color: #5E5E5E;
@@ -323,7 +323,7 @@ font-weight: bold;
 font-style: inherit;">return</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'green'</span></span>
-<span id="cb3-41">  <span class="cf" style="color: #003B4F;
+<span id="cb3-42">  <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">if</span> (c <span class="op" style="color: #5E5E5E;
@@ -342,7 +342,7 @@ font-weight: bold;
 font-style: inherit;">return</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'blue'</span></span>
-<span id="cb3-42">  <span class="cf" style="color: #003B4F;
+<span id="cb3-43">  <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">if</span> (a <span class="op" style="color: #5E5E5E;
@@ -361,7 +361,7 @@ background-color: null;
 font-style: inherit;">,</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'blue'</span>)</span>
-<span id="cb3-43">  <span class="cf" style="color: #003B4F;
+<span id="cb3-44">  <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">if</span> (b <span class="op" style="color: #5E5E5E;
@@ -380,7 +380,7 @@ background-color: null;
 font-style: inherit;">,</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'green'</span>)</span>
-<span id="cb3-44">  <span class="cf" style="color: #003B4F;
+<span id="cb3-45">  <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">if</span> (c <span class="op" style="color: #5E5E5E;
@@ -399,7 +399,7 @@ background-color: null;
 font-style: inherit;">,</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'green'</span>)</span>
-<span id="cb3-45">  <span class="cf" style="color: #003B4F;
+<span id="cb3-46">  <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">return</span> <span class="fu" style="color: #4758AB;
@@ -415,9 +415,9 @@ background-color: null;
 font-style: inherit;">,</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'blue'</span>)</span>
-<span id="cb3-46">}</span>
-<span id="cb3-47"></span>
-<span id="cb3-48">simplerAssignColor <span class="op" style="color: #5E5E5E;
+<span id="cb3-47">}</span>
+<span id="cb3-48"></span>
+<span id="cb3-49">simplerAssignColor <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> (a<span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -427,7 +427,7 @@ font-style: inherit;">,</span> c) <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">=&gt;</span> {</span>
-<span id="cb3-49">  <span class="cf" style="color: #003B4F;
+<span id="cb3-50">  <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">if</span> (a <span class="op" style="color: #5E5E5E;
@@ -446,7 +446,7 @@ font-weight: bold;
 font-style: inherit;">return</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'red'</span></span>
-<span id="cb3-50">  <span class="cf" style="color: #003B4F;
+<span id="cb3-51">  <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">if</span> (b <span class="op" style="color: #5E5E5E;
@@ -465,7 +465,7 @@ font-weight: bold;
 font-style: inherit;">return</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'green'</span></span>
-<span id="cb3-51">  <span class="cf" style="color: #003B4F;
+<span id="cb3-52">  <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">if</span> (c <span class="op" style="color: #5E5E5E;
@@ -484,7 +484,7 @@ font-weight: bold;
 font-style: inherit;">return</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'blue'</span></span>
-<span id="cb3-52">  <span class="cf" style="color: #003B4F;
+<span id="cb3-53">  <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">return</span> <span class="fu" style="color: #4758AB;
@@ -500,7 +500,7 @@ background-color: null;
 font-style: inherit;">,</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'blue'</span>)</span>
-<span id="cb3-53">}</span></code></pre></div>
+<span id="cb3-54">}</span></code></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-3-1" data-nodetype="declaration">
@@ -517,7 +517,7 @@ font-style: inherit;">'blue'</span>)</span>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb4" data-startfrom="56" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 55;"><span id="cb4-56"><span class="kw" style="color: #003B4F;
+<div class="sourceCode cell-code hidden" id="cb4" data-startfrom="57" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 56;"><span id="cb4-57"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">function</span> <span class="fu" style="color: #4758AB;
@@ -531,7 +531,7 @@ background-color: null;
 font-style: inherit;">,</span> easing <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> smoothstepEase) {</span>
-<span id="cb4-57">  <span class="kw" style="color: #003B4F;
+<span id="cb4-58">  <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">const</span> baryCoords <span class="op" style="color: #5E5E5E;
@@ -539,8 +539,8 @@ background-color: null;
 font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">generateBarycentricCoords</span>(N)</span>
-<span id="cb4-58"></span>
-<span id="cb4-59">  <span class="kw" style="color: #003B4F;
+<span id="cb4-59"></span>
+<span id="cb4-60">  <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">const</span> buildColorMap <span class="op" style="color: #5E5E5E;
@@ -549,7 +549,7 @@ font-style: inherit;">=</span> () <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">=&gt;</span> {</span>
-<span id="cb4-60">    <span class="kw" style="color: #003B4F;
+<span id="cb4-61">    <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">const</span> map <span class="op" style="color: #5E5E5E;
@@ -560,7 +560,7 @@ font-weight: bold;
 font-style: inherit;">new</span> <span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">Map</span>()</span>
-<span id="cb4-61">    <span class="cf" style="color: #003B4F;
+<span id="cb4-62">    <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">for</span> (<span class="kw" style="color: #003B4F;
@@ -574,7 +574,7 @@ font-style: inherit;">,</span> c] <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">of</span> baryCoords) {</span>
-<span id="cb4-62">      map<span class="op" style="color: #5E5E5E;
+<span id="cb4-63">      map<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -607,14 +607,14 @@ background-color: null;
 font-style: inherit;">,</span> b<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> c))</span>
-<span id="cb4-63">    }</span>
-<span id="cb4-64">    <span class="cf" style="color: #003B4F;
+<span id="cb4-64">    }</span>
+<span id="cb4-65">    <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">return</span> map</span>
-<span id="cb4-65">  }</span>
-<span id="cb4-66"></span>
-<span id="cb4-67">  <span class="kw" style="color: #003B4F;
+<span id="cb4-66">  }</span>
+<span id="cb4-67"></span>
+<span id="cb4-68">  <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">const</span> interpolatePoints <span class="op" style="color: #5E5E5E;
@@ -625,7 +625,7 @@ font-style: inherit;">,</span> colorMap) <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">=&gt;</span> {</span>
-<span id="cb4-68">    <span class="kw" style="color: #003B4F;
+<span id="cb4-69">    <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">const</span> [A<span class="op" style="color: #5E5E5E;
@@ -635,7 +635,7 @@ background-color: null;
 font-style: inherit;">,</span> C] <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> vertices</span>
-<span id="cb4-69">    <span class="kw" style="color: #003B4F;
+<span id="cb4-70">    <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">const</span> vertexMap <span class="op" style="color: #5E5E5E;
@@ -657,7 +657,7 @@ background-color: null;
 font-style: inherit;">blue</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> B }</span>
-<span id="cb4-70">    <span class="kw" style="color: #003B4F;
+<span id="cb4-71">    <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">const</span> s <span class="op" style="color: #5E5E5E;
@@ -665,8 +665,8 @@ background-color: null;
 font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">easing</span>(t)</span>
-<span id="cb4-71"></span>
-<span id="cb4-72">    <span class="kw" style="color: #003B4F;
+<span id="cb4-72"></span>
+<span id="cb4-73">    <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">const</span> morphedPoints <span class="op" style="color: #5E5E5E;
@@ -683,7 +683,7 @@ font-style: inherit;">,</span> c]) <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">=&gt;</span> {</span>
-<span id="cb4-73">      <span class="kw" style="color: #003B4F;
+<span id="cb4-74">      <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">const</span> sum <span class="op" style="color: #5E5E5E;
@@ -693,7 +693,7 @@ background-color: null;
 font-style: inherit;">+</span> b <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span> c</span>
-<span id="cb4-74">      <span class="kw" style="color: #003B4F;
+<span id="cb4-75">      <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">const</span> x0 <span class="op" style="color: #5E5E5E;
@@ -723,7 +723,7 @@ background-color: null;
 font-style: inherit;">x</span>) <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">/</span> sum</span>
-<span id="cb4-75">      <span class="kw" style="color: #003B4F;
+<span id="cb4-76">      <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">const</span> y0 <span class="op" style="color: #5E5E5E;
@@ -753,8 +753,8 @@ background-color: null;
 font-style: inherit;">y</span>) <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">/</span> sum</span>
-<span id="cb4-76"></span>
-<span id="cb4-77">      <span class="kw" style="color: #003B4F;
+<span id="cb4-77"></span>
+<span id="cb4-78">      <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">const</span> color <span class="op" style="color: #5E5E5E;
@@ -784,18 +784,18 @@ background-color: null;
 font-style: inherit;">}</span><span class="vs" style="color: #20794D;
 background-color: null;
 font-style: inherit;">`</span>)</span>
-<span id="cb4-78">      <span class="kw" style="color: #003B4F;
+<span id="cb4-79">      <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">const</span> target <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> vertexMap[color]</span>
-<span id="cb4-79"></span>
-<span id="cb4-80">      <span class="cf" style="color: #003B4F;
+<span id="cb4-80"></span>
+<span id="cb4-81">      <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">return</span> {</span>
-<span id="cb4-81">        <span class="dt" style="color: #AD0000;
+<span id="cb4-82">        <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">x</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -816,7 +816,7 @@ background-color: null;
 font-style: inherit;">x</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb4-82">        <span class="dt" style="color: #AD0000;
+<span id="cb4-83">        <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">y</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -837,10 +837,10 @@ background-color: null;
 font-style: inherit;">y</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb4-83">        color<span class="op" style="color: #5E5E5E;
+<span id="cb4-84">        color<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb4-84">        <span class="dt" style="color: #AD0000;
+<span id="cb4-85">        <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">barycentricTriple</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -849,10 +849,10 @@ background-color: null;
 font-style: inherit;">,</span> b<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> c]</span>
-<span id="cb4-85">      }</span>
-<span id="cb4-86">    })</span>
-<span id="cb4-87"></span>
-<span id="cb4-88">    <span class="kw" style="color: #003B4F;
+<span id="cb4-86">      }</span>
+<span id="cb4-87">    })</span>
+<span id="cb4-88"></span>
+<span id="cb4-89">    <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">const</span> morphedMap <span class="op" style="color: #5E5E5E;
@@ -882,15 +882,15 @@ background-color: null;
 font-style: inherit;">','</span>)<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> p]))</span>
-<span id="cb4-89">    <span class="cf" style="color: #003B4F;
+<span id="cb4-90">    <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">return</span> { morphedPoints<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> morphedMap }</span>
-<span id="cb4-90">  }</span>
-<span id="cb4-91"></span>
-<span id="cb4-92">  <span class="kw" style="color: #003B4F;
+<span id="cb4-91">  }</span>
+<span id="cb4-92"></span>
+<span id="cb4-93">  <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">const</span> generateSubTriangles <span class="op" style="color: #5E5E5E;
@@ -899,13 +899,13 @@ font-style: inherit;">=</span> morphedMap <span class="kw" style="color: #003B4F
 background-color: null;
 font-weight: bold;
 font-style: inherit;">=&gt;</span> {</span>
-<span id="cb4-93">    <span class="kw" style="color: #003B4F;
+<span id="cb4-94">    <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">const</span> triangles <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> []</span>
-<span id="cb4-94">    <span class="cf" style="color: #003B4F;
+<span id="cb4-95">    <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">for</span> (<span class="kw" style="color: #003B4F;
@@ -924,7 +924,7 @@ background-color: null;
 font-style: inherit;">;</span> i<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">++</span>) {</span>
-<span id="cb4-95">      <span class="cf" style="color: #003B4F;
+<span id="cb4-96">      <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">for</span> (<span class="kw" style="color: #003B4F;
@@ -945,7 +945,7 @@ background-color: null;
 font-style: inherit;">;</span> j<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">++</span>) {</span>
-<span id="cb4-96">        <span class="kw" style="color: #003B4F;
+<span id="cb4-97">        <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">const</span> a <span class="op" style="color: #5E5E5E;
@@ -959,7 +959,7 @@ background-color: null;
 font-style: inherit;">-</span> i <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">-</span> j]</span>
-<span id="cb4-97">        <span class="kw" style="color: #003B4F;
+<span id="cb4-98">        <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">const</span> b <span class="op" style="color: #5E5E5E;
@@ -981,7 +981,7 @@ background-color: null;
 font-style: inherit;">-</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1</span>]</span>
-<span id="cb4-98">        <span class="kw" style="color: #003B4F;
+<span id="cb4-99">        <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">const</span> c <span class="op" style="color: #5E5E5E;
@@ -1003,7 +1003,7 @@ background-color: null;
 font-style: inherit;">-</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1</span>]</span>
-<span id="cb4-99">        triangles<span class="op" style="color: #5E5E5E;
+<span id="cb4-100">        triangles<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -1016,8 +1016,8 @@ background-color: null;
 font-style: inherit;">,</span> b<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> c] })</span>
-<span id="cb4-100"></span>
-<span id="cb4-101">        <span class="cf" style="color: #003B4F;
+<span id="cb4-101"></span>
+<span id="cb4-102">        <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">if</span> (i <span class="op" style="color: #5E5E5E;
@@ -1029,7 +1029,7 @@ background-color: null;
 font-style: inherit;">-</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1</span>) {</span>
-<span id="cb4-102">          <span class="kw" style="color: #003B4F;
+<span id="cb4-103">          <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">const</span> d <span class="op" style="color: #5E5E5E;
@@ -1055,7 +1055,7 @@ background-color: null;
 font-style: inherit;">-</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">2</span>]</span>
-<span id="cb4-103">          triangles<span class="op" style="color: #5E5E5E;
+<span id="cb4-104">          triangles<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -1068,11 +1068,11 @@ background-color: null;
 font-style: inherit;">,</span> d<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> c] })</span>
-<span id="cb4-104">        }</span>
-<span id="cb4-105">      }</span>
-<span id="cb4-106">    }</span>
-<span id="cb4-107"></span>
-<span id="cb4-108">    <span class="cf" style="color: #003B4F;
+<span id="cb4-105">        }</span>
+<span id="cb4-106">      }</span>
+<span id="cb4-107">    }</span>
+<span id="cb4-108"></span>
+<span id="cb4-109">    <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">return</span> triangles<span class="op" style="color: #5E5E5E;
@@ -1083,7 +1083,7 @@ font-style: inherit;">map</span>(tri <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">=&gt;</span> {</span>
-<span id="cb4-109">      <span class="kw" style="color: #003B4F;
+<span id="cb4-110">      <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">const</span> vertex_colors <span class="op" style="color: #5E5E5E;
@@ -1114,7 +1114,7 @@ background-color: null;
 font-style: inherit;">.</span><span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">color</span>)</span>
-<span id="cb4-110">      <span class="cf" style="color: #003B4F;
+<span id="cb4-111">      <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">return</span> { <span class="op" style="color: #5E5E5E;
@@ -1122,25 +1122,25 @@ background-color: null;
 font-style: inherit;">...</span>tri<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> vertex_colors }</span>
-<span id="cb4-111">    })</span>
-<span id="cb4-112">  }</span>
-<span id="cb4-113"></span>
-<span id="cb4-114">  <span class="cf" style="color: #003B4F;
+<span id="cb4-112">    })</span>
+<span id="cb4-113">  }</span>
+<span id="cb4-114"></span>
+<span id="cb4-115">  <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">return</span> {</span>
-<span id="cb4-115">    baryCoords<span class="op" style="color: #5E5E5E;
+<span id="cb4-116">    baryCoords<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb4-116">    buildColorMap<span class="op" style="color: #5E5E5E;
+<span id="cb4-117">    buildColorMap<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb4-117">    interpolatePoints<span class="op" style="color: #5E5E5E;
+<span id="cb4-118">    interpolatePoints<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb4-118">    generateSubTriangles</span>
-<span id="cb4-119">  }</span>
-<span id="cb4-120">}</span></code></pre></div>
+<span id="cb4-119">    generateSubTriangles</span>
+<span id="cb4-120">  }</span>
+<span id="cb4-121">}</span></code></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-4" data-nodetype="declaration">
 
@@ -1148,10 +1148,10 @@ font-style: inherit;">,</span></span>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb5" data-startfrom="126" data-source-offset="-0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 125;"><span id="cb5-126">fillColorGroups <span class="op" style="color: #5E5E5E;
+<div class="sourceCode cell-code hidden" id="cb5" data-startfrom="127" data-source-offset="-0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 126;"><span id="cb5-127">fillColorGroups <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> {</span>
-<span id="cb5-127">  <span class="kw" style="color: #003B4F;
+<span id="cb5-128">  <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">const</span> group1 <span class="op" style="color: #5E5E5E;
@@ -1172,7 +1172,7 @@ background-color: null;
 font-style: inherit;">,</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'BRG'</span>])</span>
-<span id="cb5-128">  <span class="kw" style="color: #003B4F;
+<span id="cb5-129">  <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">const</span> group2 <span class="op" style="color: #5E5E5E;
@@ -1193,21 +1193,21 @@ background-color: null;
 font-style: inherit;">,</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'GRB'</span>])</span>
-<span id="cb5-129">  <span class="cf" style="color: #003B4F;
+<span id="cb5-130">  <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">return</span> { group1<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> group2 }</span>
-<span id="cb5-130">}</span>
-<span id="cb5-131"></span>
-<span id="cb5-132">getFillColor <span class="op" style="color: #5E5E5E;
+<span id="cb5-131">}</span>
+<span id="cb5-132"></span>
+<span id="cb5-133">getFillColor <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> vertexColors <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">=&gt;</span> {</span>
-<span id="cb5-133">  <span class="kw" style="color: #003B4F;
+<span id="cb5-134">  <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">const</span> map <span class="op" style="color: #5E5E5E;
@@ -1235,7 +1235,7 @@ background-color: null;
 font-style: inherit;">:</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'B'</span> }</span>
-<span id="cb5-134">  <span class="kw" style="color: #003B4F;
+<span id="cb5-135">  <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">const</span> key <span class="op" style="color: #5E5E5E;
@@ -1262,8 +1262,8 @@ background-color: null;
 font-style: inherit;">join</span>(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">''</span>)</span>
-<span id="cb5-135"></span>
-<span id="cb5-136">  <span class="cf" style="color: #003B4F;
+<span id="cb5-136"></span>
+<span id="cb5-137">  <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">if</span> (fillColorGroups<span class="op" style="color: #5E5E5E;
@@ -1275,7 +1275,7 @@ background-color: null;
 font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">has</span>(key)) {</span>
-<span id="cb5-137">    <span class="cf" style="color: #003B4F;
+<span id="cb5-138">    <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">return</span> <span class="st" style="color: #20794D;
@@ -1283,9 +1283,9 @@ background-color: null;
 font-style: inherit;">'rgba(255, 99, 71, 0.5)'</span> <span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">// Tomato</span></span>
-<span id="cb5-138">  }</span>
-<span id="cb5-139"></span>
-<span id="cb5-140">  <span class="cf" style="color: #003B4F;
+<span id="cb5-139">  }</span>
+<span id="cb5-140"></span>
+<span id="cb5-141">  <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">if</span> (fillColorGroups<span class="op" style="color: #5E5E5E;
@@ -1297,7 +1297,7 @@ background-color: null;
 font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">has</span>(key)) {</span>
-<span id="cb5-141">    <span class="cf" style="color: #003B4F;
+<span id="cb5-142">    <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">return</span> <span class="st" style="color: #20794D;
@@ -1305,18 +1305,18 @@ background-color: null;
 font-style: inherit;">'rgba(72, 209, 204, 0.5)'</span> <span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">// Medium turquoise</span></span>
-<span id="cb5-142">  }</span>
-<span id="cb5-143"></span>
-<span id="cb5-144">  <span class="co" style="color: #5E5E5E;
+<span id="cb5-143">  }</span>
+<span id="cb5-144"></span>
+<span id="cb5-145">  <span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">// Neutral group (fallback): soft gray</span></span>
-<span id="cb5-145">  <span class="cf" style="color: #003B4F;
+<span id="cb5-146">  <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">return</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'rgba(160, 160, 160, 0.25)'</span></span>
-<span id="cb5-146">}</span></code></pre></div>
+<span id="cb5-147">}</span></code></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-5-1" data-nodetype="declaration">
@@ -1333,7 +1333,7 @@ font-style: inherit;">'rgba(160, 160, 160, 0.25)'</span></span>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb6" data-startfrom="149" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 148;"><span id="cb6-149"><span class="kw" style="color: #003B4F;
+<div class="sourceCode cell-code hidden" id="cb6" data-startfrom="150" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 149;"><span id="cb6-150"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">function</span> <span class="fu" style="color: #4758AB;
@@ -1343,7 +1343,7 @@ background-color: null;
 font-style: inherit;">,</span> morphedPoints<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> vertices) {</span>
-<span id="cb6-150">  <span class="cf" style="color: #003B4F;
+<span id="cb6-151">  <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">return</span> Plot<span class="op" style="color: #5E5E5E;
@@ -1351,7 +1351,7 @@ background-color: null;
 font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">plot</span>({</span>
-<span id="cb6-151">    <span class="dt" style="color: #AD0000;
+<span id="cb6-152">    <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">width</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1360,7 +1360,7 @@ background-color: null;
 font-style: inherit;">800</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb6-152">    <span class="dt" style="color: #AD0000;
+<span id="cb6-153">    <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">height</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1369,7 +1369,18 @@ background-color: null;
 font-style: inherit;">800</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb6-153">    <span class="dt" style="color: #AD0000;
+<span id="cb6-154">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">margin</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">40</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span>  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">// Add padding around the chart</span></span>
+<span id="cb6-155">    <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">x</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1387,14 +1398,15 @@ font-style: inherit;">1</span>]<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> <span class="dt" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">label</span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">axis</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+font-style: inherit;">:</span> <span class="kw" style="color: #003B4F;
 background-color: null;
-font-style: inherit;">'x'</span>}<span class="op" style="color: #5E5E5E;
+font-weight: bold;
+font-style: inherit;">null</span>}<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb6-154">    <span class="dt" style="color: #AD0000;
+<span id="cb6-156">    <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">y</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1422,27 +1434,28 @@ font-style: inherit;">2</span>]<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> <span class="dt" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">label</span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">axis</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+font-style: inherit;">:</span> <span class="kw" style="color: #003B4F;
 background-color: null;
-font-style: inherit;">'y'</span>}<span class="op" style="color: #5E5E5E;
+font-weight: bold;
+font-style: inherit;">null</span>}<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb6-155">    <span class="dt" style="color: #AD0000;
+<span id="cb6-157">    <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">marks</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> [</span>
-<span id="cb6-156">      <span class="co" style="color: #5E5E5E;
+<span id="cb6-158">      <span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">// Plot.line([...vertices, vertices[0]], {x: "x", y: "y", stroke: "black", strokeWidth: 1}),</span></span>
-<span id="cb6-157">      Plot<span class="op" style="color: #5E5E5E;
+<span id="cb6-159">      Plot<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">geo</span>({</span>
-<span id="cb6-158">        <span class="dt" style="color: #AD0000;
+<span id="cb6-160">        <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">type</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1451,7 +1464,7 @@ background-color: null;
 font-style: inherit;">"FeatureCollection"</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb6-159">        <span class="dt" style="color: #AD0000;
+<span id="cb6-161">        <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">features</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1463,7 +1476,7 @@ font-style: inherit;">map</span>(tri <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">=&gt;</span> ({</span>
-<span id="cb6-160">          <span class="dt" style="color: #AD0000;
+<span id="cb6-162">          <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">type</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1472,12 +1485,12 @@ background-color: null;
 font-style: inherit;">"Feature"</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb6-161">          <span class="dt" style="color: #AD0000;
+<span id="cb6-163">          <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">geometry</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> {</span>
-<span id="cb6-162">            <span class="dt" style="color: #AD0000;
+<span id="cb6-164">            <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">type</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1486,12 +1499,12 @@ background-color: null;
 font-style: inherit;">"Polygon"</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb6-163">            <span class="dt" style="color: #AD0000;
+<span id="cb6-165">            <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">coordinates</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> [[</span>
-<span id="cb6-164">              <span class="op" style="color: #5E5E5E;
+<span id="cb6-166">              <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">...</span>tri<span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1505,7 +1518,7 @@ font-style: inherit;">map</span>(c <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">=&gt;</span> {</span>
-<span id="cb6-165">                <span class="kw" style="color: #003B4F;
+<span id="cb6-167">                <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">const</span> p <span class="op" style="color: #5E5E5E;
@@ -1525,7 +1538,7 @@ background-color: null;
 font-style: inherit;">join</span>(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">','</span>))</span>
-<span id="cb6-166">                <span class="cf" style="color: #003B4F;
+<span id="cb6-168">                <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">return</span> [p<span class="op" style="color: #5E5E5E;
@@ -1539,14 +1552,14 @@ background-color: null;
 font-style: inherit;">.</span><span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">y</span>]</span>
-<span id="cb6-167">              })<span class="op" style="color: #5E5E5E;
+<span id="cb6-169">              })<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb6-168">              (() <span class="kw" style="color: #003B4F;
+<span id="cb6-170">              (() <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">=&gt;</span> {</span>
-<span id="cb6-169">                <span class="kw" style="color: #003B4F;
+<span id="cb6-171">                <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">const</span> p <span class="op" style="color: #5E5E5E;
@@ -1572,7 +1585,7 @@ background-color: null;
 font-style: inherit;">join</span>(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">','</span>))</span>
-<span id="cb6-170">                <span class="cf" style="color: #003B4F;
+<span id="cb6-172">                <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">return</span> [p<span class="op" style="color: #5E5E5E;
@@ -1586,17 +1599,17 @@ background-color: null;
 font-style: inherit;">.</span><span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">y</span>]</span>
-<span id="cb6-171">              })()</span>
-<span id="cb6-172">            ]]</span>
-<span id="cb6-173">          }<span class="op" style="color: #5E5E5E;
+<span id="cb6-173">              })()</span>
+<span id="cb6-174">            ]]</span>
+<span id="cb6-175">          }<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb6-174">          <span class="dt" style="color: #AD0000;
+<span id="cb6-176">          <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">properties</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> {</span>
-<span id="cb6-175">            <span class="dt" style="color: #AD0000;
+<span id="cb6-177">            <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">fillColor</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1607,12 +1620,12 @@ background-color: null;
 font-style: inherit;">.</span><span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">vertex_colors</span>)</span>
-<span id="cb6-176">          }</span>
-<span id="cb6-177">        }))</span>
-<span id="cb6-178">      }<span class="op" style="color: #5E5E5E;
+<span id="cb6-178">          }</span>
+<span id="cb6-179">        }))</span>
+<span id="cb6-180">      }<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> {</span>
-<span id="cb6-179">        <span class="dt" style="color: #AD0000;
+<span id="cb6-181">        <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">fill</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1630,7 +1643,7 @@ background-color: null;
 font-style: inherit;">fillColor</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb6-180">        <span class="dt" style="color: #AD0000;
+<span id="cb6-182">        <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">stroke</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1639,17 +1652,17 @@ background-color: null;
 font-style: inherit;">"black"</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb6-181">        <span class="dt" style="color: #AD0000;
+<span id="cb6-183">        <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">strokeWidth</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1</span></span>
-<span id="cb6-182">      })<span class="op" style="color: #5E5E5E;
+<span id="cb6-184">      })<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb6-183">      Plot<span class="op" style="color: #5E5E5E;
+<span id="cb6-185">      Plot<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -1660,7 +1673,7 @@ background-color: null;
 font-style: inherit;">morphedPoints</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> {</span>
-<span id="cb6-184">        <span class="dt" style="color: #AD0000;
+<span id="cb6-186">        <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">x</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1691,10 +1704,10 @@ background-color: null;
 font-style: inherit;">:</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">4</span></span>
-<span id="cb6-185">      })</span>
-<span id="cb6-186">    ]</span>
-<span id="cb6-187">  })</span>
-<span id="cb6-188">}</span></code></pre></div>
+<span id="cb6-187">      })</span>
+<span id="cb6-188">    ]</span>
+<span id="cb6-189">  })</span>
+<span id="cb6-190">}</span></code></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-6" data-nodetype="declaration">
 
@@ -1702,12 +1715,12 @@ font-style: inherit;">4</span></span>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb7" data-startfrom="193" data-source-offset="-0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 192;"><span id="cb7-193">viewof N <span class="op" style="color: #5E5E5E;
+<div class="sourceCode cell-code hidden" id="cb7" data-startfrom="195" data-source-offset="-0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 194;"><span id="cb7-195">viewof M <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">slider</span>({</span>
-<span id="cb7-194">  <span class="dt" style="color: #AD0000;
+<span id="cb7-196">  <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">min</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1721,7 +1734,7 @@ font-style: inherit;">max</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> <span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">20</span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">15</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> <span class="dt" style="color: #AD0000;
 background-color: null;
@@ -1754,14 +1767,14 @@ background-color: null;
 font-style: inherit;">:</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Number of subdivisions"</span></span>
-<span id="cb7-195">})</span>
-<span id="cb7-196"></span>
-<span id="cb7-197">viewof t <span class="op" style="color: #5E5E5E;
+<span id="cb7-197">})</span>
+<span id="cb7-198"></span>
+<span id="cb7-199">viewof s <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">slider</span>({</span>
-<span id="cb7-198">  <span class="dt" style="color: #AD0000;
+<span id="cb7-200">  <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">min</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1808,54 +1821,54 @@ background-color: null;
 font-style: inherit;">:</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Time"</span></span>
-<span id="cb7-199">})</span>
-<span id="cb7-200"></span>
-<span id="cb7-201">morpher1 <span class="op" style="color: #5E5E5E;
+<span id="cb7-201">})</span>
+<span id="cb7-202"></span>
+<span id="cb7-203">morpher3 <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">createTriangleMorpher</span>(N<span class="op" style="color: #5E5E5E;
+font-style: inherit;">createTriangleMorpher</span>(M<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> equilateralTriangleVertices<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> defaultAssignColor)</span>
-<span id="cb7-202"></span>
-<span id="cb7-203"></span>
-<span id="cb7-204">colorMap1 <span class="op" style="color: #5E5E5E;
+<span id="cb7-204"></span>
+<span id="cb7-205"></span>
+<span id="cb7-206">colorMap3 <span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">=</span> morpher1<span class="op" style="color: #5E5E5E;
+font-style: inherit;">=</span> morpher3<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">buildColorMap</span>()</span>
-<span id="cb7-205">morphedMap1 <span class="op" style="color: #5E5E5E;
+<span id="cb7-207">morphedMap3 <span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">=</span> morpher1<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">interpolatePoints</span>(t<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span> colorMap1)</span>
-<span id="cb7-206">triangles1 <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> morpher1<span class="op" style="color: #5E5E5E;
+font-style: inherit;">=</span> morpher3<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">generateSubTriangles</span>(morphedMap1<span class="op" style="color: #5E5E5E;
+font-style: inherit;">interpolatePoints</span>(s<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> colorMap3)</span>
+<span id="cb7-208">triangles3 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> morpher3<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">generateSubTriangles</span>(morphedMap3<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">.</span><span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">morphedMap</span>)</span>
-<span id="cb7-207"></span>
-<span id="cb7-208">viewof plot1 <span class="op" style="color: #5E5E5E;
+<span id="cb7-209"></span>
+<span id="cb7-210">plot3 <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">plotTriangles</span>(triangles1<span class="op" style="color: #5E5E5E;
+font-style: inherit;">plotTriangles</span>(triangles3<span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">,</span> morphedMap1<span class="op" style="color: #5E5E5E;
+font-style: inherit;">,</span> morphedMap3<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> equilateralTriangleVertices)</span></code></pre></div>
 <div class="cell-output cell-output-display">
@@ -1908,13 +1921,58 @@ font-style: inherit;">,</span> equilateralTriangleVertices)</span></code></pre><
 </div>
 </div>
 </div>
+<p>Let <img src="https://latex.codecogs.com/png.latex?v%5ER">, <img src="https://latex.codecogs.com/png.latex?v%5EG">, and <img src="https://latex.codecogs.com/png.latex?v%5EB"> be the vertices of the original triangle, colored <span style="background-color:red">red</span>, <span style="background-color:green">green</span>, and <span style="background-color:blue">blue</span>, respectively.</p>
+<p>Consider a triangulation <img src="https://latex.codecogs.com/png.latex?%5CDelta"> of the triangle <img src="https://latex.codecogs.com/png.latex?(v%5ER,%20v%5EG,%20v%5EB)">. We’ll use the variable <img src="https://latex.codecogs.com/png.latex?%5Cdelta"> to refer to the smaller triangles within this triangulation <img src="https://latex.codecogs.com/png.latex?%5CDelta">. Assume each <img src="https://latex.codecogs.com/png.latex?%5Cdelta"> is oriented counterclockwise, consistent with the orientation of <img src="https://latex.codecogs.com/png.latex?(v%5ER,%20v%5EG,%20v%5EB)">. This orientation will be important when we define signed areas.</p>
+<section id="time" class="level2">
+<h2 class="anchored" data-anchor-id="time">Time</h2>
+<p>We’ll now describe how this triangulation evolves over time.</p>
+<p>Let <img src="https://latex.codecogs.com/png.latex?t"> be a real number in <img src="https://latex.codecogs.com/png.latex?%5B0,%201%5D">. Let <img src="https://latex.codecogs.com/png.latex?v"> be a vertex in the subdivision, and let <img src="https://latex.codecogs.com/png.latex?c(v)"> denote the color of <img src="https://latex.codecogs.com/png.latex?v">. Define: <img src="https://latex.codecogs.com/png.latex?%5Cbegin%7Balign*%7D%0Av_t%20=%20(1%20-%20t)%20%5Ccdot%20v%20+%20t%20%5Ccdot%20v%5E%7Bc(v)%7D%0A%5Cend%7Balign*%7D"> so that <img src="https://latex.codecogs.com/png.latex?v_0%20=%20v"> and <img src="https://latex.codecogs.com/png.latex?v_1%20=%20v%5E%7Bc(v)%7D">. For each triangle <img src="https://latex.codecogs.com/png.latex?%5Cdelta%20=%20(v%5E1,%20v%5E2,%20v%5E3)%20%5Cin%20%5CDelta">, define: <img src="https://latex.codecogs.com/png.latex?%5Cbegin%7Balign*%7D%0A%5Cdelta_t%20=%20(v%5E1_t,%20v%5E2_t,%20v%5E3_t)%0A%5Cend%7Balign*%7D"> and let: <img src="https://latex.codecogs.com/png.latex?%5Cbegin%7Balign*%7D%0A%5CDelta_t%20=%20%5C%7B%20%5Cdelta_t%20:%20%5Cdelta%20%5Cin%20%5CDelta%20%5C%7D.%0A%5Cend%7Balign*%7D"> Note that <img src="https://latex.codecogs.com/png.latex?%5CDelta_0%20=%20%5CDelta">. However, <img src="https://latex.codecogs.com/png.latex?%5CDelta_t"> is simply a collection of triangles — it is not necessarily a triangulation of any shape. In fact, the triangles may overlap, and the union of <img src="https://latex.codecogs.com/png.latex?%5CDelta_t"> may not form a proper region.</p>
+<p>Our goal is to understand how <img src="https://latex.codecogs.com/png.latex?%5CDelta_t"> behaves as <img src="https://latex.codecogs.com/png.latex?t"> changes.</p>
+</section>
+<section id="signed-areas" class="level2">
+<h2 class="anchored" data-anchor-id="signed-areas">(Signed) Areas</h2>
+<p>A key observation: if a triangle <img src="https://latex.codecogs.com/png.latex?%5Cdelta"> is <strong>not</strong> an <code>RGB</code> triangle, then <img src="https://latex.codecogs.com/png.latex?%5Cdelta_1"> becomes degenerate — it has zero area. Assume, for simplicity, that the area of the original triangle <img src="https://latex.codecogs.com/png.latex?(v%5ER,%20v%5EG,%20v%5EB)"> is <strong>1</strong>. This allows us to use area as a tool to identify <code>RGB</code> triangles.</p>
+<div id="thm-area" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 1</strong></span> A triangle <img src="https://latex.codecogs.com/png.latex?%5Cdelta"> is <code>RGB</code> if and only if <img src="https://latex.codecogs.com/png.latex?%5Ctext%7Barea%7D(%5Cdelta_1)%20=%201">.</p>
+</div>
+<p>We can rephrase Sperner’s Lemma in terms of area:</p>
+<div id="thm-sperner-area" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 2</strong></span> <img src="https://latex.codecogs.com/png.latex?%5Cbegin%7Balign*%7D%0A%5Ctext%7Barea%7D(%5CDelta_1)%20%3E%200,%0A%5Cend%7Balign*%7D"> where <img src="https://latex.codecogs.com/png.latex?%5Cbegin%7Balign*%7D%0A%5Ctext%7Barea%7D(%5CDelta_t)%20=%20%5Csum_%7B%5Cdelta%20%5Cin%20%5CDelta%7D%20%5Ctext%7Barea%7D(%5Cdelta_t).%0A%5Cend%7Balign*%7D"></p>
+</div>
+<p>In fact, we will prove the following stronger statement:</p>
+<div id="thm-signed-area" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 3</strong></span> <img src="https://latex.codecogs.com/png.latex?%5Cbegin%7Balign*%7D%0A%7C%5CDelta_1%7C%20=%201,%0A%5Cend%7Balign*%7D"> where <img src="https://latex.codecogs.com/png.latex?%5Cbegin%7Balign*%7D%0A%7C%5CDelta_t%7C%20=%20%5Csum_%7B%5Cdelta%20%5Cin%20%5CDelta%7D%20%7C%5Cdelta_t%7C,%0A%5Cend%7Balign*%7D"> and <img src="https://latex.codecogs.com/png.latex?%7C%5Cdelta_t%7C"> denotes the <strong>signed</strong> area of the triangle <img src="https://latex.codecogs.com/png.latex?%5Cdelta_t">.</p>
+</div>
+<p>We define the signed area of a counterclockwise-oriented triangle <img src="https://latex.codecogs.com/png.latex?%5Cdelta%20=%20(v%5E1,%20v%5E2,%20v%5E3)"> as: <img src="https://latex.codecogs.com/png.latex?%5Cbegin%7Balign*%7D%0A%7C%5Cdelta%7C%20=%20%5Cdet%20%5Cbegin%7Bbmatrix%7D%20v%5E2%20-%20v%5E1%20&amp;%20v%5E3%20-%20v%5E1%20%5Cend%7Bbmatrix%7D%0A%5Cend%7Balign*%7D"> This is the determinant of a <img src="https://latex.codecogs.com/png.latex?2%20%5Ctimes%202"> matrix, and therefore the signed area of <img src="https://latex.codecogs.com/png.latex?%5Cdelta_t"> is a <strong>quadratic</strong> function of <img src="https://latex.codecogs.com/png.latex?t">.</p>
+<div id="thm-quadratic" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 4</strong></span> The signed area <img src="https://latex.codecogs.com/png.latex?%7C%5CDelta_t%7C"> is a quadratic function of <img src="https://latex.codecogs.com/png.latex?t">.</p>
+</div>
+</section>
+<section id="sperners-condition" class="level2">
+<h2 class="anchored" data-anchor-id="sperners-condition">Sperner’s Condition</h2>
+<p>At time <img src="https://latex.codecogs.com/png.latex?t%20=%200">, <img src="https://latex.codecogs.com/png.latex?%5CDelta_0"> is a triangulation of <img src="https://latex.codecogs.com/png.latex?(v%5ER,%20v%5EG,%20v%5EB)">, so: <img src="https://latex.codecogs.com/png.latex?%5Cbegin%7Balign*%7D%0A%7C%5CDelta_0%7C%20=%201.%0A%5Cend%7Balign*%7D"></p>
+<p>If the triangulation satisfies <strong>Sperner’s condition</strong>, then for small values of <img src="https://latex.codecogs.com/png.latex?t%20%3E%200">, <img src="https://latex.codecogs.com/png.latex?%5CDelta_t"> continues to form a triangulation of the original triangle. This is the only step in the proof where we use Sperner’s condition!</p>
+<div id="thm-sperner-local" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 5</strong></span> If the coloring satisfies Sperner’s condition, then there exists <img src="https://latex.codecogs.com/png.latex?%5Cvarepsilon%20%3E%200"> such that <img src="https://latex.codecogs.com/png.latex?%5Cbegin%7Balign*%7D%0A%7C%5CDelta_t%7C%20=%201%20%5Cquad%20%5Ctext%7Bfor%20all%20%7D%20t%20%5Cin%20%5B0,%20%5Cvarepsilon%5D.%0A%5Cend%7Balign*%7D"></p>
+</div>
+<p>But since <img src="https://latex.codecogs.com/png.latex?%7C%5CDelta_t%7C"> is a quadratic function and is constant on an interval, it must be constant everywhere.<br>
+This gives us the full strength of Sperner’s Lemma:</p>
+<div id="thm-sperner-constant" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 6</strong></span> If the coloring satisfies Sperner’s condition, then <img src="https://latex.codecogs.com/png.latex?%7C%5CDelta_t%7C"> is constant in <img src="https://latex.codecogs.com/png.latex?t">.<br>
+In particular, <img src="https://latex.codecogs.com/png.latex?%5Cbegin%7Balign*%7D%0A%7C%5CDelta_1%7C%20=%20%7C%5CDelta_0%7C%20=%201.%0A%5Cend%7Balign*%7D"></p>
+</div>
+<p>With one final argument, we can strengthen this conclusion:</p>
+<div id="cor-sperner" class="corollary theorem">
+<p><span class="theorem-title"><strong>Corollary 1</strong></span> If the coloring satisfies Sperner’s condition, then <img src="https://latex.codecogs.com/png.latex?%5Cbegin%7Balign*%7D%0A%7C%5C%7B%20%5Ctext%7Bcounterclockwise%20oriented%20RGB%20triangles%7D%20%5C%7D%7C%0A=%0A%7C%5C%7B%20%5Ctext%7Bclockwise%20oriented%20RGB%20triangles%7D%20%5C%7D%7C%20+%201.%0A%5Cend%7Balign*%7D"></p>
+</div>
+<p>Sperner’s condition is crucial in asserting that <img src="https://latex.codecogs.com/png.latex?%7C%5CDelta_t%7C"> is constant. If the condition is violated, <img src="https://latex.codecogs.com/png.latex?%5CDelta_t"> is no longer a triangulation of the original triangle — even for small <img src="https://latex.codecogs.com/png.latex?t%20%3E%200"> — and thus we cannot conclude that <img src="https://latex.codecogs.com/png.latex?%7C%5CDelta_t%7C"> remains constant. You can see this in the app below.</p>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb8" data-startfrom="213" data-source-offset="-0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 212;"><span id="cb8-213">viewof M <span class="op" style="color: #5E5E5E;
+<div class="sourceCode cell-code hidden" id="cb8" data-startfrom="324" data-source-offset="-0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 323;"><span id="cb8-324">viewof N <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">slider</span>({</span>
-<span id="cb8-214">  <span class="dt" style="color: #AD0000;
+<span id="cb8-325">  <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">min</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1928,7 +1986,7 @@ font-style: inherit;">max</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> <span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">20</span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">15</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> <span class="dt" style="color: #AD0000;
 background-color: null;
@@ -1961,14 +2019,14 @@ background-color: null;
 font-style: inherit;">:</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Number of subdivisions"</span></span>
-<span id="cb8-215">})</span>
-<span id="cb8-216"></span>
-<span id="cb8-217">viewof s <span class="op" style="color: #5E5E5E;
+<span id="cb8-326">})</span>
+<span id="cb8-327"></span>
+<span id="cb8-328">viewof t <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">slider</span>({</span>
-<span id="cb8-218">  <span class="dt" style="color: #AD0000;
+<span id="cb8-329">  <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">min</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -2015,55 +2073,46 @@ background-color: null;
 font-style: inherit;">:</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Time"</span></span>
-<span id="cb8-219">})</span>
-<span id="cb8-220"></span>
-<span id="cb8-221">morpher2 <span class="op" style="color: #5E5E5E;
+<span id="cb8-330">})</span>
+<span id="cb8-331"></span>
+<span id="cb8-332">morpher1 <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">createTriangleMorpher</span>(M<span class="op" style="color: #5E5E5E;
+font-style: inherit;">createTriangleMorpher</span>(N<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> equilateralTriangleVertices<span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">,</span> simplerAssignColor)</span>
-<span id="cb8-222"></span>
-<span id="cb8-223">colorMap2 <span class="op" style="color: #5E5E5E;
+font-style: inherit;">,</span> defaultAssignColor)</span>
+<span id="cb8-333"></span>
+<span id="cb8-334"></span>
+<span id="cb8-335">colorMap1 <span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">=</span> morpher2<span class="op" style="color: #5E5E5E;
+font-style: inherit;">=</span> morpher1<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">buildColorMap</span>()</span>
-<span id="cb8-224">morphedMap2 <span class="op" style="color: #5E5E5E;
+<span id="cb8-336">morphedMap1 <span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">=</span> morpher2<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">interpolatePoints</span>(s<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span> colorMap2)</span>
-<span id="cb8-225">triangles2 <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> morpher2<span class="op" style="color: #5E5E5E;
+font-style: inherit;">=</span> morpher1<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">generateSubTriangles</span>(morphedMap2<span class="op" style="color: #5E5E5E;
+font-style: inherit;">interpolatePoints</span>(t<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> colorMap1)</span>
+<span id="cb8-337">triangles1 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> morpher1<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">generateSubTriangles</span>(morphedMap1<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">.</span><span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">morphedMap</span>)</span>
-<span id="cb8-226"></span>
-<span id="cb8-227">viewof plot2 <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">plotTriangles</span>(triangles2<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span> morphedMap2<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span> equilateralTriangleVertices)</span></code></pre></div>
+font-style: inherit;">morphedMap</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-8-1" data-nodetype="declaration">
@@ -2106,16 +2155,155 @@ font-style: inherit;">,</span> equilateralTriangleVertices)</span></code></pre><
 </div>
 </div>
 </div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb9" data-startfrom="341" data-source-offset="-0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 340;"><span id="cb9-341">morpher2 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">createTriangleMorpher</span>(N<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> equilateralTriangleVertices<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> simplerAssignColor)</span>
+<span id="cb9-342"></span>
+<span id="cb9-343">colorMap2 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> morpher2<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">buildColorMap</span>()</span>
+<span id="cb9-344">morphedMap2 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> morpher2<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">interpolatePoints</span>(t<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> colorMap2)</span>
+<span id="cb9-345">triangles2 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> morpher2<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">generateSubTriangles</span>(morphedMap2<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">morphedMap</span>)</span>
+<span id="cb9-346"></span>
+<span id="cb9-347">plot1 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">plotTriangles</span>(triangles1<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> morphedMap1<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> equilateralTriangleVertices)</span>
+<span id="cb9-348"></span>
+<span id="cb9-349">plot2 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">plotTriangles</span>(triangles2<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> morphedMap2<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> equilateralTriangleVertices)</span>
+<span id="cb9-350"></span>
+<span id="cb9-351"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">html</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">`&lt;div style="display: flex; gap: 1rem;"&gt;</span></span>
+<span id="cb9-352"><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  &lt;div&gt;</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">${</span>plot1<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">&lt;/div&gt;</span></span>
+<span id="cb9-353"><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  &lt;div&gt;</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">${</span>plot2<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">&lt;/div&gt;</span></span>
+<span id="cb9-354"><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">&lt;/div&gt;`</span></span></code></pre></div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-8-7" data-nodetype="declaration">
+<div id="ojs-cell-9-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-9-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-9-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-9-4" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-9-5" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-9-6" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-9-7" data-nodetype="expression">
 
 </div>
 </div>
 </div>
 </div>
+</section>
+<section id="questions" class="level2">
+<h2 class="anchored" data-anchor-id="questions">Questions</h2>
+<p>The combinatorial proof of Sperner’s lemma does not require the full Sperner’s condition. All it needs is that <strong>the number of boundary <code>RG</code> edges is odd</strong>. This condition is guaranteed by Sperner’s condition but is weaker than it. Is there a way to extend the above proofs for this alternate hypothesis?</p>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<p>McLennan, Andrew, and Rabee Tourky. “Using Volume to Prove Sperner’s Lemma.” Economic Theory 35, no. 3 (2008): 593–97. <a href="http://www.jstor.org/stable/40282878">http://www.jstor.org/stable/40282878</a>.</p>
+<p><a href="https://mathpages.blogspot.com/2010/05/sperners-lemma.html">https://mathpages.blogspot.com/2010/05/sperners-lemma.html</a></p>
+<p>Kannai, Y. Using oriented volume to prove Sperner’s lemma. Econ Theory Bull 1, 11–19 (2013). <a href="https://doi.org/10.1007/s40505-013-0013-5">https://doi.org/10.1007/s40505-013-0013-5</a></p>
 
 
+</section>
 
 <a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
   <category>triangles</category>
@@ -2124,8 +2312,9 @@ font-style: inherit;">,</span> equilateralTriangleVertices)</span></code></pre><
   <category>visualization</category>
   <category>interactive</category>
   <category>observablejs</category>
+  <category>determinant</category>
   <guid>https://github.com/apurvanakade/second-drafts/9992-sperners-lemma-geometric-proof.html</guid>
-  <pubDate>Thu, 22 May 2025 14:23:17 GMT</pubDate>
+  <pubDate>Sun, 25 May 2025 16:08:45 GMT</pubDate>
 </item>
 <item>
   <title>Sperner’s Lemma - Combinatorial Proof</title>
