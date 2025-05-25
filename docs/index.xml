@@ -1936,16 +1936,16 @@ font-style: inherit;">,</span> equilateralTriangleVertices)</span></code></pre><
 <p><span class="theorem-title"><strong>Theorem 1</strong></span> A triangle <img src="https://latex.codecogs.com/png.latex?%5Cdelta"> is <code>RGB</code> if and only if <img src="https://latex.codecogs.com/png.latex?%5Ctext%7Barea%7D(%5Cdelta_1)%20=%201">.</p>
 </div>
 <p>We can rephrase Sperner’s Lemma in terms of area:</p>
-<div id="thm-sperner-area" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 2</strong></span> <img src="https://latex.codecogs.com/png.latex?%5Cbegin%7Balign*%7D%0A%5Ctext%7Barea%7D(%5CDelta_1)%20%3E%200,%0A%5Cend%7Balign*%7D"> where <img src="https://latex.codecogs.com/png.latex?%5Cbegin%7Balign*%7D%0A%5Ctext%7Barea%7D(%5CDelta_t)%20=%20%5Csum_%7B%5Cdelta%20%5Cin%20%5CDelta%7D%20%5Ctext%7Barea%7D(%5Cdelta_t).%0A%5Cend%7Balign*%7D"></p>
+<div id="cnj-sperner-area" class="theorem conjecture">
+<p><span class="theorem-title"><strong>Conjecture 1</strong></span> <img src="https://latex.codecogs.com/png.latex?%5Cbegin%7Balign*%7D%0A%5Ctext%7Barea%7D(%5CDelta_1)%20%3E%200,%0A%5Cend%7Balign*%7D"> where <img src="https://latex.codecogs.com/png.latex?%5Cbegin%7Balign*%7D%0A%5Ctext%7Barea%7D(%5CDelta_t)%20=%20%5Csum_%7B%5Cdelta%20%5Cin%20%5CDelta%7D%20%5Ctext%7Barea%7D(%5Cdelta_t).%0A%5Cend%7Balign*%7D"></p>
 </div>
 <p>In fact, we will prove the following stronger statement:</p>
-<div id="thm-signed-area" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 3</strong></span> <img src="https://latex.codecogs.com/png.latex?%5Cbegin%7Balign*%7D%0A%7C%5CDelta_1%7C%20=%201,%0A%5Cend%7Balign*%7D"> where <img src="https://latex.codecogs.com/png.latex?%5Cbegin%7Balign*%7D%0A%7C%5CDelta_t%7C%20=%20%5Csum_%7B%5Cdelta%20%5Cin%20%5CDelta%7D%20%7C%5Cdelta_t%7C,%0A%5Cend%7Balign*%7D"> and <img src="https://latex.codecogs.com/png.latex?%7C%5Cdelta_t%7C"> denotes the <strong>signed</strong> area of the triangle <img src="https://latex.codecogs.com/png.latex?%5Cdelta_t">.</p>
+<div id="cnj-signed-area" class="theorem conjecture">
+<p><span class="theorem-title"><strong>Conjecture 2</strong></span> <img src="https://latex.codecogs.com/png.latex?%5Cbegin%7Balign*%7D%0A%7C%5CDelta_1%7C%20=%201,%0A%5Cend%7Balign*%7D"> where <img src="https://latex.codecogs.com/png.latex?%5Cbegin%7Balign*%7D%0A%7C%5CDelta_t%7C%20=%20%5Csum_%7B%5Cdelta%20%5Cin%20%5CDelta%7D%20%7C%5Cdelta_t%7C,%0A%5Cend%7Balign*%7D"> and <img src="https://latex.codecogs.com/png.latex?%7C%5Cdelta_t%7C"> denotes the <strong>signed</strong> area of the triangle <img src="https://latex.codecogs.com/png.latex?%5Cdelta_t">.</p>
 </div>
-<p>We define the signed area of a counterclockwise-oriented triangle <img src="https://latex.codecogs.com/png.latex?%5Cdelta%20=%20(v%5E1,%20v%5E2,%20v%5E3)"> as: <img src="https://latex.codecogs.com/png.latex?%5Cbegin%7Balign*%7D%0A%7C%5Cdelta%7C%20=%20%5Cdet%20%5Cbegin%7Bbmatrix%7D%20v%5E2%20-%20v%5E1%20&amp;%20v%5E3%20-%20v%5E1%20%5Cend%7Bbmatrix%7D%0A%5Cend%7Balign*%7D"> This is the determinant of a <img src="https://latex.codecogs.com/png.latex?2%20%5Ctimes%202"> matrix, and therefore the signed area of <img src="https://latex.codecogs.com/png.latex?%5Cdelta_t"> is a <strong>quadratic</strong> function of <img src="https://latex.codecogs.com/png.latex?t">.</p>
+<p>One way to define the signed area of a counterclockwise-oriented triangle <img src="https://latex.codecogs.com/png.latex?%5Cdelta%20=%20(v%5E1,%20v%5E2,%20v%5E3)"> is as: <img src="https://latex.codecogs.com/png.latex?%5Cbegin%7Balign*%7D%0A%7C%5Cdelta%7C%20=%20%5Cdet%20%5Cbegin%7Bbmatrix%7D%20v%5E2%20-%20v%5E1%20&amp;%20v%5E3%20-%20v%5E1%20%5Cend%7Bbmatrix%7D%0A%5Cend%7Balign*%7D"> This is the determinant of a <img src="https://latex.codecogs.com/png.latex?2%20%5Ctimes%202"> matrix, and therefore the signed area of <img src="https://latex.codecogs.com/png.latex?%5Cdelta_t"> is a <strong>quadratic</strong> function of <img src="https://latex.codecogs.com/png.latex?t">.</p>
 <div id="thm-quadratic" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 4</strong></span> The signed area <img src="https://latex.codecogs.com/png.latex?%7C%5CDelta_t%7C"> is a quadratic function of <img src="https://latex.codecogs.com/png.latex?t">.</p>
+<p><span class="theorem-title"><strong>Theorem 2</strong></span> The signed area <img src="https://latex.codecogs.com/png.latex?%7C%5CDelta_t%7C"> is a quadratic function of <img src="https://latex.codecogs.com/png.latex?t">.</p>
 </div>
 </section>
 <section id="sperners-condition" class="level2">
@@ -1953,16 +1953,16 @@ font-style: inherit;">,</span> equilateralTriangleVertices)</span></code></pre><
 <p>At time <img src="https://latex.codecogs.com/png.latex?t%20=%200">, <img src="https://latex.codecogs.com/png.latex?%5CDelta_0"> is a triangulation of <img src="https://latex.codecogs.com/png.latex?(v%5ER,%20v%5EG,%20v%5EB)">, so: <img src="https://latex.codecogs.com/png.latex?%5Cbegin%7Balign*%7D%0A%7C%5CDelta_0%7C%20=%201.%0A%5Cend%7Balign*%7D"></p>
 <p>If the triangulation satisfies <strong>Sperner’s condition</strong>, then for small values of <img src="https://latex.codecogs.com/png.latex?t%20%3E%200">, <img src="https://latex.codecogs.com/png.latex?%5CDelta_t"> continues to form a triangulation of the original triangle. This is the only step in the proof where we use Sperner’s condition!</p>
 <div id="thm-sperner-local" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 5</strong></span> If the coloring satisfies Sperner’s condition, then there exists <img src="https://latex.codecogs.com/png.latex?%5Cvarepsilon%20%3E%200"> such that <img src="https://latex.codecogs.com/png.latex?%5Cbegin%7Balign*%7D%0A%7C%5CDelta_t%7C%20=%201%20%5Cquad%20%5Ctext%7Bfor%20all%20%7D%20t%20%5Cin%20%5B0,%20%5Cvarepsilon%5D.%0A%5Cend%7Balign*%7D"></p>
+<p><span class="theorem-title"><strong>Theorem 3</strong></span> If the coloring satisfies Sperner’s condition, then there exists <img src="https://latex.codecogs.com/png.latex?%5Cvarepsilon%20%3E%200"> such that <img src="https://latex.codecogs.com/png.latex?%5Cbegin%7Balign*%7D%0A%7C%5CDelta_t%7C%20=%201%20%5Cquad%20%5Ctext%7Bfor%20all%20%7D%20t%20%5Cin%20%5B0,%20%5Cvarepsilon%5D.%0A%5Cend%7Balign*%7D"></p>
 </div>
 <p>But since <img src="https://latex.codecogs.com/png.latex?%7C%5CDelta_t%7C"> is a quadratic function and is constant on an interval, it must be constant everywhere.<br>
 This gives us the full strength of Sperner’s Lemma:</p>
 <div id="thm-sperner-constant" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 6</strong></span> If the coloring satisfies Sperner’s condition, then <img src="https://latex.codecogs.com/png.latex?%7C%5CDelta_t%7C"> is constant in <img src="https://latex.codecogs.com/png.latex?t">.<br>
+<p><span class="theorem-title"><strong>Theorem 4</strong></span> If the coloring satisfies Sperner’s condition, then <img src="https://latex.codecogs.com/png.latex?%7C%5CDelta_t%7C"> is constant in <img src="https://latex.codecogs.com/png.latex?t">.<br>
 In particular, <img src="https://latex.codecogs.com/png.latex?%5Cbegin%7Balign*%7D%0A%7C%5CDelta_1%7C%20=%20%7C%5CDelta_0%7C%20=%201.%0A%5Cend%7Balign*%7D"></p>
 </div>
 <p>With one final argument, we can strengthen this conclusion:</p>
-<div id="cor-sperner" class="corollary theorem">
+<div id="cor-sperner" class="theorem corollary">
 <p><span class="theorem-title"><strong>Corollary 1</strong></span> If the coloring satisfies Sperner’s condition, then <img src="https://latex.codecogs.com/png.latex?%5Cbegin%7Balign*%7D%0A%7C%5C%7B%20%5Ctext%7Bcounterclockwise%20oriented%20RGB%20triangles%7D%20%5C%7D%7C%0A=%0A%7C%5C%7B%20%5Ctext%7Bclockwise%20oriented%20RGB%20triangles%7D%20%5C%7D%7C%20+%201.%0A%5Cend%7Balign*%7D"></p>
 </div>
 <p>Sperner’s condition is crucial in asserting that <img src="https://latex.codecogs.com/png.latex?%7C%5CDelta_t%7C"> is constant. If the condition is violated, <img src="https://latex.codecogs.com/png.latex?%5CDelta_t"> is no longer a triangulation of the original triangle — even for small <img src="https://latex.codecogs.com/png.latex?t%20%3E%200"> — and thus we cannot conclude that <img src="https://latex.codecogs.com/png.latex?%7C%5CDelta_t%7C"> remains constant. You can see this in the app below.</p>

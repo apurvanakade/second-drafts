@@ -817,26 +817,26 @@ v_t = (1 - t) \cdot v + t \cdot v^{c(v)}
 <p><span class="theorem-title"><strong>Theorem 1</strong></span> A triangle <span class="math inline">\(\delta\)</span> is <code>RGB</code> if and only if <span class="math inline">\(\text{area}(\delta_1) = 1\)</span>.</p>
 </div>
 <p>We can rephrase Sperner’s Lemma in terms of area:</p>
-<div id="thm-sperner-area" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 2</strong></span> <span class="math display">\[\begin{align*}
+<div id="cnj-sperner-area" class="theorem conjecture">
+<p><span class="theorem-title"><strong>Conjecture 1</strong></span> <span class="math display">\[\begin{align*}
 \text{area}(\Delta_1) &gt; 0,
 \end{align*}\]</span> where <span class="math display">\[\begin{align*}
 \text{area}(\Delta_t) = \sum_{\delta \in \Delta} \text{area}(\delta_t).
 \end{align*}\]</span></p>
 </div>
 <p>In fact, we will prove the following stronger statement:</p>
-<div id="thm-signed-area" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 3</strong></span> <span class="math display">\[\begin{align*}
+<div id="cnj-signed-area" class="theorem conjecture">
+<p><span class="theorem-title"><strong>Conjecture 2</strong></span> <span class="math display">\[\begin{align*}
 |\Delta_1| = 1,
 \end{align*}\]</span> where <span class="math display">\[\begin{align*}
 |\Delta_t| = \sum_{\delta \in \Delta} |\delta_t|,
 \end{align*}\]</span> and <span class="math inline">\(|\delta_t|\)</span> denotes the <strong>signed</strong> area of the triangle <span class="math inline">\(\delta_t\)</span>.</p>
 </div>
-<p>We define the signed area of a counterclockwise-oriented triangle <span class="math inline">\(\delta = (v^1, v^2, v^3)\)</span> as: <span class="math display">\[\begin{align*}
+<p>One way to define the signed area of a counterclockwise-oriented triangle <span class="math inline">\(\delta = (v^1, v^2, v^3)\)</span> is as: <span class="math display">\[\begin{align*}
 |\delta| = \det \begin{bmatrix} v^2 - v^1 &amp; v^3 - v^1 \end{bmatrix}
 \end{align*}\]</span> This is the determinant of a <span class="math inline">\(2 \times 2\)</span> matrix, and therefore the signed area of <span class="math inline">\(\delta_t\)</span> is a <strong>quadratic</strong> function of <span class="math inline">\(t\)</span>.</p>
 <div id="thm-quadratic" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 4</strong></span> The signed area <span class="math inline">\(|\Delta_t|\)</span> is a quadratic function of <span class="math inline">\(t\)</span>.</p>
+<p><span class="theorem-title"><strong>Theorem 2</strong></span> The signed area <span class="math inline">\(|\Delta_t|\)</span> is a quadratic function of <span class="math inline">\(t\)</span>.</p>
 </div>
 </section>
 <section id="sperners-condition" class="level2">
@@ -846,20 +846,20 @@ v_t = (1 - t) \cdot v + t \cdot v^{c(v)}
 \end{align*}\]</span></p>
 <p>If the triangulation satisfies <strong>Sperner’s condition</strong>, then for small values of <span class="math inline">\(t &gt; 0\)</span>, <span class="math inline">\(\Delta_t\)</span> continues to form a triangulation of the original triangle. This is the only step in the proof where we use Sperner’s condition!</p>
 <div id="thm-sperner-local" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 5</strong></span> If the coloring satisfies Sperner’s condition, then there exists <span class="math inline">\(\varepsilon &gt; 0\)</span> such that <span class="math display">\[\begin{align*}
+<p><span class="theorem-title"><strong>Theorem 3</strong></span> If the coloring satisfies Sperner’s condition, then there exists <span class="math inline">\(\varepsilon &gt; 0\)</span> such that <span class="math display">\[\begin{align*}
 |\Delta_t| = 1 \quad \text{for all } t \in [0, \varepsilon].
 \end{align*}\]</span></p>
 </div>
 <p>But since <span class="math inline">\(|\Delta_t|\)</span> is a quadratic function and is constant on an interval, it must be constant everywhere.<br>
 This gives us the full strength of Sperner’s Lemma:</p>
 <div id="thm-sperner-constant" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 6</strong></span> If the coloring satisfies Sperner’s condition, then <span class="math inline">\(|\Delta_t|\)</span> is constant in <span class="math inline">\(t\)</span>.<br>
+<p><span class="theorem-title"><strong>Theorem 4</strong></span> If the coloring satisfies Sperner’s condition, then <span class="math inline">\(|\Delta_t|\)</span> is constant in <span class="math inline">\(t\)</span>.<br>
 In particular, <span class="math display">\[\begin{align*}
 |\Delta_1| = |\Delta_0| = 1.
 \end{align*}\]</span></p>
 </div>
 <p>With one final argument, we can strengthen this conclusion:</p>
-<div id="cor-sperner" class="corollary theorem">
+<div id="cor-sperner" class="theorem corollary">
 <p><span class="theorem-title"><strong>Corollary 1</strong></span> If the coloring satisfies Sperner’s condition, then <span class="math display">\[\begin{align*}
 |\{ \text{counterclockwise oriented RGB triangles} \}|
 =

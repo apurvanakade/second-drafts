@@ -241,13 +241,13 @@ Our goal is to understand how $\Delta_t$ behaves as $t$ changes.
 
 A key observation: if a triangle $\delta$ is **not** an `RGB` triangle, then $\delta_1$ becomes degenerate — it has zero area. Assume, for simplicity, that the area of the original triangle $(v^R, v^G, v^B)$ is **1**. This allows us to use area as a tool to identify `RGB` triangles.
 
-::: {.theorem #thm-area}
+::: {#thm-area}
 A triangle $\delta$ is `RGB` if and only if $\text{area}(\delta_1) = 1$.
 :::
 
 We can rephrase Sperner's Lemma in terms of area:
 
-::: {.theorem #thm-sperner-area}
+::: {#cnj-sperner-area}
 \begin{align*}
 \text{area}(\Delta_1) > 0,
 \end{align*}
@@ -259,7 +259,7 @@ where
 
 In fact, we will prove the following stronger statement:
 
-::: {.theorem #thm-signed-area}
+::: {#cnj-signed-area}
 \begin{align*}
 |\Delta_1| = 1,
 \end{align*}
@@ -270,13 +270,13 @@ where
 and $|\delta_t|$ denotes the **signed** area of the triangle $\delta_t$.
 :::
 
-We define the signed area of a counterclockwise-oriented triangle $\delta = (v^1, v^2, v^3)$ as:
+One way to define the signed area of a counterclockwise-oriented triangle $\delta = (v^1, v^2, v^3)$ is as:
 \begin{align*}
 |\delta| = \det \begin{bmatrix} v^2 - v^1 & v^3 - v^1 \end{bmatrix}
 \end{align*}
 This is the determinant of a $2 \times 2$ matrix, and therefore the signed area of $\delta_t$ is a **quadratic** function of $t$.
 
-::: {.theorem #thm-quadratic}
+::: {#thm-quadratic}
 The signed area $|\Delta_t|$ is a quadratic function of $t$.
 :::
 
@@ -289,7 +289,7 @@ At time $t = 0$, $\Delta_0$ is a triangulation of $(v^R, v^G, v^B)$, so:
 
 If the triangulation satisfies **Sperner’s condition**, then for small values of $t > 0$, $\Delta_t$ continues to form a triangulation of the original triangle. This is the only step in the proof where we use Sperner’s condition!
 
-::: {.theorem #thm-sperner-local}
+::: {#thm-sperner-local}
 If the coloring satisfies Sperner's condition, then there exists $\varepsilon > 0$ such that
 \begin{align*}
 |\Delta_t| = 1 \quad \text{for all } t \in [0, \varepsilon].
@@ -299,7 +299,7 @@ If the coloring satisfies Sperner's condition, then there exists $\varepsilon > 
 But since $|\Delta_t|$ is a quadratic function and is constant on an interval, it must be constant everywhere.  
 This gives us the full strength of Sperner’s Lemma:
 
-::: {.theorem #thm-sperner-constant}
+::: {#thm-sperner-constant}
 If the coloring satisfies Sperner’s condition, then $|\Delta_t|$ is constant in $t$.  
 In particular,
 \begin{align*}
@@ -309,7 +309,7 @@ In particular,
 
 With one final argument, we can strengthen this conclusion:
 
-::: {.corollary #cor-sperner}
+::: {#cor-sperner}
 If the coloring satisfies Sperner’s condition, then
 \begin{align*}
 |\{ \text{counterclockwise oriented RGB triangles} \}| 
