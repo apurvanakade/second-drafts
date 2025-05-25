@@ -220,7 +220,7 @@ viewof plotALL = Plot.plot({
         x: "x",
         y: "y",
         fill: d => d.color,
-        r: 5 * (5 / N) // Decrease r as N increases
+        r: 4 // Decrease r as N increases
       }
     )
   ]

@@ -16,7 +16,7 @@ equilateralTriangleVertices = [
   {x: 1, y: 0},
   {x: 0.5, y: Math.sqrt(3) / 2},
   {x: 0, y: 0},
-]
+];
 
 generateBarycentricCoords = N => {
   const coords = []
@@ -26,11 +26,11 @@ generateBarycentricCoords = N => {
     }
   }
   return coords
-}
+};
 
-pickRandomColor = (...options) => options[Math.floor(Math.random() * options.length)]
+pickRandomColor = (...options) => options[Math.floor(Math.random() * options.length)];
 
-smoothstepEase = t => 3 * t ** 2 - 2 * t ** 3
+smoothstepEase = t => 6 * t ** 5 - 15 * t ** 4 + 10 * t ** 3;
 ```
 
 
@@ -182,7 +182,7 @@ function plotTriangles(triangles, morphedPoints, vertices) {
         strokeWidth: 1
       }),
       Plot.dot(morphedPoints.morphedPoints, {
-        x: "x", y: "y", fill: "color", r: 5 * (5 / N)
+        x: "x", y: "y", fill: "color", r: 4
       })
     ]
   })

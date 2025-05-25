@@ -101,7 +101,9 @@ background-color: null;
 font-style: inherit;">0</span>}<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb2-19">]</span>
+<span id="cb2-19">]<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
 <span id="cb2-20"></span>
 <span id="cb2-21">generateBarycentricCoords <span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -174,7 +176,9 @@ font-style: inherit;">-</span> j])</span>
 background-color: null;
 font-weight: bold;
 font-style: inherit;">return</span> coords</span>
-<span id="cb2-29">}</span>
+<span id="cb2-29">}<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
 <span id="cb2-30"></span>
 <span id="cb2-31">pickRandomColor <span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -201,7 +205,9 @@ font-style: inherit;">*</span> options<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">.</span><span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">length</span>)]</span>
+font-style: inherit;">length</span>)]<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
 <span id="cb2-32"></span>
 <span id="cb2-33">smoothstepEase <span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -210,23 +216,35 @@ background-color: null;
 font-weight: bold;
 font-style: inherit;">=&gt;</span> <span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">3</span> <span class="op" style="color: #5E5E5E;
+font-style: inherit;">6</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">*</span> t <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">**</span> <span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">2</span> <span class="op" style="color: #5E5E5E;
+font-style: inherit;">5</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">-</span> <span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">2</span> <span class="op" style="color: #5E5E5E;
+font-style: inherit;">15</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">*</span> t <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">**</span> <span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">3</span></span></code></pre></div>
+font-style: inherit;">4</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> t <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">**</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span></code></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-2-1" data-nodetype="declaration">
@@ -1672,13 +1690,7 @@ font-style: inherit;">r</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> <span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">5</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">*</span> (<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">5</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">/</span> N)</span>
+font-style: inherit;">4</span></span>
 <span id="cb6-185">      })</span>
 <span id="cb6-186">    ]</span>
 <span id="cb6-187">  })</span>
@@ -3963,7 +3975,7 @@ font-style: inherit;">r</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> <span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">5</span> })</span>
+font-style: inherit;">4</span> })</span>
 <span id="cb6-209">          <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> <span class="kw" style="color: #003B4F;
@@ -4979,7 +4991,7 @@ font-style: inherit;">r</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> <span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">5</span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">4</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
 <span id="cb10-308">        <span class="dt" style="color: #AD0000;
@@ -5718,7 +5730,7 @@ font-style: inherit;">"r"</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> <span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">5</span>)<span class="op" style="color: #5E5E5E;
+font-style: inherit;">4</span>)<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
 <span id="cb11-400">      circle<span class="op" style="color: #5E5E5E;
@@ -8577,13 +8589,7 @@ font-style: inherit;">r</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> <span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">5</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">*</span> (<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">5</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">/</span> N) <span class="co" style="color: #5E5E5E;
+font-style: inherit;">4</span> <span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">// Decrease r as N increases</span></span>
 <span id="cb8-223">      }</span>
