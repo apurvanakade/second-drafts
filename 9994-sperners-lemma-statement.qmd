@@ -13,7 +13,7 @@ viewof N = slider({
   min: 2,
   max: 20,
   step: 1,
-  value: 5,
+  value: 15,
   width: 500,
   title: "Number of subdivisions"
 });
@@ -140,24 +140,19 @@ subTriangles = {
 
 
 ```{ojs}
-// Determine the fill color based on the vertex colors.
 getFillColorALL = (vertexColors) => {
-  if (vertexColors.has('red') && vertexColors.has('green') && vertexColors.has('blue')) {
-    return 'rgba(0, 0, 0, 0.3)'; // black (RGB mix)
-  } else if (vertexColors.has('red') && vertexColors.has('green')) {
-    return 'rgba(255, 255, 0, 0.3)'; // yellow (R + G)
-  } else if (vertexColors.has('red') && vertexColors.has('blue')) {
-    return 'rgba(255, 0, 255, 0.3)'; // magenta (R + B)
-  } else if (vertexColors.has('green') && vertexColors.has('blue')) {
-    return 'rgba(0, 255, 255, 0.3)'; // cyan (G + B)
-  } else if (vertexColors.has('red')) {
-    return 'rgba(255, 0, 0, 0.3)'; // red
-  } else if (vertexColors.has('green')) {
-    return 'rgba(0, 255, 0, 0.3)'; // green
-  } else if (vertexColors.has('blue')) {
-    return 'rgba(0, 0, 255, 0.3)'; // blue
+  const numColors = vertexColors.size;
+
+  if (numColors === 3) {
+    return 'white';
+  } else if (numColors === 2) {
+    return 'rgba(255, 215, 0, 0.75)'; 
+  } else if (numColors === 1) {
+    const color = [...vertexColors][0];
+    if (color === 'red') return 'rgba(255, 0, 0, 0.3)';
+    if (color === 'green') return 'rgba(0, 255, 0, 0.3)';
+    if (color === 'blue') return 'rgba(0, 0, 255, 0.3)';
   }
-  return 'rgba(0, 0, 0, 0)'; // fully transparent fallback
 };
 ```
 
