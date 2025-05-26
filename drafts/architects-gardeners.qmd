@@ -8,4 +8,122 @@ draft: true
 
 > “I think there are two types of writers, the architects and the gardeners. The architects plan everything ahead of time, like an architect building a house. They know how many rooms are going to be in the house, what kind of roof they're going to have, where the wires are going to run, what kind of plumbing there's going to be. They have the whole thing designed and blueprinted out before they even nail the first board up. The gardeners dig a hole, drop in a seed and water it. They kind of know what seed it is, they know if planted a fantasy seed or mystery seed or whatever. But as the plant comes up and they water it, they don't know how many branches it's going to have, they find out as it grows. And I'm much more a gardener than an architect.” -- *George R.R. Martin*
 
-George R.R. Martin might be talking about writing but I find the "architect vs gardener" paradigm to be useful for describing how I approach a lot of my life. As a thought exercise, I tried to list the things where I'm an architect and where I'm a gardener. I'm pretty sure that in most aspects I'm a gardener. 
+I think about this George R.R. Martin quote every time I do course planning.
+
+```{ojs}
+import {svg} from "@observablehq/stdlib"
+
+width = 600;
+height = 400;
+padding = 40;
+```
+
+```{ojs}
+viewof ruler = {
+  const svgEl = svg`<svg width="${width}" height="${height}" style="display:block; margin:auto; border:none;"></svg>`;
+
+  const defs = document.createElementNS("http://www.w3.org/2000/svg", "defs");
+  defs.innerHTML = `
+    <marker id="arrowhead-up" markerWidth="6" markerHeight="6" refX="3" refY="3"
+      orient="auto" markerUnits="strokeWidth">
+      <path d="M0,6 L6,3 L0,0 Z" fill="#333" />
+    </marker>
+    <marker id="arrowhead-down" markerWidth="6" markerHeight="6" refX="3" refY="3"
+      orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#333" />
+    </marker>
+  `;
+  svgEl.appendChild(defs);
+
+  function addMarkWithLabel(markX, labelText, labelY) {
+    const x = padding + markX * (width - 2 * padding);
+    const tickY = height / 2;
+
+    // Tick mark
+    const tick = document.createElementNS("http://www.w3.org/2000/svg", "line");
+    tick.setAttribute("x1", x);
+    tick.setAttribute("x2", x);
+    tick.setAttribute("y1", tickY - 10);
+    tick.setAttribute("y2", tickY + 10);
+    tick.setAttribute("stroke", "#000");
+    tick.setAttribute("stroke-width", 2);
+    svgEl.appendChild(tick);
+
+    // Label text
+    const label = document.createElementNS("http://www.w3.org/2000/svg", "text");
+    label.setAttribute("x", x);
+    label.setAttribute("y", labelY);
+    label.setAttribute("text-anchor", "middle");
+    label.setAttribute("font-size", "14");
+    label.setAttribute("fill", "#333");
+    label.textContent = labelText;
+    svgEl.appendChild(label);
+
+    // Arrow from label to tick
+    const arrow = document.createElementNS("http://www.w3.org/2000/svg", "line");
+    arrow.setAttribute("x1", x);
+    arrow.setAttribute("x2", x);
+    arrow.setAttribute("y1", labelY < tickY ? labelY + 5 : labelY - 15);
+    arrow.setAttribute("y2", labelY < tickY ? tickY - 20 : tickY + 20);
+    arrow.setAttribute("stroke", "#333");
+    arrow.setAttribute("stroke-width", 1.5);
+    arrow.setAttribute("marker-end", labelY < tickY ? "url(#arrowhead-down)" : "url(#arrowhead-up)");
+    svgEl.appendChild(arrow);
+  }
+
+  // Main horizontal line (ruler)
+  const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+  line.setAttribute("x1", padding);
+  line.setAttribute("x2", width - padding);
+  line.setAttribute("y1", height / 2);
+  line.setAttribute("y2", height / 2);
+  line.setAttribute("stroke", "#333");
+  line.setAttribute("stroke-width", 2);
+  svgEl.appendChild(line);
+
+  // Left endpoint circle
+  const leftCircle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+  leftCircle.setAttribute("cx", padding - 8);
+  leftCircle.setAttribute("cy", height / 2);
+  leftCircle.setAttribute("r", 6);
+  leftCircle.setAttribute("fill", "#333");
+  svgEl.appendChild(leftCircle);
+
+  // Right endpoint circle
+  const rightCircle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+  rightCircle.setAttribute("cx", width - padding + 8);
+  rightCircle.setAttribute("cy", height / 2);
+  rightCircle.setAttribute("r", 6);
+  rightCircle.setAttribute("fill", "#333");
+  svgEl.appendChild(rightCircle);
+
+  // Left label
+  const leftLabel = document.createElementNS("http://www.w3.org/2000/svg", "text");
+  leftLabel.setAttribute("x", padding - 35);
+  leftLabel.setAttribute("y", height / 2 - 15);
+  leftLabel.setAttribute("text-anchor", "start");
+  leftLabel.setAttribute("font-size", "16");
+  leftLabel.setAttribute("fill", "#333");
+  leftLabel.textContent = "Architect";
+  svgEl.appendChild(leftLabel);
+
+  // Right label
+  const rightLabel = document.createElementNS("http://www.w3.org/2000/svg", "text");
+  rightLabel.setAttribute("x", width - padding + 35);
+  rightLabel.setAttribute("y", height / 2 - 15);
+  rightLabel.setAttribute("text-anchor", "end");
+  rightLabel.setAttribute("font-size", "16");
+  rightLabel.setAttribute("fill", "#333");
+  rightLabel.textContent = "Gardener";
+  svgEl.appendChild(rightLabel);
+
+    // Example: 80% position
+  addMarkWithLabel(0.8, "Course Planning", height / 2 + 60);
+
+  // Example: 30% position with label on top
+  addMarkWithLabel(0.3, "Prototype", height / 2 - 50);
+
+
+  return svgEl;
+}
+```
