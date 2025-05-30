@@ -31,9 +31,9 @@ website:
     style: floating
     contents: "*.qmd"
   
-  comments:
-    giscus:
-      repo: "apurvanakade/second-drafts"
+  # comments:
+  #   giscus:
+  #     repo: "apurvanakade/second-drafts"
 
 format:
   html:
