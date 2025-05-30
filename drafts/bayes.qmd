@@ -1,0 +1,148 @@
+---
+title: Bayes theorem
+---
+
+**DRAFT DOCUMENT**
+
+```{ojs}
+width = 700
+height = 300
+initialPrevalence = width / 2
+initialSensitivity = 0.8
+initialSpecificity = 0.7
+halfWidth = width / 2 - 5  // Half width with a small gap
+pointCount = 5000  // Increased number of points
+pointRadius = 2.5   // Smaller point size
+
+// Generate the points once and store them
+points = {
+  const randomPoints = [];
+  for (let i = 0; i < pointCount; i++) {
+    randomPoints.push({
+      x: Math.random() * width,
+      y: Math.random() * height
+    });
+  }
+  return randomPoints;
+}
+
+// Calculate positions of sensitivity and specificity lines
+// For sensitivity, we want it to move left to right as sensitivity increases
+sensitivityLinePosition = prevalence - prevalence * sensitivity
+specificityLinePosition = width - (width - prevalence) * specificity
+
+// Horizontal slider for prevalence
+viewof prevalence = {
+  const form = html`<form style="margin:0; padding:0;">
+    <input type="range" min="0" max="${width}" value="${initialPrevalence}" step="1" style="width:${width}px; margin:0; padding:0;">
+  </form>`;
+  
+  const input = form.querySelector("input");
+  form.value = initialPrevalence;
+  
+  input.oninput = () => {
+    form.value = Number(input.value);
+    form.dispatchEvent(new Event("input"));
+  };
+  
+  return form;
+}
+
+// Canvas with the visualization
+viewof canvas = {
+  const canvas = DOM.canvas(width, height);
+  const context = canvas.getContext("2d");
+  
+  // Draw the outer regions (left of blue and right of green) with one color
+  context.fillStyle = "black"; // Light blue
+  context.fillRect(0, 0, sensitivityLinePosition, height);
+  context.fillRect(specificityLinePosition, 0, width - specificityLinePosition, height);
+  
+  // Draw the middle region with another color
+  context.fillStyle = "white"; // Light orange
+  context.fillRect(sensitivityLinePosition, 0, specificityLinePosition - sensitivityLinePosition, height);
+  
+  // Draw the rectangle (box) outline
+  context.strokeStyle = "black";
+  context.lineWidth = 2;
+  context.strokeRect(0, 0, width, height);
+  
+  // Draw the prevalence vertical line
+  context.strokeStyle = "red";
+  context.lineWidth = 2;
+  context.beginPath();
+  context.moveTo(prevalence, 0);
+  context.lineTo(prevalence, height);
+  context.stroke();
+  
+  // Draw the sensitivity vertical line (in left half)
+  context.strokeStyle = "blue";
+  context.lineWidth = 2;
+  context.beginPath();
+  context.moveTo(sensitivityLinePosition, 0);
+  context.lineTo(sensitivityLinePosition, height);
+  context.stroke();
+  
+  // Draw the specificity vertical line (in right half)
+  context.strokeStyle = "green";
+  context.lineWidth = 2;
+  context.beginPath();
+  context.moveTo(specificityLinePosition, 0);
+  context.lineTo(specificityLinePosition, height);
+  context.stroke();
+  
+  // Draw the points with different colors based on which side of the prevalence line they are on
+  for (const point of points) {
+    // Points to the left of the prevalence line are one color, points to the right are another
+    context.fillStyle = point.x < prevalence ? "red" : "blue"; // Dark red for left, dark green for right
+    context.beginPath();
+    context.arc(point.x, point.y, pointRadius, 0, 2 * Math.PI);
+    context.fill();
+  }
+  
+  return canvas;
+}
+
+// Horizontal sliders for sensitivity (right to left) and specificity (left to right)
+viewof sensitivity = {
+  const form = html`<form style="margin:0; padding:0;">
+    <input type="range" min="0" max="1" value="${initialSensitivity}" step="0.01" style="width:${halfWidth}px; margin:0; padding:0; direction: rtl;">
+  </form>`;
+  
+  const input = form.querySelector("input");
+  form.value = initialSensitivity;
+  
+  input.oninput = () => {
+    form.value = Number(input.value);
+    form.dispatchEvent(new Event("input"));
+  };
+  
+  return form;
+}
+
+viewof specificity = {
+  const form = html`<form style="margin:0; padding:0;">
+    <input type="range" min="0" max="1" value="${initialSpecificity}" step="0.01" style="width:${halfWidth}px; margin:0; padding:0; direction: rtl;">
+  </form>`;
+  
+  const input = form.querySelector("input");
+  form.value = initialSpecificity;
+  
+  input.oninput = () => {
+    form.value = Number(input.value);
+    form.dispatchEvent(new Event("input"));
+  };
+  
+  return form;
+}
+
+// Simple table to place the sensitivity and specificity sliders side by side
+html`
+<table style="border-collapse: collapse; border: none; width: ${width}px; margin-top: 10px;">
+  <tr>
+    <td style="padding: 0; width: 50%;">${viewof sensitivity}</td>
+    <td style="padding: 0; width: 50%;">${viewof specificity}</td>
+  </tr>
+</table>
+`
+```
