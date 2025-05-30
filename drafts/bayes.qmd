@@ -54,12 +54,12 @@ viewof canvas = {
   const context = canvas.getContext("2d");
   
   // Draw the outer regions (left of blue and right of green) with one color
-  context.fillStyle = "black"; // Light blue
+  context.fillStyle = "blue";
   context.fillRect(0, 0, sensitivityLinePosition, height);
   context.fillRect(specificityLinePosition, 0, width - specificityLinePosition, height);
   
   // Draw the middle region with another color
-  context.fillStyle = "white"; // Light orange
+  context.fillStyle = "white";
   context.fillRect(sensitivityLinePosition, 0, specificityLinePosition - sensitivityLinePosition, height);
   
   // Draw the rectangle (box) outline
@@ -68,7 +68,7 @@ viewof canvas = {
   context.strokeRect(0, 0, width, height);
   
   // Draw the prevalence vertical line
-  context.strokeStyle = "red";
+  context.strokeStyle = "white";
   context.lineWidth = 2;
   context.beginPath();
   context.moveTo(prevalence, 0);
@@ -94,7 +94,7 @@ viewof canvas = {
   // Draw the points with different colors based on which side of the prevalence line they are on
   for (const point of points) {
     // Points to the left of the prevalence line are one color, points to the right are another
-    context.fillStyle = point.x < prevalence ? "red" : "blue"; // Dark red for left, dark green for right
+    context.fillStyle = point.x < prevalence ? "red" : "black"; // Dark red for left, dark green for right
     context.beginPath();
     context.arc(point.x, point.y, pointRadius, 0, 2 * Math.PI);
     context.fill();
