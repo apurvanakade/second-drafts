@@ -1,0 +1,248 @@
+---
+title: Bayes Theorem
+---
+
+**DRAFT DOCUMENT**
+
+```{ojs}
+// Configuration
+CONFIG = ({
+  colors: {
+    infected: "red",
+    healthy: "black", 
+    negative: "blue",
+    outline: "black",
+    background: "rgba(0,0,0,0.75)"
+  },
+  canvas: {
+    width: 700,
+    height: 300,
+    pointRadius: 2.5,
+    pointCount: 10000
+  }
+})
+
+// Initial parameter values
+INITIAL_VALUES = ({
+  prevalence: 0.5,
+  sensitivity: 0.8,
+  specificity: 0.9
+})
+```
+
+```{ojs}
+// Generate random points for visualization
+points = Array.from({ length: CONFIG.canvas.pointCount }, () => ({
+  x: Math.random() * CONFIG.canvas.width,
+  y: Math.random() * CONFIG.canvas.height
+}))
+```
+
+
+```{ojs}
+// Display current parameter values
+html`
+<table style="width: 100%; border-collapse: collapse; border: 2px solid #444; margin: 10px 0;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #444; padding: 8px;">Prevalence</th>
+      <th style="border: 1px solid #444; padding: 8px;">Sensitivity</th>
+      <th style="border: 1px solid #444; padding: 8px;">Specificity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #444; padding: 8px;">${prevalence.toFixed(2)}</td>
+      <td style="border: 1px solid #444; padding: 8px;">${sensitivity.toFixed(2)}</td>
+      <td style="border: 1px solid #444; padding: 8px;">${specificity.toFixed(2)}</td>
+    </tr>
+  </tbody>
+</table>
+`
+```
+
+```{ojs}
+// Core calculation functions
+function calculateTestMetrics(points, prevalence, sensitivity, specificity, width) {
+  const prevalenceLinePosition = prevalence * width
+  const sensitivityLinePosition = prevalenceLinePosition * (1 - sensitivity)
+  const specificityLinePosition = prevalenceLinePosition + (width - prevalenceLinePosition) * (1 - specificity)
+  
+  const infected = points.filter(point => point.x < prevalenceLinePosition)
+  const healthy = points.filter(point => point.x >= prevalenceLinePosition)
+  
+  const truePositives = infected.filter(point => point.x >= sensitivityLinePosition)
+  const falseNegatives = infected.filter(point => point.x < sensitivityLinePosition)
+  const trueNegatives = healthy.filter(point => point.x >= specificityLinePosition)
+  const falsePositives = healthy.filter(point => point.x < specificityLinePosition)
+  
+  return {
+    linePositions: { prevalenceLinePosition, sensitivityLinePosition, specificityLinePosition },
+    classifications: { truePositives, falseNegatives, trueNegatives, falsePositives },
+    ppv: truePositives.length / (truePositives.length + falsePositives.length)
+  }
+}
+
+function stretchPoints(points, sourceStart, sourceEnd, targetStart, targetEnd) {
+  const scale = (targetEnd - targetStart) / (sourceEnd - sourceStart)
+  return points.map(point => ({
+    x: targetStart + (point.x - sourceStart) * scale,
+    y: point.y
+  }))
+}
+```
+
+```{ojs}
+// Canvas drawing function
+function drawDiagnosticCanvas(points, prevalence, sensitivity, specificity, options = {}) {
+  const { width = CONFIG.canvas.width, height = CONFIG.canvas.height, pointRadius = CONFIG.canvas.pointRadius } = options
+  
+  const canvas = DOM.canvas(width, height)
+  const ctx = canvas.getContext("2d")
+  
+  const { linePositions, classifications } = calculateTestMetrics(points, prevalence, sensitivity, specificity, width)
+  const { sensitivityLinePosition, specificityLinePosition } = linePositions
+  
+  // Draw background regions (false results)
+  ctx.fillStyle = CONFIG.colors.background
+  ctx.fillRect(0, 0, sensitivityLinePosition, height)
+  ctx.fillRect(specificityLinePosition, 0, width - specificityLinePosition, height)
+  
+  // Draw border
+  ctx.strokeStyle = CONFIG.colors.outline
+  ctx.lineWidth = 2
+  ctx.strokeRect(0, 0, width, height)
+  
+  // Draw points
+  const prevalenceLinePosition = prevalence * width
+  points.forEach(point => {
+    ctx.fillStyle = point.x < prevalenceLinePosition ? CONFIG.colors.infected : CONFIG.colors.healthy
+    ctx.beginPath()
+    ctx.arc(point.x, point.y, pointRadius, 0, 2 * Math.PI)
+    ctx.fill()
+  })
+  
+  // Draw test threshold lines
+  const drawLine = (x, width = 2) => {
+    ctx.strokeStyle = CONFIG.colors.outline
+    ctx.lineWidth = width
+    ctx.beginPath()
+    ctx.moveTo(x, 0)
+    ctx.lineTo(x, height)
+    ctx.stroke()
+  }
+  
+  drawLine(sensitivityLinePosition)
+  drawLine(specificityLinePosition)
+  
+  return canvas
+}
+```
+
+```{ojs}
+// Initial test results
+initialResults = calculateTestMetrics(points, prevalence, sensitivity, specificity, CONFIG.canvas.width)
+```
+
+
+```{ojs}
+// Function for creating horizontal sliders
+function createSlider(min, max, value, step, width, rtl = false) {
+  const directionStyle = rtl ? "direction: rtl;" : "";
+  return html`<input type="range" 
+    min="${min}" max="${max}" step="${step}" value="${value}" 
+    style="width:${width}px; ${directionStyle}">`;
+}
+
+// Horizontal sliders for prevalence, sensitivity, and specificity
+viewof prevalence = createSlider(0, 1, INITIAL_VALUES.prevalence, 0.01, CONFIG.canvas.width); 
+viewof sensitivity = createSlider(0, 1, INITIAL_VALUES.sensitivity, 0.01, CONFIG.canvas.width / 2, true);
+viewof specificity = createSlider(0, 1, INITIAL_VALUES.specificity, 0.01, CONFIG.canvas.width / 2, true);
+// Simple table layout for sliders
+html`
+<table style="border-collapse: collapse; border: none; width: ${width}px; margin-top: 10px;">
+  <tr>
+    <td style="padding: 0; width: 50%;">${viewof sensitivity}</td>
+    <td style="padding: 0; width: 50%;">${viewof specificity}</td>
+  </tr>
+</table>
+`;
+```
+
+```{ojs}
+// First visualization: Original population
+canvas1 = drawDiagnosticCanvas(points, prevalence, sensitivity, specificity)
+```
+
+```{ojs}
+html`
+<div style="margin: 10px 0; padding: 10px; background-color: #f5f5f5; border-radius: 5px;">
+  <strong>Step 1 - Original Population:</strong><br>
+  Positive Predictive Value (PPV): <strong>${(initialResults.ppv || 0).toFixed(3)}</strong>
+</div>
+`
+```
+
+```{ojs}
+// Second iteration: Focus on positive results
+positiveResults = [...initialResults.classifications.truePositives, ...initialResults.classifications.falsePositives]
+
+stretchedPoints1 = stretchPoints(
+  positiveResults,
+  initialResults.linePositions.sensitivityLinePosition,
+  initialResults.linePositions.specificityLinePosition,
+  0,
+  CONFIG.canvas.width
+)
+
+newPrevalence1 = initialResults.ppv
+results1 = calculateTestMetrics(stretchedPoints1, newPrevalence1, sensitivity, specificity, CONFIG.canvas.width)
+```
+
+```{ojs}
+// Second visualization
+canvas2 = drawDiagnosticCanvas(stretchedPoints1, newPrevalence1, sensitivity, specificity, {
+  pointRadius: 3.5
+})
+```
+
+```{ojs}
+html`
+<div style="margin: 10px 0; padding: 10px; background-color: #f0f8ff; border-radius: 5px;">
+  <strong>Step 2 - Positive Results Only:</strong><br>
+  Positive Predictive Value (PPV): <strong>${(results1.ppv || 0).toFixed(3)}</strong>
+</div>
+`
+```
+
+```{ojs}
+// Third iteration: Further focus on positive results
+positiveResults2 = [...results1.classifications.truePositives, ...results1.classifications.falsePositives]
+
+stretchedPoints2 = stretchPoints(
+  positiveResults2,
+  results1.linePositions.sensitivityLinePosition,
+  results1.linePositions.specificityLinePosition,
+  0,
+  CONFIG.canvas.width
+)
+
+newPrevalence2 = results1.ppv
+results2 = calculateTestMetrics(stretchedPoints2, newPrevalence2, sensitivity, specificity, CONFIG.canvas.width)
+```
+
+```{ojs}
+// Third visualization
+canvas3 = drawDiagnosticCanvas(stretchedPoints2, newPrevalence2, sensitivity, specificity, {
+  pointRadius: 5
+})
+```
+
+```{ojs}
+html`
+<div style="margin: 10px 0; padding: 10px; background-color: #f0fff0; border-radius: 5px;">
+  <strong>Step 3 - Further Refined Positive Results:</strong><br>
+  Positive Predictive Value (PPV): <strong>${(results2.ppv || 0).toFixed(3)}</strong>
+</div>
+`
+```
