@@ -14582,11 +14582,34 @@ font-style: inherit;">+</span> falsePositives<span class="op" style="color: #5E5
 background-color: null;
 font-style: inherit;">.</span><span class="at" style="color: #657422;
 background-color: null;
+font-style: inherit;">length</span>)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb4-85">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">npv</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> trueNegatives<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">length</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> (trueNegatives<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">length</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> falseNegatives<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
 font-style: inherit;">length</span>)</span>
-<span id="cb4-85">  }</span>
-<span id="cb4-86">}</span>
-<span id="cb4-87"></span>
-<span id="cb4-88"><span class="kw" style="color: #003B4F;
+<span id="cb4-86">  }</span>
+<span id="cb4-87">}</span>
+<span id="cb4-88"></span>
+<span id="cb4-89"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">function</span> <span class="fu" style="color: #4758AB;
@@ -14600,7 +14623,7 @@ background-color: null;
 font-style: inherit;">,</span> targetStart<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> targetEnd) {</span>
-<span id="cb4-89">  <span class="kw" style="color: #003B4F;
+<span id="cb4-90">  <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">const</span> scale <span class="op" style="color: #5E5E5E;
@@ -14612,7 +14635,7 @@ background-color: null;
 font-style: inherit;">/</span> (sourceEnd <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">-</span> sourceStart)</span>
-<span id="cb4-90">  <span class="cf" style="color: #003B4F;
+<span id="cb4-91">  <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">return</span> points<span class="op" style="color: #5E5E5E;
@@ -14623,7 +14646,7 @@ font-style: inherit;">map</span>(point <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">=&gt;</span> ({</span>
-<span id="cb4-91">    <span class="dt" style="color: #AD0000;
+<span id="cb4-92">    <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">x</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -14640,7 +14663,7 @@ background-color: null;
 font-style: inherit;">*</span> scale<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb4-92">    <span class="dt" style="color: #AD0000;
+<span id="cb4-93">    <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">y</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -14649,8 +14672,8 @@ background-color: null;
 font-style: inherit;">.</span><span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">y</span></span>
-<span id="cb4-93">  }))</span>
-<span id="cb4-94">}</span></code></pre></div>
+<span id="cb4-94">  }))</span>
+<span id="cb4-95">}</span></code></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-4-1" data-nodetype="declaration">
@@ -14667,10 +14690,10 @@ font-style: inherit;">y</span></span>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb5" data-startfrom="97" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 96;"><span id="cb5-97"><span class="co" style="color: #5E5E5E;
+<div class="sourceCode cell-code hidden" id="cb5" data-startfrom="98" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 97;"><span id="cb5-98"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">// Canvas drawing function</span></span>
-<span id="cb5-98"><span class="kw" style="color: #003B4F;
+<span id="cb5-99"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">function</span> <span class="fu" style="color: #4758AB;
@@ -14686,7 +14709,7 @@ background-color: null;
 font-style: inherit;">,</span> options <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> {}) {</span>
-<span id="cb5-99">  <span class="kw" style="color: #003B4F;
+<span id="cb5-100">  <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">const</span> { width <span class="op" style="color: #5E5E5E;
@@ -14726,8 +14749,8 @@ background-color: null;
 font-style: inherit;">pointRadius</span> } <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> options</span>
-<span id="cb5-100">  </span>
-<span id="cb5-101">  <span class="kw" style="color: #003B4F;
+<span id="cb5-101">  </span>
+<span id="cb5-102">  <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">const</span> canvas <span class="op" style="color: #5E5E5E;
@@ -14739,7 +14762,7 @@ background-color: null;
 font-style: inherit;">canvas</span>(width<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> height)</span>
-<span id="cb5-102">  <span class="kw" style="color: #003B4F;
+<span id="cb5-103">  <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">const</span> ctx <span class="op" style="color: #5E5E5E;
@@ -14751,8 +14774,8 @@ background-color: null;
 font-style: inherit;">getContext</span>(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"2d"</span>)</span>
-<span id="cb5-103">  </span>
-<span id="cb5-104">  <span class="kw" style="color: #003B4F;
+<span id="cb5-104">  </span>
+<span id="cb5-105">  <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">const</span> { linePositions<span class="op" style="color: #5E5E5E;
@@ -14770,7 +14793,7 @@ background-color: null;
 font-style: inherit;">,</span> specificity<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> width)</span>
-<span id="cb5-105">  <span class="kw" style="color: #003B4F;
+<span id="cb5-106">  <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">const</span> { sensitivityLinePosition<span class="op" style="color: #5E5E5E;
@@ -14778,11 +14801,11 @@ background-color: null;
 font-style: inherit;">,</span> specificityLinePosition } <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> linePositions</span>
-<span id="cb5-106">  </span>
-<span id="cb5-107">  <span class="co" style="color: #5E5E5E;
+<span id="cb5-107">  </span>
+<span id="cb5-108">  <span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">// Draw background regions (false results)</span></span>
-<span id="cb5-108">  ctx<span class="op" style="color: #5E5E5E;
+<span id="cb5-109">  ctx<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">.</span><span class="at" style="color: #657422;
 background-color: null;
@@ -14797,7 +14820,7 @@ background-color: null;
 font-style: inherit;">.</span><span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">background</span></span>
-<span id="cb5-109">  ctx<span class="op" style="color: #5E5E5E;
+<span id="cb5-110">  ctx<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -14812,7 +14835,7 @@ background-color: null;
 font-style: inherit;">,</span> sensitivityLinePosition<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> height)</span>
-<span id="cb5-110">  ctx<span class="op" style="color: #5E5E5E;
+<span id="cb5-111">  ctx<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -14827,11 +14850,11 @@ background-color: null;
 font-style: inherit;">-</span> specificityLinePosition<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> height)</span>
-<span id="cb5-111">  </span>
-<span id="cb5-112">  <span class="co" style="color: #5E5E5E;
+<span id="cb5-112">  </span>
+<span id="cb5-113">  <span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">// Draw border</span></span>
-<span id="cb5-113">  ctx<span class="op" style="color: #5E5E5E;
+<span id="cb5-114">  ctx<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">.</span><span class="at" style="color: #657422;
 background-color: null;
@@ -14846,7 +14869,7 @@ background-color: null;
 font-style: inherit;">.</span><span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">outline</span></span>
-<span id="cb5-114">  ctx<span class="op" style="color: #5E5E5E;
+<span id="cb5-115">  ctx<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">.</span><span class="at" style="color: #657422;
 background-color: null;
@@ -14855,7 +14878,7 @@ background-color: null;
 font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">2</span></span>
-<span id="cb5-115">  ctx<span class="op" style="color: #5E5E5E;
+<span id="cb5-116">  ctx<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -14870,11 +14893,11 @@ background-color: null;
 font-style: inherit;">,</span> width<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> height)</span>
-<span id="cb5-116">  </span>
-<span id="cb5-117">  <span class="co" style="color: #5E5E5E;
+<span id="cb5-117">  </span>
+<span id="cb5-118">  <span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">// Draw points</span></span>
-<span id="cb5-118">  <span class="kw" style="color: #003B4F;
+<span id="cb5-119">  <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">const</span> prevalenceLinePosition <span class="op" style="color: #5E5E5E;
@@ -14882,7 +14905,7 @@ background-color: null;
 font-style: inherit;">=</span> prevalence <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">*</span> width</span>
-<span id="cb5-119">  points<span class="op" style="color: #5E5E5E;
+<span id="cb5-120">  points<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -14890,7 +14913,7 @@ font-style: inherit;">forEach</span>(point <span class="kw" style="color: #003B4
 background-color: null;
 font-weight: bold;
 font-style: inherit;">=&gt;</span> {</span>
-<span id="cb5-120">    ctx<span class="op" style="color: #5E5E5E;
+<span id="cb5-121">    ctx<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">.</span><span class="at" style="color: #657422;
 background-color: null;
@@ -14923,12 +14946,12 @@ background-color: null;
 font-style: inherit;">.</span><span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">healthy</span></span>
-<span id="cb5-121">    ctx<span class="op" style="color: #5E5E5E;
+<span id="cb5-122">    ctx<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">beginPath</span>()</span>
-<span id="cb5-122">    ctx<span class="op" style="color: #5E5E5E;
+<span id="cb5-123">    ctx<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -14961,17 +14984,17 @@ background-color: null;
 font-style: inherit;">.</span><span class="cn" style="color: #8f5902;
 background-color: null;
 font-style: inherit;">PI</span>)</span>
-<span id="cb5-123">    ctx<span class="op" style="color: #5E5E5E;
+<span id="cb5-124">    ctx<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">fill</span>()</span>
-<span id="cb5-124">  })</span>
-<span id="cb5-125">  </span>
-<span id="cb5-126">  <span class="co" style="color: #5E5E5E;
+<span id="cb5-125">  })</span>
+<span id="cb5-126">  </span>
+<span id="cb5-127">  <span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">// Draw test threshold lines</span></span>
-<span id="cb5-127">  <span class="kw" style="color: #003B4F;
+<span id="cb5-128">  <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">const</span> drawLine <span class="op" style="color: #5E5E5E;
@@ -14986,7 +15009,7 @@ font-style: inherit;">2</span>) <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">=&gt;</span> {</span>
-<span id="cb5-128">    ctx<span class="op" style="color: #5E5E5E;
+<span id="cb5-129">    ctx<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">.</span><span class="at" style="color: #657422;
 background-color: null;
@@ -15001,19 +15024,19 @@ background-color: null;
 font-style: inherit;">.</span><span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">outline</span></span>
-<span id="cb5-129">    ctx<span class="op" style="color: #5E5E5E;
+<span id="cb5-130">    ctx<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">.</span><span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">lineWidth</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> width</span>
-<span id="cb5-130">    ctx<span class="op" style="color: #5E5E5E;
+<span id="cb5-131">    ctx<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">beginPath</span>()</span>
-<span id="cb5-131">    ctx<span class="op" style="color: #5E5E5E;
+<span id="cb5-132">    ctx<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -15022,32 +15045,32 @@ background-color: null;
 font-style: inherit;">,</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">0</span>)</span>
-<span id="cb5-132">    ctx<span class="op" style="color: #5E5E5E;
+<span id="cb5-133">    ctx<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">lineTo</span>(x<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> height)</span>
-<span id="cb5-133">    ctx<span class="op" style="color: #5E5E5E;
+<span id="cb5-134">    ctx<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">stroke</span>()</span>
-<span id="cb5-134">  }</span>
-<span id="cb5-135">  </span>
-<span id="cb5-136">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">drawLine</span>(sensitivityLinePosition)</span>
+<span id="cb5-135">  }</span>
+<span id="cb5-136">  </span>
 <span id="cb5-137">  <span class="fu" style="color: #4758AB;
 background-color: null;
+font-style: inherit;">drawLine</span>(sensitivityLinePosition)</span>
+<span id="cb5-138">  <span class="fu" style="color: #4758AB;
+background-color: null;
 font-style: inherit;">drawLine</span>(specificityLinePosition)</span>
-<span id="cb5-138">  </span>
-<span id="cb5-139">  <span class="cf" style="color: #003B4F;
+<span id="cb5-139">  </span>
+<span id="cb5-140">  <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">return</span> canvas</span>
-<span id="cb5-140">}</span></code></pre></div>
+<span id="cb5-141">}</span></code></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-5" data-nodetype="declaration">
 
@@ -15055,10 +15078,10 @@ font-style: inherit;">return</span> canvas</span>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb6" data-startfrom="144" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 143;"><span id="cb6-144"><span class="co" style="color: #5E5E5E;
+<div class="sourceCode cell-code hidden" id="cb6" data-startfrom="145" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 144;"><span id="cb6-145"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">// Initial test results</span></span>
-<span id="cb6-145">initialResults <span class="op" style="color: #5E5E5E;
+<span id="cb6-146">initialResults <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -15086,7 +15109,7 @@ font-style: inherit;">width</span>)</span></code></pre></div>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb7" data-startfrom="152" data-source-offset="-44" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 151;"><span id="cb7-152"><span class="kw" style="color: #003B4F;
+<div class="sourceCode cell-code hidden" id="cb7" data-startfrom="153" data-source-offset="-44" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 152;"><span id="cb7-153"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">function</span> <span class="fu" style="color: #4758AB;
@@ -15107,7 +15130,7 @@ font-style: inherit;">=</span> <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">false</span>) {</span>
-<span id="cb7-153">  <span class="kw" style="color: #003B4F;
+<span id="cb7-154">  <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">const</span> directionStyle <span class="op" style="color: #5E5E5E;
@@ -15123,7 +15146,7 @@ background-color: null;
 font-style: inherit;">""</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb7-154">  <span class="cf" style="color: #003B4F;
+<span id="cb7-155">  <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">return</span> <span class="fu" style="color: #4758AB;
@@ -15131,7 +15154,7 @@ background-color: null;
 font-style: inherit;">html</span><span class="vs" style="color: #20794D;
 background-color: null;
 font-style: inherit;">`&lt;input type="range" </span></span>
-<span id="cb7-155"><span class="vs" style="color: #20794D;
+<span id="cb7-156"><span class="vs" style="color: #20794D;
 background-color: null;
 font-style: inherit;">    min="</span><span class="sc" style="color: #5E5E5E;
 background-color: null;
@@ -15158,7 +15181,7 @@ background-color: null;
 font-style: inherit;">}</span><span class="vs" style="color: #20794D;
 background-color: null;
 font-style: inherit;">" </span></span>
-<span id="cb7-156"><span class="vs" style="color: #20794D;
+<span id="cb7-157"><span class="vs" style="color: #20794D;
 background-color: null;
 font-style: inherit;">    style="width:</span><span class="sc" style="color: #5E5E5E;
 background-color: null;
@@ -15175,12 +15198,12 @@ background-color: null;
 font-style: inherit;">"&gt;`</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb7-157">}</span>
-<span id="cb7-158"></span>
-<span id="cb7-159"><span class="co" style="color: #5E5E5E;
+<span id="cb7-158">}</span>
+<span id="cb7-159"></span>
+<span id="cb7-160"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">// Horizontal sliders for prevalence, sensitivity, and specificity</span></span>
-<span id="cb7-160">viewof prevalence <span class="op" style="color: #5E5E5E;
+<span id="cb7-161">viewof prevalence <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -15213,11 +15236,11 @@ background-color: null;
 font-style: inherit;">width</span>)<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span> </span>
-<span id="cb7-161"></span>
-<span id="cb7-162"><span class="co" style="color: #5E5E5E;
+<span id="cb7-162"></span>
+<span id="cb7-163"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">// First visualization: Original population</span></span>
-<span id="cb7-163">canvas1 <span class="op" style="color: #5E5E5E;
+<span id="cb7-164">canvas1 <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -15251,20 +15274,38 @@ font-style: inherit;">,</span> specificity)</span></code></pre></div>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb8" data-startfrom="166" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 165;"><span id="cb8-166"><span class="fu" style="color: #4758AB;
+<div class="sourceCode cell-code hidden" id="cb8" data-startfrom="167" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 166;"><span id="cb8-167"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">html</span><span class="vs" style="color: #20794D;
 background-color: null;
 font-style: inherit;">`</span></span>
-<span id="cb8-167"><span class="vs" style="color: #20794D;
-background-color: null;
-font-style: inherit;">&lt;div style="margin: 10px 0; padding: 10px; background-color: #f5f5f5; border-radius: 5px;"&gt;</span></span>
 <span id="cb8-168"><span class="vs" style="color: #20794D;
 background-color: null;
-font-style: inherit;">  &lt;strong&gt;Step 1 - Original Population:&lt;/strong&gt;&lt;br&gt;</span></span>
+font-style: inherit;">&lt;div style="margin: 10px 0; padding: 10px; background-color: #f5f5f5; border-radius: 5px;"&gt;</span></span>
 <span id="cb8-169"><span class="vs" style="color: #20794D;
 background-color: null;
-font-style: inherit;">  Positive Predictive Value (PPV): &lt;strong&gt;</span><span class="sc" style="color: #5E5E5E;
+font-style: inherit;">  &lt;strong&gt;Step 1 - Original Population:&lt;/strong&gt;</span></span>
+<span id="cb8-170"><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  &lt;table style="width: 100%; border-collapse: collapse; margin-top: 10px;"&gt;</span></span>
+<span id="cb8-171"><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    &lt;tr&gt;</span></span>
+<span id="cb8-172"><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">      &lt;th style="border: 1px solid #ccc; padding: 8px; background-color: #e8e8e8;"&gt;PPV&lt;/th&gt;</span></span>
+<span id="cb8-173"><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">      &lt;th style="border: 1px solid #ccc; padding: 8px; background-color: #e8e8e8;"&gt;NPV&lt;/th&gt;</span></span>
+<span id="cb8-174"><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    &lt;/tr&gt;</span></span>
+<span id="cb8-175"><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    &lt;tr&gt;</span></span>
+<span id="cb8-176"><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">      &lt;td style="border: 1px solid #ccc; padding: 8px; text-align: center;"&gt;&lt;strong&gt;</span><span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">${</span>(initialResults<span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -15284,11 +15325,40 @@ font-style: inherit;">3</span>)<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">}</span><span class="vs" style="color: #20794D;
 background-color: null;
-font-style: inherit;">&lt;/strong&gt;</span></span>
-<span id="cb8-170"><span class="vs" style="color: #20794D;
+font-style: inherit;">&lt;/strong&gt;&lt;/td&gt;</span></span>
+<span id="cb8-177"><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">      &lt;td style="border: 1px solid #ccc; padding: 8px; text-align: center;"&gt;&lt;strong&gt;</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">${</span>(initialResults<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">npv</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">||</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">toFixed</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">&lt;/strong&gt;&lt;/td&gt;</span></span>
+<span id="cb8-178"><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    &lt;/tr&gt;</span></span>
+<span id="cb8-179"><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  &lt;/table&gt;</span></span>
+<span id="cb8-180"><span class="vs" style="color: #20794D;
 background-color: null;
 font-style: inherit;">&lt;/div&gt;</span></span>
-<span id="cb8-171"><span class="vs" style="color: #20794D;
+<span id="cb8-181"><span class="vs" style="color: #20794D;
 background-color: null;
 font-style: inherit;">`</span></span></code></pre></div>
 <div class="cell-output cell-output-display">
@@ -15298,7 +15368,7 @@ font-style: inherit;">`</span></span></code></pre></div>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb9" data-startfrom="177" data-source-offset="-47" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 176;"><span id="cb9-177">positiveResults <span class="op" style="color: #5E5E5E;
+<div class="sourceCode cell-code hidden" id="cb9" data-startfrom="187" data-source-offset="-47" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 186;"><span id="cb9-187">positiveResults <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> [<span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -15323,16 +15393,16 @@ background-color: null;
 font-style: inherit;">.</span><span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">falsePositives</span>]</span>
-<span id="cb9-178"></span>
-<span id="cb9-179">stretchedPoints1 <span class="op" style="color: #5E5E5E;
+<span id="cb9-188"></span>
+<span id="cb9-189">stretchedPoints1 <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">stretchPoints</span>(</span>
-<span id="cb9-180">  positiveResults<span class="op" style="color: #5E5E5E;
+<span id="cb9-190">  positiveResults<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb9-181">  initialResults<span class="op" style="color: #5E5E5E;
+<span id="cb9-191">  initialResults<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">.</span><span class="at" style="color: #657422;
 background-color: null;
@@ -15343,7 +15413,7 @@ background-color: null;
 font-style: inherit;">sensitivityLinePosition</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb9-182">  initialResults<span class="op" style="color: #5E5E5E;
+<span id="cb9-192">  initialResults<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">.</span><span class="at" style="color: #657422;
 background-color: null;
@@ -15354,12 +15424,12 @@ background-color: null;
 font-style: inherit;">specificityLinePosition</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb9-183">  <span class="dv" style="color: #AD0000;
+<span id="cb9-193">  <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">0</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb9-184">  CONFIG<span class="op" style="color: #5E5E5E;
+<span id="cb9-194">  CONFIG<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">.</span><span class="at" style="color: #657422;
 background-color: null;
@@ -15368,16 +15438,16 @@ background-color: null;
 font-style: inherit;">.</span><span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">width</span></span>
-<span id="cb9-185">)</span>
-<span id="cb9-186"></span>
-<span id="cb9-187">newPrevalence1 <span class="op" style="color: #5E5E5E;
+<span id="cb9-195">)</span>
+<span id="cb9-196"></span>
+<span id="cb9-197">newPrevalence1 <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> initialResults<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">.</span><span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">ppv</span></span>
-<span id="cb9-188">results1 <span class="op" style="color: #5E5E5E;
+<span id="cb9-198">results1 <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -15428,10 +15498,10 @@ font-style: inherit;">width</span>)</span></code></pre></div>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb10" data-startfrom="191" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 190;"><span id="cb10-191"><span class="co" style="color: #5E5E5E;
+<div class="sourceCode cell-code hidden" id="cb10" data-startfrom="201" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 200;"><span id="cb10-201"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">// Second visualization</span></span>
-<span id="cb10-192">canvas2 <span class="op" style="color: #5E5E5E;
+<span id="cb10-202">canvas2 <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -15444,14 +15514,14 @@ background-color: null;
 font-style: inherit;">,</span> specificity<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> {</span>
-<span id="cb10-193">  <span class="dt" style="color: #AD0000;
+<span id="cb10-203">  <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">pointRadius</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> <span class="fl" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">3.5</span></span>
-<span id="cb10-194">})</span></code></pre></div>
+<span id="cb10-204">})</span></code></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-10" data-nodetype="declaration">
 
@@ -15459,18 +15529,18 @@ font-style: inherit;">3.5</span></span>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb11" data-startfrom="198" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 197;"><span id="cb11-198"><span class="fu" style="color: #4758AB;
+<div class="sourceCode cell-code hidden" id="cb11" data-startfrom="208" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 207;"><span id="cb11-208"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">html</span><span class="vs" style="color: #20794D;
 background-color: null;
 font-style: inherit;">`</span></span>
-<span id="cb11-199"><span class="vs" style="color: #20794D;
+<span id="cb11-209"><span class="vs" style="color: #20794D;
 background-color: null;
 font-style: inherit;">&lt;div style="margin: 10px 0; padding: 10px; background-color: #f0f8ff; border-radius: 5px;"&gt;</span></span>
-<span id="cb11-200"><span class="vs" style="color: #20794D;
+<span id="cb11-210"><span class="vs" style="color: #20794D;
 background-color: null;
 font-style: inherit;">  &lt;strong&gt;Step 2 - Positive Results Only:&lt;/strong&gt;&lt;br&gt;</span></span>
-<span id="cb11-201"><span class="vs" style="color: #20794D;
+<span id="cb11-211"><span class="vs" style="color: #20794D;
 background-color: null;
 font-style: inherit;">  Positive Predictive Value (PPV): &lt;strong&gt;</span><span class="sc" style="color: #5E5E5E;
 background-color: null;
@@ -15493,10 +15563,10 @@ background-color: null;
 font-style: inherit;">}</span><span class="vs" style="color: #20794D;
 background-color: null;
 font-style: inherit;">&lt;/strong&gt;</span></span>
-<span id="cb11-202"><span class="vs" style="color: #20794D;
+<span id="cb11-212"><span class="vs" style="color: #20794D;
 background-color: null;
 font-style: inherit;">&lt;/div&gt;</span></span>
-<span id="cb11-203"><span class="vs" style="color: #20794D;
+<span id="cb11-213"><span class="vs" style="color: #20794D;
 background-color: null;
 font-style: inherit;">`</span></span></code></pre></div>
 <div class="cell-output cell-output-display">
@@ -15506,7 +15576,7 @@ font-style: inherit;">`</span></span></code></pre></div>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb12" data-startfrom="209" data-source-offset="-54" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 208;"><span id="cb12-209">positiveResults2 <span class="op" style="color: #5E5E5E;
+<div class="sourceCode cell-code hidden" id="cb12" data-startfrom="219" data-source-offset="-54" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 218;"><span id="cb12-219">positiveResults2 <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> [<span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -15531,16 +15601,16 @@ background-color: null;
 font-style: inherit;">.</span><span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">falsePositives</span>]</span>
-<span id="cb12-210"></span>
-<span id="cb12-211">stretchedPoints2 <span class="op" style="color: #5E5E5E;
+<span id="cb12-220"></span>
+<span id="cb12-221">stretchedPoints2 <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">stretchPoints</span>(</span>
-<span id="cb12-212">  positiveResults2<span class="op" style="color: #5E5E5E;
+<span id="cb12-222">  positiveResults2<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb12-213">  results1<span class="op" style="color: #5E5E5E;
+<span id="cb12-223">  results1<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">.</span><span class="at" style="color: #657422;
 background-color: null;
@@ -15551,7 +15621,7 @@ background-color: null;
 font-style: inherit;">sensitivityLinePosition</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb12-214">  results1<span class="op" style="color: #5E5E5E;
+<span id="cb12-224">  results1<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">.</span><span class="at" style="color: #657422;
 background-color: null;
@@ -15562,12 +15632,12 @@ background-color: null;
 font-style: inherit;">specificityLinePosition</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb12-215">  <span class="dv" style="color: #AD0000;
+<span id="cb12-225">  <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">0</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb12-216">  CONFIG<span class="op" style="color: #5E5E5E;
+<span id="cb12-226">  CONFIG<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">.</span><span class="at" style="color: #657422;
 background-color: null;
@@ -15576,16 +15646,16 @@ background-color: null;
 font-style: inherit;">.</span><span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">width</span></span>
-<span id="cb12-217">)</span>
-<span id="cb12-218"></span>
-<span id="cb12-219">newPrevalence2 <span class="op" style="color: #5E5E5E;
+<span id="cb12-227">)</span>
+<span id="cb12-228"></span>
+<span id="cb12-229">newPrevalence2 <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> results1<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">.</span><span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">ppv</span></span>
-<span id="cb12-220">results2 <span class="op" style="color: #5E5E5E;
+<span id="cb12-230">results2 <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -15636,10 +15706,10 @@ font-style: inherit;">width</span>)</span></code></pre></div>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb13" data-startfrom="223" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 222;"><span id="cb13-223"><span class="co" style="color: #5E5E5E;
+<div class="sourceCode cell-code hidden" id="cb13" data-startfrom="233" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 232;"><span id="cb13-233"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">// Third visualization</span></span>
-<span id="cb13-224">canvas3 <span class="op" style="color: #5E5E5E;
+<span id="cb13-234">canvas3 <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -15652,14 +15722,14 @@ background-color: null;
 font-style: inherit;">,</span> specificity<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> {</span>
-<span id="cb13-225">  <span class="dt" style="color: #AD0000;
+<span id="cb13-235">  <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">pointRadius</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">5</span></span>
-<span id="cb13-226">})</span></code></pre></div>
+<span id="cb13-236">})</span></code></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-13" data-nodetype="declaration">
 
@@ -15667,18 +15737,18 @@ font-style: inherit;">5</span></span>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb14" data-startfrom="230" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 229;"><span id="cb14-230"><span class="fu" style="color: #4758AB;
+<div class="sourceCode cell-code hidden" id="cb14" data-startfrom="240" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 239;"><span id="cb14-240"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">html</span><span class="vs" style="color: #20794D;
 background-color: null;
 font-style: inherit;">`</span></span>
-<span id="cb14-231"><span class="vs" style="color: #20794D;
+<span id="cb14-241"><span class="vs" style="color: #20794D;
 background-color: null;
 font-style: inherit;">&lt;div style="margin: 10px 0; padding: 10px; background-color: #f0fff0; border-radius: 5px;"&gt;</span></span>
-<span id="cb14-232"><span class="vs" style="color: #20794D;
+<span id="cb14-242"><span class="vs" style="color: #20794D;
 background-color: null;
 font-style: inherit;">  &lt;strong&gt;Step 3 - Further Refined Positive Results:&lt;/strong&gt;&lt;br&gt;</span></span>
-<span id="cb14-233"><span class="vs" style="color: #20794D;
+<span id="cb14-243"><span class="vs" style="color: #20794D;
 background-color: null;
 font-style: inherit;">  Positive Predictive Value (PPV): &lt;strong&gt;</span><span class="sc" style="color: #5E5E5E;
 background-color: null;
@@ -15701,10 +15771,10 @@ background-color: null;
 font-style: inherit;">}</span><span class="vs" style="color: #20794D;
 background-color: null;
 font-style: inherit;">&lt;/strong&gt;</span></span>
-<span id="cb14-234"><span class="vs" style="color: #20794D;
+<span id="cb14-244"><span class="vs" style="color: #20794D;
 background-color: null;
 font-style: inherit;">&lt;/div&gt;</span></span>
-<span id="cb14-235"><span class="vs" style="color: #20794D;
+<span id="cb14-245"><span class="vs" style="color: #20794D;
 background-color: null;
 font-style: inherit;">`</span></span></code></pre></div>
 <div class="cell-output cell-output-display">
@@ -15718,7 +15788,7 @@ font-style: inherit;">`</span></span></code></pre></div>
 
 <a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
   <guid>https://github.com/apurvanakade/second-drafts/drafts/bayes-theorem.html</guid>
-  <pubDate>Sat, 31 May 2025 14:11:48 GMT</pubDate>
+  <pubDate>Sun, 01 Jun 2025 19:50:16 GMT</pubDate>
 </item>
 </channel>
 </rss>

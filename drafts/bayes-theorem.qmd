@@ -81,7 +81,8 @@ function calculateTestMetrics(points, prevalence, sensitivity, specificity, widt
   return {
     linePositions: { prevalenceLinePosition, sensitivityLinePosition, specificityLinePosition },
     classifications: { truePositives, falseNegatives, trueNegatives, falsePositives },
-    ppv: truePositives.length / (truePositives.length + falsePositives.length)
+    ppv: truePositives.length / (truePositives.length + falsePositives.length),
+    npv: trueNegatives.length / (trueNegatives.length + falseNegatives.length)
   }
 }
 
@@ -166,8 +167,17 @@ canvas1 = drawDiagnosticCanvas(points, prevalence, sensitivity, specificity)
 ```{ojs}
 html`
 <div style="margin: 10px 0; padding: 10px; background-color: #f5f5f5; border-radius: 5px;">
-  <strong>Step 1 - Original Population:</strong><br>
-  Positive Predictive Value (PPV): <strong>${(initialResults.ppv || 0).toFixed(3)}</strong>
+  <strong>Step 1 - Original Population:</strong>
+  <table style="width: 100%; border-collapse: collapse; margin-top: 10px;">
+    <tr>
+      <th style="border: 1px solid #ccc; padding: 8px; background-color: #e8e8e8;">PPV</th>
+      <th style="border: 1px solid #ccc; padding: 8px; background-color: #e8e8e8;">NPV</th>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #ccc; padding: 8px; text-align: center;"><strong>${(initialResults.ppv || 0).toFixed(3)}</strong></td>
+      <td style="border: 1px solid #ccc; padding: 8px; text-align: center;"><strong>${(initialResults.npv || 0).toFixed(3)}</strong></td>
+    </tr>
+  </table>
 </div>
 `
 ```
