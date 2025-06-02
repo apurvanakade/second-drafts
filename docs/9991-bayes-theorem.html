@@ -1,0 +1,1293 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.31">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Apurva Nakade">
+<meta name="dcterms.date" content="2025-06-02">
+
+<title>Bayes Theorem – Second Drafts</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./9992-sperners-lemma-geometric-proof.html" rel="next">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-8ef56b68f8fa1e9d2ba328e99e439f80.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-c1fac2584b48ed01fb6e278e36375074.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-a9957ab5e8b7c67643b7e2e6b5c1e54e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-c1fac2584b48ed01fb6e278e36375074.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script type="module" src="site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+<link href="site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="styles.css">
+<meta property="og:title" content="Bayes Theorem – Second Drafts">
+<meta property="og:description" content="">
+<meta property="og:site_name" content="Second Drafts">
+</head>
+
+<body class="nav-sidebar floating nav-fixed fullcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Second Drafts</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://apurvanakade.github.io/"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://apurvanakade.github.io/notes.html"> 
+<span class="menu-text">Class Notes</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">(Math) Blog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://apurvanakade.github.io/CV.html"> 
+<span class="menu-text">CV</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/apurvanakade/"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./9991-bayes-theorem.html">Bayes Theorem</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./9991-bayes-theorem.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Bayes Theorem</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./9992-sperners-lemma-geometric-proof.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Sperner’s Lemma - Geometric Proof</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./9993-sperners-lemma-combinatorial-proof.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Sperner’s Lemma - Combinatorial Proof</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./9994-sperners-lemma-statement.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Sperner’s Lemma - Statement</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./9995-non-profits.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Non-Profits</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./9996-random-points-in-a-triangle.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Random points in a triangle</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./9997-hopkins-is-a-joke.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Hopkins is a joke</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./9998-barycentric-coordinates.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Barycentric Coordinates</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./9999-begin-again.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Begin Again</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Drafts</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Bayes Theorem</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">probability</div>
+    <div class="quarto-category">visualization</div>
+    <div class="quarto-category">observablejs</div>
+  </div>
+  </div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Apurva Nakade </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">June 2, 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="10" data-source-offset="-17"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 9;"><span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>CONFIG <span class="op">=</span> ({</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="dt">colors</span><span class="op">:</span> {</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="dt">infected</span><span class="op">:</span> <span class="st">"red"</span><span class="op">,</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="dt">healthy</span><span class="op">:</span> <span class="st">"black"</span><span class="op">,</span> </span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="dt">outline</span><span class="op">:</span> <span class="st">"black"</span><span class="op">,</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="dt">background</span><span class="op">:</span> <span class="st">"rgba(0,0,0,0.5)"</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  <span class="dt">canvas</span><span class="op">:</span> {</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    <span class="dt">width</span><span class="op">:</span> <span class="dv">740</span><span class="op">,</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    <span class="dt">height</span><span class="op">:</span> <span class="dv">300</span><span class="op">,</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    <span class="dt">pointRadius</span><span class="op">:</span> <span class="fl">2.5</span><span class="op">,</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    <span class="dt">pointCount</span><span class="op">:</span> <span class="dv">10000</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="co">// Initial parameter values</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>INITIAL_VALUES <span class="op">=</span> ({</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>  <span class="dt">prevalence</span><span class="op">:</span> <span class="fl">0.11</span><span class="op">,</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>  <span class="dt">sensitivity</span><span class="op">:</span> <span class="fl">0.8</span><span class="op">,</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>  <span class="dt">specificity</span><span class="op">:</span> <span class="fl">0.9</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb2" data-startfrom="33" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 32;"><span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="co">// Generate random points for visualization</span></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>points <span class="op">=</span> <span class="bu">Array</span><span class="op">.</span><span class="fu">from</span>({ <span class="dt">length</span><span class="op">:</span> CONFIG<span class="op">.</span><span class="at">canvas</span><span class="op">.</span><span class="at">pointCount</span> }<span class="op">,</span> () <span class="kw">=&gt;</span> ({</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>  <span class="dt">x</span><span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">random</span>() <span class="op">*</span> CONFIG<span class="op">.</span><span class="at">canvas</span><span class="op">.</span><span class="at">width</span><span class="op">,</span></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>  <span class="dt">y</span><span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">random</span>() <span class="op">*</span> CONFIG<span class="op">.</span><span class="at">canvas</span><span class="op">.</span><span class="at">height</span></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>}))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb3" data-startfrom="44" data-source-offset="-30"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 43;"><span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">calculateTestMetrics</span>(points<span class="op">,</span> prevalence<span class="op">,</span> sensitivity<span class="op">,</span> specificity<span class="op">,</span> width) {</span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> prevalenceLinePosition <span class="op">=</span> prevalence <span class="op">*</span> width</span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> sensitivityLinePosition <span class="op">=</span> prevalenceLinePosition <span class="op">*</span> (<span class="dv">1</span> <span class="op">-</span> sensitivity)</span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> specificityLinePosition <span class="op">=</span> prevalenceLinePosition <span class="op">+</span> (width <span class="op">-</span> prevalenceLinePosition) <span class="op">*</span> (<span class="dv">1</span> <span class="op">-</span> specificity)</span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> infected <span class="op">=</span> points<span class="op">.</span><span class="fu">filter</span>(point <span class="kw">=&gt;</span> point<span class="op">.</span><span class="at">x</span> <span class="op">&lt;</span> prevalenceLinePosition)</span>
+<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> healthy <span class="op">=</span> points<span class="op">.</span><span class="fu">filter</span>(point <span class="kw">=&gt;</span> point<span class="op">.</span><span class="at">x</span> <span class="op">&gt;=</span> prevalenceLinePosition)</span>
+<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> truePositives <span class="op">=</span> infected<span class="op">.</span><span class="fu">filter</span>(point <span class="kw">=&gt;</span> point<span class="op">.</span><span class="at">x</span> <span class="op">&gt;=</span> sensitivityLinePosition)</span>
+<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> falseNegatives <span class="op">=</span> infected<span class="op">.</span><span class="fu">filter</span>(point <span class="kw">=&gt;</span> point<span class="op">.</span><span class="at">x</span> <span class="op">&lt;</span> sensitivityLinePosition)</span>
+<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> trueNegatives <span class="op">=</span> healthy<span class="op">.</span><span class="fu">filter</span>(point <span class="kw">=&gt;</span> point<span class="op">.</span><span class="at">x</span> <span class="op">&gt;=</span> specificityLinePosition)</span>
+<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> falsePositives <span class="op">=</span> healthy<span class="op">.</span><span class="fu">filter</span>(point <span class="kw">=&gt;</span> point<span class="op">.</span><span class="at">x</span> <span class="op">&lt;</span> specificityLinePosition)</span>
+<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> {</span>
+<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a>    <span class="dt">linePositions</span><span class="op">:</span> { prevalenceLinePosition<span class="op">,</span> sensitivityLinePosition<span class="op">,</span> specificityLinePosition }<span class="op">,</span></span>
+<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a>    <span class="dt">classifications</span><span class="op">:</span> { truePositives<span class="op">,</span> falseNegatives<span class="op">,</span> trueNegatives<span class="op">,</span> falsePositives }<span class="op">,</span></span>
+<span id="cb3-60"><a href="#cb3-60" aria-hidden="true" tabindex="-1"></a>    <span class="dt">ppv</span><span class="op">:</span> truePositives<span class="op">.</span><span class="at">length</span> <span class="op">/</span> (truePositives<span class="op">.</span><span class="at">length</span> <span class="op">+</span> falsePositives<span class="op">.</span><span class="at">length</span>)<span class="op">,</span></span>
+<span id="cb3-61"><a href="#cb3-61" aria-hidden="true" tabindex="-1"></a>    <span class="dt">npv</span><span class="op">:</span> trueNegatives<span class="op">.</span><span class="at">length</span> <span class="op">/</span> (trueNegatives<span class="op">.</span><span class="at">length</span> <span class="op">+</span> falseNegatives<span class="op">.</span><span class="at">length</span>)</span>
+<span id="cb3-62"><a href="#cb3-62" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb3-63"><a href="#cb3-63" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-64"><a href="#cb3-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-65"><a href="#cb3-65" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">stretchPoints</span>(points<span class="op">,</span> sourceStart<span class="op">,</span> sourceEnd<span class="op">,</span> targetStart<span class="op">,</span> targetEnd) {</span>
+<span id="cb3-66"><a href="#cb3-66" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> scale <span class="op">=</span> (targetEnd <span class="op">-</span> targetStart) <span class="op">/</span> (sourceEnd <span class="op">-</span> sourceStart)</span>
+<span id="cb3-67"><a href="#cb3-67" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> points<span class="op">.</span><span class="fu">map</span>(point <span class="kw">=&gt;</span> ({</span>
+<span id="cb3-68"><a href="#cb3-68" aria-hidden="true" tabindex="-1"></a>    <span class="dt">x</span><span class="op">:</span> targetStart <span class="op">+</span> (point<span class="op">.</span><span class="at">x</span> <span class="op">-</span> sourceStart) <span class="op">*</span> scale<span class="op">,</span></span>
+<span id="cb3-69"><a href="#cb3-69" aria-hidden="true" tabindex="-1"></a>    <span class="dt">y</span><span class="op">:</span> point<span class="op">.</span><span class="at">y</span></span>
+<span id="cb3-70"><a href="#cb3-70" aria-hidden="true" tabindex="-1"></a>  }))</span>
+<span id="cb3-71"><a href="#cb3-71" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-3-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-3-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb4" data-startfrom="74" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 73;"><span id="cb4-74"><a href="#cb4-74" aria-hidden="true" tabindex="-1"></a><span class="co">// Canvas drawing function</span></span>
+<span id="cb4-75"><a href="#cb4-75" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">drawDiagnosticCanvas</span>(points<span class="op">,</span> prevalence<span class="op">,</span> sensitivity<span class="op">,</span> specificity<span class="op">,</span> options <span class="op">=</span> {}) {</span>
+<span id="cb4-76"><a href="#cb4-76" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> { width <span class="op">=</span> CONFIG<span class="op">.</span><span class="at">canvas</span><span class="op">.</span><span class="at">width</span><span class="op">,</span> height <span class="op">=</span> CONFIG<span class="op">.</span><span class="at">canvas</span><span class="op">.</span><span class="at">height</span><span class="op">,</span> pointRadius <span class="op">=</span> CONFIG<span class="op">.</span><span class="at">canvas</span><span class="op">.</span><span class="at">pointRadius</span> } <span class="op">=</span> options</span>
+<span id="cb4-77"><a href="#cb4-77" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-78"><a href="#cb4-78" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> canvas <span class="op">=</span> DOM<span class="op">.</span><span class="fu">canvas</span>(width<span class="op">,</span> height)</span>
+<span id="cb4-79"><a href="#cb4-79" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> ctx <span class="op">=</span> canvas<span class="op">.</span><span class="fu">getContext</span>(<span class="st">"2d"</span>)</span>
+<span id="cb4-80"><a href="#cb4-80" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-81"><a href="#cb4-81" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> { linePositions<span class="op">,</span> classifications } <span class="op">=</span> <span class="fu">calculateTestMetrics</span>(points<span class="op">,</span> prevalence<span class="op">,</span> sensitivity<span class="op">,</span> specificity<span class="op">,</span> width)</span>
+<span id="cb4-82"><a href="#cb4-82" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> { sensitivityLinePosition<span class="op">,</span> specificityLinePosition } <span class="op">=</span> linePositions</span>
+<span id="cb4-83"><a href="#cb4-83" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-84"><a href="#cb4-84" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Draw background regions (false results)</span></span>
+<span id="cb4-85"><a href="#cb4-85" aria-hidden="true" tabindex="-1"></a>  ctx<span class="op">.</span><span class="at">fillStyle</span> <span class="op">=</span> CONFIG<span class="op">.</span><span class="at">colors</span><span class="op">.</span><span class="at">background</span></span>
+<span id="cb4-86"><a href="#cb4-86" aria-hidden="true" tabindex="-1"></a>  ctx<span class="op">.</span><span class="fu">fillRect</span>(<span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> sensitivityLinePosition<span class="op">,</span> height)</span>
+<span id="cb4-87"><a href="#cb4-87" aria-hidden="true" tabindex="-1"></a>  ctx<span class="op">.</span><span class="fu">fillRect</span>(specificityLinePosition<span class="op">,</span> <span class="dv">0</span><span class="op">,</span> width <span class="op">-</span> specificityLinePosition<span class="op">,</span> height)</span>
+<span id="cb4-88"><a href="#cb4-88" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-89"><a href="#cb4-89" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Draw border</span></span>
+<span id="cb4-90"><a href="#cb4-90" aria-hidden="true" tabindex="-1"></a>  ctx<span class="op">.</span><span class="at">strokeStyle</span> <span class="op">=</span> CONFIG<span class="op">.</span><span class="at">colors</span><span class="op">.</span><span class="at">outline</span></span>
+<span id="cb4-91"><a href="#cb4-91" aria-hidden="true" tabindex="-1"></a>  ctx<span class="op">.</span><span class="at">lineWidth</span> <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb4-92"><a href="#cb4-92" aria-hidden="true" tabindex="-1"></a>  ctx<span class="op">.</span><span class="fu">strokeRect</span>(<span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> width<span class="op">,</span> height)</span>
+<span id="cb4-93"><a href="#cb4-93" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-94"><a href="#cb4-94" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Draw points</span></span>
+<span id="cb4-95"><a href="#cb4-95" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> prevalenceLinePosition <span class="op">=</span> prevalence <span class="op">*</span> width</span>
+<span id="cb4-96"><a href="#cb4-96" aria-hidden="true" tabindex="-1"></a>  points<span class="op">.</span><span class="fu">forEach</span>(point <span class="kw">=&gt;</span> {</span>
+<span id="cb4-97"><a href="#cb4-97" aria-hidden="true" tabindex="-1"></a>    ctx<span class="op">.</span><span class="at">fillStyle</span> <span class="op">=</span> point<span class="op">.</span><span class="at">x</span> <span class="op">&lt;</span> prevalenceLinePosition <span class="op">?</span> CONFIG<span class="op">.</span><span class="at">colors</span><span class="op">.</span><span class="at">infected</span> <span class="op">:</span> CONFIG<span class="op">.</span><span class="at">colors</span><span class="op">.</span><span class="at">healthy</span></span>
+<span id="cb4-98"><a href="#cb4-98" aria-hidden="true" tabindex="-1"></a>    ctx<span class="op">.</span><span class="fu">beginPath</span>()</span>
+<span id="cb4-99"><a href="#cb4-99" aria-hidden="true" tabindex="-1"></a>    ctx<span class="op">.</span><span class="fu">arc</span>(point<span class="op">.</span><span class="at">x</span><span class="op">,</span> point<span class="op">.</span><span class="at">y</span><span class="op">,</span> pointRadius<span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">2</span> <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span>)</span>
+<span id="cb4-100"><a href="#cb4-100" aria-hidden="true" tabindex="-1"></a>    ctx<span class="op">.</span><span class="fu">fill</span>()</span>
+<span id="cb4-101"><a href="#cb4-101" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb4-102"><a href="#cb4-102" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-103"><a href="#cb4-103" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Draw test threshold lines</span></span>
+<span id="cb4-104"><a href="#cb4-104" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> drawLine <span class="op">=</span> (x<span class="op">,</span> width <span class="op">=</span> <span class="dv">2</span>) <span class="kw">=&gt;</span> {</span>
+<span id="cb4-105"><a href="#cb4-105" aria-hidden="true" tabindex="-1"></a>    ctx<span class="op">.</span><span class="at">strokeStyle</span> <span class="op">=</span> CONFIG<span class="op">.</span><span class="at">colors</span><span class="op">.</span><span class="at">outline</span></span>
+<span id="cb4-106"><a href="#cb4-106" aria-hidden="true" tabindex="-1"></a>    ctx<span class="op">.</span><span class="at">lineWidth</span> <span class="op">=</span> width</span>
+<span id="cb4-107"><a href="#cb4-107" aria-hidden="true" tabindex="-1"></a>    ctx<span class="op">.</span><span class="fu">beginPath</span>()</span>
+<span id="cb4-108"><a href="#cb4-108" aria-hidden="true" tabindex="-1"></a>    ctx<span class="op">.</span><span class="fu">moveTo</span>(x<span class="op">,</span> <span class="dv">0</span>)</span>
+<span id="cb4-109"><a href="#cb4-109" aria-hidden="true" tabindex="-1"></a>    ctx<span class="op">.</span><span class="fu">lineTo</span>(x<span class="op">,</span> height)</span>
+<span id="cb4-110"><a href="#cb4-110" aria-hidden="true" tabindex="-1"></a>    ctx<span class="op">.</span><span class="fu">stroke</span>()</span>
+<span id="cb4-111"><a href="#cb4-111" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb4-112"><a href="#cb4-112" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-113"><a href="#cb4-113" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drawLine</span>(sensitivityLinePosition)</span>
+<span id="cb4-114"><a href="#cb4-114" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drawLine</span>(specificityLinePosition)</span>
+<span id="cb4-115"><a href="#cb4-115" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-116"><a href="#cb4-116" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> canvas</span>
+<span id="cb4-117"><a href="#cb4-117" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-4" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<p>Humans are not good at intuiting probability, which is a bit unfortunate considering how everything in the world is noisy and probabilistic and has to obey the laws of probability. Here’s a classic probability problem that illustrates this challenge. A standard mammogram test has, say, 80% sensitivity and 90% specificity. This means if you have breast cancer, the test will be positive 80% of the time, and if you do not have cancer, the test will be negative 90% of the time. (These are pretty good odds if you ask me.) You go to your doctor and your test comes out positive. What are the chances you have breast cancer? Take a moment to think about the answer before peeking below.</p>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb5" data-startfrom="128" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 127;"><span id="cb5-128"><a href="#cb5-128" aria-hidden="true" tabindex="-1"></a>viewof prevalence <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;input type="range" </span></span>
+<span id="cb5-129"><a href="#cb5-129" aria-hidden="true" tabindex="-1"></a><span class="vs">    min="</span><span class="sc">${</span><span class="dv">0</span><span class="sc">}</span><span class="vs">" max="</span><span class="sc">${</span><span class="dv">1</span><span class="sc">}</span><span class="vs">" step="</span><span class="sc">${</span><span class="fl">0.01</span><span class="sc">}</span><span class="vs">" value="</span><span class="sc">${</span>INITIAL_VALUES<span class="op">.</span><span class="at">prevalence</span><span class="sc">}</span><span class="vs">" </span></span>
+<span id="cb5-130"><a href="#cb5-130" aria-hidden="true" tabindex="-1"></a><span class="vs">    style="width:</span><span class="sc">${</span>CONFIG<span class="op">.</span><span class="at">canvas</span><span class="op">.</span><span class="at">width</span><span class="sc">}</span><span class="vs">px;"&gt;`</span><span class="op">;</span></span>
+<span id="cb5-131"><a href="#cb5-131" aria-hidden="true" tabindex="-1"></a>viewof sensitivity <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;input type="number" min="0" max="1" step="0.01" value="</span><span class="sc">${</span>INITIAL_VALUES<span class="op">.</span><span class="at">sensitivity</span><span class="sc">}</span><span class="vs">" style="width:80px;"&gt;`</span></span>
+<span id="cb5-132"><a href="#cb5-132" aria-hidden="true" tabindex="-1"></a>viewof specificity <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;input type="number" min="0" max="1" step="0.01" value="</span><span class="sc">${</span>INITIAL_VALUES<span class="op">.</span><span class="at">specificity</span><span class="sc">}</span><span class="vs">" style="width:80px;"&gt;`</span></span>
+<span id="cb5-133"><a href="#cb5-133" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-134"><a href="#cb5-134" aria-hidden="true" tabindex="-1"></a><span class="co">// Display current parameter values</span></span>
+<span id="cb5-135"><a href="#cb5-135" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`</span></span>
+<span id="cb5-136"><a href="#cb5-136" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;table style="width: 100%; border-collapse: collapse; border: 2px solid #444; margin: 10px 0;"&gt;</span></span>
+<span id="cb5-137"><a href="#cb5-137" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;thead&gt;</span></span>
+<span id="cb5-138"><a href="#cb5-138" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;tr&gt;</span></span>
+<span id="cb5-139"><a href="#cb5-139" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;th style="border: 1px solid #444; padding: 8px;"&gt;Prevalence&lt;/th&gt;</span></span>
+<span id="cb5-140"><a href="#cb5-140" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;th style="border: 1px solid #444; padding: 8px;"&gt;Sensitivity&lt;/th&gt;</span></span>
+<span id="cb5-141"><a href="#cb5-141" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;th style="border: 1px solid #444; padding: 8px;"&gt;Specificity&lt;/th&gt;</span></span>
+<span id="cb5-142"><a href="#cb5-142" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;/tr&gt;</span></span>
+<span id="cb5-143"><a href="#cb5-143" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;/thead&gt;</span></span>
+<span id="cb5-144"><a href="#cb5-144" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;tbody&gt;</span></span>
+<span id="cb5-145"><a href="#cb5-145" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;tr&gt;</span></span>
+<span id="cb5-146"><a href="#cb5-146" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;td style="border: 1px solid #444; padding: 8px;"&gt;</span><span class="sc">${</span>prevalence<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)<span class="sc">}</span><span class="vs">&lt;/td&gt;</span></span>
+<span id="cb5-147"><a href="#cb5-147" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;td style="border: 1px solid #444; padding: 8px;"&gt;</span><span class="sc">${</span>viewof sensitivity<span class="sc">}</span><span class="vs">&lt;/td&gt;</span></span>
+<span id="cb5-148"><a href="#cb5-148" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;td style="border: 1px solid #444; padding: 8px;"&gt;</span><span class="sc">${</span>viewof specificity<span class="sc">}</span><span class="vs">&lt;/td&gt;</span></span>
+<span id="cb5-149"><a href="#cb5-149" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;/tr&gt;</span></span>
+<span id="cb5-150"><a href="#cb5-150" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;/tbody&gt;</span></span>
+<span id="cb5-151"><a href="#cb5-151" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/table&gt;</span></span>
+<span id="cb5-152"><a href="#cb5-152" aria-hidden="true" tabindex="-1"></a><span class="vs">`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-5-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-5-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-5-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-5-4" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb6" data-startfrom="157" data-source-offset="-24"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 156;"><span id="cb6-157"><a href="#cb6-157" aria-hidden="true" tabindex="-1"></a>initialResults <span class="op">=</span> <span class="fu">calculateTestMetrics</span>(points<span class="op">,</span> prevalence<span class="op">,</span> sensitivity<span class="op">,</span> specificity<span class="op">,</span> CONFIG<span class="op">.</span><span class="at">canvas</span><span class="op">.</span><span class="at">width</span>)</span>
+<span id="cb6-158"><a href="#cb6-158" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-159"><a href="#cb6-159" aria-hidden="true" tabindex="-1"></a><span class="co">// First visualization: Original population</span></span>
+<span id="cb6-160"><a href="#cb6-160" aria-hidden="true" tabindex="-1"></a>canvas1 <span class="op">=</span> <span class="fu">drawDiagnosticCanvas</span>(points<span class="op">,</span> prevalence<span class="op">,</span> sensitivity<span class="op">,</span> specificity)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-6-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-6-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb7" data-startfrom="163" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 162;"><span id="cb7-163"><a href="#cb7-163" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`</span></span>
+<span id="cb7-164"><a href="#cb7-164" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;div style="margin: 10px 0; padding: 10px; background-color: #f5f5f5; border-radius: 5px;"&gt;</span></span>
+<span id="cb7-165"><a href="#cb7-165" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;strong&gt;Step 1 - Original Population:&lt;/strong&gt;</span></span>
+<span id="cb7-166"><a href="#cb7-166" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;table style="width: 100%; border-collapse: collapse; margin-top: 10px;"&gt;</span></span>
+<span id="cb7-167"><a href="#cb7-167" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;tr&gt;</span></span>
+<span id="cb7-168"><a href="#cb7-168" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;th style="border: 1px solid #ccc; padding: 8px; background-color: #e8e8e8;"&gt;PPV&lt;/th&gt;</span></span>
+<span id="cb7-169"><a href="#cb7-169" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;th style="border: 1px solid #ccc; padding: 8px; background-color: #e8e8e8;"&gt;NPV&lt;/th&gt;</span></span>
+<span id="cb7-170"><a href="#cb7-170" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;/tr&gt;</span></span>
+<span id="cb7-171"><a href="#cb7-171" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;tr&gt;</span></span>
+<span id="cb7-172"><a href="#cb7-172" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;td style="border: 1px solid #ccc; padding: 8px; text-align: center;"&gt;&lt;strong&gt;</span><span class="sc">${</span>(initialResults<span class="op">.</span><span class="at">ppv</span> <span class="op">||</span> <span class="dv">0</span>)<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">3</span>)<span class="sc">}</span><span class="vs">&lt;/strong&gt;&lt;/td&gt;</span></span>
+<span id="cb7-173"><a href="#cb7-173" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;td style="border: 1px solid #ccc; padding: 8px; text-align: center;"&gt;&lt;strong&gt;</span><span class="sc">${</span>(initialResults<span class="op">.</span><span class="at">npv</span> <span class="op">||</span> <span class="dv">0</span>)<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">3</span>)<span class="sc">}</span><span class="vs">&lt;/strong&gt;&lt;/td&gt;</span></span>
+<span id="cb7-174"><a href="#cb7-174" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;/tr&gt;</span></span>
+<span id="cb7-175"><a href="#cb7-175" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;/table&gt;</span></span>
+<span id="cb7-176"><a href="#cb7-176" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/div&gt;</span></span>
+<span id="cb7-177"><a href="#cb7-177" aria-hidden="true" tabindex="-1"></a><span class="vs">`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-7" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+<p>The answer, it turns out, is just around <strong>50%</strong>. Even though the tests are really good and highly accurate, the chance of you having cancer if your test comes out positive is the same as tossing a coin and saying you have cancer if you get heads! What is going on?</p>
+<p>The above answer assumes that at any given time about 11% of all women have breast cancer. But this number (called prevalence) fluctuates from population to population and is hard to pinpoint accurately. Still, this gives us a good estimate of the so-called positive predictive value.</p>
+<p>You can see this phenomenon in the interactive visualization above. The reason for this counterintuitive result is that there are far more women who do not have cancer than those who do. In the graphic, the red dots represent women with breast cancer and the black dots represent women without breast cancer. The regions between the vertical lines show women for whom the test result is positive.</p>
+<p>You can see that 80% of all the red dots (true positives) and 10% of all the black dots (false positives) fall within this positive test region. But there are so many more black dots that just 10% of these ends up being roughly the same number as 80% of all the red dots. So if your test comes out positive, you have about a 50-50 chance of being either a red dot or a black dot - a true positive or a false positive.</p>
+<p>Does this mean that the test is useless and you shouldn’t take it? <strong>Absolutely NOT!</strong> If you focus only on the positive results and “repeat the test” (see below), the accuracy increases dramatically to 87%. Do it a third time and it becomes 98%. The more tests you do, the fewer false positives remain in your sample.</p>
+<p>But there’s another important consideration: notice that 20% of cancer cases are missed in the first test (false negatives). However, the chances of missing a diagnosis in two consecutive tests drops from 20% to just 4%, and becomes negligible after three tests. This is another compelling reason why regular, frequent testing is so important.</p>
+<p>These calculations are formalized in Bayes’ theorem, which shows us that even excellent tests can have surprising limitations when the condition being tested is rare. Understanding this helps us make better decisions about medical testing, interpreting results, and the value of repeated testing.</p>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb8" data-startfrom="198" data-source-offset="-47"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 197;"><span id="cb8-198"><a href="#cb8-198" aria-hidden="true" tabindex="-1"></a>positiveResults <span class="op">=</span> [<span class="op">...</span>initialResults<span class="op">.</span><span class="at">classifications</span><span class="op">.</span><span class="at">truePositives</span><span class="op">,</span> <span class="op">...</span>initialResults<span class="op">.</span><span class="at">classifications</span><span class="op">.</span><span class="at">falsePositives</span>]</span>
+<span id="cb8-199"><a href="#cb8-199" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-200"><a href="#cb8-200" aria-hidden="true" tabindex="-1"></a>stretchedPoints1 <span class="op">=</span> <span class="fu">stretchPoints</span>(</span>
+<span id="cb8-201"><a href="#cb8-201" aria-hidden="true" tabindex="-1"></a>  positiveResults<span class="op">,</span></span>
+<span id="cb8-202"><a href="#cb8-202" aria-hidden="true" tabindex="-1"></a>  initialResults<span class="op">.</span><span class="at">linePositions</span><span class="op">.</span><span class="at">sensitivityLinePosition</span><span class="op">,</span></span>
+<span id="cb8-203"><a href="#cb8-203" aria-hidden="true" tabindex="-1"></a>  initialResults<span class="op">.</span><span class="at">linePositions</span><span class="op">.</span><span class="at">specificityLinePosition</span><span class="op">,</span></span>
+<span id="cb8-204"><a href="#cb8-204" aria-hidden="true" tabindex="-1"></a>  <span class="dv">0</span><span class="op">,</span></span>
+<span id="cb8-205"><a href="#cb8-205" aria-hidden="true" tabindex="-1"></a>  CONFIG<span class="op">.</span><span class="at">canvas</span><span class="op">.</span><span class="at">width</span></span>
+<span id="cb8-206"><a href="#cb8-206" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-207"><a href="#cb8-207" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-208"><a href="#cb8-208" aria-hidden="true" tabindex="-1"></a>newPrevalence1 <span class="op">=</span> initialResults<span class="op">.</span><span class="at">ppv</span></span>
+<span id="cb8-209"><a href="#cb8-209" aria-hidden="true" tabindex="-1"></a>results1 <span class="op">=</span> <span class="fu">calculateTestMetrics</span>(stretchedPoints1<span class="op">,</span> newPrevalence1<span class="op">,</span> sensitivity<span class="op">,</span> specificity<span class="op">,</span> CONFIG<span class="op">.</span><span class="at">canvas</span><span class="op">.</span><span class="at">width</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-8-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-8-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-8-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-8-4" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb9" data-startfrom="212" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 211;"><span id="cb9-212"><a href="#cb9-212" aria-hidden="true" tabindex="-1"></a><span class="co">// Second visualization</span></span>
+<span id="cb9-213"><a href="#cb9-213" aria-hidden="true" tabindex="-1"></a>canvas2 <span class="op">=</span> <span class="fu">drawDiagnosticCanvas</span>(stretchedPoints1<span class="op">,</span> newPrevalence1<span class="op">,</span> sensitivity<span class="op">,</span> specificity<span class="op">,</span> {</span>
+<span id="cb9-214"><a href="#cb9-214" aria-hidden="true" tabindex="-1"></a>  <span class="dt">pointRadius</span><span class="op">:</span> <span class="fl">3.5</span></span>
+<span id="cb9-215"><a href="#cb9-215" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-9" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb10" data-startfrom="219" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 218;"><span id="cb10-219"><a href="#cb10-219" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`</span></span>
+<span id="cb10-220"><a href="#cb10-220" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;div style="margin: 10px 0; padding: 10px; background-color: #f0f8ff; border-radius: 5px;"&gt;</span></span>
+<span id="cb10-221"><a href="#cb10-221" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;strong&gt;Step 2 - Probability of having cancer if two tests are positive:&lt;/strong&gt;&lt;br&gt;</span></span>
+<span id="cb10-222"><a href="#cb10-222" aria-hidden="true" tabindex="-1"></a><span class="vs">  Positive Predictive Value (PPV): &lt;strong&gt;</span><span class="sc">${</span>(results1<span class="op">.</span><span class="at">ppv</span> <span class="op">||</span> <span class="dv">0</span>)<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">3</span>)<span class="sc">}</span><span class="vs">&lt;/strong&gt;</span></span>
+<span id="cb10-223"><a href="#cb10-223" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/div&gt;</span></span>
+<span id="cb10-224"><a href="#cb10-224" aria-hidden="true" tabindex="-1"></a><span class="vs">`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-10" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb11" data-startfrom="230" data-source-offset="-54"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 229;"><span id="cb11-230"><a href="#cb11-230" aria-hidden="true" tabindex="-1"></a>positiveResults2 <span class="op">=</span> [<span class="op">...</span>results1<span class="op">.</span><span class="at">classifications</span><span class="op">.</span><span class="at">truePositives</span><span class="op">,</span> <span class="op">...</span>results1<span class="op">.</span><span class="at">classifications</span><span class="op">.</span><span class="at">falsePositives</span>]</span>
+<span id="cb11-231"><a href="#cb11-231" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-232"><a href="#cb11-232" aria-hidden="true" tabindex="-1"></a>stretchedPoints2 <span class="op">=</span> <span class="fu">stretchPoints</span>(</span>
+<span id="cb11-233"><a href="#cb11-233" aria-hidden="true" tabindex="-1"></a>  positiveResults2<span class="op">,</span></span>
+<span id="cb11-234"><a href="#cb11-234" aria-hidden="true" tabindex="-1"></a>  results1<span class="op">.</span><span class="at">linePositions</span><span class="op">.</span><span class="at">sensitivityLinePosition</span><span class="op">,</span></span>
+<span id="cb11-235"><a href="#cb11-235" aria-hidden="true" tabindex="-1"></a>  results1<span class="op">.</span><span class="at">linePositions</span><span class="op">.</span><span class="at">specificityLinePosition</span><span class="op">,</span></span>
+<span id="cb11-236"><a href="#cb11-236" aria-hidden="true" tabindex="-1"></a>  <span class="dv">0</span><span class="op">,</span></span>
+<span id="cb11-237"><a href="#cb11-237" aria-hidden="true" tabindex="-1"></a>  CONFIG<span class="op">.</span><span class="at">canvas</span><span class="op">.</span><span class="at">width</span></span>
+<span id="cb11-238"><a href="#cb11-238" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb11-239"><a href="#cb11-239" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-240"><a href="#cb11-240" aria-hidden="true" tabindex="-1"></a>newPrevalence2 <span class="op">=</span> results1<span class="op">.</span><span class="at">ppv</span></span>
+<span id="cb11-241"><a href="#cb11-241" aria-hidden="true" tabindex="-1"></a>results2 <span class="op">=</span> <span class="fu">calculateTestMetrics</span>(stretchedPoints2<span class="op">,</span> newPrevalence2<span class="op">,</span> sensitivity<span class="op">,</span> specificity<span class="op">,</span> CONFIG<span class="op">.</span><span class="at">canvas</span><span class="op">.</span><span class="at">width</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-11-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-11-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-11-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-11-4" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb12" data-startfrom="244" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 243;"><span id="cb12-244"><a href="#cb12-244" aria-hidden="true" tabindex="-1"></a><span class="co">// Third visualization</span></span>
+<span id="cb12-245"><a href="#cb12-245" aria-hidden="true" tabindex="-1"></a>canvas3 <span class="op">=</span> <span class="fu">drawDiagnosticCanvas</span>(stretchedPoints2<span class="op">,</span> newPrevalence2<span class="op">,</span> sensitivity<span class="op">,</span> specificity<span class="op">,</span> {</span>
+<span id="cb12-246"><a href="#cb12-246" aria-hidden="true" tabindex="-1"></a>  <span class="dt">pointRadius</span><span class="op">:</span> <span class="dv">5</span></span>
+<span id="cb12-247"><a href="#cb12-247" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-12" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb13" data-startfrom="251" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 250;"><span id="cb13-251"><a href="#cb13-251" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`</span></span>
+<span id="cb13-252"><a href="#cb13-252" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;div style="margin: 10px 0; padding: 10px; background-color: #f0fff0; border-radius: 5px;"&gt;</span></span>
+<span id="cb13-253"><a href="#cb13-253" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;strong&gt;Step 2 - Probability of having cancer if three tests are positive:&lt;/strong&gt;&lt;br&gt;</span></span>
+<span id="cb13-254"><a href="#cb13-254" aria-hidden="true" tabindex="-1"></a><span class="vs">  Positive Predictive Value (PPV): &lt;strong&gt;</span><span class="sc">${</span>(results2<span class="op">.</span><span class="at">ppv</span> <span class="op">||</span> <span class="dv">0</span>)<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">3</span>)<span class="sc">}</span><span class="vs">&lt;/strong&gt;</span></span>
+<span id="cb13-255"><a href="#cb13-255" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/div&gt;</span></span>
+<span id="cb13-256"><a href="#cb13-256" aria-hidden="true" tabindex="-1"></a><span class="vs">`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-13" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+
+
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6Ii8vIENvbmZpZ3VyYXRpb25cbkNPTkZJRyA9ICh7XG4gIGNvbG9yczoge1xuICAgIGluZmVjdGVkOiBcInJlZFwiLFxuICAgIGhlYWx0aHk6IFwiYmxhY2tcIiwgXG4gICAgb3V0bGluZTogXCJibGFja1wiLFxuICAgIGJhY2tncm91bmQ6IFwicmdiYSgwLDAsMCwwLjUpXCJcbiAgfSxcbiAgY2FudmFzOiB7XG4gICAgd2lkdGg6IDc0MCxcbiAgICBoZWlnaHQ6IDMwMCxcbiAgICBwb2ludFJhZGl1czogMi41LFxuICAgIHBvaW50Q291bnQ6IDEwMDAwXG4gIH1cbn0pXG5cbi8vIEluaXRpYWwgcGFyYW1ldGVyIHZhbHVlc1xuSU5JVElBTF9WQUxVRVMgPSAoe1xuICBwcmV2YWxlbmNlOiAwLjExLFxuICBzZW5zaXRpdml0eTogMC44LFxuICBzcGVjaWZpY2l0eTogMC45XG59KVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0yIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiLy8gR2VuZXJhdGUgcmFuZG9tIHBvaW50cyBmb3IgdmlzdWFsaXphdGlvblxucG9pbnRzID0gQXJyYXkuZnJvbSh7IGxlbmd0aDogQ09ORklHLmNhbnZhcy5wb2ludENvdW50IH0sICgpID0+ICh7XG4gIHg6IE1hdGgucmFuZG9tKCkgKiBDT05GSUcuY2FudmFzLndpZHRoLFxuICB5OiBNYXRoLnJhbmRvbSgpICogQ09ORklHLmNhbnZhcy5oZWlnaHRcbn0pKVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0zIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiLy8gQ29yZSBjYWxjdWxhdGlvbiBmdW5jdGlvbnNcbmZ1bmN0aW9uIGNhbGN1bGF0ZVRlc3RNZXRyaWNzKHBvaW50cywgcHJldmFsZW5jZSwgc2Vuc2l0aXZpdHksIHNwZWNpZmljaXR5LCB3aWR0aCkge1xuICBjb25zdCBwcmV2YWxlbmNlTGluZVBvc2l0aW9uID0gcHJldmFsZW5jZSAqIHdpZHRoXG4gIGNvbnN0IHNlbnNpdGl2aXR5TGluZVBvc2l0aW9uID0gcHJldmFsZW5jZUxpbmVQb3NpdGlvbiAqICgxIC0gc2Vuc2l0aXZpdHkpXG4gIGNvbnN0IHNwZWNpZmljaXR5TGluZVBvc2l0aW9uID0gcHJldmFsZW5jZUxpbmVQb3NpdGlvbiArICh3aWR0aCAtIHByZXZhbGVuY2VMaW5lUG9zaXRpb24pICogKDEgLSBzcGVjaWZpY2l0eSlcbiAgXG4gIGNvbnN0IGluZmVjdGVkID0gcG9pbnRzLmZpbHRlcihwb2ludCA9PiBwb2ludC54IDwgcHJldmFsZW5jZUxpbmVQb3NpdGlvbilcbiAgY29uc3QgaGVhbHRoeSA9IHBvaW50cy5maWx0ZXIocG9pbnQgPT4gcG9pbnQueCA+PSBwcmV2YWxlbmNlTGluZVBvc2l0aW9uKVxuICBcbiAgY29uc3QgdHJ1ZVBvc2l0aXZlcyA9IGluZmVjdGVkLmZpbHRlcihwb2ludCA9PiBwb2ludC54ID49IHNlbnNpdGl2aXR5TGluZVBvc2l0aW9uKVxuICBjb25zdCBmYWxzZU5lZ2F0aXZlcyA9IGluZmVjdGVkLmZpbHRlcihwb2ludCA9PiBwb2ludC54IDwgc2Vuc2l0aXZpdHlMaW5lUG9zaXRpb24pXG4gIGNvbnN0IHRydWVOZWdhdGl2ZXMgPSBoZWFsdGh5LmZpbHRlcihwb2ludCA9PiBwb2ludC54ID49IHNwZWNpZmljaXR5TGluZVBvc2l0aW9uKVxuICBjb25zdCBmYWxzZVBvc2l0aXZlcyA9IGhlYWx0aHkuZmlsdGVyKHBvaW50ID0+IHBvaW50LnggPCBzcGVjaWZpY2l0eUxpbmVQb3NpdGlvbilcbiAgXG4gIHJldHVybiB7XG4gICAgbGluZVBvc2l0aW9uczogeyBwcmV2YWxlbmNlTGluZVBvc2l0aW9uLCBzZW5zaXRpdml0eUxpbmVQb3NpdGlvbiwgc3BlY2lmaWNpdHlMaW5lUG9zaXRpb24gfSxcbiAgICBjbGFzc2lmaWNhdGlvbnM6IHsgdHJ1ZVBvc2l0aXZlcywgZmFsc2VOZWdhdGl2ZXMsIHRydWVOZWdhdGl2ZXMsIGZhbHNlUG9zaXRpdmVzIH0sXG4gICAgcHB2OiB0cnVlUG9zaXRpdmVzLmxlbmd0aCAvICh0cnVlUG9zaXRpdmVzLmxlbmd0aCArIGZhbHNlUG9zaXRpdmVzLmxlbmd0aCksXG4gICAgbnB2OiB0cnVlTmVnYXRpdmVzLmxlbmd0aCAvICh0cnVlTmVnYXRpdmVzLmxlbmd0aCArIGZhbHNlTmVnYXRpdmVzLmxlbmd0aClcbiAgfVxufVxuXG5mdW5jdGlvbiBzdHJldGNoUG9pbnRzKHBvaW50cywgc291cmNlU3RhcnQsIHNvdXJjZUVuZCwgdGFyZ2V0U3RhcnQsIHRhcmdldEVuZCkge1xuICBjb25zdCBzY2FsZSA9ICh0YXJnZXRFbmQgLSB0YXJnZXRTdGFydCkgLyAoc291cmNlRW5kIC0gc291cmNlU3RhcnQpXG4gIHJldHVybiBwb2ludHMubWFwKHBvaW50ID0+ICh7XG4gICAgeDogdGFyZ2V0U3RhcnQgKyAocG9pbnQueCAtIHNvdXJjZVN0YXJ0KSAqIHNjYWxlLFxuICAgIHk6IHBvaW50LnlcbiAgfSkpXG59XG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTQiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiIvLyBDYW52YXMgZHJhd2luZyBmdW5jdGlvblxuZnVuY3Rpb24gZHJhd0RpYWdub3N0aWNDYW52YXMocG9pbnRzLCBwcmV2YWxlbmNlLCBzZW5zaXRpdml0eSwgc3BlY2lmaWNpdHksIG9wdGlvbnMgPSB7fSkge1xuICBjb25zdCB7IHdpZHRoID0gQ09ORklHLmNhbnZhcy53aWR0aCwgaGVpZ2h0ID0gQ09ORklHLmNhbnZhcy5oZWlnaHQsIHBvaW50UmFkaXVzID0gQ09ORklHLmNhbnZhcy5wb2ludFJhZGl1cyB9ID0gb3B0aW9uc1xuICBcbiAgY29uc3QgY2FudmFzID0gRE9NLmNhbnZhcyh3aWR0aCwgaGVpZ2h0KVxuICBjb25zdCBjdHggPSBjYW52YXMuZ2V0Q29udGV4dChcIjJkXCIpXG4gIFxuICBjb25zdCB7IGxpbmVQb3NpdGlvbnMsIGNsYXNzaWZpY2F0aW9ucyB9ID0gY2FsY3VsYXRlVGVzdE1ldHJpY3MocG9pbnRzLCBwcmV2YWxlbmNlLCBzZW5zaXRpdml0eSwgc3BlY2lmaWNpdHksIHdpZHRoKVxuICBjb25zdCB7IHNlbnNpdGl2aXR5TGluZVBvc2l0aW9uLCBzcGVjaWZpY2l0eUxpbmVQb3NpdGlvbiB9ID0gbGluZVBvc2l0aW9uc1xuICBcbiAgLy8gRHJhdyBiYWNrZ3JvdW5kIHJlZ2lvbnMgKGZhbHNlIHJlc3VsdHMpXG4gIGN0eC5maWxsU3R5bGUgPSBDT05GSUcuY29sb3JzLmJhY2tncm91bmRcbiAgY3R4LmZpbGxSZWN0KDAsIDAsIHNlbnNpdGl2aXR5TGluZVBvc2l0aW9uLCBoZWlnaHQpXG4gIGN0eC5maWxsUmVjdChzcGVjaWZpY2l0eUxpbmVQb3NpdGlvbiwgMCwgd2lkdGggLSBzcGVjaWZpY2l0eUxpbmVQb3NpdGlvbiwgaGVpZ2h0KVxuICBcbiAgLy8gRHJhdyBib3JkZXJcbiAgY3R4LnN0cm9rZVN0eWxlID0gQ09ORklHLmNvbG9ycy5vdXRsaW5lXG4gIGN0eC5saW5lV2lkdGggPSAyXG4gIGN0eC5zdHJva2VSZWN0KDAsIDAsIHdpZHRoLCBoZWlnaHQpXG4gIFxuICAvLyBEcmF3IHBvaW50c1xuICBjb25zdCBwcmV2YWxlbmNlTGluZVBvc2l0aW9uID0gcHJldmFsZW5jZSAqIHdpZHRoXG4gIHBvaW50cy5mb3JFYWNoKHBvaW50ID0+IHtcbiAgICBjdHguZmlsbFN0eWxlID0gcG9pbnQueCA8IHByZXZhbGVuY2VMaW5lUG9zaXRpb24gPyBDT05GSUcuY29sb3JzLmluZmVjdGVkIDogQ09ORklHLmNvbG9ycy5oZWFsdGh5XG4gICAgY3R4LmJlZ2luUGF0aCgpXG4gICAgY3R4LmFyYyhwb2ludC54LCBwb2ludC55LCBwb2ludFJhZGl1cywgMCwgMiAqIE1hdGguUEkpXG4gICAgY3R4LmZpbGwoKVxuICB9KVxuICBcbiAgLy8gRHJhdyB0ZXN0IHRocmVzaG9sZCBsaW5lc1xuICBjb25zdCBkcmF3TGluZSA9ICh4LCB3aWR0aCA9IDIpID0+IHtcbiAgICBjdHguc3Ryb2tlU3R5bGUgPSBDT05GSUcuY29sb3JzLm91dGxpbmVcbiAgICBjdHgubGluZVdpZHRoID0gd2lkdGhcbiAgICBjdHguYmVnaW5QYXRoKClcbiAgICBjdHgubW92ZVRvKHgsIDApXG4gICAgY3R4LmxpbmVUbyh4LCBoZWlnaHQpXG4gICAgY3R4LnN0cm9rZSgpXG4gIH1cbiAgXG4gIGRyYXdMaW5lKHNlbnNpdGl2aXR5TGluZVBvc2l0aW9uKVxuICBkcmF3TGluZShzcGVjaWZpY2l0eUxpbmVQb3NpdGlvbilcbiAgXG4gIHJldHVybiBjYW52YXNcbn1cbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtNSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InZpZXdvZiBwcmV2YWxlbmNlID0gaHRtbGA8aW5wdXQgdHlwZT1cInJhbmdlXCIgXG4gICAgbWluPVwiJHswfVwiIG1heD1cIiR7MX1cIiBzdGVwPVwiJHswLjAxfVwiIHZhbHVlPVwiJHtJTklUSUFMX1ZBTFVFUy5wcmV2YWxlbmNlfVwiIFxuICAgIHN0eWxlPVwid2lkdGg6JHtDT05GSUcuY2FudmFzLndpZHRofXB4O1wiPmA7XG52aWV3b2Ygc2Vuc2l0aXZpdHkgPSBodG1sYDxpbnB1dCB0eXBlPVwibnVtYmVyXCIgbWluPVwiMFwiIG1heD1cIjFcIiBzdGVwPVwiMC4wMVwiIHZhbHVlPVwiJHtJTklUSUFMX1ZBTFVFUy5zZW5zaXRpdml0eX1cIiBzdHlsZT1cIndpZHRoOjgwcHg7XCI+YFxudmlld29mIHNwZWNpZmljaXR5ID0gaHRtbGA8aW5wdXQgdHlwZT1cIm51bWJlclwiIG1pbj1cIjBcIiBtYXg9XCIxXCIgc3RlcD1cIjAuMDFcIiB2YWx1ZT1cIiR7SU5JVElBTF9WQUxVRVMuc3BlY2lmaWNpdHl9XCIgc3R5bGU9XCJ3aWR0aDo4MHB4O1wiPmBcblxuLy8gRGlzcGxheSBjdXJyZW50IHBhcmFtZXRlciB2YWx1ZXNcbmh0bWxgXG48dGFibGUgc3R5bGU9XCJ3aWR0aDogMTAwJTsgYm9yZGVyLWNvbGxhcHNlOiBjb2xsYXBzZTsgYm9yZGVyOiAycHggc29saWQgIzQ0NDsgbWFyZ2luOiAxMHB4IDA7XCI+XG4gIDx0aGVhZD5cbiAgICA8dHI+XG4gICAgICA8dGggc3R5bGU9XCJib3JkZXI6IDFweCBzb2xpZCAjNDQ0OyBwYWRkaW5nOiA4cHg7XCI+UHJldmFsZW5jZTwvdGg+XG4gICAgICA8dGggc3R5bGU9XCJib3JkZXI6IDFweCBzb2xpZCAjNDQ0OyBwYWRkaW5nOiA4cHg7XCI+U2Vuc2l0aXZpdHk8L3RoPlxuICAgICAgPHRoIHN0eWxlPVwiYm9yZGVyOiAxcHggc29saWQgIzQ0NDsgcGFkZGluZzogOHB4O1wiPlNwZWNpZmljaXR5PC90aD5cbiAgICA8L3RyPlxuICA8L3RoZWFkPlxuICA8dGJvZHk+XG4gICAgPHRyPlxuICAgICAgPHRkIHN0eWxlPVwiYm9yZGVyOiAxcHggc29saWQgIzQ0NDsgcGFkZGluZzogOHB4O1wiPiR7cHJldmFsZW5jZS50b0ZpeGVkKDIpfTwvdGQ+XG4gICAgICA8dGQgc3R5bGU9XCJib3JkZXI6IDFweCBzb2xpZCAjNDQ0OyBwYWRkaW5nOiA4cHg7XCI+JHt2aWV3b2Ygc2Vuc2l0aXZpdHl9PC90ZD5cbiAgICAgIDx0ZCBzdHlsZT1cImJvcmRlcjogMXB4IHNvbGlkICM0NDQ7IHBhZGRpbmc6IDhweDtcIj4ke3ZpZXdvZiBzcGVjaWZpY2l0eX08L3RkPlxuICAgIDwvdHI+XG4gIDwvdGJvZHk+XG48L3RhYmxlPlxuYFxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC02IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiLy8gSW5pdGlhbCB0ZXN0IHJlc3VsdHNcbmluaXRpYWxSZXN1bHRzID0gY2FsY3VsYXRlVGVzdE1ldHJpY3MocG9pbnRzLCBwcmV2YWxlbmNlLCBzZW5zaXRpdml0eSwgc3BlY2lmaWNpdHksIENPTkZJRy5jYW52YXMud2lkdGgpXG5cbi8vIEZpcnN0IHZpc3VhbGl6YXRpb246IE9yaWdpbmFsIHBvcHVsYXRpb25cbmNhbnZhczEgPSBkcmF3RGlhZ25vc3RpY0NhbnZhcyhwb2ludHMsIHByZXZhbGVuY2UsIHNlbnNpdGl2aXR5LCBzcGVjaWZpY2l0eSlcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtNyIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6Imh0bWxgXG48ZGl2IHN0eWxlPVwibWFyZ2luOiAxMHB4IDA7IHBhZGRpbmc6IDEwcHg7IGJhY2tncm91bmQtY29sb3I6ICNmNWY1ZjU7IGJvcmRlci1yYWRpdXM6IDVweDtcIj5cbiAgPHN0cm9uZz5TdGVwIDEgLSBPcmlnaW5hbCBQb3B1bGF0aW9uOjwvc3Ryb25nPlxuICA8dGFibGUgc3R5bGU9XCJ3aWR0aDogMTAwJTsgYm9yZGVyLWNvbGxhcHNlOiBjb2xsYXBzZTsgbWFyZ2luLXRvcDogMTBweDtcIj5cbiAgICA8dHI+XG4gICAgICA8dGggc3R5bGU9XCJib3JkZXI6IDFweCBzb2xpZCAjY2NjOyBwYWRkaW5nOiA4cHg7IGJhY2tncm91bmQtY29sb3I6ICNlOGU4ZTg7XCI+UFBWPC90aD5cbiAgICAgIDx0aCBzdHlsZT1cImJvcmRlcjogMXB4IHNvbGlkICNjY2M7IHBhZGRpbmc6IDhweDsgYmFja2dyb3VuZC1jb2xvcjogI2U4ZThlODtcIj5OUFY8L3RoPlxuICAgIDwvdHI+XG4gICAgPHRyPlxuICAgICAgPHRkIHN0eWxlPVwiYm9yZGVyOiAxcHggc29saWQgI2NjYzsgcGFkZGluZzogOHB4OyB0ZXh0LWFsaWduOiBjZW50ZXI7XCI+PHN0cm9uZz4keyhpbml0aWFsUmVzdWx0cy5wcHYgfHwgMCkudG9GaXhlZCgzKX08L3N0cm9uZz48L3RkPlxuICAgICAgPHRkIHN0eWxlPVwiYm9yZGVyOiAxcHggc29saWQgI2NjYzsgcGFkZGluZzogOHB4OyB0ZXh0LWFsaWduOiBjZW50ZXI7XCI+PHN0cm9uZz4keyhpbml0aWFsUmVzdWx0cy5ucHYgfHwgMCkudG9GaXhlZCgzKX08L3N0cm9uZz48L3RkPlxuICAgIDwvdHI+XG4gIDwvdGFibGU+XG48L2Rpdj5cbmBcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtOCIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6Ii8vIFNlY29uZCBpdGVyYXRpb246IEZvY3VzIG9uIHBvc2l0aXZlIHJlc3VsdHNcbnBvc2l0aXZlUmVzdWx0cyA9IFsuLi5pbml0aWFsUmVzdWx0cy5jbGFzc2lmaWNhdGlvbnMudHJ1ZVBvc2l0aXZlcywgLi4uaW5pdGlhbFJlc3VsdHMuY2xhc3NpZmljYXRpb25zLmZhbHNlUG9zaXRpdmVzXVxuXG5zdHJldGNoZWRQb2ludHMxID0gc3RyZXRjaFBvaW50cyhcbiAgcG9zaXRpdmVSZXN1bHRzLFxuICBpbml0aWFsUmVzdWx0cy5saW5lUG9zaXRpb25zLnNlbnNpdGl2aXR5TGluZVBvc2l0aW9uLFxuICBpbml0aWFsUmVzdWx0cy5saW5lUG9zaXRpb25zLnNwZWNpZmljaXR5TGluZVBvc2l0aW9uLFxuICAwLFxuICBDT05GSUcuY2FudmFzLndpZHRoXG4pXG5cbm5ld1ByZXZhbGVuY2UxID0gaW5pdGlhbFJlc3VsdHMucHB2XG5yZXN1bHRzMSA9IGNhbGN1bGF0ZVRlc3RNZXRyaWNzKHN0cmV0Y2hlZFBvaW50czEsIG5ld1ByZXZhbGVuY2UxLCBzZW5zaXRpdml0eSwgc3BlY2lmaWNpdHksIENPTkZJRy5jYW52YXMud2lkdGgpXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTkiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiIvLyBTZWNvbmQgdmlzdWFsaXphdGlvblxuY2FudmFzMiA9IGRyYXdEaWFnbm9zdGljQ2FudmFzKHN0cmV0Y2hlZFBvaW50czEsIG5ld1ByZXZhbGVuY2UxLCBzZW5zaXRpdml0eSwgc3BlY2lmaWNpdHksIHtcbiAgcG9pbnRSYWRpdXM6IDMuNVxufSlcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMTAiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJodG1sYFxuPGRpdiBzdHlsZT1cIm1hcmdpbjogMTBweCAwOyBwYWRkaW5nOiAxMHB4OyBiYWNrZ3JvdW5kLWNvbG9yOiAjZjBmOGZmOyBib3JkZXItcmFkaXVzOiA1cHg7XCI+XG4gIDxzdHJvbmc+U3RlcCAyIC0gUHJvYmFiaWxpdHkgb2YgaGF2aW5nIGNhbmNlciBpZiB0d28gdGVzdHMgYXJlIHBvc2l0aXZlOjwvc3Ryb25nPjxicj5cbiAgUG9zaXRpdmUgUHJlZGljdGl2ZSBWYWx1ZSAoUFBWKTogPHN0cm9uZz4keyhyZXN1bHRzMS5wcHYgfHwgMCkudG9GaXhlZCgzKX08L3N0cm9uZz5cbjwvZGl2PlxuYFxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0xMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6Ii8vIFRoaXJkIGl0ZXJhdGlvbjogRnVydGhlciBmb2N1cyBvbiBwb3NpdGl2ZSByZXN1bHRzXG5wb3NpdGl2ZVJlc3VsdHMyID0gWy4uLnJlc3VsdHMxLmNsYXNzaWZpY2F0aW9ucy50cnVlUG9zaXRpdmVzLCAuLi5yZXN1bHRzMS5jbGFzc2lmaWNhdGlvbnMuZmFsc2VQb3NpdGl2ZXNdXG5cbnN0cmV0Y2hlZFBvaW50czIgPSBzdHJldGNoUG9pbnRzKFxuICBwb3NpdGl2ZVJlc3VsdHMyLFxuICByZXN1bHRzMS5saW5lUG9zaXRpb25zLnNlbnNpdGl2aXR5TGluZVBvc2l0aW9uLFxuICByZXN1bHRzMS5saW5lUG9zaXRpb25zLnNwZWNpZmljaXR5TGluZVBvc2l0aW9uLFxuICAwLFxuICBDT05GSUcuY2FudmFzLndpZHRoXG4pXG5cbm5ld1ByZXZhbGVuY2UyID0gcmVzdWx0czEucHB2XG5yZXN1bHRzMiA9IGNhbGN1bGF0ZVRlc3RNZXRyaWNzKHN0cmV0Y2hlZFBvaW50czIsIG5ld1ByZXZhbGVuY2UyLCBzZW5zaXRpdml0eSwgc3BlY2lmaWNpdHksIENPTkZJRy5jYW52YXMud2lkdGgpXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTEyIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiLy8gVGhpcmQgdmlzdWFsaXphdGlvblxuY2FudmFzMyA9IGRyYXdEaWFnbm9zdGljQ2FudmFzKHN0cmV0Y2hlZFBvaW50czIsIG5ld1ByZXZhbGVuY2UyLCBzZW5zaXRpdml0eSwgc3BlY2lmaWNpdHksIHtcbiAgcG9pbnRSYWRpdXM6IDVcbn0pXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTEzIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiaHRtbGBcbjxkaXYgc3R5bGU9XCJtYXJnaW46IDEwcHggMDsgcGFkZGluZzogMTBweDsgYmFja2dyb3VuZC1jb2xvcjogI2YwZmZmMDsgYm9yZGVyLXJhZGl1czogNXB4O1wiPlxuICA8c3Ryb25nPlN0ZXAgMiAtIFByb2JhYmlsaXR5IG9mIGhhdmluZyBjYW5jZXIgaWYgdGhyZWUgdGVzdHMgYXJlIHBvc2l0aXZlOjwvc3Ryb25nPjxicj5cbiAgUG9zaXRpdmUgUHJlZGljdGl2ZSBWYWx1ZSAoUFBWKTogPHN0cm9uZz4keyhyZXN1bHRzMi5wcHYgfHwgMCkudG9GaXhlZCgzKX08L3N0cm9uZz5cbjwvZGl2PlxuYFxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdwcmV2YWxlbmNlJykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ3NlbnNpdGl2aXR5JykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ3NwZWNpZmljaXR5JykifV19
+</script>
+<script type="module">
+if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+window._ojs.paths.runtimeToDoc = "../..";
+window._ojs.paths.runtimeToRoot = "../..";
+window._ojs.paths.docToRoot = "";
+window._ojs.selfContained = false;
+window._ojs.runtime.interpretFromScriptTags();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/github\.com\/apurvanakade\/second-drafts\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./9992-sperners-lemma-geometric-proof.html" class="pagination-link" aria-label="Sperner's Lemma - Geometric Proof">
+        <span class="nav-page-text">Sperner’s Lemma - Geometric Proof</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>Copyright 2025, Apurva Nakade</p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
