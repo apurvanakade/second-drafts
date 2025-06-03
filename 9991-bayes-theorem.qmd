@@ -118,7 +118,6 @@ function drawDiagnosticCanvas(points, prevalence, sensitivity, specificity, opti
 }
 ```
 
-Humans are not good at intuiting probability, which is a bit unfortunate considering how everything in the world is noisy and probabilistic and has to obey the laws of probability.
 Here's a classic probability problem that illustrates this challenge. A standard mammogram test has, say, 80% sensitivity and 90% specificity. This means if you have breast cancer, the test will be positive 80% of the time, and if you do not have cancer, the test will be negative 90% of the time. (These are pretty good odds if you ask me.)
 You go to your doctor and your test comes out positive. What are the chances you have breast cancer?
 Take a moment to think about the answer before peeking below.
@@ -178,19 +177,17 @@ html`
 `
 ```
 
-The answer, it turns out, is just around **50%**. Even though the tests are really good and highly accurate, the chance of you having cancer if your test comes out positive is the same as tossing a coin and saying you have cancer if you get heads! What is going on?
+The answer, it turns out, is just around **50%** (assuming a prevalence of 11%)! Even though the tests are really good and highly accurate, the chance of you having cancer if your test comes out positive is the same as tossing a coin and saying you have cancer if you get heads! What is going on?
 
-The above answer assumes that at any given time about 11% of all women have breast cancer. But this number (called prevalence) fluctuates from population to population and is hard to pinpoint accurately. Still, this gives us a good estimate of the so-called positive predictive value.
-
-You can see this phenomenon in the interactive visualization above. The reason for this counterintuitive result is that there are far more women who do not have cancer than those who do. In the graphic, the red dots represent women with breast cancer and the black dots represent women without breast cancer. The regions between the vertical lines show women for whom the test result is positive.
+You can see this phenomenon in the app above. There are far more women who do not have cancer than those who do. In the app, the red dots represent women with breast cancer and the black dots represent women without breast cancer. The regions between the vertical lines show women for whom the test result is positive.
 
 You can see that 80% of all the red dots (true positives) and 10% of all the black dots (false positives) fall within this positive test region. But there are so many more black dots that just 10% of these ends up being roughly the same number as 80% of all the red dots. So if your test comes out positive, you have about a 50-50 chance of being either a red dot or a black dot - a true positive or a false positive.
 
-Does this mean that the test is useless and you shouldn't take it? **Absolutely NOT!** If you focus only on the positive results and "repeat the test" (see below), the accuracy increases dramatically to 87%. Do it a third time and it becomes 98%. The more tests you do, the fewer false positives remain in your sample.
+Does this mean that the test is useless and you shouldn't take it? **Absolutely NOT!** If you focus only on the positive results (zoom in) and "repeat the test" (see below), the accuracy increases dramatically to 87%. Because for the positive cases, the effective prevalence has gone up from 11% to 50%. Do it a third time and the PPV becomes 98%. 
 
 But there's another important consideration: notice that 20% of cancer cases are missed in the first test (false negatives). However, the chances of missing a diagnosis in two consecutive tests drops from 20% to just 4%, and becomes negligible after three tests. This is another compelling reason why regular, frequent testing is so important.
 
-These calculations are formalized in Bayes' theorem, which shows us that even excellent tests can have surprising limitations when the condition being tested is rare.
+These calculations are formalized in Bayes' theorem.
 
 
 ```{ojs}
@@ -251,7 +248,7 @@ canvas3 = drawDiagnosticCanvas(stretchedPoints2, newPrevalence2, sensitivity, sp
 ```{ojs}
 html`
 <div style="margin: 10px 0; padding: 10px; background-color: #f0fff0; border-radius: 5px;">
-  <strong>Step 2 - Probability of having cancer if three tests are positive:</strong><br>
+  <strong>Step 3 - Probability of having cancer if three tests are positive:</strong><br>
   Positive Predictive Value (PPV): <strong>${(results2.ppv || 0).toFixed(3)}</strong>
 </div>
 `
