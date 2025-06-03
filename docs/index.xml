@@ -1312,7 +1312,7 @@ font-style: inherit;">`</span></span></code></pre></div>
 <p>You can see that 80% of all the red dots (true positives) and 10% of all the black dots (false positives) fall within this positive test region. But there are so many more black dots that just 10% of these ends up being roughly the same number as 80% of all the red dots. So if your test comes out positive, you have about a 50-50 chance of being either a red dot or a black dot - a true positive or a false positive.</p>
 <p>Does this mean that the test is useless and you shouldn’t take it? <strong>Absolutely NOT!</strong> If you focus only on the positive results and “repeat the test” (see below), the accuracy increases dramatically to 87%. Do it a third time and it becomes 98%. The more tests you do, the fewer false positives remain in your sample.</p>
 <p>But there’s another important consideration: notice that 20% of cancer cases are missed in the first test (false negatives). However, the chances of missing a diagnosis in two consecutive tests drops from 20% to just 4%, and becomes negligible after three tests. This is another compelling reason why regular, frequent testing is so important.</p>
-<p>These calculations are formalized in Bayes’ theorem, which shows us that even excellent tests can have surprising limitations when the condition being tested is rare. Understanding this helps us make better decisions about medical testing, interpreting results, and the value of repeated testing.</p>
+<p>These calculations are formalized in Bayes’ theorem, which shows us that even excellent tests can have surprising limitations when the condition being tested is rare.</p>
 <div class="cell">
 <div class="sourceCode cell-code hidden" id="cb8" data-startfrom="198" data-source-offset="-47" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 197;"><span id="cb8-198">positiveResults <span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -4043,6 +4043,16 @@ font-style: inherit;">&lt;/div&gt;`</span></span></code></pre></div>
   <category>determinant</category>
   <guid>https://github.com/apurvanakade/second-drafts/9992-sperners-lemma-geometric-proof.html</guid>
   <pubDate>Sun, 25 May 2025 16:08:45 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <dc:creator>Apurva Nakade</dc:creator>
+  <link>https://github.com/apurvanakade/second-drafts/drafts/architects-gardeners.html</link>
+  <description><![CDATA[ undefined ]]></description>
+  <category>philosophy</category>
+  <category>teaching</category>
+  <guid>https://github.com/apurvanakade/second-drafts/drafts/architects-gardeners.html</guid>
+  <pubDate>Fri, 23 May 2025 00:49:05 GMT</pubDate>
 </item>
 <item>
   <title>Sperner’s Lemma - Combinatorial Proof</title>

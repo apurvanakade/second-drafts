@@ -190,7 +190,7 @@ Does this mean that the test is useless and you shouldn't take it? **Absolutely 
 
 But there's another important consideration: notice that 20% of cancer cases are missed in the first test (false negatives). However, the chances of missing a diagnosis in two consecutive tests drops from 20% to just 4%, and becomes negligible after three tests. This is another compelling reason why regular, frequent testing is so important.
 
-These calculations are formalized in Bayes' theorem, which shows us that even excellent tests can have surprising limitations when the condition being tested is rare. Understanding this helps us make better decisions about medical testing, interpreting results, and the value of repeated testing.
+These calculations are formalized in Bayes' theorem, which shows us that even excellent tests can have surprising limitations when the condition being tested is rare.
 
 
 ```{ojs}

@@ -79,9 +79,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-c1fac2584b48ed01fb6e278e36375074.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-a9957ab5e8b7c67643b7e2e6b5c1e54e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-c1fac2584b48ed01fb6e278e36375074.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-05babaf0cfa1e1caed117225af04a19c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-3d3c3807380c683caf11aaf4545bf090.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-05babaf0cfa1e1caed117225af04a19c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -703,7 +703,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>You can see that 80% of all the red dots (true positives) and 10% of all the black dots (false positives) fall within this positive test region. But there are so many more black dots that just 10% of these ends up being roughly the same number as 80% of all the red dots. So if your test comes out positive, you have about a 50-50 chance of being either a red dot or a black dot - a true positive or a false positive.</p>
 <p>Does this mean that the test is useless and you shouldn’t take it? <strong>Absolutely NOT!</strong> If you focus only on the positive results and “repeat the test” (see below), the accuracy increases dramatically to 87%. Do it a third time and it becomes 98%. The more tests you do, the fewer false positives remain in your sample.</p>
 <p>But there’s another important consideration: notice that 20% of cancer cases are missed in the first test (false negatives). However, the chances of missing a diagnosis in two consecutive tests drops from 20% to just 4%, and becomes negligible after three tests. This is another compelling reason why regular, frequent testing is so important.</p>
-<p>These calculations are formalized in Bayes’ theorem, which shows us that even excellent tests can have surprising limitations when the condition being tested is rare. Understanding this helps us make better decisions about medical testing, interpreting results, and the value of repeated testing.</p>
+<p>These calculations are formalized in Bayes’ theorem, which shows us that even excellent tests can have surprising limitations when the condition being tested is rare.</p>
 <div class="cell">
 <div class="sourceCode cell-code hidden" id="cb8" data-startfrom="198" data-source-offset="-47"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 197;"><span id="cb8-198"><a href="#cb8-198" aria-hidden="true" tabindex="-1"></a>positiveResults <span class="op">=</span> [<span class="op">...</span>initialResults<span class="op">.</span><span class="at">classifications</span><span class="op">.</span><span class="at">truePositives</span><span class="op">,</span> <span class="op">...</span>initialResults<span class="op">.</span><span class="at">classifications</span><span class="op">.</span><span class="at">falsePositives</span>]</span>
 <span id="cb8-199"><a href="#cb8-199" aria-hidden="true" tabindex="-1"></a></span>
