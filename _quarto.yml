@@ -33,7 +33,7 @@ website:
   
   comments:
     giscus:
-      repo: "apurvanakade/second-drafts"
+      repo: "apurvanakade/giscus"
 
 format:
   html:
