@@ -10,7 +10,33 @@
 <atom:link href="https://github.com/apurvanakade/second-drafts/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.7.31</generator>
-<lastBuildDate>Mon, 02 Jun 2025 12:28:16 GMT</lastBuildDate>
+<lastBuildDate>Sun, 29 Jun 2025 13:53:46 GMT</lastBuildDate>
+<item>
+  <title>Learning is Remembering</title>
+  <dc:creator>Apurva Nakade</dc:creator>
+  <link>https://github.com/apurvanakade/second-drafts/9990-remembering-learning.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>In Greek philosophy there is a theory of “anamnesis,” mostly due to Plato and Socrates, which roughly means “learning is remembering,” that wisdom is already inside you and you are trying to discover it. Your job as a learner is to bring it forth, to clean the window so you can see more clearly.</p>
+<p>It is remarkable how the same concepts reappear in different forms in different cultures around the world. The word for mindfulness in Pali is Sati. Sati (or Smrti in Sanskrit) means remembering the present moment, noticing the wisdom that is already present inside you.</p>
+<p>Fast forward to today, and mathematicians speak of “discovering theorems”. We imagine that there is a world of mathematics out there, Plato’s world of forms, and we are explorers searching for new truths. But <em>where</em> is this “out there”?</p>
+<p>The cliché about unlocking your inner potential might quite literally be true. My job then is to help students discover the inner wisdom they already possess.</p>
+
+
+
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
+  <category>philosophy</category>
+  <category>teaching</category>
+  <category>buddhism</category>
+  <category>mindfulness</category>
+  <category>greeks</category>
+  <guid>https://github.com/apurvanakade/second-drafts/9990-remembering-learning.html</guid>
+  <pubDate>Sun, 29 Jun 2025 13:53:46 GMT</pubDate>
+</item>
 <item>
   <title>Bayes Theorem</title>
   <dc:creator>Apurva Nakade</dc:creator>
