@@ -10,7 +10,1089 @@
 <atom:link href="https://github.com/apurvanakade/second-drafts/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.7.31</generator>
-<lastBuildDate>Sun, 29 Jun 2025 13:53:46 GMT</lastBuildDate>
+<lastBuildDate>Thu, 17 Jul 2025 19:59:53 GMT</lastBuildDate>
+<item>
+  <title>Architects and Gardeners</title>
+  <dc:creator>Apurva Nakade</dc:creator>
+  <link>https://github.com/apurvanakade/second-drafts/8889-architects-gardeners.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<blockquote class="blockquote">
+<p>“I think there are two types of writers, the architects and the gardeners. The architects plan everything ahead of time, like an architect building a house. They know how many rooms are going to be in the house, what kind of roof they’re going to have, where the wires are going to run, what kind of plumbing there’s going to be. They have the whole thing designed and blueprinted out before they even nail the first board up. The gardeners dig a hole, drop in a seed and water it. They kind of know what seed it is, they know if planted a fantasy seed or mystery seed or whatever. But as the plant comes up and they water it, they don’t know how many branches it’s going to have, they find out as it grows. And I’m much more a gardener than an architect.” – <em>George R.R. Martin</em></p>
+</blockquote>
+<p>I think about this George R.R. Martin quote every time I do course planning. He might have been talking about writing, but I think this is an excellent paradigm for almost everything in life.</p>
+<p>One problem I see with university math courses taught by “experts” (i.e.&nbsp;old people) is that they’re too rigid—the instructors are too much of an “architect.” I’m the opposite: too much of a “gardener.”</p>
+<p>I love to improvise. I teach best when I can adapt the course to my current students instead of having a preset notion of what I’m supposed to be doing in class. I rarely prepare lecture notes and teach from memory, taking the class wherever it wants to go. This is why I find it hard to teach coordinated courses. Writers often say that they discover the stories of their characters as they write them. I find the same to be true for my classes.</p>
+<p>Teaching as a “gardener” is risky, though. It requires attention, mindfulness, vulnerability, playfulness, and a good sense of humor. You’re vulnerable to making mistakes, and most professors find it difficult to show this side of their thinking to students. For reasons I think have to do with ego, professors don’t like to appear fallible. I, on the other hand, love this challenge. Every mistake I make in class reveals gaps in my understanding and helps me deepen it (while creating “learning moments” for students). You also need constant vigilance and attention to students’ needs and the classroom environment. You want to create “constructive chaos” without devolving into utter chaos.</p>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="22" data-source-offset="-0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 21;"><span id="cb1-22"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> {svg} <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"@observablehq/stdlib"</span></span>
+<span id="cb1-23"></span>
+<span id="cb1-24">width <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">600</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-25">height <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">300</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-26">padding <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">40</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-27"></span>
+<span id="cb1-28">viewof ruler <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> {</span>
+<span id="cb1-29">  <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">const</span> centerY <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> height <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-30">  <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">const</span> rulerStart <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> padding<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-31">  <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">const</span> rulerEnd <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> width <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> padding<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-32">  </span>
+<span id="cb1-33">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">// Positions on the ruler (0 = left, 1 = right)</span></span>
+<span id="cb1-34">  <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">const</span> startingPointPos <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.8</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-35">  <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">const</span> currentLocationPos <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.5</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-36">  <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">const</span> goalPos <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.3</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-37">  <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">const</span> bracketStartPos <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.25</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-38">  <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">const</span> bracketEndPos <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.35</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-39">  </span>
+<span id="cb1-40">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">// Styling dimensions</span></span>
+<span id="cb1-41">  <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">const</span> tickHeight <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-42">  <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">const</span> labelOffsetBelow <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">60</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-43">  <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">const</span> labelOffsetAbove <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">50</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-44">  <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">const</span> arrowGapFromLabel <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">15</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-45">  <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">const</span> arrowGapFromRuler <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">20</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-46">  <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">const</span> bracketHeight <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">15</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-47">  <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">const</span> bracketWidth <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">8</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-48">  <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">const</span> endpointCircleOffset <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">8</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-49">  <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">const</span> endpointCircleRadius <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">6</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-50">  <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">const</span> endLabelOffset <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">35</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-51">  <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">const</span> endLabelVerticalOffset <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">15</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-52">  </span>
+<span id="cb1-53">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">// Stroke widths</span></span>
+<span id="cb1-54">  <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">const</span> rulerStrokeWidth <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-55">  <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">const</span> tickStrokeWidth <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-56">  <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">const</span> arrowStrokeWidth <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1.5</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-57">  <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">const</span> bracketStrokeWidth <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-58">  </span>
+<span id="cb1-59">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">// Font sizes</span></span>
+<span id="cb1-60">  <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">const</span> labelFontSize <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">14</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-61">  <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">const</span> endLabelFontSize <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">16</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-62">  </span>
+<span id="cb1-63">  <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">const</span> positionToX <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> (pos) <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">=&gt;</span> padding <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> pos <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> (width <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> padding)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-64">  </span>
+<span id="cb1-65">  <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">svg</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">`&lt;svg width="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">${</span>width<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" height="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">${</span>height<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" style="display:block; margin:auto; border:none;"&gt;</span></span>
+<span id="cb1-66"><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    &lt;defs&gt;</span></span>
+<span id="cb1-67"><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">      &lt;marker id="arrowhead-down" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"&gt;</span></span>
+<span id="cb1-68"><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">        &lt;path d="M0,0 L6,3 L0,6 Z" fill="#333" /&gt;</span></span>
+<span id="cb1-69"><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">      &lt;/marker&gt;</span></span>
+<span id="cb1-70"><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">      &lt;marker id="arrowhead-up" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"&gt;</span></span>
+<span id="cb1-71"><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">        &lt;path d="M0,6 L6,3 L0,0 Z" fill="#333" /&gt;</span></span>
+<span id="cb1-72"><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">      &lt;/marker&gt;</span></span>
+<span id="cb1-73"><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    &lt;/defs&gt;</span></span>
+<span id="cb1-74"><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    </span></span>
+<span id="cb1-75"><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    &lt;!-- Main ruler line --&gt;</span></span>
+<span id="cb1-76"><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    &lt;line x1="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">${</span>rulerStart<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" x2="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">${</span>rulerEnd<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" y1="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">${</span>centerY<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" y2="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">${</span>centerY<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" </span></span>
+<span id="cb1-77"><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">          stroke="#333" stroke-width="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">${</span>rulerStrokeWidth<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" /&gt;</span></span>
+<span id="cb1-78"><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    </span></span>
+<span id="cb1-79"><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    &lt;!-- Endpoint circles --&gt;</span></span>
+<span id="cb1-80"><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    &lt;circle cx="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">${</span>rulerStart <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> endpointCircleOffset<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" cy="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">${</span>centerY<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" r="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">${</span>endpointCircleRadius<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" fill="#333" /&gt;</span></span>
+<span id="cb1-81"><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    &lt;circle cx="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">${</span>rulerEnd <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> endpointCircleOffset<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" cy="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">${</span>centerY<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" r="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">${</span>endpointCircleRadius<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" fill="#333" /&gt;</span></span>
+<span id="cb1-82"><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    </span></span>
+<span id="cb1-83"><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    &lt;!-- End labels --&gt;</span></span>
+<span id="cb1-84"><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    &lt;text x="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">${</span>rulerStart <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> endLabelOffset<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" y="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">${</span>centerY <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> endLabelVerticalOffset<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" text-anchor="start" </span></span>
+<span id="cb1-85"><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">          font-size="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">${</span>endLabelFontSize<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" fill="#333"&gt;Architect&lt;/text&gt;</span></span>
+<span id="cb1-86"><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    &lt;text x="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">${</span>rulerEnd <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> endLabelOffset<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" y="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">${</span>centerY <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> endLabelVerticalOffset<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" text-anchor="end" </span></span>
+<span id="cb1-87"><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">          font-size="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">${</span>endLabelFontSize<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" fill="#333"&gt;Gardener&lt;/text&gt;</span></span>
+<span id="cb1-88"><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    </span></span>
+<span id="cb1-89"><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    &lt;!-- Starting point tick and label --&gt;</span></span>
+<span id="cb1-90"><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    &lt;line x1="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">${</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">positionToX</span>(startingPointPos)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" x2="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">${</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">positionToX</span>(startingPointPos)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" </span></span>
+<span id="cb1-91"><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">          y1="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">${</span>centerY <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> tickHeight<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" y2="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">${</span>centerY <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> tickHeight<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" </span></span>
+<span id="cb1-92"><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">          stroke="#000" stroke-width="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">${</span>tickStrokeWidth<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" /&gt;</span></span>
+<span id="cb1-93"><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    &lt;text x="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">${</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">positionToX</span>(startingPointPos)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" y="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">${</span>centerY <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> labelOffsetBelow<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" text-anchor="middle" </span></span>
+<span id="cb1-94"><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">          font-size="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">${</span>labelFontSize<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" fill="#333"&gt;Starting point&lt;/text&gt;</span></span>
+<span id="cb1-95"><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    &lt;line x1="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">${</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">positionToX</span>(startingPointPos)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" x2="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">${</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">positionToX</span>(startingPointPos)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" </span></span>
+<span id="cb1-96"><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">          y1="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">${</span>centerY <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> labelOffsetBelow <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> arrowGapFromLabel<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" y2="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">${</span>centerY <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> arrowGapFromRuler<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" </span></span>
+<span id="cb1-97"><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">          stroke="#333" stroke-width="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">${</span>arrowStrokeWidth<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" marker-end="url(#arrowhead-up)" /&gt;</span></span>
+<span id="cb1-98"><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    </span></span>
+<span id="cb1-99"><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    &lt;!-- Current location tick and label --&gt;</span></span>
+<span id="cb1-100"><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    &lt;line x1="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">${</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">positionToX</span>(currentLocationPos)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" x2="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">${</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">positionToX</span>(currentLocationPos)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" </span></span>
+<span id="cb1-101"><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">          y1="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">${</span>centerY <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> tickHeight<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" y2="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">${</span>centerY <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> tickHeight<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" </span></span>
+<span id="cb1-102"><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">          stroke="#000" stroke-width="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">${</span>tickStrokeWidth<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" /&gt;</span></span>
+<span id="cb1-103"><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    &lt;text x="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">${</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">positionToX</span>(currentLocationPos)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" y="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">${</span>centerY <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> labelOffsetBelow<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" text-anchor="middle" </span></span>
+<span id="cb1-104"><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">          font-size="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">${</span>labelFontSize<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" fill="#333"&gt;Current location&lt;/text&gt;</span></span>
+<span id="cb1-105"><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    &lt;line x1="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">${</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">positionToX</span>(currentLocationPos)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" x2="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">${</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">positionToX</span>(currentLocationPos)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" </span></span>
+<span id="cb1-106"><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">          y1="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">${</span>centerY <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> labelOffsetBelow <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> arrowGapFromLabel<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" y2="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">${</span>centerY <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> arrowGapFromRuler<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" </span></span>
+<span id="cb1-107"><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">          stroke="#333" stroke-width="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">${</span>arrowStrokeWidth<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" marker-end="url(#arrowhead-up)" /&gt;</span></span>
+<span id="cb1-108"><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    </span></span>
+<span id="cb1-109"><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    &lt;!-- Goal label (no tick) --&gt;</span></span>
+<span id="cb1-110"><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    &lt;text x="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">${</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">positionToX</span>(goalPos)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" y="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">${</span>centerY <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> labelOffsetAbove<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" text-anchor="middle" </span></span>
+<span id="cb1-111"><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">          font-size="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">${</span>labelFontSize<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" fill="#333"&gt;Goal&lt;/text&gt;</span></span>
+<span id="cb1-112"><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    &lt;line x1="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">${</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">positionToX</span>(goalPos)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" x2="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">${</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">positionToX</span>(goalPos)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" </span></span>
+<span id="cb1-113"><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">          y1="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">${</span>centerY <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> labelOffsetAbove <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> arrowGapFromLabel<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" y2="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">${</span>centerY <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> arrowGapFromRuler<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" </span></span>
+<span id="cb1-114"><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">          stroke="#333" stroke-width="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">${</span>arrowStrokeWidth<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" marker-end="url(#arrowhead-down)" /&gt;</span></span>
+<span id="cb1-115"><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    </span></span>
+<span id="cb1-116"><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    &lt;!-- Brackets around region --&gt;</span></span>
+<span id="cb1-117"><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    &lt;path d="M</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">${</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">positionToX</span>(bracketStartPos)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">,</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">${</span>centerY <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> bracketHeight<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;"> v</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">${</span>bracketHeight <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;"> m0,-</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">${</span>bracketHeight <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;"> h</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">${</span>bracketWidth<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;"> m0,</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">${</span>bracketHeight <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;"> h-</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">${</span>bracketWidth<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" </span></span>
+<span id="cb1-118"><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">          stroke="#333" stroke-width="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">${</span>bracketStrokeWidth<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" fill="none" /&gt;</span></span>
+<span id="cb1-119"><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    &lt;path d="M</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">${</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">positionToX</span>(bracketEndPos)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">,</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">${</span>centerY <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> bracketHeight<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;"> v</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">${</span>bracketHeight <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;"> m0,-</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">${</span>bracketHeight <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;"> h-</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">${</span>bracketWidth<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;"> m0,</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">${</span>bracketHeight <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;"> h</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">${</span>bracketWidth<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" </span></span>
+<span id="cb1-120"><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">          stroke="#333" stroke-width="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">${</span>bracketStrokeWidth<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" fill="none" /&gt;</span></span>
+<span id="cb1-121"><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  &lt;/svg&gt;`</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-122">}</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-4" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-5" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<p>This has worked well for me so far, but as I get more responsibilities, I’m noticing this approach isn’t sustainable. I’m realizing I need balance—a middle path, as the Buddha would say. The less you plan, the more freedom you have, but that’s not necessarily good. Anxiety is the dizziness of freedom. Can art exist without constraints?</p>
+<p>I’ve been drifting toward the “architect” side. I now use assistive technology and active learning strategies that naturally require prepared materials. I hope to find a sweet spot where I can hover without becoming too rigid. The goal is to have enough structure that my courses mostly run themselves, freeing me to focus on building personal relationships.</p>
+
+
+
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
+  <category>philosophy</category>
+  <category>teaching</category>
+  <guid>https://github.com/apurvanakade/second-drafts/8889-architects-gardeners.html</guid>
+  <pubDate>Thu, 17 Jul 2025 19:59:53 GMT</pubDate>
+</item>
 <item>
   <title>Learning is Remembering</title>
   <dc:creator>Apurva Nakade</dc:creator>
