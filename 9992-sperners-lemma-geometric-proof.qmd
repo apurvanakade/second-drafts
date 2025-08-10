@@ -2,7 +2,7 @@
 title: Sperner's Lemma - Geometric Proof
 author: Apurva Nakade
 date: 2025-05-25 12:08:45
-categories: [triangles, coloring, questions, visualization, interactive, observablejs, determinant]
+categories: [triangles, coloring, questions, visualization, interactive, determinant]
 ---
 
 This is my new favorite proof of [Sperner's lemma](9994-sperners-lemma-statement.qmd). 

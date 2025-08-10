@@ -1,0 +1,65 @@
+---
+title: $n^{th}$ Fibonacci Number Divisible by $n$
+date: 2025-08-09 15:08:09
+author: Apurva Nakade
+categories: ['number theory', 'research']
+---
+
+Here's a seemingly simple question that does not have a clean solution: 
+
+> For what positive integers $n$, does $n$ divide $F_n$, where $F_n$ denotes the $n^{th}$ Fibonacci number?
+
+```{python}
+
+def find_cycle(n):
+  list = [0, 1]
+  current = 1
+  while True:
+    list.append(current)
+    current = (list[-1] + list[-2]) % n
+    if current == 0:
+      return list
+
+def find_cycle_length(n):
+  first = 0
+  second = 1
+  # current = 1
+  counter = 2
+  while True:
+    current = (first + second) % n
+    if current == 0:
+      return counter
+    first = second
+    second = current
+    counter +=1
+
+
+
+```
+
+
+
+```{python}
+
+# n = 5
+
+ok_nums = []
+
+good_nums = []
+
+very_good_nums = []
+
+for n in range(3, 10000):
+  cycle_length = find_cycle_length(n)
+  if cycle_length % n == 0:
+    ok_nums.append(n)
+  if n % cycle_length == 0:
+    good_nums.append(n)
+  if cycle_length == n:
+    very_good_nums.append(n)
+
+print(f"Ok numbers: {ok_nums}")
+print(f"Good numbers: {good_nums}")
+print(f"Very Good numbers: {very_good_nums}")
+```
+

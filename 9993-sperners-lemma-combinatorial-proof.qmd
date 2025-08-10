@@ -2,7 +2,7 @@
 title: Sperner's Lemma - Combinatorial Proof
 author: Apurva Nakade
 date: 2025-05-16 09:44:57
-categories: [combinatorics, triangles, coloring, visualization, interactive, observablejs, questions]
+categories: [combinatorics, triangles, coloring, visualization, interactive, questions]
 ---
 
 ```{ojs}

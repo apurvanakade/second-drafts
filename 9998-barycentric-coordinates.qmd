@@ -2,7 +2,7 @@
 title: "Barycentric Coordinates"
 date: 2025-05-11 02:55:36
 author: Apurva Nakade
-categories: [affine geometry, observablejs, triangles, interactive, visualization]
+categories: [affine geometry, triangles, interactive, visualization]
 ---
 
 ```{ojs}

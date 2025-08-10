@@ -10,7 +10,37 @@
 <atom:link href="https://github.com/apurvanakade/second-drafts/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.7.31</generator>
-<lastBuildDate>Thu, 17 Jul 2025 19:59:53 GMT</lastBuildDate>
+<lastBuildDate>Sat, 09 Aug 2025 19:08:09 GMT</lastBuildDate>
+<item>
+  <title>\(n^{th}\) Fibonacci Number Divisible by \(n\)</title>
+  <dc:creator>Apurva Nakade</dc:creator>
+  <link>https://github.com/apurvanakade/second-drafts/drafts/nth-fibonacci.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>Here’s a seemingly simple question that does not have a clean solution:</p>
+<blockquote class="blockquote">
+<p>For what positive integers <img src="https://latex.codecogs.com/png.latex?n">, does <img src="https://latex.codecogs.com/png.latex?n"> divide <img src="https://latex.codecogs.com/png.latex?F_n">, where <img src="https://latex.codecogs.com/png.latex?F_n"> denotes the <img src="https://latex.codecogs.com/png.latex?n%5E%7Bth%7D"> Fibonacci number?</p>
+</blockquote>
+<div id="e46a99bb" class="cell" data-execution_count="2">
+<div class="cell-output cell-output-stdout">
+<pre><code>Ok numbers: [5, 6, 12, 25, 30, 60, 125, 150, 300, 625, 750, 1500, 3125, 3750, 7500]
+Good numbers: [5, 12, 24, 25, 36, 48, 60, 72, 96, 108, 120, 125, 144, 168, 180, 192, 216, 240, 288, 300, 324, 336, 360, 384, 432, 480, 504, 540, 552, 576, 600, 612, 625, 648, 660, 672, 684, 720, 768, 840, 864, 900, 960, 972, 1008, 1080, 1104, 1152, 1176, 1200, 1224, 1296, 1320, 1344, 1368, 1440, 1500, 1512, 1536, 1620, 1656, 1680, 1728, 1800, 1836, 1860, 1920, 1944, 1980, 2016, 2052, 2160, 2184, 2208, 2256, 2304, 2352, 2400, 2448, 2460, 2520, 2592, 2640, 2688, 2700, 2736, 2760, 2880, 2916, 3000, 3024, 3060, 3072, 3125, 3240, 3300, 3312, 3360, 3420, 3456, 3528, 3600, 3660, 3672, 3720, 3840, 3852, 3864, 3888, 3960, 4032, 4104, 4200, 4320, 4368, 4416, 4500, 4512, 4536, 4608, 4704, 4800, 4860, 4872, 4896, 4920, 4968, 5040, 5184, 5280, 5376, 5400, 5472, 5508, 5520, 5580, 5724, 5760, 5832, 5880, 5940, 6000, 6048, 6120, 6144, 6156, 6480, 6552, 6600, 6624, 6720, 6768, 6840, 6912, 7056, 7200, 7260, 7320, 7344, 7380, 7440, 7500, 7560, 7680, 7704, 7728, 7776, 7920, 8064, 8100, 8208, 8232, 8280, 8400, 8568, 8640, 8736, 8748, 8832, 9000, 9024, 9072, 9180, 9216, 9240, 9300, 9408, 9576, 9600, 9720, 9744, 9792, 9840, 9900, 9936]
+Very Good numbers: [5, 12, 25, 60, 125, 300, 625, 1500, 3125, 7500]</code></pre>
+</div>
+</div>
+
+
+
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
+  <category>number theory</category>
+  <category>research</category>
+  <guid>https://github.com/apurvanakade/second-drafts/drafts/nth-fibonacci.html</guid>
+  <pubDate>Sat, 09 Aug 2025 19:08:09 GMT</pubDate>
+</item>
 <item>
   <title>Architects and Gardeners</title>
   <dc:creator>Apurva Nakade</dc:creator>
@@ -2842,7 +2872,6 @@ font-style: inherit;">`</span></span></code></pre></div>
 <a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
   <category>probability</category>
   <category>visualization</category>
-  <category>observablejs</category>
   <guid>https://github.com/apurvanakade/second-drafts/9991-bayes-theorem.html</guid>
   <pubDate>Mon, 02 Jun 2025 12:28:16 GMT</pubDate>
 </item>
@@ -5146,7 +5175,6 @@ font-style: inherit;">&lt;/div&gt;`</span></span></code></pre></div>
   <category>questions</category>
   <category>visualization</category>
   <category>interactive</category>
-  <category>observablejs</category>
   <category>determinant</category>
   <guid>https://github.com/apurvanakade/second-drafts/9992-sperners-lemma-geometric-proof.html</guid>
   <pubDate>Sun, 25 May 2025 16:08:45 GMT</pubDate>
@@ -9491,7 +9519,6 @@ font-style: inherit;">;</span></span>
   <category>coloring</category>
   <category>visualization</category>
   <category>interactive</category>
-  <category>observablejs</category>
   <category>questions</category>
   <guid>https://github.com/apurvanakade/second-drafts/9993-sperners-lemma-combinatorial-proof.html</guid>
   <pubDate>Fri, 16 May 2025 13:44:57 GMT</pubDate>
@@ -11618,8 +11645,28 @@ I don't think there's any way to create a single loop for all these triangles. -
   <category>questions</category>
   <category>visualization</category>
   <category>interactive</category>
-  <category>observablejs</category>
   <guid>https://github.com/apurvanakade/second-drafts/9994-sperners-lemma-statement.html</guid>
+  <pubDate>Wed, 14 May 2025 21:20:25 GMT</pubDate>
+</item>
+<item>
+  <title>Monsky’s Theorem</title>
+  <dc:creator>Apurva Nakade</dc:creator>
+  <link>https://github.com/apurvanakade/second-drafts/drafts/monsky.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>I discovered this theorem on this really cool blog, <a href="https://mathmondays.com/archives">Math Mondays</a></p>
+
+
+
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
+  <category>combinatorics</category>
+  <category>triangles</category>
+  <category>questions</category>
+  <guid>https://github.com/apurvanakade/second-drafts/drafts/monsky.html</guid>
   <pubDate>Wed, 14 May 2025 21:20:25 GMT</pubDate>
 </item>
 <item>
@@ -16804,7 +16851,6 @@ font-style: inherit;">;</span></span>
 
 <a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
   <category>affine geometry</category>
-  <category>observablejs</category>
   <category>triangles</category>
   <category>interactive</category>
   <category>visualization</category>

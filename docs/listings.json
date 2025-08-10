@@ -2,12 +2,14 @@
   {
     "listing": "/index.html",
     "items": [
+      "/drafts/nth-fibonacci.html",
       "/8889-architects-gardeners.html",
       "/9990-remembering-learning.html",
       "/9991-bayes-theorem.html",
       "/9992-sperners-lemma-geometric-proof.html",
       "/9993-sperners-lemma-combinatorial-proof.html",
       "/9994-sperners-lemma-statement.html",
+      "/drafts/monsky.html",
       "/9995-non-profits.html",
       "/9996-random-points-in-a-triangle.html",
       "/9997-hopkins-is-a-joke.html",
