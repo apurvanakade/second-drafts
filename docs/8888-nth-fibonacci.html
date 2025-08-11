@@ -511,7 +511,7 @@ Conjecture
 <p>The only integers <span class="math inline">\(n\)</span> such that <span class="math inline">\(\alpha(n) = n\)</span> are of the form <span class="math inline">\(5^k\)</span> or <span class="math inline">\(12 \cdot 5^k\)</span> for some non-negative integer <span class="math inline">\(k\)</span>.</p>
 </div>
 </div>
-<p>I’m not certain this is true, but it holds for all integers up to 10,000. I’m also interested in understanding the distribution of <span class="math inline">\(n / \alpha(n)\)</span>. When plotting <span class="math inline">\(\alpha(n) / n\)</span>, most values fall below 1, though some are greater than or equal to 1.</p>
+<p>I’m not certain this is true, but it holds for all integers up to 10,000. I’m also interested in understanding the distribution of <span class="math inline">\(n / \alpha(n)\)</span>. When plotting <span class="math inline">\(n / \alpha(n)\)</span>, most values fall above 1, though some are less than or equal to 1.</p>
 <p>Below is a table of <span class="math inline">\(n / \alpha(n)\)</span> for all integers <span class="math inline">\(n\)</span> up to 10,000. Surprisingly, the most common value is not 1 but <span class="math inline">\(4/3\)</span>.</p>
 <p>I wonder what patterns exist in the ratios <span class="math inline">\(n / \alpha(n)\)</span>…</p>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -530,9 +530,9 @@ Questions
 <li><p>Can we exploit the fact that</p>
 <p><span class="math display">\[
 F_k = \dfrac{1}{\sqrt{5}} \left( \phi^k - \psi^k \right)
-\]</span></p></li>
+\]</span></p>
+<p>where <span class="math inline">\(\phi = \frac{1 + \sqrt{5}}{2}\)</span> and <span class="math inline">\(\psi = \frac{1 - \sqrt{5}}{2}\)</span>, to find a closed form for <span class="math inline">\(\alpha(n)\)</span>? We know that <span class="math inline">\(\mathbb{Z}[\phi]\)</span> is a Euclidean domain so we can have access to number theoretic tools such as divisibility and the Euclidean algorithm.</p></li>
 </ul>
-<p>where <span class="math inline">\(\phi = \frac{1 + \sqrt{5}}{2}\)</span> and <span class="math inline">\(\psi = \frac{1 - \sqrt{5}}{2}\)</span>, to find a closed form for <span class="math inline">\(\alpha(n)\)</span>? We know in addition that <span class="math inline">\(\mathbb{Z}[\phi]\)</span> is a unique factorization domain, so we can factor <span class="math inline">\(n\)</span> in terms of <span class="math inline">\(\phi\)</span> and <span class="math inline">\(\psi\)</span>.</p>
 </div>
 </div>
 <div id="a6ff9e32" class="cell" data-execution_count="4">

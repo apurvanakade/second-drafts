@@ -56,7 +56,7 @@ Conjecture
 <p>The only integers <img src="https://latex.codecogs.com/png.latex?n"> such that <img src="https://latex.codecogs.com/png.latex?%5Calpha(n)%20=%20n"> are of the form <img src="https://latex.codecogs.com/png.latex?5%5Ek"> or <img src="https://latex.codecogs.com/png.latex?12%20%5Ccdot%205%5Ek"> for some non-negative integer <img src="https://latex.codecogs.com/png.latex?k">.</p>
 </div>
 </div>
-<p>I’m not certain this is true, but it holds for all integers up to 10,000. I’m also interested in understanding the distribution of <img src="https://latex.codecogs.com/png.latex?n%20/%20%5Calpha(n)">. When plotting <img src="https://latex.codecogs.com/png.latex?%5Calpha(n)%20/%20n">, most values fall below 1, though some are greater than or equal to 1.</p>
+<p>I’m not certain this is true, but it holds for all integers up to 10,000. I’m also interested in understanding the distribution of <img src="https://latex.codecogs.com/png.latex?n%20/%20%5Calpha(n)">. When plotting <img src="https://latex.codecogs.com/png.latex?n%20/%20%5Calpha(n)">, most values fall above 1, though some are less than or equal to 1.</p>
 <p>Below is a table of <img src="https://latex.codecogs.com/png.latex?n%20/%20%5Calpha(n)"> for all integers <img src="https://latex.codecogs.com/png.latex?n"> up to 10,000. Surprisingly, the most common value is not 1 but <img src="https://latex.codecogs.com/png.latex?4/3">.</p>
 <p>I wonder what patterns exist in the ratios <img src="https://latex.codecogs.com/png.latex?n%20/%20%5Calpha(n)">…</p>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -73,9 +73,9 @@ Questions
 <li><p>What is the distribution of the ratios <img src="https://latex.codecogs.com/png.latex?n%20/%20%5Calpha(n)">?</p></li>
 <li><p>For every integer <img src="https://latex.codecogs.com/png.latex?k">, is there some integer <img src="https://latex.codecogs.com/png.latex?n"> such that <img src="https://latex.codecogs.com/png.latex?n%20/%20%5Calpha(n)%20=%20k">?</p></li>
 <li><p>Can we exploit the fact that</p>
-<p><img src="https://latex.codecogs.com/png.latex?%0AF_k%20=%20%5Cdfrac%7B1%7D%7B%5Csqrt%7B5%7D%7D%20%5Cleft(%20%5Cphi%5Ek%20-%20%5Cpsi%5Ek%20%5Cright)%0A"></p></li>
+<p><img src="https://latex.codecogs.com/png.latex?%0AF_k%20=%20%5Cdfrac%7B1%7D%7B%5Csqrt%7B5%7D%7D%20%5Cleft(%20%5Cphi%5Ek%20-%20%5Cpsi%5Ek%20%5Cright)%0A"></p>
+<p>where <img src="https://latex.codecogs.com/png.latex?%5Cphi%20=%20%5Cfrac%7B1%20+%20%5Csqrt%7B5%7D%7D%7B2%7D"> and <img src="https://latex.codecogs.com/png.latex?%5Cpsi%20=%20%5Cfrac%7B1%20-%20%5Csqrt%7B5%7D%7D%7B2%7D">, to find a closed form for <img src="https://latex.codecogs.com/png.latex?%5Calpha(n)">? We know that <img src="https://latex.codecogs.com/png.latex?%5Cmathbb%7BZ%7D%5B%5Cphi%5D"> is a Euclidean domain so we can have access to number theoretic tools such as divisibility and the Euclidean algorithm.</p></li>
 </ul>
-<p>where <img src="https://latex.codecogs.com/png.latex?%5Cphi%20=%20%5Cfrac%7B1%20+%20%5Csqrt%7B5%7D%7D%7B2%7D"> and <img src="https://latex.codecogs.com/png.latex?%5Cpsi%20=%20%5Cfrac%7B1%20-%20%5Csqrt%7B5%7D%7D%7B2%7D">, to find a closed form for <img src="https://latex.codecogs.com/png.latex?%5Calpha(n)">? We know in addition that <img src="https://latex.codecogs.com/png.latex?%5Cmathbb%7BZ%7D%5B%5Cphi%5D"> is a unique factorization domain, so we can factor <img src="https://latex.codecogs.com/png.latex?n"> in terms of <img src="https://latex.codecogs.com/png.latex?%5Cphi"> and <img src="https://latex.codecogs.com/png.latex?%5Cpsi">.</p>
 </div>
 </div>
 <div id="a6ff9e32" class="cell" data-execution_count="4">
