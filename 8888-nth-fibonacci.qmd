@@ -152,6 +152,7 @@ def plot_fibonacci_cycles(m, cycles, equal_points):
     plt.xlabel('n', fontsize=12)
     plt.ylabel('First k such that n | F_k', fontsize=12)
     plt.title('Smallest k where F_k ≡ 0 (mod n)', fontsize=14)
+    plt.ylim(-50, 1200)
     plt.grid(True, alpha=0.3)
 
     # truncate equal_points to m
@@ -159,7 +160,7 @@ def plot_fibonacci_cycles(m, cycles, equal_points):
 
     # Add vertical lines for equal points
     for ep in equal_points:
-        plt.axvline(x=ep, color='red', linewidth=2, label=f'α({ep}) = {ep}')
+        plt.plot(ep, ep, 'ro', markersize=5, label=f'α({ep}) = {ep}')
 
     # Add horizontal line at y = x
     plt.plot(range(1, m + 1), range(1, m + 1), 'b--', linewidth=0.5)
@@ -252,5 +253,6 @@ plt.show()
 # sort df by count
 df = df.sort_values(by='count', ascending=False)
 
-print(df.to_markdown(index=False))
+# print(df.to_markdown(index=False))
+print(df.head(100).to_markdown(index=False))
 ```
