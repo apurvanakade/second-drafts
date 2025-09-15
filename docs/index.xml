@@ -10,7 +10,62 @@
 <atom:link href="https://github.com/apurvanakade/second-drafts/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.7.31</generator>
-<lastBuildDate>Mon, 11 Aug 2025 04:29:51 GMT</lastBuildDate>
+<lastBuildDate>Sun, 14 Sep 2025 14:23:45 GMT</lastBuildDate>
+<item>
+  <title>Vipassana Course</title>
+  <dc:creator>Apurva Nakade</dc:creator>
+  <link>https://github.com/apurvanakade/second-drafts/drafts/8887-vipassana-course.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>In summer of 2025 I attended a 10-day Vipassana course in <a href="https://pubbananda.dhamma.org/">Delaware</a>. This has been a life-changing experience for me. This post contains some of the things I learned in the course.</p>
+<section id="the-three-types-of-wisdoms" class="level2">
+<h2 class="anchored" data-anchor-id="the-three-types-of-wisdoms">the three types of wisdoms</h2>
+<p>S. N. Goenka in his talks, emphasizes the difference between “intellectual wisdom” (cintā-maya-paññā) and “experiential wisdom” (bhāvanā-maya-paññā). That true wisdom is one that is obtained by experiencing something yourself</p>
+<p>I see this all the time in my students</p>
+</section>
+<section id="the-5-precepts" class="level2">
+<h2 class="anchored" data-anchor-id="the-5-precepts">the 5 precepts</h2>
+<ul>
+<li>do not kill</li>
+<li>do not lie</li>
+<li>do not steal</li>
+<li>no sexual misconduct</li>
+<li>no intoxicants</li>
+</ul>
+</section>
+<section id="strong-determination" class="level2">
+<h2 class="anchored" data-anchor-id="strong-determination">strong determination</h2>
+<ul>
+<li>strong will</li>
+</ul>
+</section>
+<section id="gratitude-and-compassion" class="level2">
+<h2 class="anchored" data-anchor-id="gratitude-and-compassion">gratitude and compassion</h2>
+<ul>
+<li><p>being selfless</p></li>
+<li><p>waking up early, giving up addictions</p></li>
+<li><p>strong determination</p></li>
+<li><p>clear mind</p></li>
+</ul>
+<p style="text-align:center">
+<img src="https://www.dhamma.org/assets/aniwheel-a87352d07ff79e922e5afbc8775f603b.gif" class="img-fluid">
+</p>
+
+
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
+  <category>philosophy</category>
+  <category>meditation</category>
+  <category>mindfullness</category>
+  <category>retreat</category>
+  <guid>https://github.com/apurvanakade/second-drafts/drafts/8887-vipassana-course.html</guid>
+  <pubDate>Sun, 14 Sep 2025 14:23:45 GMT</pubDate>
+</item>
 <item>
   <title>Self-Fibonacci Numbers</title>
   <dc:creator>Apurva Nakade</dc:creator>
@@ -17050,6 +17105,7 @@ font-style: inherit;">;</span></span>
 
 
 <a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
+  <category>writing</category>
   <guid>https://github.com/apurvanakade/second-drafts/9999-begin-again.html</guid>
   <pubDate>Sat, 03 May 2025 13:11:32 GMT</pubDate>
 </item>
