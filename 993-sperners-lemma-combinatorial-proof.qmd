@@ -315,7 +315,7 @@ viewof plotAll = Plot.plot({
 });
 ```
 
-This picture is a combinatorial proof of [Sperner's Lemma](./9994-sperners-lemma-statement.qmd). 
+This picture is a combinatorial proof of [Sperner's Lemma](./994-sperners-lemma-statement.qmd). 
 
 Imagine each small triangle as a **room with three walls**. Next we do a trick that I do not know how to motivate: treat each `RG` edge as a **door**. Here's what we observe:
 

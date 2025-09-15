@@ -12,9 +12,38 @@
 <generator>quarto-1.7.31</generator>
 <lastBuildDate>Sun, 14 Sep 2025 14:23:45 GMT</lastBuildDate>
 <item>
+  <title>Know Thyself</title>
+  <dc:creator>Apurva Nakade</dc:creator>
+  <link>https://github.com/apurvanakade/second-drafts/987-strong-determination.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>In summer of 2025 I attended a 10-day Vipassana course in <a href="https://pubbananda.dhamma.org/">Delaware</a>. In the moment, this was very difficult and painful. But looking back this was one of the most valuable experiences in my life. This post is one of the many that contain my experiences and lessons from the course.</p>
+<hr>
+<p>When you get to the center feeling lost and confounded, unsure as to whether this is a good way to spend your 10 days, you expect there to be friendly volunteers who will assuage your worries. Someone who will tell you that this is indeed the right decision. Now, you do meet a lot of nice people but mostly they tell you where the rooms are and what time you need to eat. Everything else they say you’ll figure it out.</p>
+<p>Next day the wake-up bell rings at 4:30 am. It is the first day so you end up at the meditation hall a bit sleep deprived and unsure as to what to do. S.N. Goenka simply asks you to focus on your breath and nothing else. It is really frustrating.</p>
+<p>You do get a chance to meet the assistant teacher later in the day but by then you have already spent several hours with nobody but yourself, with nothing but your mind. Your back and your legs have started to hurt and there is no resolution coming forth.</p>
+<p>I learned a very valuable lesson from all of this minimal instruction, all this frustration. The reason I had been having so much difficulty sitting with myself is that I have never truly sat with yourself before. I have my phone and my computer and my friends and my work all to keep me from myself. Should you need instructions on what to do when you are alone?</p>
+<p>Being able to be with yourself and nothing else is the first step in the path towards knowing yourself. In the end, the path of vipassana is nothing more but an inward bound path towards inner knowledge. As Joseph Goldstein says, “the goal is to make your mind your friend.”</p>
+
+
+
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
+  <category>vipassana</category>
+  <category>meditation</category>
+  <category>mindfulness</category>
+  <category>retreat</category>
+  <category>goenka</category>
+  <guid>https://github.com/apurvanakade/second-drafts/987-strong-determination.html</guid>
+  <pubDate>Sun, 14 Sep 2025 14:23:45 GMT</pubDate>
+</item>
+<item>
   <title>Vipassana Course</title>
   <dc:creator>Apurva Nakade</dc:creator>
-  <link>https://github.com/apurvanakade/second-drafts/drafts/8887-vipassana-course.html</link>
+  <link>https://github.com/apurvanakade/second-drafts/drafts/vipassana-course.html</link>
   <description><![CDATA[ 
 
 
@@ -63,13 +92,13 @@
   <category>meditation</category>
   <category>mindfullness</category>
   <category>retreat</category>
-  <guid>https://github.com/apurvanakade/second-drafts/drafts/8887-vipassana-course.html</guid>
+  <guid>https://github.com/apurvanakade/second-drafts/drafts/vipassana-course.html</guid>
   <pubDate>Sun, 14 Sep 2025 14:23:45 GMT</pubDate>
 </item>
 <item>
   <title>Self-Fibonacci Numbers</title>
   <dc:creator>Apurva Nakade</dc:creator>
-  <link>https://github.com/apurvanakade/second-drafts/8888-nth-fibonacci.html</link>
+  <link>https://github.com/apurvanakade/second-drafts/988-nth-fibonacci.html</link>
   <description><![CDATA[ 
 
 
@@ -91,7 +120,7 @@
 <p>For what positive integers <img src="https://latex.codecogs.com/png.latex?n"> does <img src="https://latex.codecogs.com/png.latex?%5Calpha(n)%20=%20n">?</p>
 </blockquote>
 <p>Here’s the list of such numbers up to 10,000.</p>
-<div id="f0e856a8" class="cell" data-execution_count="3">
+<div id="74905787" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-stdout">
 <pre><code>Values of n where α(n) = n (up to 10000):
 [1, 5, 12, 25, 60, 125, 300, 625, 1500, 3125, 7500]</code></pre>
@@ -133,25 +162,25 @@ Questions
 </ul>
 </div>
 </div>
-<div id="3dcc3fd9" class="cell" data-execution_count="4">
+<div id="c5c34373" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://github.com/apurvanakade/second-drafts/8888-nth-fibonacci_files/figure-html/cell-4-output-1.png" width="758" height="758" class="figure-img"></p>
+<p><img src="https://github.com/apurvanakade/second-drafts/988-nth-fibonacci_files/figure-html/cell-4-output-1.png" width="758" height="758" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="dc7644b9" class="cell" data-execution_count="7">
+<div id="64d9d18a" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://github.com/apurvanakade/second-drafts/8888-nth-fibonacci_files/figure-html/cell-7-output-1.png" width="758" height="566" class="figure-img"></p>
+<p><img src="https://github.com/apurvanakade/second-drafts/988-nth-fibonacci_files/figure-html/cell-7-output-1.png" width="758" height="566" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="6c9d87a7" class="cell" data-execution_count="8">
+<div id="f21a5a92" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-stdout">
 <pre><code>|   n / α(n) |   count | n values                                                                                                                                                            |
 |-----------:|--------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -178,7 +207,7 @@ Questions
 |   2.93333  |      11 | 88, 176, 352, 704, 968, 1408, 1936, 2816, 3872, 5632, 7744                                                                                                          |
 |   5.5      |      11 | 55, 275, 330, 605, 1375, 1650, 3025, 3630, 6655, 6875, 8250                                                                                                         |
 |   8.25     |      11 | 165, 495, 825, 1485, 1815, 2475, 4125, 4455, 5445, 7425, 9075                                                                                                       |
-|   1.46053  |      11 | 111, 333, 555, 999, 1665, 2775, 2997, 4107, 4995, 8325, 8991                                                                                                        |
+|   1.46053  |      11 | 111, 333, 555, 99, 1665, 2775, 2997, 4107, 4995, 8325, 8991                                                                                                        |
 |   1        |      11 | 1, 5, 12, 25, 60, 125, 300, 625, 1500, 3125, 7500                                                                                                                   |
 |   0.583333 |      11 | 14, 70, 98, 350, 490, 686, 1750, 2450, 3430, 4802, 8750                                                                                                             |
 |   1.65     |      11 | 33, 99, 297, 363, 891, 1089, 2673, 3267, 3993, 8019, 9801                                                                                                           |
@@ -266,13 +295,13 @@ Questions
   <category>open</category>
   <category>fibonacci</category>
   <category>exploration</category>
-  <guid>https://github.com/apurvanakade/second-drafts/8888-nth-fibonacci.html</guid>
+  <guid>https://github.com/apurvanakade/second-drafts/988-nth-fibonacci.html</guid>
   <pubDate>Mon, 11 Aug 2025 04:29:51 GMT</pubDate>
 </item>
 <item>
   <title>Architects and Gardeners</title>
   <dc:creator>Apurva Nakade</dc:creator>
-  <link>https://github.com/apurvanakade/second-drafts/8889-architects-gardeners.html</link>
+  <link>https://github.com/apurvanakade/second-drafts/989-architects-gardeners.html</link>
   <description><![CDATA[ 
 
 
@@ -1348,13 +1377,13 @@ font-style: inherit;">;</span></span>
 <a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
   <category>philosophy</category>
   <category>teaching</category>
-  <guid>https://github.com/apurvanakade/second-drafts/8889-architects-gardeners.html</guid>
+  <guid>https://github.com/apurvanakade/second-drafts/989-architects-gardeners.html</guid>
   <pubDate>Thu, 17 Jul 2025 19:59:53 GMT</pubDate>
 </item>
 <item>
   <title>Learning is Remembering</title>
   <dc:creator>Apurva Nakade</dc:creator>
-  <link>https://github.com/apurvanakade/second-drafts/9990-remembering-learning.html</link>
+  <link>https://github.com/apurvanakade/second-drafts/990-remembering-learning.html</link>
   <description><![CDATA[ 
 
 
@@ -1374,13 +1403,13 @@ font-style: inherit;">;</span></span>
   <category>buddhism</category>
   <category>mindfulness</category>
   <category>greeks</category>
-  <guid>https://github.com/apurvanakade/second-drafts/9990-remembering-learning.html</guid>
+  <guid>https://github.com/apurvanakade/second-drafts/990-remembering-learning.html</guid>
   <pubDate>Sun, 29 Jun 2025 13:53:46 GMT</pubDate>
 </item>
 <item>
   <title>Bayes Theorem</title>
   <dc:creator>Apurva Nakade</dc:creator>
-  <link>https://github.com/apurvanakade/second-drafts/9991-bayes-theorem.html</link>
+  <link>https://github.com/apurvanakade/second-drafts/991-bayes-theorem.html</link>
   <description><![CDATA[ 
 
 
@@ -3100,20 +3129,20 @@ font-style: inherit;">`</span></span></code></pre></div>
 <a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
   <category>probability</category>
   <category>visualization</category>
-  <guid>https://github.com/apurvanakade/second-drafts/9991-bayes-theorem.html</guid>
+  <guid>https://github.com/apurvanakade/second-drafts/991-bayes-theorem.html</guid>
   <pubDate>Mon, 02 Jun 2025 12:28:16 GMT</pubDate>
 </item>
 <item>
   <title>Sperner’s Lemma - Geometric Proof</title>
   <dc:creator>Apurva Nakade</dc:creator>
-  <link>https://github.com/apurvanakade/second-drafts/9992-sperners-lemma-geometric-proof.html</link>
+  <link>https://github.com/apurvanakade/second-drafts/992-sperners-lemma-geometric-proof.html</link>
   <description><![CDATA[ 
 
 
 
 
 
-<p>This is my new favorite proof of <a href="./9994-sperners-lemma-statement.html">Sperner’s lemma</a>. In the following app the vertices are slowly morphed to the “cardinal” <code>R</code>, <code>G</code>, <code>B</code> vertices with time while preserving the adjacency relations. The <span style="background-color:rgba(255, 99, 71, 0.5)">red</span> triangles are oriented counter-clockwise and the <span style="background-color:rgba(72, 209, 204, 0.5)">blue</span> triangles are oriented clockwise. Can you come up with the proof yourself without peeking below? You can try reducing the number of subdivisions to get a sense of what’s going on.</p>
+<p>This is my new favorite proof of <a href="9994-sperners-lemma-statement.qmd">Sperner’s lemma</a>. In the following app the vertices are slowly morphed to the “cardinal” <code>R</code>, <code>G</code>, <code>B</code> vertices with time while preserving the adjacency relations. The <span style="background-color:rgba(255, 99, 71, 0.5)">red</span> triangles are oriented counter-clockwise and the <span style="background-color:rgba(72, 209, 204, 0.5)">blue</span> triangles are oriented clockwise. Can you come up with the proof yourself without peeking below? You can try reducing the number of subdivisions to get a sense of what’s going on.</p>
 <div class="cell">
 <div class="sourceCode cell-code hidden" id="cb1" data-startfrom="11" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 10;"><span id="cb1-11"><span class="im" style="color: #00769E;
 background-color: null;
@@ -5404,13 +5433,13 @@ font-style: inherit;">&lt;/div&gt;`</span></span></code></pre></div>
   <category>visualization</category>
   <category>interactive</category>
   <category>determinant</category>
-  <guid>https://github.com/apurvanakade/second-drafts/9992-sperners-lemma-geometric-proof.html</guid>
+  <guid>https://github.com/apurvanakade/second-drafts/992-sperners-lemma-geometric-proof.html</guid>
   <pubDate>Sun, 25 May 2025 16:08:45 GMT</pubDate>
 </item>
 <item>
   <title>Sperner’s Lemma - Combinatorial Proof</title>
   <dc:creator>Apurva Nakade</dc:creator>
-  <link>https://github.com/apurvanakade/second-drafts/9993-sperners-lemma-combinatorial-proof.html</link>
+  <link>https://github.com/apurvanakade/second-drafts/993-sperners-lemma-combinatorial-proof.html</link>
   <description><![CDATA[ 
 
 
@@ -8315,7 +8344,7 @@ font-style: inherit;">;</span></span></code></pre></div>
 </div>
 </div>
 </div>
-<p>This picture is a combinatorial proof of <a href="./9994-sperners-lemma-statement.html">Sperner’s Lemma</a>.</p>
+<p>This picture is a combinatorial proof of <a href="./9994-sperners-lemma-statement.qmd">Sperner’s Lemma</a>.</p>
 <p>Imagine each small triangle as a <strong>room with three walls</strong>. Next we do a trick that I do not know how to motivate: treat each <code>RG</code> edge as a <strong>door</strong>. Here’s what we observe:</p>
 <ol type="1">
 <li><span style="background-color:rgba(0, 0, 0, 0.25)"><strong>RGB</strong></span> triangles have <strong>exactly one</strong> door.<br>
@@ -9748,13 +9777,13 @@ font-style: inherit;">;</span></span>
   <category>visualization</category>
   <category>interactive</category>
   <category>questions</category>
-  <guid>https://github.com/apurvanakade/second-drafts/9993-sperners-lemma-combinatorial-proof.html</guid>
+  <guid>https://github.com/apurvanakade/second-drafts/993-sperners-lemma-combinatorial-proof.html</guid>
   <pubDate>Fri, 16 May 2025 13:44:57 GMT</pubDate>
 </item>
 <item>
   <title>Sperner’s Lemma - Statement</title>
   <dc:creator>Apurva Nakade</dc:creator>
-  <link>https://github.com/apurvanakade/second-drafts/9994-sperners-lemma-statement.html</link>
+  <link>https://github.com/apurvanakade/second-drafts/994-sperners-lemma-statement.html</link>
   <description><![CDATA[ 
 
 
@@ -11873,7 +11902,7 @@ I don't think there's any way to create a single loop for all these triangles. -
   <category>questions</category>
   <category>visualization</category>
   <category>interactive</category>
-  <guid>https://github.com/apurvanakade/second-drafts/9994-sperners-lemma-statement.html</guid>
+  <guid>https://github.com/apurvanakade/second-drafts/994-sperners-lemma-statement.html</guid>
   <pubDate>Wed, 14 May 2025 21:20:25 GMT</pubDate>
 </item>
 <item>
@@ -11900,7 +11929,7 @@ I don't think there's any way to create a single loop for all these triangles. -
 <item>
   <title>Non-Profits</title>
   <dc:creator>Apurva Nakade</dc:creator>
-  <link>https://github.com/apurvanakade/second-drafts/9995-non-profits.html</link>
+  <link>https://github.com/apurvanakade/second-drafts/995-non-profits.html</link>
   <description><![CDATA[ 
 
 
@@ -11914,13 +11943,13 @@ I don't think there's any way to create a single loop for all these triangles. -
 
 
 <a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
-  <guid>https://github.com/apurvanakade/second-drafts/9995-non-profits.html</guid>
+  <guid>https://github.com/apurvanakade/second-drafts/995-non-profits.html</guid>
   <pubDate>Tue, 13 May 2025 14:43:08 GMT</pubDate>
 </item>
 <item>
   <title>Random points in a triangle</title>
   <dc:creator>Apurva Nakade</dc:creator>
-  <link>https://github.com/apurvanakade/second-drafts/9996-random-points-in-a-triangle.html</link>
+  <link>https://github.com/apurvanakade/second-drafts/996-random-points-in-a-triangle.html</link>
   <description><![CDATA[ 
 
 
@@ -13747,7 +13776,7 @@ font-style: inherit;">;</span></span>
 <p>Mathematicians are mostly interested in engineering Step 2. Step 1 is important but is usually delegated to computer engineers.</p>
 <p>With that preamble, here’s the question: <strong>Generate points randomly inside a triangle.</strong> I need this in order to play around with Sperner’s lemma examples.</p>
 <p>The first step is to generate random points in the “standard triangle” with vertices <img src="https://latex.codecogs.com/png.latex?%5B0,%200%5D,%20%5B1,%200%5D,%20%5B0,%201%5D">. A very simple trick for this is to generate points in the unit square and “reflect the points” across the midpoint of the hypotenuse, <img src="https://latex.codecogs.com/png.latex?%5B0.5,%200.5%5D">.</p>
-<p>Next, we use the <a href="./9998-barycentric-coordinates.html">barycentric transformation</a> to transform the standard triangle into the desired triangle—in the example above, the equilateral triangle with vertices <img src="https://latex.codecogs.com/png.latex?%5B0,%200%5D,%20%5B1,%200%5D,%20%5B0.5,%20%5Csqrt%7B3%7D/2%5D">.</p>
+<p>Next, we use the <a href="9998-barycentric-coordinates.qmd">barycentric transformation</a> to transform the standard triangle into the desired triangle—in the example above, the equilateral triangle with vertices <img src="https://latex.codecogs.com/png.latex?%5B0,%200%5D,%20%5B1,%200%5D,%20%5B0.5,%20%5Csqrt%7B3%7D/2%5D">.</p>
 
 
 
@@ -13755,13 +13784,13 @@ font-style: inherit;">;</span></span>
   <category>randomness</category>
   <category>triangles</category>
   <category>barycentric coordinates</category>
-  <guid>https://github.com/apurvanakade/second-drafts/9996-random-points-in-a-triangle.html</guid>
+  <guid>https://github.com/apurvanakade/second-drafts/996-random-points-in-a-triangle.html</guid>
   <pubDate>Mon, 12 May 2025 21:22:57 GMT</pubDate>
 </item>
 <item>
   <title>Hopkins is a joke</title>
   <dc:creator>Apurva Nakade</dc:creator>
-  <link>https://github.com/apurvanakade/second-drafts/9997-hopkins-is-a-joke.html</link>
+  <link>https://github.com/apurvanakade/second-drafts/997-hopkins-is-a-joke.html</link>
   <description><![CDATA[ 
 
 
@@ -13777,13 +13806,13 @@ font-style: inherit;">;</span></span>
 
 
 <a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
-  <guid>https://github.com/apurvanakade/second-drafts/9997-hopkins-is-a-joke.html</guid>
+  <guid>https://github.com/apurvanakade/second-drafts/997-hopkins-is-a-joke.html</guid>
   <pubDate>Mon, 12 May 2025 19:27:09 GMT</pubDate>
 </item>
 <item>
   <title>Barycentric Coordinates</title>
   <dc:creator>Apurva Nakade</dc:creator>
-  <link>https://github.com/apurvanakade/second-drafts/9998-barycentric-coordinates.html</link>
+  <link>https://github.com/apurvanakade/second-drafts/998-barycentric-coordinates.html</link>
   <description><![CDATA[ 
 
 
@@ -17082,13 +17111,13 @@ font-style: inherit;">;</span></span>
   <category>triangles</category>
   <category>interactive</category>
   <category>visualization</category>
-  <guid>https://github.com/apurvanakade/second-drafts/9998-barycentric-coordinates.html</guid>
+  <guid>https://github.com/apurvanakade/second-drafts/998-barycentric-coordinates.html</guid>
   <pubDate>Sun, 11 May 2025 06:55:36 GMT</pubDate>
 </item>
 <item>
   <title>Begin Again</title>
   <dc:creator>Apurva Nakade</dc:creator>
-  <link>https://github.com/apurvanakade/second-drafts/9999-begin-again.html</link>
+  <link>https://github.com/apurvanakade/second-drafts/999-begin-again.html</link>
   <description><![CDATA[ 
 
 
@@ -17106,7 +17135,7 @@ font-style: inherit;">;</span></span>
 
 <a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
   <category>writing</category>
-  <guid>https://github.com/apurvanakade/second-drafts/9999-begin-again.html</guid>
+  <guid>https://github.com/apurvanakade/second-drafts/999-begin-again.html</guid>
   <pubDate>Sat, 03 May 2025 13:11:32 GMT</pubDate>
 </item>
 </channel>

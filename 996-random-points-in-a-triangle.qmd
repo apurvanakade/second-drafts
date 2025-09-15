@@ -185,4 +185,4 @@ With that preamble, here's the question: **Generate points randomly inside a tri
 
 The first step is to generate random points in the "standard triangle" with vertices $[0, 0], [1, 0], [0, 1]$. A very simple trick for this is to generate points in the unit square and "reflect the points" across the midpoint of the hypotenuse, $[0.5, 0.5]$. 
 
-Next, we use the [barycentric transformation](9998-barycentric-coordinates.qmd) to transform the standard triangle into the desired triangle—in the example above, the equilateral triangle with vertices $[0, 0], [1, 0], [0.5, \sqrt{3}/2]$.
+Next, we use the [barycentric transformation](998-barycentric-coordinates.qmd) to transform the standard triangle into the desired triangle—in the example above, the equilateral triangle with vertices $[0, 0], [1, 0], [0.5, \sqrt{3}/2]$.

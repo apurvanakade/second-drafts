@@ -5,7 +5,7 @@ date: 2025-05-25 12:08:45
 categories: [triangles, coloring, questions, visualization, interactive, determinant]
 ---
 
-This is my new favorite proof of [Sperner's lemma](9994-sperners-lemma-statement.qmd). 
+This is my new favorite proof of [Sperner's lemma](994-sperners-lemma-statement.qmd). 
 In the following app the vertices are slowly morphed to the "cardinal" `R`, `G`, `B` vertices with time while preserving the adjacency relations. The <span style="background-color:rgba(255, 99, 71, 0.5)">red</span> triangles are oriented counter-clockwise and the <span style="background-color:rgba(72, 209, 204, 0.5)">blue</span> triangles are oriented clockwise. Can you come up with the proof yourself without peeking below? You can try reducing the number of subdivisions to get a sense of what's going on.
 
 ```{ojs}
