@@ -3,6 +3,7 @@ title: Vipassana Course
 date: 2025-09-14 10:23:45
 author: Apurva Nakade
 categories: ['philosophy', 'meditation', 'mindfullness', 'retreat']
+draft: true
 ---
 
 In summer of 2025 I attended a 10-day Vipassana course in [Delaware](https://pubbananda.dhamma.org/). This has been a life-changing experience for me. This post contains some of the things I learned in the course. 

@@ -10,91 +10,7 @@
 <atom:link href="https://github.com/apurvanakade/second-drafts/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.7.31</generator>
-<lastBuildDate>Sun, 14 Sep 2025 14:23:45 GMT</lastBuildDate>
-<item>
-  <title>Know Thyself</title>
-  <dc:creator>Apurva Nakade</dc:creator>
-  <link>https://github.com/apurvanakade/second-drafts/987-strong-determination.html</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>In summer of 2025 I attended a 10-day Vipassana course in <a href="https://pubbananda.dhamma.org/">Delaware</a>. In the moment, this was very difficult and painful. But looking back this was one of the most valuable experiences in my life. This post is one of the many that contain my experiences and lessons from the course.</p>
-<hr>
-<p>When you get to the center feeling lost and confounded, unsure as to whether this is a good way to spend your 10 days, you expect there to be friendly volunteers who will assuage your worries. Someone who will tell you that this is indeed the right decision. Now, you do meet a lot of nice people but mostly they tell you where the rooms are and what time you need to eat. Everything else they say you’ll figure it out.</p>
-<p>Next day the wake-up bell rings at 4:30 am. It is the first day so you end up at the meditation hall a bit sleep deprived and unsure as to what to do. S.N. Goenka simply asks you to focus on your breath and nothing else. It is really frustrating.</p>
-<p>You do get a chance to meet the assistant teacher later in the day but by then you have already spent several hours with nobody but yourself, with nothing but your mind. Your back and your legs have started to hurt and there is no resolution coming forth.</p>
-<p>I learned a very valuable lesson from all of this minimal instruction, all this frustration. The reason I had been having so much difficulty sitting with myself is that I have never truly sat with yourself before. I have my phone and my computer and my friends and my work all to keep me from myself. Should you need instructions on what to do when you are alone?</p>
-<p>Being able to be with yourself and nothing else is the first step in the path towards knowing yourself. In the end, the path of vipassana is nothing more but an inward bound path towards inner knowledge. As Joseph Goldstein says, “the goal is to make your mind your friend.”</p>
-
-
-
-<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
-  <category>vipassana</category>
-  <category>meditation</category>
-  <category>mindfulness</category>
-  <category>retreat</category>
-  <category>goenka</category>
-  <guid>https://github.com/apurvanakade/second-drafts/987-strong-determination.html</guid>
-  <pubDate>Sun, 14 Sep 2025 14:23:45 GMT</pubDate>
-</item>
-<item>
-  <title>Vipassana Course</title>
-  <dc:creator>Apurva Nakade</dc:creator>
-  <link>https://github.com/apurvanakade/second-drafts/drafts/vipassana-course.html</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>In summer of 2025 I attended a 10-day Vipassana course in <a href="https://pubbananda.dhamma.org/">Delaware</a>. This has been a life-changing experience for me. This post contains some of the things I learned in the course.</p>
-<section id="the-three-types-of-wisdoms" class="level2">
-<h2 class="anchored" data-anchor-id="the-three-types-of-wisdoms">the three types of wisdoms</h2>
-<p>S. N. Goenka in his talks, emphasizes the difference between “intellectual wisdom” (cintā-maya-paññā) and “experiential wisdom” (bhāvanā-maya-paññā). That true wisdom is one that is obtained by experiencing something yourself</p>
-<p>I see this all the time in my students</p>
-</section>
-<section id="the-5-precepts" class="level2">
-<h2 class="anchored" data-anchor-id="the-5-precepts">the 5 precepts</h2>
-<ul>
-<li>do not kill</li>
-<li>do not lie</li>
-<li>do not steal</li>
-<li>no sexual misconduct</li>
-<li>no intoxicants</li>
-</ul>
-</section>
-<section id="strong-determination" class="level2">
-<h2 class="anchored" data-anchor-id="strong-determination">strong determination</h2>
-<ul>
-<li>strong will</li>
-</ul>
-</section>
-<section id="gratitude-and-compassion" class="level2">
-<h2 class="anchored" data-anchor-id="gratitude-and-compassion">gratitude and compassion</h2>
-<ul>
-<li><p>being selfless</p></li>
-<li><p>waking up early, giving up addictions</p></li>
-<li><p>strong determination</p></li>
-<li><p>clear mind</p></li>
-</ul>
-<p style="text-align:center">
-<img src="https://www.dhamma.org/assets/aniwheel-a87352d07ff79e922e5afbc8775f603b.gif" class="img-fluid">
-</p>
-
-
-</section>
-
-<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
-  <category>philosophy</category>
-  <category>meditation</category>
-  <category>mindfullness</category>
-  <category>retreat</category>
-  <guid>https://github.com/apurvanakade/second-drafts/drafts/vipassana-course.html</guid>
-  <pubDate>Sun, 14 Sep 2025 14:23:45 GMT</pubDate>
-</item>
+<lastBuildDate>Mon, 11 Aug 2025 04:29:51 GMT</lastBuildDate>
 <item>
   <title>Self-Fibonacci Numbers</title>
   <dc:creator>Apurva Nakade</dc:creator>
@@ -120,7 +36,7 @@
 <p>For what positive integers <img src="https://latex.codecogs.com/png.latex?n"> does <img src="https://latex.codecogs.com/png.latex?%5Calpha(n)%20=%20n">?</p>
 </blockquote>
 <p>Here’s the list of such numbers up to 10,000.</p>
-<div id="74905787" class="cell" data-execution_count="2">
+<div id="0eda46dd" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-stdout">
 <pre><code>Values of n where α(n) = n (up to 10000):
 [1, 5, 12, 25, 60, 125, 300, 625, 1500, 3125, 7500]</code></pre>
@@ -162,7 +78,7 @@ Questions
 </ul>
 </div>
 </div>
-<div id="c5c34373" class="cell" data-execution_count="3">
+<div id="92c0f286" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -171,7 +87,7 @@ Questions
 </div>
 </div>
 </div>
-<div id="64d9d18a" class="cell" data-execution_count="6">
+<div id="6aa81f0d" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -180,7 +96,7 @@ Questions
 </div>
 </div>
 </div>
-<div id="f21a5a92" class="cell" data-execution_count="7">
+<div id="26a66abb" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-stdout">
 <pre><code>|   n / α(n) |   count | n values                                                                                                                                                            |
 |-----------:|--------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -207,83 +123,13 @@ Questions
 |   2.93333  |      11 | 88, 176, 352, 704, 968, 1408, 1936, 2816, 3872, 5632, 7744                                                                                                          |
 |   5.5      |      11 | 55, 275, 330, 605, 1375, 1650, 3025, 3630, 6655, 6875, 8250                                                                                                         |
 |   8.25     |      11 | 165, 495, 825, 1485, 1815, 2475, 4125, 4455, 5445, 7425, 9075                                                                                                       |
-|   1.46053  |      11 | 111, 333, 555, 99, 1665, 2775, 2997, 4107, 4995, 8325, 8991                                                                                                        |
+|   1.46053  |      11 | 111, 333, 555, 999, 1665, 2775, 2997, 4107, 4995, 8325, 8991                                                                                                        |
 |   1        |      11 | 1, 5, 12, 25, 60, 125, 300, 625, 1500, 3125, 7500                                                                                                                   |
 |   0.583333 |      11 | 14, 70, 98, 350, 490, 686, 1750, 2450, 3430, 4802, 8750                                                                                                             |
 |   1.65     |      11 | 33, 99, 297, 363, 891, 1089, 2673, 3267, 3993, 8019, 9801                                                                                                           |
 |   0.666667 |      11 | 2, 4, 10, 20, 50, 100, 250, 500, 1250, 2500, 6250                                                                                                                   |
 |  10.5      |      10 | 252, 756, 1260, 1764, 2268, 3780, 5292, 6300, 6804, 8820                                                                                                            |
-|   1.16667  |      10 | 28, 140, 196, 700, 980, 1372, 3500, 4900, 6860, 9604                                                                                                                |
-|  14.6667   |      10 | 440, 880, 1760, 2200, 3520, 4400, 4840, 7040, 8800, 9680                                                                                                            |
-|   2.07143  |      10 | 29, 145, 174, 725, 841, 870, 3625, 4205, 4350, 5046                                                                                                                 |
-|   2.59649  |      10 | 296, 592, 1184, 1480, 2368, 2960, 4736, 5920, 7400, 9472                                                                                                            |
-|   2.93182  |      10 | 129, 387, 645, 1161, 1935, 3225, 3483, 5547, 5805, 9675                                                                                                             |
-|   8.625    |       9 | 207, 621, 1035, 1863, 3105, 4761, 5175, 5589, 9315                                                                                                                  |
-|   8.8125   |       9 | 141, 423, 705, 1269, 2115, 3525, 3807, 6345, 6627                                                                                                                   |
-|   2.78571  |       9 | 234, 702, 1170, 2106, 3042, 3510, 5850, 6318, 9126                                                                                                                  |
-|   1.29825  |       9 | 74, 148, 370, 740, 1850, 2738, 3700, 5476, 9250                                                                                                                     |
-|   4.875    |       8 | 273, 819, 1365, 2457, 3549, 4095, 6825, 7371                                                                                                                        |
-|  28        |       8 | 672, 1344, 2688, 3360, 4704, 5376, 6720, 9408                                                                                                                       |
-|   1.47973  |       8 | 219, 657, 1095, 1971, 3285, 5475, 5913, 9855                                                                                                                        |
-|   1.05556  |       8 | 19, 95, 361, 475, 1805, 2375, 6859, 9025                                                                                                                            |
-|   2.71264  |       8 | 472, 944, 1888, 2360, 3776, 4720, 7552, 9440                                                                                                                        |
-|   7.42857  |       8 | 624, 1248, 2496, 3120, 4992, 6240, 8112, 9984                                                                                                                       |
-|   1.94737  |       8 | 37, 185, 444, 925, 1369, 2220, 4625, 6845                                                                                                                           |
-|   5.775    |       8 | 231, 693, 1617, 2079, 2541, 4851, 6237, 7623                                                                                                                        |
-|   7.85185  |       8 | 424, 848, 1696, 2120, 3392, 4240, 6784, 8480                                                                                                                        |
-|   1.88889  |       8 | 17, 85, 289, 425, 1445, 2125, 4913, 7225                                                                                                                            |
-|   2.95588  |       8 | 201, 603, 1005, 1809, 3015, 5025, 5427, 9045                                                                                                                        |
-|   2.33333  |       8 | 56, 280, 392, 1400, 1960, 2744, 7000, 9800                                                                                                                          |
-|   1.75     |       8 | 42, 210, 294, 1050, 1470, 2058, 5250, 7350                                                                                                                          |
-|   1.52586  |       8 | 177, 531, 885, 1593, 2655, 4425, 4779, 7965                                                                                                                         |
-|   1.01724  |       8 | 59, 295, 354, 1475, 1770, 3481, 7375, 8850                                                                                                                          |
-|   4.46053  |       7 | 339, 1017, 1695, 3051, 5085, 8475, 9153                                                                                                                             |
-|   8.26667  |       7 | 248, 496, 992, 1984, 3968, 7688, 7936                                                                                                                               |
-|   1.48469  |       7 | 291, 873, 1455, 2619, 4365, 7275, 7857                                                                                                                              |
-|   6.06818  |       7 | 267, 801, 1335, 2403, 4005, 6675, 7209                                                                                                                              |
-|   1.84722  |       7 | 133, 665, 931, 2527, 3325, 4655, 6517                                                                                                                               |
-|   1.65278  |       7 | 119, 595, 833, 2023, 2975, 4165, 5831                                                                                                                               |
-|   3.92593  |       7 | 106, 212, 530, 1060, 2650, 5300, 5618                                                                                                                               |
-|   2.63063  |       7 | 584, 1168, 2336, 2920, 4672, 5840, 9344                                                                                                                             |
-|   1.97297  |       7 | 73, 365, 876, 1825, 4380, 5329, 9125                                                                                                                                |
-|   2.97115  |       7 | 309, 927, 1545, 2781, 4635, 7725, 8343                                                                                                                              |
-|   6.70833  |       7 | 161, 805, 1127, 3703, 4025, 5635, 7889                                                                                                                              |
-|  22.6667   |       6 | 816, 1632, 3264, 4080, 6528, 8160                                                                                                                                   |
-|   0.928571 |       6 | 78, 390, 1014, 1950, 5070, 9750                                                                                                                                     |
-|  10.7879   |       6 | 712, 1424, 2848, 3560, 5696, 7120                                                                                                                                   |
-|   1.70395  |       6 | 259, 1295, 1813, 6475, 9065, 9583                                                                                                                                   |
-|   1.31532  |       6 | 146, 292, 730, 1460, 3650, 7300                                                                                                                                     |
-|   2.63946  |       6 | 776, 1552, 3104, 3880, 6208, 7760                                                                                                                                   |
-|   1.41667  |       6 | 51, 255, 867, 1275, 4335, 6375                                                                                                                                      |
-|   1.91667  |       6 | 46, 230, 1058, 1150, 5290, 5750                                                                                                                                     |
-|   3.30556  |       6 | 238, 1190, 1666, 4046, 5950, 8330                                                                                                                                   |
-|   2.11111  |       6 | 38, 190, 722, 950, 3610, 4750                                                                                                                                       |
-|   5.57143  |       6 | 468, 1404, 2340, 4212, 6084, 7020                                                                                                                                   |
-|   8.10256  |       6 | 632, 1264, 2528, 3160, 5056, 6320                                                                                                                                   |
-|  30.6667   |       6 | 736, 1472, 2944, 3680, 5888, 7360                                                                                                                                   |
-|   1.925    |       6 | 77, 539, 847, 3773, 5929, 9317                                                                                                                                      |
-|   1.31973  |       6 | 194, 388, 970, 1940, 4850, 9700                                                                                                                                     |
-|   8.09091  |       6 | 89, 445, 1068, 2225, 5340, 7921                                                                                                                                     |
-|   4.66667  |       6 | 112, 560, 784, 2800, 3920, 5488                                                                                                                                     |
-|   6.15     |       6 | 123, 369, 1107, 3321, 5043, 9963                                                                                                                                    |
-|   1.38095  |       6 | 58, 290, 1450, 1682, 7250, 8410                                                                                                                                     |
-|   7.01587  |       6 | 442, 884, 2210, 4420, 5746, 7514                                                                                                                                    |
-|   3.69444  |       6 | 266, 1330, 1862, 5054, 6650, 9310                                                                                                                                   |
-|   8.8      |       6 | 528, 1056, 2112, 4224, 5808, 8448                                                                                                                                   |
-|   7.92982  |       6 | 904, 1808, 3616, 4520, 7232, 9040                                                                                                                                   |
-|   1.97959  |       6 | 97, 485, 1164, 2425, 5820, 9409                                                                                                                                     |
-|   5.21212  |       6 | 688, 1376, 2752, 3440, 5504, 6880                                                                                                                                   |
-|   3.3      |       6 | 198, 594, 1782, 2178, 5346, 6534                                                                                                                                    |
-|  25.3333   |       6 | 912, 1824, 3648, 4560, 7296, 9120                                                                                                                                   |
-|   1.1      |       6 | 11, 66, 121, 726, 1331, 7986                                                                                                                                        |
-|  21        |       6 | 504, 1512, 2520, 3528, 4536, 7560                                                                                                                                   |
-|   4.22222  |       6 | 76, 380, 1444, 1900, 7220, 9500                                                                                                                                     |
-|   3.5      |       6 | 84, 420, 588, 2100, 2940, 4116                                                                                                                                      |
-|   5.39394  |       6 | 178, 356, 890, 1780, 4450, 8900                                                                                                                                     |
-|   0.977273 |       6 | 43, 215, 1075, 1849, 5375, 9245                                                                                                                                     |
-|   2.875    |       6 | 69, 345, 1587, 1725, 7935, 8625                                                                                                                                     |
-|  16.1481   |       6 | 872, 1744, 3488, 4360, 6976, 8720                                                                                                                                   |
-|   7        |       6 | 168, 840, 1176, 4200, 5880, 8232                                                                                                                                    |</code></pre>
+|   1.16667  |      10 | 28, 140, 196, 700, 980, 1372, 3500, 4900, 6860, 9604                                                                                                                |</code></pre>
 </div>
 </div>
 
@@ -11903,27 +11749,6 @@ I don't think there's any way to create a single loop for all these triangles. -
   <category>visualization</category>
   <category>interactive</category>
   <guid>https://github.com/apurvanakade/second-drafts/994-sperners-lemma-statement.html</guid>
-  <pubDate>Wed, 14 May 2025 21:20:25 GMT</pubDate>
-</item>
-<item>
-  <title>Monsky’s Theorem</title>
-  <dc:creator>Apurva Nakade</dc:creator>
-  <link>https://github.com/apurvanakade/second-drafts/drafts/monsky.html</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>I discovered this theorem on this really cool blog, <a href="https://mathmondays.com/archives">Math Mondays</a></p>
-
-
-
-<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
-  <category>combinatorics</category>
-  <category>triangles</category>
-  <category>questions</category>
-  <guid>https://github.com/apurvanakade/second-drafts/drafts/monsky.html</guid>
   <pubDate>Wed, 14 May 2025 21:20:25 GMT</pubDate>
 </item>
 <item>

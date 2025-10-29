@@ -254,5 +254,5 @@ plt.show()
 df = df.sort_values(by='count', ascending=False)
 
 # print(df.to_markdown(index=False))
-print(df.head(100).to_markdown(index=False))
+print(df.head(30).to_markdown(index=False))
 ```
