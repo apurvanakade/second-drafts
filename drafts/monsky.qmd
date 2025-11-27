@@ -1,9 +1,0 @@
----
-title: Monsky's Theorem
-author: Apurva Nakade
-date: 2025-05-14 17:20:25
-categories: [combinatorics, triangles, questions]
-draft: true
----
-
-I discovered this theorem on this really cool blog, [Math Mondays](https://mathmondays.com/archives)

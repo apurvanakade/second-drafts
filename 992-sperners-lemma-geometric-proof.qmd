@@ -135,15 +135,15 @@ getFillColor = vertexColors => {
   const key = vertexColors.map(c => map[c.toLowerCase()] || '').join('')
 
   if (fillColorGroups.group1.has(key)) {
-    return 'rgba(255, 99, 71, 0.5)' // Tomato
+    return 'rgba(255, 255, 0, 0.5)' // Yellow
   }
 
   if (fillColorGroups.group2.has(key)) {
-    return 'rgba(72, 209, 204, 0.5)' // Medium turquoise
+    return 'rgba(255, 99, 71, 0.5)' // Tomato red
   }
 
   // Neutral group (fallback): soft gray
-  return 'rgba(160, 160, 160, 0.25)'
+  return 'rgba(255, 255, 255, 1)'
 }
 ```
 
