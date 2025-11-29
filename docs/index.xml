@@ -10,7 +10,103 @@
 <atom:link href="https://github.com/apurvanakade/second-drafts/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.7.31</generator>
-<lastBuildDate>Mon, 11 Aug 2025 04:29:51 GMT</lastBuildDate>
+<lastBuildDate>Thu, 27 Nov 2025 21:51:54 GMT</lastBuildDate>
+<item>
+  <title>With or Without Order</title>
+  <dc:creator>Apurva Nakade</dc:creator>
+  <link>https://github.com/apurvanakade/second-drafts/987-with-without-order.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>Here’s a question about basic probability theory that a student once asked me in class: When computing probabilities, does “choosing with order” vs “choosing without order” always give the same answer?</p>
+<p>My first instinct was “Why would it?” But then I was surprised by some simple examples. Try it yourself before reading on!</p>
+<section id="a-simple-example" class="level2">
+<h2 class="anchored" data-anchor-id="a-simple-example">A Simple Example</h2>
+<div class="callout callout-style-simple callout-none no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>You have <img src="https://latex.codecogs.com/png.latex?N"> balls, <img src="https://latex.codecogs.com/png.latex?n"> of which are red and the rest are blue. You choose <img src="https://latex.codecogs.com/png.latex?m"> balls. What is the probability that <strong>all</strong> of the <img src="https://latex.codecogs.com/png.latex?m"> chosen balls are red?</p>
+</div>
+</div>
+</div>
+<p>What makes this question ambiguous is that you are not told whether the balls are chosen with or without order. It turns out this doesn’t matter!</p>
+<p>The probability of choosing <em>without order</em> equals</p>
+<p><img src="https://latex.codecogs.com/png.latex?%5Cfrac%7B%5Cbinom%7Bn%7D%7Bm%7D%7D%7B%5Cbinom%7BN%7D%7Bm%7D%7D."></p>
+<p>The probability of choosing <em>with order</em> equals</p>
+<p><img src="https://latex.codecogs.com/png.latex?%5Cfrac%7BP(n,%20m)%7D%7BP(N,%20m)%7D."></p>
+<p>Since</p>
+<p><img src="https://latex.codecogs.com/png.latex?%5Cbinom%7Bn%7D%7Bm%7D%20=%20%5Cfrac%7BP(n,%20m)%7D%7Bm!%7D%5Ctext%7B%20and%20%7D%20%5Cbinom%7BN%7D%7Bm%7D%20=%20%5Cfrac%7BP(N,%20m)%7D%7Bm!%7D,"></p>
+<p>these two probabilities are exactly the same.</p>
+</section>
+<section id="hypergeometric-distribution" class="level2">
+<h2 class="anchored" data-anchor-id="hypergeometric-distribution">Hypergeometric Distribution</h2>
+<p>This coincidence persists for a much more complicated example: the hypergeometric distribution.</p>
+<div class="callout callout-style-simple callout-none no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>You have <img src="https://latex.codecogs.com/png.latex?N"> balls, <img src="https://latex.codecogs.com/png.latex?n"> of which are red and the rest are blue. You choose <img src="https://latex.codecogs.com/png.latex?m"> balls. What is the probability that <strong>exactly <img src="https://latex.codecogs.com/png.latex?k"></strong> of the <img src="https://latex.codecogs.com/png.latex?m"> chosen balls are red?</p>
+</div>
+</div>
+</div>
+<p>The probability of choosing <em>without order</em> equals</p>
+<p><img src="https://latex.codecogs.com/png.latex?%5Cfrac%7B%5Cbinom%7Bn%7D%7Bk%7D%5Cbinom%7BN%20-%20n%7D%7Bm%20-%20k%7D%7D%7B%5Cbinom%7BN%7D%7Bm%7D%7D."></p>
+<p>In my experience, students often forget the <img src="https://latex.codecogs.com/png.latex?%5Cbinom%7BN%20-%20n%7D%7Bm%20-%20k%7D"> term.</p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Question
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Why do we need the <img src="https://latex.codecogs.com/png.latex?%5Cbinom%7BN%20-%20n%7D%7Bm%20-%20k%7D"> term at all? If we are choosing exactly <img src="https://latex.codecogs.com/png.latex?k"> red balls, wouldn’t the remaining <img src="https://latex.codecogs.com/png.latex?m%20-%20k"> balls automatically be blue?</p>
+</div>
+</div>
+<p>What about choosing with order? We need to count:</p>
+<ul>
+<li>The number of ways to choose <img src="https://latex.codecogs.com/png.latex?k"> red balls in order: <img src="https://latex.codecogs.com/png.latex?P(n,%20k)"></li>
+<li>The number of ways to choose <img src="https://latex.codecogs.com/png.latex?m%20-%20k"> blue balls in order: <img src="https://latex.codecogs.com/png.latex?P(N%20-%20n,%20m%20-%20k)"></li>
+<li>The number of ways to decide which of the <img src="https://latex.codecogs.com/png.latex?m"> positions are occupied by red balls: <img src="https://latex.codecogs.com/png.latex?%5Cbinom%7Bm%7D%7Bk%7D"></li>
+</ul>
+<p>So the final answer is</p>
+<p><img src="https://latex.codecogs.com/png.latex?%20%5Cbinom%7Bm%7D%7Bk%7D%20%5Ccdot%20%5Cfrac%7BP(n,%20k)%20P(N%20-%20n,%20m%20-%20k)%7D%7BP(N,%20m)%7D."></p>
+<p>This expression simplifies to the previous expression!</p>
+<hr>
+<p>You can make the problem arbitrarily complicated—have balls with three colors: <img src="https://latex.codecogs.com/png.latex?A"> red, <img src="https://latex.codecogs.com/png.latex?B"> blue, and <img src="https://latex.codecogs.com/png.latex?C"> green, then ask for the probability of choosing exactly <img src="https://latex.codecogs.com/png.latex?a"> red, <img src="https://latex.codecogs.com/png.latex?b"> blue, and <img src="https://latex.codecogs.com/png.latex?c"> green—and you will still get the same result! The probability is identical whether you choose with or without order.</p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Question
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Why do you think this happens? Why is “with order” vs “without order” irrelevant to the problem statement?</p>
+</div>
+</div>
+
+
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
+  <category>probability</category>
+  <category>puzzle</category>
+  <guid>https://github.com/apurvanakade/second-drafts/987-with-without-order.html</guid>
+  <pubDate>Thu, 27 Nov 2025 21:51:54 GMT</pubDate>
+</item>
 <item>
   <title>Self-Fibonacci Numbers</title>
   <dc:creator>Apurva Nakade</dc:creator>
@@ -36,7 +132,7 @@
 <p>For what positive integers <img src="https://latex.codecogs.com/png.latex?n"> does <img src="https://latex.codecogs.com/png.latex?%5Calpha(n)%20=%20n">?</p>
 </blockquote>
 <p>Here’s the list of such numbers up to 10,000.</p>
-<div id="0eda46dd" class="cell" data-execution_count="2">
+<div id="0eda46dd" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-stdout">
 <pre><code>Values of n where α(n) = n (up to 10000):
 [1, 5, 12, 25, 60, 125, 300, 625, 1500, 3125, 7500]</code></pre>
@@ -78,7 +174,7 @@ Questions
 </ul>
 </div>
 </div>
-<div id="92c0f286" class="cell" data-execution_count="3">
+<div id="92c0f286" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -87,7 +183,7 @@ Questions
 </div>
 </div>
 </div>
-<div id="6aa81f0d" class="cell" data-execution_count="6">
+<div id="6aa81f0d" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -96,7 +192,7 @@ Questions
 </div>
 </div>
 </div>
-<div id="26a66abb" class="cell" data-execution_count="7">
+<div id="26a66abb" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-stdout">
 <pre><code>|   n / α(n) |   count | n values                                                                                                                                                            |
 |-----------:|--------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -142,6 +238,61 @@ Questions
   <category>fibonacci</category>
   <category>exploration</category>
   <guid>https://github.com/apurvanakade/second-drafts/988-nth-fibonacci.html</guid>
+  <pubDate>Mon, 11 Aug 2025 04:29:51 GMT</pubDate>
+</item>
+<item>
+  <title>The Poisson Paradox</title>
+  <dc:creator>Apurva Nakade</dc:creator>
+  <link>https://github.com/apurvanakade/second-drafts/drafts/poisson-paradox.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>I’ve started to appreciate more and more the fact that mathematics, and in particular probability, is only a model for reality. As such, when we try to describe a real world scenario using math we need to make several choices. Of course, we all know this but do we understand it on an intuitive level?</p>
+<section id="bus-waiting" class="level2">
+<h2 class="anchored" data-anchor-id="bus-waiting">Bus waiting</h2>
+<div class="callout callout-style-simple callout-none no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Problem
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You need to catch a bus at a particular bus stop every day. Buses arrive <em>on average</em> every 20 mins. Suppose arrival of busses in independent of each other.</p>
+<p>If you arrive at the bus stop at random, is the expected time you need to wait?</p>
+</div>
+</div>
+<p>The assumption that the arrival of busses in independent of each other is a bit dubious. I would not believe it, for example, it this was the first stop of the bus. But if the bus route is long and you’re looking at say the 10th stop in the middle of the day, then perhaps this assumption is acceptable.</p>
+<p>With that out of the way, really think about the answer before peeking below.</p>
+<p>[insert simulation of buses here]</p>
+<p>[insert simulation of your arrival here]</p>
+<p>On average you need to wait 20 mins!! What’s going on?</p>
+</section>
+<section id="modeling-reality" class="level2">
+<h2 class="anchored" data-anchor-id="modeling-reality">Modeling Reality</h2>
+<p>The above problem is called the “Poisson Paradox” and like all mathematical paradoxes it only a paradox when you don’t understand what’s going on.</p>
+<p>In the problem statement, we have two assumptions:</p>
+<ol type="1">
+<li>Buses arrive <em>on average</em> every 20 mins.</li>
+<li>Arrival of busses in independent of each other.</li>
+</ol>
+<p>How do we model these mathematically? Let’s label the buses that arrive at the stop $B_1, B_2, B_3, $ and suppose their arrival times are $T_1, T_2, $. Then the two assumptions translate to</p>
+<ol type="1">
+<li><img src="https://latex.codecogs.com/png.latex?%5Cmathbb%7BE%7D(T_%7Bi+1%7D%20-%20T_i)%20=%2020">,</li>
+<li><img src="https://latex.codecogs.com/png.latex?T_1,%20T_2,%20T_3,%20%5Cdots"> are independent of each other.</li>
+</ol>
+<p>We are interested in answering the question: if we arrive at the bus stop at time <img src="https://latex.codecogs.com/png.latex?t"> and <img src="https://latex.codecogs.com/png.latex?B_i"> is the next bus to arrive, then what is <img src="https://latex.codecogs.com/png.latex?%5Cmathbb%7BE%7D(t%20-%20T_i)">?</p>
+
+
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
+  <guid>https://github.com/apurvanakade/second-drafts/drafts/poisson-paradox.html</guid>
   <pubDate>Mon, 11 Aug 2025 04:29:51 GMT</pubDate>
 </item>
 <item>

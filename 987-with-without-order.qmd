@@ -1,0 +1,85 @@
+---
+title: With or Without Order
+date: 2025-11-27 16:51:54
+author: Apurva Nakade
+categories: ['probability', 'puzzle']
+
+execute: 
+  cache: true
+---
+
+Here's a question about basic probability theory that a student once asked me in class: When computing probabilities, does "choosing with order" vs "choosing without order" always give the same answer?
+
+My first instinct was "Why would it?" But then I was surprised by some simple examples. Try it yourself before reading on!
+
+## A Simple Example
+
+:::{.callout}
+
+You have $N$ balls, $n$ of which are red and the rest are blue. You choose $m$ balls. What is the probability that **all** of the $m$ chosen balls are red?
+
+:::
+
+What makes this question ambiguous is that you are not told whether the balls are chosen with or without order. It turns out this doesn't matter!
+
+The probability of choosing *without order* equals
+
+$$\frac{\binom{n}{m}}{\binom{N}{m}}.$$
+
+The probability of choosing *with order* equals
+
+$$\frac{P(n, m)}{P(N, m)}.$$
+
+Since 
+
+$$\binom{n}{m} = \frac{P(n, m)}{m!}\text{ and } \binom{N}{m} = \frac{P(N, m)}{m!},$$
+
+these two probabilities are exactly the same.
+
+## Hypergeometric Distribution
+
+This coincidence persists for a much more complicated example: the hypergeometric distribution.
+
+:::{.callout}
+ 
+You have $N$ balls, $n$ of which are red and the rest are blue. You choose $m$ balls. What is the probability that **exactly $k$** of the $m$ chosen balls are red?
+
+:::
+
+The probability of choosing *without order* equals
+
+$$\frac{\binom{n}{k}\binom{N - n}{m - k}}{\binom{N}{m}}.$$
+
+In my experience, students often forget the $\binom{N - n}{m - k}$ term. 
+
+:::{.callout-caution}
+
+### Question
+
+Why do we need the $\binom{N - n}{m - k}$ term at all? If we are choosing exactly $k$ red balls, wouldn't the remaining $m - k$ balls automatically be blue?
+
+:::
+
+What about choosing with order? We need to count:
+
+- The number of ways to choose $k$ red balls in order: $P(n, k)$
+- The number of ways to choose $m - k$ blue balls in order: $P(N - n, m - k)$
+- The number of ways to decide which of the $m$ positions are occupied by red balls: $\binom{m}{k}$
+
+So the final answer is 
+
+$$ \binom{m}{k} \cdot \frac{P(n, k) P(N - n, m - k)}{P(N, m)}.$$
+
+This expression simplifies to the previous expression!
+
+---
+
+You can make the problem arbitrarily complicated—have balls with three colors: $A$ red, $B$ blue, and $C$ green, then ask for the probability of choosing exactly $a$ red, $b$ blue, and $c$ green—and you will still get the same result! The probability is identical whether you choose with or without order.
+
+:::{.callout-caution}
+
+### Question
+
+Why do you think this happens? Why is "with order" vs "without order" irrelevant to the problem statement?
+
+:::

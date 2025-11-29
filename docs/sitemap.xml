@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://github.com/apurvanakade/second-drafts/995-non-profits.html</loc>
-    <lastmod>2025-05-16T16:55:58.720Z</lastmod>
+    <loc>https://github.com/apurvanakade/second-drafts/996-random-points-in-a-triangle.html</loc>
+    <lastmod>2025-11-27T21:02:42.228Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/apurvanakade/second-drafts/990-remembering-learning.html</loc>
-    <lastmod>2025-06-29T13:53:47.186Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/apurvanakade/second-drafts/992-sperners-lemma-geometric-proof.html</loc>
-    <lastmod>2025-11-27T21:07:48.454Z</lastmod>
+    <loc>https://github.com/apurvanakade/second-drafts/999-begin-again.html</loc>
+    <lastmod>2025-09-14T14:32:57.538Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/apurvanakade/second-drafts/994-sperners-lemma-statement.html</loc>
@@ -25,12 +21,20 @@
     <lastmod>2025-07-19T13:43:51.846Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/apurvanakade/second-drafts/993-sperners-lemma-combinatorial-proof.html</loc>
-    <lastmod>2025-09-15T13:16:05.401Z</lastmod>
+    <loc>https://github.com/apurvanakade/second-drafts/drafts/poisson-paradox.html</loc>
+    <lastmod>2025-11-28T00:45:35.955Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/apurvanakade/second-drafts/988-nth-fibonacci.html</loc>
     <lastmod>2025-10-29T13:43:13.443Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/apurvanakade/second-drafts/987-with-without-order.html</loc>
+    <lastmod>2025-11-29T00:11:29.524Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/apurvanakade/second-drafts/993-sperners-lemma-combinatorial-proof.html</loc>
+    <lastmod>2025-09-15T13:16:05.401Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/apurvanakade/second-drafts/989-architects-gardeners.html</loc>
@@ -45,27 +49,11 @@
     <lastmod>2025-07-19T13:43:53.286Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/apurvanakade/second-drafts/987-strong-determination.html</loc>
-    <lastmod>2025-09-15T13:31:32.087Z</lastmod>
+    <loc>https://github.com/apurvanakade/second-drafts/992-sperners-lemma-geometric-proof.html</loc>
+    <lastmod>2025-11-27T21:07:48.454Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/apurvanakade/second-drafts/99-begin-again.html</loc>
-    <lastmod>2025-09-14T14:32:57.538Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/apurvanakade/second-drafts/996-random-points-in-a-triangle.html</loc>
-    <lastmod>2025-11-27T21:02:42.228Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/apurvanakade/second-drafts/drafts/987-know-thyself.html</loc>
-    <lastmod>2025-10-29T13:39:11.610Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/apurvanakade/second-drafts/drafts/monsky.html</loc>
-    <lastmod>2025-10-29T13:41:02.020Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/apurvanakade/second-drafts/drafts/vipassana-course.html</loc>
-    <lastmod>2025-10-29T13:40:55.528Z</lastmod>
+    <loc>https://github.com/apurvanakade/second-drafts/990-remembering-learning.html</loc>
+    <lastmod>2025-06-29T13:53:47.186Z</lastmod>
   </url>
 </urlset>

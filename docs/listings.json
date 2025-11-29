@@ -2,7 +2,9 @@
   {
     "listing": "/index.html",
     "items": [
+      "/987-with-without-order.html",
       "/988-nth-fibonacci.html",
+      "/drafts/poisson-paradox.html",
       "/989-architects-gardeners.html",
       "/990-remembering-learning.html",
       "/991-bayes-theorem.html",

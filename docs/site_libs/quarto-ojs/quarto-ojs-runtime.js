@@ -41,7 +41,7 @@ function pad$1(value, width) {
 
 function formatYear$1(year) {
   return year < 0 ? "-" + pad$1(-year, 6)
-    : year > 999 ? "+" + pad$1(year, 6)
+    : year > 9999 ? "+" + pad$1(year, 6)
     : pad$1(year, 4);
 }
 
@@ -2289,8 +2289,8 @@ function download(value, name = "untitled", label = "Save") {
 var namespaces = {
   math: "http://www.w3.org/1998/Math/MathML",
   svg: "http://www.w3.org/2000/svg",
-  xhtml: "http://www.w3.org/199/xhtml",
-  xlink: "http://www.w3.org/199/xlink",
+  xhtml: "http://www.w3.org/1999/xhtml",
+  xlink: "http://www.w3.org/1999/xlink",
   xml: "http://www.w3.org/XML/1998/namespace",
   xmlns: "http://www.w3.org/2000/xmlns/"
 };
@@ -3593,7 +3593,7 @@ function format(date, fallback) {
 
 function formatYear(year) {
   return year < 0 ? `-${pad(-year, 6)}`
-    : year > 999 ? `+${pad(year, 6)}`
+    : year > 9999 ? `+${pad(year, 6)}`
     : pad(year, 4);
 }
 
@@ -4743,7 +4743,7 @@ SHOW_ELEMENT = 1,
 TYPE_COMMENT = 8,
 TYPE_ELEMENT = 1,
 NS_SVG = "http://www.w3.org/2000/svg",
-NS_XLINK = "http://www.w3.org/199/xlink",
+NS_XLINK = "http://www.w3.org/1999/xlink",
 NS_XML = "http://www.w3.org/XML/1998/namespace",
 NS_XMLNS = "http://www.w3.org/2000/xmlns/";
 
