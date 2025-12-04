@@ -2,7 +2,7 @@
 title: Learning is Remembering
 date: 2025-06-29 09:53:46
 author: Apurva Nakade
-categories: ['philosophy', 'teaching', 'buddhism', 'mindfulness', 'greeks']
+categories: ['philosophy', 'learning', 'teaching', 'buddhism', 'mindfulness', 'greeks']
 ---
 
 In Greek philosophy there is a theory of "anamnesis," mostly due to Plato and Socrates, which roughly means "learning is remembering," that wisdom is already inside you and you are trying to discover it. Your job as a learner is to bring it forth, to clean the window so you can see more clearly.

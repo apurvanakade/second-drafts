@@ -66,18 +66,6 @@
     ]
   },
   {
-    "objectID": "drafts/poisson-paradox.html",
-    "href": "drafts/poisson-paradox.html",
-    "title": "The Poisson Paradox",
-    "section": "",
-    "text": "I’ve started to appreciate more and more the fact that mathematics, and in particular probability, is only a model for reality. As such, when we try to describe a real world scenario using math we need to make several choices. Of course, we all know this but do we understand it on an intuitive level?",
-    "crumbs": [
-      "Home",
-      "Drafts",
-      "The Poisson Paradox"
-    ]
-  },
-  {
     "objectID": "988-nth-fibonacci.html",
     "href": "988-nth-fibonacci.html",
     "title": "Self-Fibonacci Numbers",
@@ -93,7 +81,7 @@
     "href": "987-with-without-order.html",
     "title": "With or Without Order",
     "section": "",
-    "text": "Here’s a question about basic probability theory that a student once asked me in class: When computing probabilities, does “choosing with order” vs “choosing without order” always give the same answer?\nMy first instinct was “Why would it?” But then I was surprised by some simple examples. Try it yourself before reading on!",
+    "text": "Here’s a question about basic probability theory that a student once asked me in class: When computing probabilities, does “choosing with order” vs “choosing without order” always give the same answer?\nMy first instinct was “Why would it?” But then I was surprised by some simple examples.",
     "crumbs": [
       "Home",
       "With or Without Order"
@@ -115,7 +103,7 @@
     "href": "987-with-without-order.html#hypergeometric-distribution",
     "title": "With or Without Order",
     "section": "Hypergeometric Distribution",
-    "text": "Hypergeometric Distribution\nThis coincidence persists for a much more complicated example: the hypergeometric distribution.\n\n\n\n\n\n\nYou have \\(N\\) balls, \\(n\\) of which are red and the rest are blue. You choose \\(m\\) balls. What is the probability that exactly \\(k\\) of the \\(m\\) chosen balls are red?\n\n\n\nThe probability of choosing without order equals\n\\[\\frac{\\binom{n}{k}\\binom{N - n}{m - k}}{\\binom{N}{m}}.\\]\nIn my experience, students often forget the \\(\\binom{N - n}{m - k}\\) term.\n\n\n\n\n\n\nQuestion\n\n\n\nWhy do we need the \\(\\binom{N - n}{m - k}\\) term at all? If we are choosing exactly \\(k\\) red balls, wouldn’t the remaining \\(m - k\\) balls automatically be blue?\n\n\nWhat about choosing with order? We need to count:\n\nThe number of ways to choose \\(k\\) red balls in order: \\(P(n, k)\\)\nThe number of ways to choose \\(m - k\\) blue balls in order: \\(P(N - n, m - k)\\)\nThe number of ways to decide which of the \\(m\\) positions are occupied by red balls: \\(\\binom{m}{k}\\)\n\nSo the final answer is\n\\[ \\binom{m}{k} \\cdot \\frac{P(n, k) P(N - n, m - k)}{P(N, m)}.\\]\nThis expression simplifies to the previous expression!\n\nYou can make the problem arbitrarily complicated—have balls with three colors: \\(A\\) red, \\(B\\) blue, and \\(C\\) green, then ask for the probability of choosing exactly \\(a\\) red, \\(b\\) blue, and \\(c\\) green—and you will still get the same result! The probability is identical whether you choose with or without order.\n\n\n\n\n\n\nQuestion\n\n\n\nWhy do you think this happens? Why is “with order” vs “without order” irrelevant to the problem statement?",
+    "text": "Hypergeometric Distribution\nThis coincidence persists for a much more complicated example: the hypergeometric distribution.\n\n\n\n\n\n\nYou have \\(N\\) balls, \\(n\\) of which are red and the rest are blue. You choose \\(m\\) balls. What is the probability that exactly \\(k\\) of the \\(m\\) chosen balls are red?\n\n\n\nThe probability of choosing without order equals\n\\[\\frac{\\binom{n}{k}\\binom{N - n}{m - k}}{\\binom{N}{m}}.\\]\nIn my experience, students often forget the \\(\\binom{N - n}{m - k}\\) term.\n\n\n\n\n\n\nQuestion\n\n\n\nWhy do we need the \\(\\binom{N - n}{m - k}\\) term at all? If we are choosing exactly \\(k\\) red balls, wouldn’t the remaining \\(m - k\\) balls automatically be blue?\n\n\nWhat about choosing with order? We need to count:\n\nThe number of ways to choose \\(k\\) red balls in order: \\(P(n, k)\\)\nThe number of ways to choose \\(m - k\\) blue balls in order: \\(P(N - n, m - k)\\)\nThe number of ways to decide which of the \\(m\\) positions are occupied by red balls: \\(\\binom{m}{k}\\)\n\nSo the final answer is\n\\[ \\binom{m}{k} \\cdot \\frac{P(n, k) P(N - n, m - k)}{P(N, m)}.\\]\nThis expression simplifies to the previous expression!\n\nGeneralized Hypergeometric Distribution\nSuppose now you have \\(N\\) balls of which \\(n_1\\) are of color 1, \\(n_2\\) are of color 2, …, \\(n_r\\) are of color \\(r\\) (so that \\(n_1 + n_2 + \\dots + n_r = N\\)). You choose \\(m\\) balls. What is the probability that exactly \\(k_1\\) of the chosen balls are of color 1, \\(k_2\\) of color 2, …, and \\(k_r\\) of color \\(r\\) (so that \\(k_1 + k_2 + \\dots + k_r = m\\))?\nNow if we choose without order, the probability equals\n\\[\\frac{\\binom{n_1}{k_1} \\binom{n_2}{k_2} \\cdots \\binom{n_r}{k_r}}{\\binom{N}{m}}\\]\nand the if we choose with order, the probability equals\n\\[ \\frac{m!}{k_1! k_2! \\cdots k_r!} \\cdot \\frac{P(n_1, k_1) P(n_2, k_2) \\cdots P(n_r, k_r)}{P(N, m)}\\]\nand again these two expressions are the same!\n\n\n\n\n\n\nQuestion\n\n\n\nWhy do you think this happens? Why is “with order” vs “without order” irrelevant to the problem statement? What’s a more direct way to see this?",
     "crumbs": [
       "Home",
       "With or Without Order"
@@ -170,7 +158,7 @@
     "href": "index.html",
     "title": "Second Drafts",
     "section": "",
-    "text": "With or Without Order\n\n\n\nprobability\n\npuzzle\n\n\n\n\n\n\n\n\n\nNov 27, 2025\n\n\nApurva Nakade\n\n\n\n\n\n\n\nSelf-Fibonacci Numbers\n\n\n\nnumber theory\n\nresearch\n\nopen\n\nfibonacci\n\nexploration\n\n\n\n\n\n\n\n\n\nAug 11, 2025\n\n\nApurva Nakade\n\n\n\n\n\n\n\nThe Poisson Paradox\n\n\n\n\n\n\n\n\n\n\n\nAug 11, 2025\n\n\nApurva Nakade\n\n\n\n\n\n\n\nArchitects and Gardeners\n\n\n\nphilosophy\n\nteaching\n\n\n\n\n\n\n\n\n\nJul 17, 2025\n\n\nApurva Nakade\n\n\n\n\n\n\n\nLearning is Remembering\n\n\n\nphilosophy\n\nteaching\n\nbuddhism\n\nmindfulness\n\ngreeks\n\n\n\n\n\n\n\n\n\nJun 29, 2025\n\n\nApurva Nakade\n\n\n\n\n\n\n\nBayes Theorem\n\n\n\nprobability\n\nvisualization\n\n\n\n\n\n\n\n\n\nJun 2, 2025\n\n\nApurva Nakade\n\n\n\n\n\n\n\nSperner’s Lemma - Geometric Proof\n\n\n\ntriangles\n\ncoloring\n\nquestions\n\nvisualization\n\ninteractive\n\ndeterminant\n\n\n\n\n\n\n\n\n\nMay 25, 2025\n\n\nApurva Nakade\n\n\n\n\n\n\n\nSperner’s Lemma - Combinatorial Proof\n\n\n\ncombinatorics\n\ntriangles\n\ncoloring\n\nvisualization\n\ninteractive\n\nquestions\n\n\n\n\n\n\n\n\n\nMay 16, 2025\n\n\nApurva Nakade\n\n\n\n\n\n\n\nSperner’s Lemma - Statement\n\n\n\ncombinatorics\n\ntriangles\n\ncoloring\n\nquestions\n\nvisualization\n\ninteractive\n\n\n\n\n\n\n\n\n\nMay 14, 2025\n\n\nApurva Nakade\n\n\n\n\n\n\n\nRandom points in a triangle\n\n\n\nrandomness\n\ntriangles\n\nbarycentric coordinates\n\n\n\n\n\n\n\n\n\nMay 12, 2025\n\n\nApurva Nakade\n\n\n\n\n\n\n\nHopkins is a joke\n\n\n\n\n\n\n\n\nMay 12, 2025\n\n\nApurva Nakade\n\n\n\n\n\n\n\nBarycentric Coordinates\n\n\n\naffine geometry\n\ntriangles\n\ninteractive\n\nvisualization\n\n\n\n\n\n\n\n\n\nMay 11, 2025\n\n\nApurva Nakade\n\n\n\n\n\n\n\nBegin Again\n\n\n\nwriting\n\n\n\n\n\n\n\n\n\nMay 3, 2025\n\n\nApurva Nakade\n\n\n\n\n\nNo matching items\n Back to top"
+    "text": "Why Programming?\n\n\n\nlearning\n\nteaching\n\n\n\n\n\n\n\n\n\nDec 4, 2025\n\n\nApurva Nakade\n\n\n\n\n\n\n\nWith or Without Order\n\n\n\nprobability\n\npuzzle\n\n\n\n\n\n\n\n\n\nNov 27, 2025\n\n\nApurva Nakade\n\n\n\n\n\n\n\nSelf-Fibonacci Numbers\n\n\n\nnumber theory\n\nresearch\n\nopen\n\nfibonacci\n\nexploration\n\n\n\n\n\n\n\n\n\nAug 11, 2025\n\n\nApurva Nakade\n\n\n\n\n\n\n\nArchitects and Gardeners\n\n\n\nphilosophy\n\nteaching\n\n\n\n\n\n\n\n\n\nJul 17, 2025\n\n\nApurva Nakade\n\n\n\n\n\n\n\nLearning is Remembering\n\n\n\nphilosophy\n\nlearning\n\nteaching\n\nbuddhism\n\nmindfulness\n\ngreeks\n\n\n\n\n\n\n\n\n\nJun 29, 2025\n\n\nApurva Nakade\n\n\n\n\n\n\n\nBayes Theorem\n\n\n\nprobability\n\nvisualization\n\n\n\n\n\n\n\n\n\nJun 2, 2025\n\n\nApurva Nakade\n\n\n\n\n\n\n\nSperner’s Lemma - Geometric Proof\n\n\n\ntriangles\n\ncoloring\n\nquestions\n\nvisualization\n\ninteractive\n\ndeterminant\n\n\n\n\n\n\n\n\n\nMay 25, 2025\n\n\nApurva Nakade\n\n\n\n\n\n\n\nSperner’s Lemma - Combinatorial Proof\n\n\n\ncombinatorics\n\ntriangles\n\ncoloring\n\nvisualization\n\ninteractive\n\nquestions\n\n\n\n\n\n\n\n\n\nMay 16, 2025\n\n\nApurva Nakade\n\n\n\n\n\n\n\nSperner’s Lemma - Statement\n\n\n\ncombinatorics\n\ntriangles\n\ncoloring\n\nquestions\n\nvisualization\n\ninteractive\n\n\n\n\n\n\n\n\n\nMay 14, 2025\n\n\nApurva Nakade\n\n\n\n\n\n\n\nRandom points in a triangle\n\n\n\nrandomness\n\ntriangles\n\nbarycentric coordinates\n\n\n\n\n\n\n\n\n\nMay 12, 2025\n\n\nApurva Nakade\n\n\n\n\n\n\n\nHopkins is a joke\n\n\n\n\n\n\n\n\nMay 12, 2025\n\n\nApurva Nakade\n\n\n\n\n\n\n\nBarycentric Coordinates\n\n\n\naffine geometry\n\ntriangles\n\ninteractive\n\nvisualization\n\n\n\n\n\n\n\n\n\nMay 11, 2025\n\n\nApurva Nakade\n\n\n\n\n\n\n\nBegin Again\n\n\n\nwriting\n\n\n\n\n\n\n\n\n\nMay 3, 2025\n\n\nApurva Nakade\n\n\n\n\n\nNo matching items\n Back to top"
   },
   {
     "objectID": "991-bayes-theorem.html",
@@ -261,11 +249,23 @@
     ]
   },
   {
-    "objectID": "drafts/poisson-paradox.html#assumptions",
-    "href": "drafts/poisson-paradox.html#assumptions",
+    "objectID": "drafts/poisson-paradox.html",
+    "href": "drafts/poisson-paradox.html",
     "title": "The Poisson Paradox",
-    "section": "Assumptions",
-    "text": "Assumptions",
+    "section": "",
+    "text": "I’ve started to appreciate more and more the fact that mathematics, and in particular probability, is only a model for reality. As such, when we try to describe a real world scenario using math we need to make several choices. Of course, we all know this but do we understand it on an intuitive level?",
+    "crumbs": [
+      "Home",
+      "Drafts",
+      "The Poisson Paradox"
+    ]
+  },
+  {
+    "objectID": "drafts/poisson-paradox.html#bus-waiting",
+    "href": "drafts/poisson-paradox.html#bus-waiting",
+    "title": "The Poisson Paradox",
+    "section": "Bus waiting",
+    "text": "Bus waiting\n\n\n\n\n\n\nProblem\n\n\n\nYou need to catch a bus at a particular bus stop every day. Buses arrive on average every 20 mins. Suppose arrival of busses in independent of each other.\nIf you arrive at the bus stop at random, is the expected time you need to wait?\n\n\nThe assumption that the arrival of busses in independent of each other is a bit dubious. I would not believe it, for example, it this was the first stop of the bus. But if the bus route is long and you’re looking at say the 10th stop in the middle of the day, then perhaps this assumption is acceptable.\nWith that out of the way, really think about the answer before peeking below.\n[insert simulation of buses here]\n[insert simulation of your arrival here]\nOn average you need to wait 20 mins!! What’s going on?",
     "crumbs": [
       "Home",
       "Drafts",
@@ -285,27 +285,26 @@
     ]
   },
   {
-    "objectID": "drafts/poisson-paradox.html#car-arrival-problem",
-    "href": "drafts/poisson-paradox.html#car-arrival-problem",
-    "title": "The Poisson Paradox",
-    "section": "Car Arrival Problem",
-    "text": "Car Arrival Problem\n\n\n\n\n\n\nProblem\n\n\n\nSuppose it is just a regular day at your neighborhood gas station. On average, one car arrive every 10 mins.\n\n\nReally think about the answer before peeking below.\n[insert simulation of buses here]\n[insert simulation of your arrival here]\nOn average you need to wait 20 mins!! What’s going on?",
+    "objectID": "drafts/programming.html",
+    "href": "drafts/programming.html",
+    "title": "Why Programming?",
+    "section": "",
+    "text": "I don’t program much these days - AI does all the programming for me. I almost exclusively write programs in Python, and I do not like Python.\nThe first programming language I learned was C. This was before the internet. I had two textbooks titled something like “Learning C” and “Graphics with C”. I read the books, did the exercises on my yellow-blue Turbo C compiler. I wrote Winamp visualizations and terminal-based games. It was a lot of fun. Later, when I discovered the web browser and learned HTML and its siblings, I was able to express my creative self through coding.\nWhile I did all of this for fun, looking back, programming helped me become a better thinker. It taught me to break down a complex problem into smaller parts and work on the parts systematically. Now, from my vantage point as a teacher, I can say that programming was cross-training for math. In my mind the two are so enmeshed that I do not think of them as separate topics.\nThis is what we’re losing as we transition to vibe coding.\n\n\n\n Back to top",
     "crumbs": [
       "Home",
       "Drafts",
-      "The Poisson Paradox"
+      "Why Programming?"
     ]
   },
   {
-    "objectID": "drafts/poisson-paradox.html#bus-waiting",
-    "href": "drafts/poisson-paradox.html#bus-waiting",
-    "title": "The Poisson Paradox",
-    "section": "Bus waiting",
-    "text": "Bus waiting\n\n\n\n\n\n\nProblem\n\n\n\nYou need to catch a bus at a particular bus stop every day. Buses arrive on average every 20 mins. Suppose arrival of busses in independent of each other.\nIf you arrive at the bus stop at random, is the expected time you need to wait?\n\n\nThe assumption that the arrival of busses in independent of each other is a bit dubious. I would not believe it, for example, it this was the first stop of the bus. But if the bus route is long and you’re looking at say the 10th stop in the middle of the day, then perhaps this assumption is acceptable.\nWith that out of the way, really think about the answer before peeking below.\n[insert simulation of buses here]\n[insert simulation of your arrival here]\nOn average you need to wait 20 mins!! What’s going on?",
+    "objectID": "986-programming.html",
+    "href": "986-programming.html",
+    "title": "Why Programming?",
+    "section": "",
+    "text": "I don’t code much these days - AI does all the programming for me. I almost exclusively write programs in Python, and I do not like Python.\nThe first programming language I learned was C. This was before the internet. I had two textbooks titled something like “Learning C” and “Graphics with C”. I read the books, did the exercises on my yellow-blue Turbo C compiler. I wrote Winamp visualizations and terminal-based games. It was a lot of fun. Later, when I discovered the web browser and learned HTML and its siblings, I was able to express my creative self through coding.\nWhile I did all of this for fun, looking back, programming helped me become a better thinker. It taught me to break down a complex problem into smaller parts and work on the parts systematically. Now, from my vantage point as a teacher, I can say that programming was cross-training for math. In my mind the two are so enmeshed that I do not think of them as separate topics.\nThis is what we’re losing as we transition to vibe coding.\n\n\n\n Back to top",
     "crumbs": [
       "Home",
-      "Drafts",
-      "The Poisson Paradox"
+      "Why Programming?"
     ]
   }
 ]

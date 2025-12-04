@@ -6,6 +6,8 @@ categories: []
 
 execute: 
   cache: true
+
+draft: true
 ---
 
 I've started to appreciate more and more the fact that mathematics, and in particular probability, is only a model for reality. As such, when we try to describe a real world scenario using math we need to make several choices. Of course, we all know this but do we understand it on an intuitive level? 

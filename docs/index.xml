@@ -10,7 +10,30 @@
 <atom:link href="https://github.com/apurvanakade/second-drafts/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.7.31</generator>
-<lastBuildDate>Thu, 27 Nov 2025 21:51:54 GMT</lastBuildDate>
+<lastBuildDate>Thu, 04 Dec 2025 15:49:14 GMT</lastBuildDate>
+<item>
+  <title>Why Programming?</title>
+  <dc:creator>Apurva Nakade</dc:creator>
+  <link>https://github.com/apurvanakade/second-drafts/986-programming.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>I don’t code much these days - AI does all the programming for me. I almost exclusively write programs in Python, and I do not like Python.</p>
+<p>The first programming language I learned was C. This was before the internet. I had two textbooks titled something like “Learning C” and “Graphics with C”. I read the books, did the exercises on my yellow-blue Turbo C compiler. I wrote Winamp visualizations and terminal-based games. It was a lot of fun. Later, when I discovered the web browser and learned HTML and its siblings, I was able to express my creative self through coding.</p>
+<p>While I did all of this for fun, looking back, programming helped me become a better thinker. It taught me to break down a complex problem into smaller parts and work on the parts systematically. Now, from my vantage point as a teacher, I can say that programming was cross-training for math. In my mind the two are so enmeshed that I do not think of them as separate topics.</p>
+<p>This is what we’re losing as we transition to vibe coding.</p>
+
+
+
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
+  <category>learning</category>
+  <category>teaching</category>
+  <guid>https://github.com/apurvanakade/second-drafts/986-programming.html</guid>
+  <pubDate>Thu, 04 Dec 2025 15:49:14 GMT</pubDate>
+</item>
 <item>
   <title>With or Without Order</title>
   <dc:creator>Apurva Nakade</dc:creator>
@@ -22,7 +45,7 @@
 
 
 <p>Here’s a question about basic probability theory that a student once asked me in class: When computing probabilities, does “choosing with order” vs “choosing without order” always give the same answer?</p>
-<p>My first instinct was “Why would it?” But then I was surprised by some simple examples. Try it yourself before reading on!</p>
+<p>My first instinct was “Why would it?” But then I was surprised by some simple examples.</p>
 <section id="a-simple-example" class="level2">
 <h2 class="anchored" data-anchor-id="a-simple-example">A Simple Example</h2>
 <div class="callout callout-style-simple callout-none no-icon">
@@ -82,8 +105,14 @@ Question
 <p>So the final answer is</p>
 <p><img src="https://latex.codecogs.com/png.latex?%20%5Cbinom%7Bm%7D%7Bk%7D%20%5Ccdot%20%5Cfrac%7BP(n,%20k)%20P(N%20-%20n,%20m%20-%20k)%7D%7BP(N,%20m)%7D."></p>
 <p>This expression simplifies to the previous expression!</p>
-<hr>
-<p>You can make the problem arbitrarily complicated—have balls with three colors: <img src="https://latex.codecogs.com/png.latex?A"> red, <img src="https://latex.codecogs.com/png.latex?B"> blue, and <img src="https://latex.codecogs.com/png.latex?C"> green, then ask for the probability of choosing exactly <img src="https://latex.codecogs.com/png.latex?a"> red, <img src="https://latex.codecogs.com/png.latex?b"> blue, and <img src="https://latex.codecogs.com/png.latex?c"> green—and you will still get the same result! The probability is identical whether you choose with or without order.</p>
+<section id="generalized-hypergeometric-distribution" class="level3">
+<h3 class="anchored" data-anchor-id="generalized-hypergeometric-distribution">Generalized Hypergeometric Distribution</h3>
+<p>Suppose now you have <img src="https://latex.codecogs.com/png.latex?N"> balls of which <img src="https://latex.codecogs.com/png.latex?n_1"> are of color 1, <img src="https://latex.codecogs.com/png.latex?n_2"> are of color 2, …, <img src="https://latex.codecogs.com/png.latex?n_r"> are of color <img src="https://latex.codecogs.com/png.latex?r"> (so that <img src="https://latex.codecogs.com/png.latex?n_1%20+%20n_2%20+%20%5Cdots%20+%20n_r%20=%20N">). You choose <img src="https://latex.codecogs.com/png.latex?m"> balls. What is the probability that <strong>exactly</strong> <img src="https://latex.codecogs.com/png.latex?k_1"> of the chosen balls are of color 1, <img src="https://latex.codecogs.com/png.latex?k_2"> of color 2, …, and <img src="https://latex.codecogs.com/png.latex?k_r"> of color <img src="https://latex.codecogs.com/png.latex?r"> (so that <img src="https://latex.codecogs.com/png.latex?k_1%20+%20k_2%20+%20%5Cdots%20+%20k_r%20=%20m">)?</p>
+<p>Now if we choose without order, the probability equals</p>
+<p><img src="https://latex.codecogs.com/png.latex?%5Cfrac%7B%5Cbinom%7Bn_1%7D%7Bk_1%7D%20%5Cbinom%7Bn_2%7D%7Bk_2%7D%20%5Ccdots%20%5Cbinom%7Bn_r%7D%7Bk_r%7D%7D%7B%5Cbinom%7BN%7D%7Bm%7D%7D"></p>
+<p>and the if we choose with order, the probability equals</p>
+<p><img src="https://latex.codecogs.com/png.latex?%20%5Cfrac%7Bm!%7D%7Bk_1!%20k_2!%20%5Ccdots%20k_r!%7D%20%5Ccdot%20%5Cfrac%7BP(n_1,%20k_1)%20P(n_2,%20k_2)%20%5Ccdots%20P(n_r,%20k_r)%7D%7BP(N,%20m)%7D"></p>
+<p>and again these two expressions are the same!</p>
 <div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -94,11 +123,12 @@ Question
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Why do you think this happens? Why is “with order” vs “without order” irrelevant to the problem statement?</p>
+<p>Why do you think this happens? Why is “with order” vs “without order” irrelevant to the problem statement? What’s a more direct way to see this?</p>
 </div>
 </div>
 
 
+</section>
 </section>
 
 <a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
@@ -238,61 +268,6 @@ Questions
   <category>fibonacci</category>
   <category>exploration</category>
   <guid>https://github.com/apurvanakade/second-drafts/988-nth-fibonacci.html</guid>
-  <pubDate>Mon, 11 Aug 2025 04:29:51 GMT</pubDate>
-</item>
-<item>
-  <title>The Poisson Paradox</title>
-  <dc:creator>Apurva Nakade</dc:creator>
-  <link>https://github.com/apurvanakade/second-drafts/drafts/poisson-paradox.html</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>I’ve started to appreciate more and more the fact that mathematics, and in particular probability, is only a model for reality. As such, when we try to describe a real world scenario using math we need to make several choices. Of course, we all know this but do we understand it on an intuitive level?</p>
-<section id="bus-waiting" class="level2">
-<h2 class="anchored" data-anchor-id="bus-waiting">Bus waiting</h2>
-<div class="callout callout-style-simple callout-none no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Problem
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>You need to catch a bus at a particular bus stop every day. Buses arrive <em>on average</em> every 20 mins. Suppose arrival of busses in independent of each other.</p>
-<p>If you arrive at the bus stop at random, is the expected time you need to wait?</p>
-</div>
-</div>
-<p>The assumption that the arrival of busses in independent of each other is a bit dubious. I would not believe it, for example, it this was the first stop of the bus. But if the bus route is long and you’re looking at say the 10th stop in the middle of the day, then perhaps this assumption is acceptable.</p>
-<p>With that out of the way, really think about the answer before peeking below.</p>
-<p>[insert simulation of buses here]</p>
-<p>[insert simulation of your arrival here]</p>
-<p>On average you need to wait 20 mins!! What’s going on?</p>
-</section>
-<section id="modeling-reality" class="level2">
-<h2 class="anchored" data-anchor-id="modeling-reality">Modeling Reality</h2>
-<p>The above problem is called the “Poisson Paradox” and like all mathematical paradoxes it only a paradox when you don’t understand what’s going on.</p>
-<p>In the problem statement, we have two assumptions:</p>
-<ol type="1">
-<li>Buses arrive <em>on average</em> every 20 mins.</li>
-<li>Arrival of busses in independent of each other.</li>
-</ol>
-<p>How do we model these mathematically? Let’s label the buses that arrive at the stop $B_1, B_2, B_3, $ and suppose their arrival times are $T_1, T_2, $. Then the two assumptions translate to</p>
-<ol type="1">
-<li><img src="https://latex.codecogs.com/png.latex?%5Cmathbb%7BE%7D(T_%7Bi+1%7D%20-%20T_i)%20=%2020">,</li>
-<li><img src="https://latex.codecogs.com/png.latex?T_1,%20T_2,%20T_3,%20%5Cdots"> are independent of each other.</li>
-</ol>
-<p>We are interested in answering the question: if we arrive at the bus stop at time <img src="https://latex.codecogs.com/png.latex?t"> and <img src="https://latex.codecogs.com/png.latex?B_i"> is the next bus to arrive, then what is <img src="https://latex.codecogs.com/png.latex?%5Cmathbb%7BE%7D(t%20-%20T_i)">?</p>
-
-
-</section>
-
-<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
-  <guid>https://github.com/apurvanakade/second-drafts/drafts/poisson-paradox.html</guid>
   <pubDate>Mon, 11 Aug 2025 04:29:51 GMT</pubDate>
 </item>
 <item>
@@ -1396,6 +1371,7 @@ font-style: inherit;">;</span></span>
 
 <a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
   <category>philosophy</category>
+  <category>learning</category>
   <category>teaching</category>
   <category>buddhism</category>
   <category>mindfulness</category>
