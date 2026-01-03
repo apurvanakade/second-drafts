@@ -2,7 +2,7 @@
 title: Why Programming?
 date: 2025-12-04 10:49:14
 author: Apurva Nakade
-categories: ["learning", "teaching"]
+categories: ["learning", "teaching", "AI"]
 ---
 
 I don't code much these days - AI does all the programming for me. I almost exclusively write programs in Python, and I do not like Python.
@@ -11,4 +11,5 @@ The first programming language I learned was C. This was before the internet. I 
 
 While I did all of this for fun, looking back, programming helped me become a better thinker. It taught me to break down a complex problem into smaller parts and work on the parts systematically. Now, from my vantage point as a teacher, I can say that programming was cross-training for math. In my mind the two are so enmeshed that I do not think of them as separate topics.
 
-This is what we're losing as we transition to vibe coding.
+This is what we're losing as we transition to the world of vibe coding. 
+
