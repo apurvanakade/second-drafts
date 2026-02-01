@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Apurva Nakade">
+<meta name="dcterms.date" content="2025-08-11">
 
-<title>Second Drafts</title>
+<title>Self-Fibonacci Numbers – Second Drafts</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,29 +25,29 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-8ef56b68f8fa1e9d2ba328e99e439f80.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-c1fac2584b48ed01fb6e278e36375074.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-a9957ab5e8b7c67643b7e2e6b5c1e54e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-c1fac2584b48ed01fb6e278e36375074.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../posts/architects-gardeners.html" rel="next">
+<link href="../posts/with-without-order.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-8ef56b68f8fa1e9d2ba328e99e439f80.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-c1fac2584b48ed01fb6e278e36375074.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-a9957ab5e8b7c67643b7e2e6b5c1e54e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-c1fac2584b48ed01fb6e278e36375074.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -72,35 +74,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-image','listing-date','listing-title','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -132,16 +105,16 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="styles.css">
-<meta property="og:title" content="Second Drafts">
-<meta property="og:description" content="A collection of mathematical musings">
-<meta property="og:image" content="https://github.com/apurvanakade/second-drafts/images/programming.png">
+<link rel="stylesheet" href="../styles.css">
+<meta property="og:title" content="Self-Fibonacci Numbers – Second Drafts">
+<meta property="og:description" content="">
+<meta property="og:image" content="https://github.com/apurvanakade/second-drafts/posts/nth-fibonacci_files/figure-html/cell-4-output-1.png">
 <meta property="og:site_name" content="Second Drafts">
-<meta property="og:image:height" content="1264">
-<meta property="og:image:width" content="848">
+<meta property="og:image:height" content="1516">
+<meta property="og:image:width" content="1515">
 </head>
 
-<body class="nav-sidebar floating nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-sidebar floating nav-fixed fullcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -306,11 +279,11 @@ window.Quarto = {
   </script>
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+  <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Second Drafts</span>
     </a>
   </div>
@@ -329,7 +302,7 @@ window.Quarto = {
 <span class="menu-text">Class Notes</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="../index.html"> 
 <span class="menu-text">(Math) Blog</span></a>
   </li>  
   <li class="nav-item">
@@ -355,104 +328,87 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Second Drafts</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../posts/nth-fibonacci.html">Self-Fibonacci Numbers</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
   </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-body">
-      <h1 class="title">Second Drafts</h1>
-            <p class="subtitle lead">A collection of mathematical musings</p>
-                      </div>
-  </div>
-    
-  
-  <div class="quarto-title-meta column-body">
-
-      
-    
-      
-    </div>
-    
-  
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./posts/programming.html" class="sidebar-item-text sidebar-link">
+  <a href="../posts/programming.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Why Programming?</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./posts/with-without-order.html" class="sidebar-item-text sidebar-link">
+  <a href="../posts/with-without-order.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">With or Without Order</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./posts/nth-fibonacci.html" class="sidebar-item-text sidebar-link">
+  <a href="../posts/nth-fibonacci.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Self-Fibonacci Numbers</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./posts/architects-gardeners.html" class="sidebar-item-text sidebar-link">
+  <a href="../posts/architects-gardeners.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Architects and Gardeners</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./posts/remembering-learning.html" class="sidebar-item-text sidebar-link">
+  <a href="../posts/remembering-learning.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Learning is Remembering</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./posts/bayes-theorem.html" class="sidebar-item-text sidebar-link">
+  <a href="../posts/bayes-theorem.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Bayes Theorem</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./posts/sperners-lemma-geometric-proof.html" class="sidebar-item-text sidebar-link">
+  <a href="../posts/sperners-lemma-geometric-proof.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Sperner’s Lemma - Geometric Proof</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./posts/sperners-lemma-combinatorial-proof.html" class="sidebar-item-text sidebar-link">
+  <a href="../posts/sperners-lemma-combinatorial-proof.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Sperner’s Lemma - Combinatorial Proof</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./posts/sperners-lemma-statement.html" class="sidebar-item-text sidebar-link">
+  <a href="../posts/sperners-lemma-statement.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Sperner’s Lemma - Statement</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./posts/random-points-in-a-triangle.html" class="sidebar-item-text sidebar-link">
+  <a href="../posts/random-points-in-a-triangle.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Random points in a triangle</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./posts/barycentric-coordinates.html" class="sidebar-item-text sidebar-link">
+  <a href="../posts/barycentric-coordinates.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Barycentric Coordinates</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./posts/begin-again.html" class="sidebar-item-text sidebar-link">
+  <a href="../posts/begin-again.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Begin Again</span></a>
   </div>
 </li>
@@ -461,404 +417,171 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(12)</span></div><div class="category" data-category="YWZmaW5lJTIwZ2VvbWV0cnk=">affine geometry <span class="quarto-category-count">(1)</span></div><div class="category" data-category="QUk=">AI <span class="quarto-category-count">(1)</span></div><div class="category" data-category="YmFyeWNlbnRyaWMlMjBjb29yZGluYXRlcw==">barycentric coordinates <span class="quarto-category-count">(1)</span></div><div class="category" data-category="YnVkZGhpc20=">buddhism <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y29sb3Jpbmc=">coloring <span class="quarto-category-count">(3)</span></div><div class="category" data-category="Y29tYmluYXRvcmljcw==">combinatorics <span class="quarto-category-count">(2)</span></div><div class="category" data-category="ZGV0ZXJtaW5hbnQ=">determinant <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZXhwbG9yYXRpb24=">exploration <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Zmlib25hY2Np">fibonacci <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Z3JlZWtz">greeks <span class="quarto-category-count">(1)</span></div><div class="category" data-category="aW50ZXJhY3RpdmU=">interactive <span class="quarto-category-count">(4)</span></div><div class="category" data-category="bGVhcm5pbmc=">learning <span class="quarto-category-count">(2)</span></div><div class="category" data-category="bWluZGZ1bG5lc3M=">mindfulness <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bnVtYmVyJTIwdGhlb3J5">number theory <span class="quarto-category-count">(1)</span></div><div class="category" data-category="b3Blbg==">open <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cGhpbG9zb3BoeQ==">philosophy <span class="quarto-category-count">(2)</span></div><div class="category" data-category="cHJvYmFiaWxpdHk=">probability <span class="quarto-category-count">(2)</span></div><div class="category" data-category="cHV6emxl">puzzle <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cXVlc3Rpb25z">questions <span class="quarto-category-count">(3)</span></div><div class="category" data-category="cmFuZG9tbmVzcw==">randomness <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cmVzZWFyY2g=">research <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dGVhY2hpbmc=">teaching <span class="quarto-category-count">(3)</span></div><div class="category" data-category="dHJpYW5nbGVz">triangles <span class="quarto-category-count">(5)</span></div><div class="category" data-category="dmlzdWFsaXphdGlvbg==">visualization <span class="quarto-category-count">(5)</span></div><div class="category" data-category="d3JpdGluZw==">writing <span class="quarto-category-count">(1)</span></div></div></div>
+    
 <!-- main -->
-<main class="content quarto-banner-title-block column-body" id="quarto-document-content">
-
-
-
-
-
-
-
-
-
-
-<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
-<div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-categories="bGVhcm5pbmclMkN0ZWFjaGluZyUyQ0FJ" data-listing-date-sort="1764824400000" data-listing-file-modified-sort="1769958520315" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="184">
-<a href="./posts/programming.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./images/programming.png" class="thumbnail-image card-img" style="height: 250px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Why Programming?
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('bGVhcm5pbmc='); return false;">learning</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('dGVhY2hpbmc='); return false;">teaching</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('QUk='); return false;">AI</div>
-
-</div>
-<div class="card-text listing-description delink">
-I don’t code much these days - AI does all the programming for me. I almost exclusively write programs in Python, and I do not like Python.
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-Dec 4, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="1" data-categories="cHJvYmFiaWxpdHklMkNwdXp6bGU=" data-listing-date-sort="1764219600000" data-listing-file-modified-sort="1769959044770" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="453">
-<a href="./posts/with-without-order.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./images/order-matters.png" class="thumbnail-image card-img" style="height: 250px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-With or Without Order
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('cHJvYmFiaWxpdHk='); return false;">probability</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('cHV6emxl'); return false;">puzzle</div>
-
-</div>
-<div class="card-text listing-description delink">
-Here’s a question about basic probability theory that a student once asked me in class: When computing probabilities, does “choosing with order” vs “choosing without order”…
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-Nov 27, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="2" data-categories="bnVtYmVyJTIwdGhlb3J5JTJDcmVzZWFyY2glMkNvcGVuJTJDZmlib25hY2NpJTJDZXhwbG9yYXRpb24=" data-listing-date-sort="1754884800000" data-listing-file-modified-sort="1769958520311" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1431">
-<a href="./posts/nth-fibonacci.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="posts/nth-fibonacci_files/figure-html/cell-4-output-1.png" style="height: 250px;"  class="thumbnail-image card-img"/></p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Self-Fibonacci Numbers
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('bnVtYmVyJTIwdGhlb3J5'); return false;">number theory</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('cmVzZWFyY2g='); return false;">research</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('b3Blbg=='); return false;">open</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Zmlib25hY2Np'); return false;">fibonacci</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('ZXhwbG9yYXRpb24='); return false;">exploration</div>
-
-</div>
-<div class="card-text listing-description delink">
-Here’s a seemingly simple question that lacks a clean solution:
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-Aug 11, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="3" data-categories="cGhpbG9zb3BoeSUyQ3RlYWNoaW5n" data-listing-date-sort="1752724800000" data-listing-file-modified-sort="1769959459101" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1282">
-<a href="./posts/architects-gardeners.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./images/architects-gardeners.png" class="thumbnail-image card-img" style="height: 250px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Architects and Gardeners
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('cGhpbG9zb3BoeQ=='); return false;">philosophy</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('dGVhY2hpbmc='); return false;">teaching</div>
-
-</div>
-<div class="card-text listing-description delink">
-“I think there are two types of writers, the architects and the gardeners. The architects plan everything ahead of time, like an architect building a house. They know how…<em></em>
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-Jul 17, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="4" data-categories="cGhpbG9zb3BoeSUyQ2xlYXJuaW5nJTJDdGVhY2hpbmclMkNidWRkaGlzbSUyQ21pbmRmdWxuZXNzJTJDZ3JlZWtz" data-listing-date-sort="1751169600000" data-listing-file-modified-sort="1769958520322" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="160">
-<a href="./posts/remembering-learning.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./images/learning.png" class="thumbnail-image card-img" style="height: 250px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Learning is Remembering
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('cGhpbG9zb3BoeQ=='); return false;">philosophy</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('bGVhcm5pbmc='); return false;">learning</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('dGVhY2hpbmc='); return false;">teaching</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('YnVkZGhpc20='); return false;">buddhism</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('bWluZGZ1bG5lc3M='); return false;">mindfulness</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Z3JlZWtz'); return false;">greeks</div>
-
-</div>
-<div class="card-text listing-description delink">
-In Greek philosophy there is a theory of “anamnesis,” mostly due to Plato and Socrates, which roughly means “learning is remembering,” that wisdom is already inside you and…
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-Jun 29, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="5" data-categories="cHJvYmFiaWxpdHklMkN2aXN1YWxpemF0aW9u" data-listing-date-sort="1748836800000" data-listing-file-modified-sort="1769958520301" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1300">
-<a href="./posts/bayes-theorem.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./images/bayes.png" class="thumbnail-image card-img" style="height: 250px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Bayes Theorem
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('cHJvYmFiaWxpdHk='); return false;">probability</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('dmlzdWFsaXphdGlvbg=='); return false;">visualization</div>
-
-</div>
-<div class="card-text listing-description delink">
-Here’s a classic probability problem that illustrates this challenge. A standard mammogram test has, say, 80% sensitivity and 90% specificity. This means if you have breast…
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-Jun 2, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="6" data-categories="dHJpYW5nbGVzJTJDY29sb3JpbmclMkNxdWVzdGlvbnMlMkN2aXN1YWxpemF0aW9uJTJDaW50ZXJhY3RpdmUlMkNkZXRlcm1pbmFudA==" data-listing-date-sort="1748145600000" data-listing-file-modified-sort="1769958520330" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2091">
-<a href="./posts/sperners-lemma-geometric-proof.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./images/sperner-geo.png" class="thumbnail-image card-img" style="height: 250px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Sperner’s Lemma - Geometric Proof
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('dHJpYW5nbGVz'); return false;">triangles</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Y29sb3Jpbmc='); return false;">coloring</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('cXVlc3Rpb25z'); return false;">questions</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('dmlzdWFsaXphdGlvbg=='); return false;">visualization</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('aW50ZXJhY3RpdmU='); return false;">interactive</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('ZGV0ZXJtaW5hbnQ='); return false;">determinant</div>
-
-</div>
-<div class="card-text listing-description delink">
-This is my new favorite proof of Sperner’s lemma. In the following app the vertices are slowly morphed to the “cardinal” <code>R</code>, <code>G</code>, <code>B</code> vertices with time while preserving the…<span style="background-color:rgba(255, 99, 71, 0.5)"></span><span style="background-color:rgba(72, 209, 204, 0.5)"></span>
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-May 25, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="7" data-categories="Y29tYmluYXRvcmljcyUyQ3RyaWFuZ2xlcyUyQ2NvbG9yaW5nJTJDdmlzdWFsaXphdGlvbiUyQ2ludGVyYWN0aXZlJTJDcXVlc3Rpb25z" data-listing-date-sort="1747368000000" data-listing-file-modified-sort="1769958520326" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="16" data-listing-word-count-sort="3048">
-<a href="./posts/sperners-lemma-combinatorial-proof.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./images/sperner-combo.png" class="thumbnail-image card-img" style="height: 250px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Sperner’s Lemma - Combinatorial Proof
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('Y29tYmluYXRvcmljcw=='); return false;">combinatorics</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('dHJpYW5nbGVz'); return false;">triangles</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Y29sb3Jpbmc='); return false;">coloring</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('dmlzdWFsaXphdGlvbg=='); return false;">visualization</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('aW50ZXJhY3RpdmU='); return false;">interactive</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('cXVlc3Rpb25z'); return false;">questions</div>
-
-</div>
-<div class="card-text listing-description delink">
-This picture is a combinatorial proof of Sperner’s Lemma.
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-May 16, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="8" data-categories="Y29tYmluYXRvcmljcyUyQ3RyaWFuZ2xlcyUyQ2NvbG9yaW5nJTJDcXVlc3Rpb25zJTJDdmlzdWFsaXphdGlvbiUyQ2ludGVyYWN0aXZl" data-listing-date-sort="1747195200000" data-listing-file-modified-sort="1769958520334" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1676">
-<a href="./posts/sperners-lemma-statement.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./images/sperner-statement.png" class="thumbnail-image card-img" style="height: 250px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Sperner’s Lemma - Statement
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('Y29tYmluYXRvcmljcw=='); return false;">combinatorics</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('dHJpYW5nbGVz'); return false;">triangles</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Y29sb3Jpbmc='); return false;">coloring</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('cXVlc3Rpb25z'); return false;">questions</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('dmlzdWFsaXphdGlvbg=='); return false;">visualization</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('aW50ZXJhY3RpdmU='); return false;">interactive</div>
-
-</div>
-<div class="card-text listing-description delink">
-&nbsp;
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-May 14, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="9" data-categories="cmFuZG9tbmVzcyUyQ3RyaWFuZ2xlcyUyQ2JhcnljZW50cmljJTIwY29vcmRpbmF0ZXM=" data-listing-date-sort="1747022400000" data-listing-file-modified-sort="1769958520318" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1060">
-<a href="./posts/random-points-in-a-triangle.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./images/random-points-triangle.png" class="thumbnail-image card-img" style="height: 250px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Random points in a triangle
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('cmFuZG9tbmVzcw=='); return false;">randomness</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('dHJpYW5nbGVz'); return false;">triangles</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('YmFyeWNlbnRyaWMlMjBjb29yZGluYXRlcw=='); return false;">barycentric coordinates</div>
-
-</div>
-<div class="card-text listing-description delink">
-Randomness is a surprisingly hard thing to simulate. Any program, by definition, has a predictable output. The best you can hope for is to predictably generate points that <em>lo…</em>
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-May 12, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="10" data-categories="YWZmaW5lJTIwZ2VvbWV0cnklMkN0cmlhbmdsZXMlMkNpbnRlcmFjdGl2ZSUyQ3Zpc3VhbGl6YXRpb24=" data-listing-date-sort="1746936000000" data-listing-file-modified-sort="1769958520296" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="12" data-listing-word-count-sort="2331">
-<a href="./posts/barycentric-coordinates.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./images/barycentric-coordinates.png" class="thumbnail-image card-img" style="height: 250px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Barycentric Coordinates
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('YWZmaW5lJTIwZ2VvbWV0cnk='); return false;">affine geometry</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('dHJpYW5nbGVz'); return false;">triangles</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('aW50ZXJhY3RpdmU='); return false;">interactive</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('dmlzdWFsaXphdGlvbg=='); return false;">visualization</div>
-
-</div>
-<div class="card-text listing-description delink">
-<strong>Barycentric coordinates</strong> are a coordinate system for describing points inside a triangle.
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-May 11, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="11" data-categories="d3JpdGluZw==" data-listing-date-sort="1746244800000" data-listing-file-modified-sort="1769958520304" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="296">
-<a href="./posts/begin-again.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./images/begin again.png" class="thumbnail-image card-img" style="height: 250px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Begin Again
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('d3JpdGluZw=='); return false;">writing</div>
-
-</div>
-<div class="card-text listing-description delink">
-I opened this page with a clear idea of what I wanted to write. I’ve now spent the last half hour updating quarto, setting up a new git repository, fixing a git merge issue…
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-May 3, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div><a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+<main class="content" id="quarto-document-content">
+
+<div style="margin-bottom: 2rem;">
+  <a href="../index.html" style="text-decoration: none; color: inherit;">
+    <span style="font-size: 1.1rem;">← Back to all posts</span>
+  </a>
+</div>
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Self-Fibonacci Numbers</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">number theory</div>
+    <div class="quarto-category">research</div>
+    <div class="quarto-category">open</div>
+    <div class="quarto-category">fibonacci</div>
+    <div class="quarto-category">exploration</div>
+  </div>
+  </div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Apurva Nakade </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">August 11, 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Here’s a seemingly simple question that lacks a clean solution:</p>
+<blockquote class="blockquote">
+<p>For what positive integers <span class="math inline">\(n\)</span> does <span class="math inline">\(n\)</span> divide <span class="math inline">\(F_n\)</span>, where <span class="math inline">\(F_n\)</span> denotes the <span class="math inline">\(n^{\text{th}}\)</span> Fibonacci number?</p>
+</blockquote>
+<p>According to the On-Line Encyclopedia of Integer Sequences (OEIS), such numbers are called “Self-Fibonacci numbers”: <a href="https://oeis.org/A023172">https://oeis.org/A023172</a>. The sequence begins:</p>
+<blockquote class="blockquote">
+<p>1, 5, 12, 24, 25, 36, 48, 60, 72, 96, 108, 120, 125, 144, 168, 180, 192, 216, 240, 288, 300, 324, 336, 360, 384, 432, 480, 504, 540, 552, 576, 600, 612, 625, 648, 660, 672, 684, 720, 768, 840, 864, 900, 960, 972, 1008, 1080, 1104, 1152, 1176, 1200, 1224, 1296, 1320</p>
+</blockquote>
+<p>One approach to this question is as follows:</p>
+<p>Let <span class="math inline">\(\alpha(n)\)</span> be the smallest positive integer <span class="math inline">\(k\)</span> such that <span class="math inline">\(n \mid F_k\)</span>. Note that if <span class="math inline">\(n \mid F_k\)</span>, then <span class="math inline">\(n \mid F_{mk}\)</span> for all positive integers <span class="math inline">\(m\)</span>. Therefore, the self-Fibonacci numbers are exactly those for which <span class="math inline">\(\alpha(n) \mid n\)</span>.</p>
+<p>This sequence is fascinating, with apparently no simple formula! I explored the following related question:</p>
+<blockquote class="blockquote">
+<p>For what positive integers <span class="math inline">\(n\)</span> does <span class="math inline">\(\alpha(n) = n\)</span>?</p>
+</blockquote>
+<p>Here’s the list of such numbers up to 10,000.</p>
+<div id="bd70af13" class="cell" data-execution_count="3">
+<div class="cell-output cell-output-stdout">
+<pre><code>Values of n where α(n) = n (up to 10000):
+[1, 5, 12, 25, 60, 125, 300, 625, 1500, 3125, 7500]</code></pre>
+</div>
+</div>
+<p>This is a much simpler question, and the sequence appears to consist of all numbers that are powers of 5 or 12 times a power of 5. The OEIS entry for this sequence is <a href="https://oeis.org/A289586">https://oeis.org/A289586</a>.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Conjecture
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The only integers <span class="math inline">\(n\)</span> such that <span class="math inline">\(\alpha(n) = n\)</span> are of the form <span class="math inline">\(5^k\)</span> or <span class="math inline">\(12 \cdot 5^k\)</span> for some non-negative integer <span class="math inline">\(k\)</span>.</p>
+</div>
+</div>
+<p>I’m not certain this is true, but it holds for all integers up to 10,000. I’m also interested in understanding the distribution of <span class="math inline">\(n / \alpha(n)\)</span>. When plotting <span class="math inline">\(n / \alpha(n)\)</span>, most values fall above 1, though some are less than or equal to 1.</p>
+<p>Below is a table of <span class="math inline">\(n / \alpha(n)\)</span> for all integers <span class="math inline">\(n\)</span> up to 10,000. Surprisingly, the most common value is not 1 but <span class="math inline">\(4/3\)</span>.</p>
+<p>I wonder what patterns exist in the ratios <span class="math inline">\(n / \alpha(n)\)</span>…</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Questions
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><p>What is the distribution of the ratios <span class="math inline">\(n / \alpha(n)\)</span>?</p></li>
+<li><p>For every integer <span class="math inline">\(k\)</span>, is there some integer <span class="math inline">\(n\)</span> such that <span class="math inline">\(n / \alpha(n) = k\)</span>?</p></li>
+<li><p>Can we exploit the fact that</p>
+<p><span class="math display">\[
+F_k = \dfrac{1}{\sqrt{5}} \left( \phi^k - \psi^k \right)
+\]</span></p>
+<p>where <span class="math inline">\(\phi = \frac{1 + \sqrt{5}}{2}\)</span> and <span class="math inline">\(\psi = \frac{1 - \sqrt{5}}{2}\)</span>, to find a closed form for <span class="math inline">\(\alpha(n)\)</span>? We know that <span class="math inline">\(\mathbb{Z}[\phi]\)</span> is a Euclidean domain so we can have access to number theoretic tools such as divisibility and the Euclidean algorithm.</p></li>
+</ul>
+</div>
+</div>
+<div id="06b794aa" class="cell" data-execution_count="4">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="nth-fibonacci_files/figure-html/cell-4-output-1.png" width="758" height="758" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="71ed475c" class="cell" data-execution_count="7">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="nth-fibonacci_files/figure-html/cell-7-output-1.png" width="758" height="566" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="e0083a5c" class="cell" data-execution_count="8">
+<div class="cell-output cell-output-stdout">
+<pre><code>|   n / α(n) |   count | n values                                                                                                                                                            |
+|-----------:|--------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|   1.33333  |      31 | 8, 16, 32, 40, 64, 80, 128, 160, 200, 256, 320, 400, 512, 640, 800, 1000, 1024, 1280, 1600, 2000, 2048, 2560, 3200, 4000, 4096, 5000, 5120, 6400, 8000, 8192, 10000 |
+|   2.625    |      29 | 21, 63, 105, 147, 189, 315, 441, 525, 567, 735, 945, 1029, 1323, 1575, 1701, 2205, 2625, 2835, 3087, 3675, 3969, 4725, 5103, 5145, 6615, 7203, 7875, 8505, 9261     |
+|  12        |      27 | 144, 288, 432, 576, 720, 864, 1152, 1296, 1440, 1728, 2160, 2304, 2592, 2880, 3456, 3600, 3888, 4320, 4608, 5184, 5760, 6480, 6912, 7200, 7776, 8640, 9216          |
+|   0.75     |      25 | 3, 9, 15, 27, 45, 75, 81, 135, 225, 243, 375, 405, 675, 729, 1125, 1215, 1875, 2025, 2187, 3375, 3645, 5625, 6075, 6561, 9375                                       |
+|   1.39286  |      20 | 39, 117, 195, 351, 507, 585, 975, 1053, 1521, 1755, 2535, 2925, 3159, 4563, 4875, 5265, 6591, 7605, 8775, 9477                                                      |
+|   4        |      19 | 48, 96, 192, 240, 384, 480, 768, 960, 1200, 1536, 1920, 2400, 3072, 3840, 4800, 6000, 6144, 7680, 9600                                                              |
+|   2.47619  |      18 | 104, 208, 416, 520, 832, 1040, 1352, 1664, 2080, 2600, 2704, 3328, 4160, 5200, 5408, 6656, 6760, 8320                                                               |
+|   1.5      |      16 | 18, 54, 90, 162, 270, 450, 486, 810, 1350, 1458, 2250, 2430, 4050, 4374, 6750, 7290                                                                                 |
+|   7.55556  |      16 | 136, 272, 544, 680, 1088, 1360, 2176, 2312, 2720, 3400, 4352, 4624, 5440, 6800, 8704, 9248                                                                          |
+|   9.33333  |      15 | 224, 448, 896, 1120, 1568, 1792, 2240, 3136, 3584, 4480, 5600, 6272, 7168, 7840, 8960                                                                               |
+|   8.44444  |      15 | 152, 304, 608, 760, 1216, 1520, 2432, 2888, 3040, 3800, 4864, 5776, 6080, 7600, 9728                                                                                |
+|   1.2381   |      15 | 26, 52, 130, 260, 338, 650, 676, 1300, 1690, 3250, 3380, 4394, 6500, 8450, 8788                                                                                     |
+|   5.25     |      14 | 126, 378, 630, 882, 1134, 1890, 2646, 3150, 3402, 4410, 5670, 6174, 7938, 9450                                                                                      |
+|   3        |      14 | 36, 108, 180, 324, 540, 900, 972, 1620, 2700, 2916, 4500, 4860, 8100, 8748                                                                                          |
+|   1.85714  |      13 | 13, 65, 156, 169, 325, 780, 845, 1625, 2028, 2197, 3900, 4225, 8125                                                                                                 |
+|   3.77778  |      13 | 34, 68, 170, 340, 578, 850, 1156, 1700, 2890, 4250, 5780, 8500, 9826                                                                                                |
+|   0.875    |      13 | 7, 35, 49, 175, 245, 343, 875, 1225, 1715, 2401, 4375, 6125, 8575                                                                                                   |
+|   3.10714  |      12 | 87, 261, 435, 783, 1305, 2175, 2349, 2523, 3915, 6525, 7047, 7569                                                                                                   |
+|   6        |      12 | 72, 216, 360, 648, 1080, 1800, 1944, 3240, 5400, 5832, 9000, 9720                                                                                                   |
+|   5.52381  |      12 | 232, 464, 928, 1160, 1856, 2320, 3712, 4640, 5800, 6728, 7424, 9280                                                                                                 |
+|   2.93333  |      11 | 88, 176, 352, 704, 968, 1408, 1936, 2816, 3872, 5632, 7744                                                                                                          |
+|   5.5      |      11 | 55, 275, 330, 605, 1375, 1650, 3025, 3630, 6655, 6875, 8250                                                                                                         |
+|   8.25     |      11 | 165, 495, 825, 1485, 1815, 2475, 4125, 4455, 5445, 7425, 9075                                                                                                       |
+|   1.46053  |      11 | 111, 333, 555, 999, 1665, 2775, 2997, 4107, 4995, 8325, 8991                                                                                                        |
+|   1        |      11 | 1, 5, 12, 25, 60, 125, 300, 625, 1500, 3125, 7500                                                                                                                   |
+|   0.583333 |      11 | 14, 70, 98, 350, 490, 686, 1750, 2450, 3430, 4802, 8750                                                                                                             |
+|   1.65     |      11 | 33, 99, 297, 363, 891, 1089, 2673, 3267, 3993, 8019, 9801                                                                                                           |
+|   0.666667 |      11 | 2, 4, 10, 20, 50, 100, 250, 500, 1250, 2500, 6250                                                                                                                   |
+|  10.5      |      10 | 252, 756, 1260, 1764, 2268, 3780, 5292, 6300, 6804, 8820                                                                                                            |
+|   1.16667  |      10 | 28, 140, 196, 700, 980, 1372, 3500, 4900, 6860, 9604                                                                                                                |</code></pre>
+</div>
+</div>
+
+
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
@@ -1303,6 +1026,18 @@ May 3, 2025
   }
   loadGiscus();
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../posts/with-without-order.html" class="pagination-link" aria-label="With or Without Order">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">With or Without Order</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../posts/architects-gardeners.html" class="pagination-link" aria-label="Architects and Gardeners">
+        <span class="nav-page-text">Architects and Gardeners</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">

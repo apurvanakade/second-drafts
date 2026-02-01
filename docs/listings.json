@@ -2,19 +2,18 @@
   {
     "listing": "/index.html",
     "items": [
-      "/986-programming.html",
-      "/987-with-without-order.html",
-      "/988-nth-fibonacci.html",
-      "/989-architects-gardeners.html",
-      "/990-remembering-learning.html",
-      "/991-bayes-theorem.html",
-      "/992-sperners-lemma-geometric-proof.html",
-      "/993-sperners-lemma-combinatorial-proof.html",
-      "/994-sperners-lemma-statement.html",
-      "/996-random-points-in-a-triangle.html",
-      "/997-hopkins-really-cares.html",
-      "/998-barycentric-coordinates.html",
-      "/999-begin-again.html"
+      "/posts/programming.html",
+      "/posts/with-without-order.html",
+      "/posts/nth-fibonacci.html",
+      "/posts/architects-gardeners.html",
+      "/posts/remembering-learning.html",
+      "/posts/bayes-theorem.html",
+      "/posts/sperners-lemma-geometric-proof.html",
+      "/posts/sperners-lemma-combinatorial-proof.html",
+      "/posts/sperners-lemma-statement.html",
+      "/posts/random-points-in-a-triangle.html",
+      "/posts/barycentric-coordinates.html",
+      "/posts/begin-again.html"
     ]
   }
 ]

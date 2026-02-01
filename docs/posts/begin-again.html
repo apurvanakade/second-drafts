@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Apurva Nakade">
+<meta name="dcterms.date" content="2025-05-03">
 
-<title>Second Drafts</title>
+<title>Begin Again – Second Drafts</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,29 +25,28 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-8ef56b68f8fa1e9d2ba328e99e439f80.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-c1fac2584b48ed01fb6e278e36375074.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-a9957ab5e8b7c67643b7e2e6b5c1e54e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-c1fac2584b48ed01fb6e278e36375074.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../posts/barycentric-coordinates.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-8ef56b68f8fa1e9d2ba328e99e439f80.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-c1fac2584b48ed01fb6e278e36375074.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-a9957ab5e8b7c67643b7e2e6b5c1e54e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-c1fac2584b48ed01fb6e278e36375074.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -72,76 +73,18 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-image','listing-date','listing-title','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="styles.css">
-<meta property="og:title" content="Second Drafts">
-<meta property="og:description" content="A collection of mathematical musings">
-<meta property="og:image" content="https://github.com/apurvanakade/second-drafts/images/programming.png">
+<link rel="stylesheet" href="../styles.css">
+<meta property="og:title" content="Begin Again – Second Drafts">
+<meta property="og:description" content="">
+<meta property="og:image" content="https://github.com/apurvanakade/second-drafts/images/begin again.png">
 <meta property="og:site_name" content="Second Drafts">
-<meta property="og:image:height" content="1264">
-<meta property="og:image:width" content="848">
+<meta property="og:image:height" content="1024">
+<meta property="og:image:width" content="1536">
 </head>
 
-<body class="nav-sidebar floating nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-sidebar floating nav-fixed fullcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -306,11 +249,11 @@ window.Quarto = {
   </script>
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+  <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Second Drafts</span>
     </a>
   </div>
@@ -329,7 +272,7 @@ window.Quarto = {
 <span class="menu-text">Class Notes</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="../index.html"> 
 <span class="menu-text">(Math) Blog</span></a>
   </li>  
   <li class="nav-item">
@@ -355,104 +298,87 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Second Drafts</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../posts/begin-again.html">Begin Again</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
   </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-body">
-      <h1 class="title">Second Drafts</h1>
-            <p class="subtitle lead">A collection of mathematical musings</p>
-                      </div>
-  </div>
-    
-  
-  <div class="quarto-title-meta column-body">
-
-      
-    
-      
-    </div>
-    
-  
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./posts/programming.html" class="sidebar-item-text sidebar-link">
+  <a href="../posts/programming.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Why Programming?</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./posts/with-without-order.html" class="sidebar-item-text sidebar-link">
+  <a href="../posts/with-without-order.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">With or Without Order</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./posts/nth-fibonacci.html" class="sidebar-item-text sidebar-link">
+  <a href="../posts/nth-fibonacci.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Self-Fibonacci Numbers</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./posts/architects-gardeners.html" class="sidebar-item-text sidebar-link">
+  <a href="../posts/architects-gardeners.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Architects and Gardeners</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./posts/remembering-learning.html" class="sidebar-item-text sidebar-link">
+  <a href="../posts/remembering-learning.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Learning is Remembering</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./posts/bayes-theorem.html" class="sidebar-item-text sidebar-link">
+  <a href="../posts/bayes-theorem.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Bayes Theorem</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./posts/sperners-lemma-geometric-proof.html" class="sidebar-item-text sidebar-link">
+  <a href="../posts/sperners-lemma-geometric-proof.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Sperner’s Lemma - Geometric Proof</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./posts/sperners-lemma-combinatorial-proof.html" class="sidebar-item-text sidebar-link">
+  <a href="../posts/sperners-lemma-combinatorial-proof.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Sperner’s Lemma - Combinatorial Proof</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./posts/sperners-lemma-statement.html" class="sidebar-item-text sidebar-link">
+  <a href="../posts/sperners-lemma-statement.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Sperner’s Lemma - Statement</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./posts/random-points-in-a-triangle.html" class="sidebar-item-text sidebar-link">
+  <a href="../posts/random-points-in-a-triangle.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Random points in a triangle</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./posts/barycentric-coordinates.html" class="sidebar-item-text sidebar-link">
+  <a href="../posts/barycentric-coordinates.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Barycentric Coordinates</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./posts/begin-again.html" class="sidebar-item-text sidebar-link">
+  <a href="../posts/begin-again.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Begin Again</span></a>
   </div>
 </li>
@@ -461,404 +387,60 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(12)</span></div><div class="category" data-category="YWZmaW5lJTIwZ2VvbWV0cnk=">affine geometry <span class="quarto-category-count">(1)</span></div><div class="category" data-category="QUk=">AI <span class="quarto-category-count">(1)</span></div><div class="category" data-category="YmFyeWNlbnRyaWMlMjBjb29yZGluYXRlcw==">barycentric coordinates <span class="quarto-category-count">(1)</span></div><div class="category" data-category="YnVkZGhpc20=">buddhism <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y29sb3Jpbmc=">coloring <span class="quarto-category-count">(3)</span></div><div class="category" data-category="Y29tYmluYXRvcmljcw==">combinatorics <span class="quarto-category-count">(2)</span></div><div class="category" data-category="ZGV0ZXJtaW5hbnQ=">determinant <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZXhwbG9yYXRpb24=">exploration <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Zmlib25hY2Np">fibonacci <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Z3JlZWtz">greeks <span class="quarto-category-count">(1)</span></div><div class="category" data-category="aW50ZXJhY3RpdmU=">interactive <span class="quarto-category-count">(4)</span></div><div class="category" data-category="bGVhcm5pbmc=">learning <span class="quarto-category-count">(2)</span></div><div class="category" data-category="bWluZGZ1bG5lc3M=">mindfulness <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bnVtYmVyJTIwdGhlb3J5">number theory <span class="quarto-category-count">(1)</span></div><div class="category" data-category="b3Blbg==">open <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cGhpbG9zb3BoeQ==">philosophy <span class="quarto-category-count">(2)</span></div><div class="category" data-category="cHJvYmFiaWxpdHk=">probability <span class="quarto-category-count">(2)</span></div><div class="category" data-category="cHV6emxl">puzzle <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cXVlc3Rpb25z">questions <span class="quarto-category-count">(3)</span></div><div class="category" data-category="cmFuZG9tbmVzcw==">randomness <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cmVzZWFyY2g=">research <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dGVhY2hpbmc=">teaching <span class="quarto-category-count">(3)</span></div><div class="category" data-category="dHJpYW5nbGVz">triangles <span class="quarto-category-count">(5)</span></div><div class="category" data-category="dmlzdWFsaXphdGlvbg==">visualization <span class="quarto-category-count">(5)</span></div><div class="category" data-category="d3JpdGluZw==">writing <span class="quarto-category-count">(1)</span></div></div></div>
+    
 <!-- main -->
-<main class="content quarto-banner-title-block column-body" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
-
-
-
-
-
-
-
-
-
-<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
-<div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-categories="bGVhcm5pbmclMkN0ZWFjaGluZyUyQ0FJ" data-listing-date-sort="1764824400000" data-listing-file-modified-sort="1769958520315" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="184">
-<a href="./posts/programming.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./images/programming.png" class="thumbnail-image card-img" style="height: 250px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Why Programming?
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('bGVhcm5pbmc='); return false;">learning</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('dGVhY2hpbmc='); return false;">teaching</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('QUk='); return false;">AI</div>
-
-</div>
-<div class="card-text listing-description delink">
-I don’t code much these days - AI does all the programming for me. I almost exclusively write programs in Python, and I do not like Python.
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-Dec 4, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="1" data-categories="cHJvYmFiaWxpdHklMkNwdXp6bGU=" data-listing-date-sort="1764219600000" data-listing-file-modified-sort="1769959044770" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="453">
-<a href="./posts/with-without-order.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./images/order-matters.png" class="thumbnail-image card-img" style="height: 250px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-With or Without Order
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('cHJvYmFiaWxpdHk='); return false;">probability</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('cHV6emxl'); return false;">puzzle</div>
-
-</div>
-<div class="card-text listing-description delink">
-Here’s a question about basic probability theory that a student once asked me in class: When computing probabilities, does “choosing with order” vs “choosing without order”…
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-Nov 27, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="2" data-categories="bnVtYmVyJTIwdGhlb3J5JTJDcmVzZWFyY2glMkNvcGVuJTJDZmlib25hY2NpJTJDZXhwbG9yYXRpb24=" data-listing-date-sort="1754884800000" data-listing-file-modified-sort="1769958520311" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1431">
-<a href="./posts/nth-fibonacci.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="posts/nth-fibonacci_files/figure-html/cell-4-output-1.png" style="height: 250px;"  class="thumbnail-image card-img"/></p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Self-Fibonacci Numbers
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('bnVtYmVyJTIwdGhlb3J5'); return false;">number theory</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('cmVzZWFyY2g='); return false;">research</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('b3Blbg=='); return false;">open</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Zmlib25hY2Np'); return false;">fibonacci</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('ZXhwbG9yYXRpb24='); return false;">exploration</div>
-
-</div>
-<div class="card-text listing-description delink">
-Here’s a seemingly simple question that lacks a clean solution:
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-Aug 11, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="3" data-categories="cGhpbG9zb3BoeSUyQ3RlYWNoaW5n" data-listing-date-sort="1752724800000" data-listing-file-modified-sort="1769959459101" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1282">
-<a href="./posts/architects-gardeners.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./images/architects-gardeners.png" class="thumbnail-image card-img" style="height: 250px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Architects and Gardeners
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('cGhpbG9zb3BoeQ=='); return false;">philosophy</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('dGVhY2hpbmc='); return false;">teaching</div>
-
-</div>
-<div class="card-text listing-description delink">
-“I think there are two types of writers, the architects and the gardeners. The architects plan everything ahead of time, like an architect building a house. They know how…<em></em>
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-Jul 17, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="4" data-categories="cGhpbG9zb3BoeSUyQ2xlYXJuaW5nJTJDdGVhY2hpbmclMkNidWRkaGlzbSUyQ21pbmRmdWxuZXNzJTJDZ3JlZWtz" data-listing-date-sort="1751169600000" data-listing-file-modified-sort="1769958520322" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="160">
-<a href="./posts/remembering-learning.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./images/learning.png" class="thumbnail-image card-img" style="height: 250px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Learning is Remembering
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('cGhpbG9zb3BoeQ=='); return false;">philosophy</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('bGVhcm5pbmc='); return false;">learning</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('dGVhY2hpbmc='); return false;">teaching</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('YnVkZGhpc20='); return false;">buddhism</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('bWluZGZ1bG5lc3M='); return false;">mindfulness</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Z3JlZWtz'); return false;">greeks</div>
-
-</div>
-<div class="card-text listing-description delink">
-In Greek philosophy there is a theory of “anamnesis,” mostly due to Plato and Socrates, which roughly means “learning is remembering,” that wisdom is already inside you and…
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-Jun 29, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="5" data-categories="cHJvYmFiaWxpdHklMkN2aXN1YWxpemF0aW9u" data-listing-date-sort="1748836800000" data-listing-file-modified-sort="1769958520301" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1300">
-<a href="./posts/bayes-theorem.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./images/bayes.png" class="thumbnail-image card-img" style="height: 250px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Bayes Theorem
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('cHJvYmFiaWxpdHk='); return false;">probability</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('dmlzdWFsaXphdGlvbg=='); return false;">visualization</div>
-
-</div>
-<div class="card-text listing-description delink">
-Here’s a classic probability problem that illustrates this challenge. A standard mammogram test has, say, 80% sensitivity and 90% specificity. This means if you have breast…
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-Jun 2, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="6" data-categories="dHJpYW5nbGVzJTJDY29sb3JpbmclMkNxdWVzdGlvbnMlMkN2aXN1YWxpemF0aW9uJTJDaW50ZXJhY3RpdmUlMkNkZXRlcm1pbmFudA==" data-listing-date-sort="1748145600000" data-listing-file-modified-sort="1769958520330" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2091">
-<a href="./posts/sperners-lemma-geometric-proof.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./images/sperner-geo.png" class="thumbnail-image card-img" style="height: 250px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Sperner’s Lemma - Geometric Proof
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('dHJpYW5nbGVz'); return false;">triangles</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Y29sb3Jpbmc='); return false;">coloring</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('cXVlc3Rpb25z'); return false;">questions</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('dmlzdWFsaXphdGlvbg=='); return false;">visualization</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('aW50ZXJhY3RpdmU='); return false;">interactive</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('ZGV0ZXJtaW5hbnQ='); return false;">determinant</div>
-
-</div>
-<div class="card-text listing-description delink">
-This is my new favorite proof of Sperner’s lemma. In the following app the vertices are slowly morphed to the “cardinal” <code>R</code>, <code>G</code>, <code>B</code> vertices with time while preserving the…<span style="background-color:rgba(255, 99, 71, 0.5)"></span><span style="background-color:rgba(72, 209, 204, 0.5)"></span>
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-May 25, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="7" data-categories="Y29tYmluYXRvcmljcyUyQ3RyaWFuZ2xlcyUyQ2NvbG9yaW5nJTJDdmlzdWFsaXphdGlvbiUyQ2ludGVyYWN0aXZlJTJDcXVlc3Rpb25z" data-listing-date-sort="1747368000000" data-listing-file-modified-sort="1769958520326" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="16" data-listing-word-count-sort="3048">
-<a href="./posts/sperners-lemma-combinatorial-proof.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./images/sperner-combo.png" class="thumbnail-image card-img" style="height: 250px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Sperner’s Lemma - Combinatorial Proof
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('Y29tYmluYXRvcmljcw=='); return false;">combinatorics</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('dHJpYW5nbGVz'); return false;">triangles</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Y29sb3Jpbmc='); return false;">coloring</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('dmlzdWFsaXphdGlvbg=='); return false;">visualization</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('aW50ZXJhY3RpdmU='); return false;">interactive</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('cXVlc3Rpb25z'); return false;">questions</div>
-
-</div>
-<div class="card-text listing-description delink">
-This picture is a combinatorial proof of Sperner’s Lemma.
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-May 16, 2025
-</div>
-</div>
+<div style="margin-bottom: 2rem;">
+  <a href="../index.html" style="text-decoration: none; color: inherit;">
+    <span style="font-size: 1.1rem;">← Back to all posts</span>
+  </a>
 </div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="8" data-categories="Y29tYmluYXRvcmljcyUyQ3RyaWFuZ2xlcyUyQ2NvbG9yaW5nJTJDcXVlc3Rpb25zJTJDdmlzdWFsaXphdGlvbiUyQ2ludGVyYWN0aXZl" data-listing-date-sort="1747195200000" data-listing-file-modified-sort="1769958520334" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1676">
-<a href="./posts/sperners-lemma-statement.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./images/sperner-statement.png" class="thumbnail-image card-img" style="height: 250px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Sperner’s Lemma - Statement
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('Y29tYmluYXRvcmljcw=='); return false;">combinatorics</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('dHJpYW5nbGVz'); return false;">triangles</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Y29sb3Jpbmc='); return false;">coloring</div>
 
-<div class="listing-category" onclick="window.quartoListingCategory('cXVlc3Rpb25z'); return false;">questions</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('dmlzdWFsaXphdGlvbg=='); return false;">visualization</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('aW50ZXJhY3RpdmU='); return false;">interactive</div>
-
-</div>
-<div class="card-text listing-description delink">
-&nbsp;
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-May 14, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="9" data-categories="cmFuZG9tbmVzcyUyQ3RyaWFuZ2xlcyUyQ2JhcnljZW50cmljJTIwY29vcmRpbmF0ZXM=" data-listing-date-sort="1747022400000" data-listing-file-modified-sort="1769958520318" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1060">
-<a href="./posts/random-points-in-a-triangle.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./images/random-points-triangle.png" class="thumbnail-image card-img" style="height: 250px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Random points in a triangle
-</h5>
-<div class="listing-categories">
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Begin Again</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">writing</div>
+  </div>
+  </div>
 
-<div class="listing-category" onclick="window.quartoListingCategory('cmFuZG9tbmVzcw=='); return false;">randomness</div>
 
-<div class="listing-category" onclick="window.quartoListingCategory('dHJpYW5nbGVz'); return false;">triangles</div>
 
-<div class="listing-category" onclick="window.quartoListingCategory('YmFyeWNlbnRyaWMlMjBjb29yZGluYXRlcw=='); return false;">barycentric coordinates</div>
+<div class="quarto-title-meta">
 
-</div>
-<div class="card-text listing-description delink">
-Randomness is a surprisingly hard thing to simulate. Any program, by definition, has a predictable output. The best you can hope for is to predictably generate points that <em>lo…</em>
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-May 12, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="10" data-categories="YWZmaW5lJTIwZ2VvbWV0cnklMkN0cmlhbmdsZXMlMkNpbnRlcmFjdGl2ZSUyQ3Zpc3VhbGl6YXRpb24=" data-listing-date-sort="1746936000000" data-listing-file-modified-sort="1769958520296" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="12" data-listing-word-count-sort="2331">
-<a href="./posts/barycentric-coordinates.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./images/barycentric-coordinates.png" class="thumbnail-image card-img" style="height: 250px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Barycentric Coordinates
-</h5>
-<div class="listing-categories">
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Apurva Nakade </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">May 3, 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
 
-<div class="listing-category" onclick="window.quartoListingCategory('YWZmaW5lJTIwZ2VvbWV0cnk='); return false;">affine geometry</div>
 
-<div class="listing-category" onclick="window.quartoListingCategory('dHJpYW5nbGVz'); return false;">triangles</div>
+</header>
 
-<div class="listing-category" onclick="window.quartoListingCategory('aW50ZXJhY3RpdmU='); return false;">interactive</div>
 
-<div class="listing-category" onclick="window.quartoListingCategory('dmlzdWFsaXphdGlvbg=='); return false;">visualization</div>
+<p>I opened this page with a clear idea of what I wanted to write. I’ve now spent the last half hour updating quarto, setting up a new git repository, fixing a git merge issue, figuring out how to render drafts… this was a mistake. When I have something to write, I need to get the words out as soon as possible without worrying about their final destination.</p>
+<hr>
+<p>One of the protagonist in <a href="https://www.goodreads.com/book/show/10357575-1q84">1Q84</a>, Tengo, is a writer. He teaches math at cram schools to make a living but his real passion is writing. At some point in his life he has to decide between writing and math, and he decides to write. Tengo is my alter-ego from a different dimension. He chose writing just as I chose math. Thankfully math pays so I do not have to teach writing for a living.</p>
+<p>I’ve always loved writing. I have had several blogs representing different phrases of my life, each reflective of what I was going through at the time but haven’t maintained one of late for various inane excuses.</p>
+<p>I recently started reading <a href="https://www.goodreads.com/book/show/615570.The_Artist_s_Way">The Artist’s Way</a> and it inspired me to write again. I sometimes get stuck in arguments, trying to find reasons to justify doing or not doing something, analysis paralysis. Very simply though, I just enjoy putting thoughts into words, which is justification enough to write. I heard Neil Gaiman talk about how he likes to write with a fountain pen. Writing here is the equivalent of writing with a fountain pen for me - just watching words magically appear on the screen out of nowhere.</p>
+<p>This journal is going to be a collection of my second drafts - nothing polished or well-thought but not stream-of-conscious either. As Sam Harris says, it’s never late to <a href="https://dynamic.wakingup.com/course/CO7C3B8B5">begin again</a>.</p>
 
-</div>
-<div class="card-text listing-description delink">
-<strong>Barycentric coordinates</strong> are a coordinate system for describing points inside a triangle.
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-May 11, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="11" data-categories="d3JpdGluZw==" data-listing-date-sort="1746244800000" data-listing-file-modified-sort="1769958520304" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="296">
-<a href="./posts/begin-again.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./images/begin again.png" class="thumbnail-image card-img" style="height: 250px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Begin Again
-</h5>
-<div class="listing-categories">
 
-<div class="listing-category" onclick="window.quartoListingCategory('d3JpdGluZw=='); return false;">writing</div>
 
-</div>
-<div class="card-text listing-description delink">
-I opened this page with a clear idea of what I wanted to write. I’ve now spent the last half hour updating quarto, setting up a new git repository, fixing a git merge issue…
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-May 3, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div><a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
@@ -1303,6 +885,15 @@ May 3, 2025
   }
   loadGiscus();
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../posts/barycentric-coordinates.html" class="pagination-link" aria-label="Barycentric Coordinates">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Barycentric Coordinates</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">

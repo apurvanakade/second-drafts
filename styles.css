@@ -1,1 +1,22 @@
 /* css styles */
+/* Improve grid layout appearance */
+#listing-listing {
+  gap: 2rem;
+}
+
+.quarto-grid-item.card {
+  border: none;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+}
+
+.quarto-grid-item.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.card-img-top img,
+.card-img-top {
+  object-fit: cover;
+  height: 250px;
+}

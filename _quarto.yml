@@ -29,7 +29,19 @@ website:
     location: navbar
   sidebar: 
     style: floating
-    contents: "*.qmd"
+    contents:
+      - posts/programming.qmd
+      - posts/with-without-order.qmd
+      - posts/nth-fibonacci.qmd
+      - posts/architects-gardeners.qmd
+      - posts/remembering-learning.qmd
+      - posts/bayes-theorem.qmd
+      - posts/sperners-lemma-geometric-proof.qmd
+      - posts/sperners-lemma-combinatorial-proof.qmd
+      - posts/sperners-lemma-statement.qmd
+      - posts/random-points-in-a-triangle.qmd
+      - posts/barycentric-coordinates.qmd
+      - posts/begin-again.qmd
   
   comments:
     giscus:
