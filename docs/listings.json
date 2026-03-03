@@ -1,5 +1,14 @@
 [
   {
+    "listing": "/apps/index.html",
+    "items": [
+      "/apps/metropolis-random-walk.html",
+      "/apps/metropolis-hastings.html",
+      "/apps/estimating-pi.html",
+      "/apps/buffons-needle.html"
+    ]
+  },
+  {
     "listing": "/index.html",
     "items": [
       "/posts/programming.html",

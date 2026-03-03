@@ -1,6 +1,11 @@
 project:
   type: website
   output-dir: docs
+  resources:
+    - "apps/**/*.py"
+    - "apps/**/*.js"
+    - "apps/**/*.html"
+    - "apps/**/*.svg"
 
 website:
   title: "Second Drafts"
@@ -18,6 +23,8 @@ website:
         href: https://apurvanakade.github.io/notes.html
       - text: (Math) Blog
         href: index.qmd
+      - text: Interactive Apps
+        href: apps/index.qmd
       - text: CV 
         href: https://apurvanakade.github.io/CV.html
     right:
