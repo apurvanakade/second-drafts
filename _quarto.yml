@@ -23,8 +23,6 @@ website:
         href: https://apurvanakade.github.io/notes.html
       - text: (Math) Blog
         href: index.qmd
-      - text: Interactive Apps
-        href: apps/index.qmd
       - text: CV 
         href: https://apurvanakade.github.io/CV.html
     right:
@@ -37,22 +35,31 @@ website:
   sidebar: 
     style: floating
     contents:
-      - posts/programming.qmd
-      - posts/with-without-order.qmd
-      - posts/nth-fibonacci.qmd
-      - posts/architects-gardeners.qmd
-      - posts/remembering-learning.qmd
-      - posts/bayes-theorem.qmd
-      - posts/sperners-lemma-geometric-proof.qmd
-      - posts/sperners-lemma-combinatorial-proof.qmd
-      - posts/sperners-lemma-statement.qmd
-      - posts/random-points-in-a-triangle.qmd
-      - posts/barycentric-coordinates.qmd
-      - posts/begin-again.qmd
+      - section: Posts
+        contents:
+          - posts/doing hard things.qmd
+          - posts/programming.qmd
+          - posts/with-without-order.qmd
+          - posts/nth-fibonacci.qmd
+          - posts/architects-gardeners.qmd
+          - posts/remembering-learning.qmd
+          - posts/bayes-theorem.qmd
+          - posts/sperners-lemma-geometric-proof.qmd
+          - posts/sperners-lemma-combinatorial-proof.qmd
+          - posts/sperners-lemma-statement.qmd
+          - posts/random-points-in-a-triangle.qmd
+          - posts/barycentric-coordinates.qmd
+          - posts/begin-again.qmd
+      - section: Apps
+        contents:
+          - apps/buffons-needle.qmd
+          - apps/estimating-pi.qmd
+          - apps/metropolis-hastings.qmd
+          - apps/metropolis-random-walk.qmd
   
-  comments:
-    giscus:
-      repo: "apurvanakade/giscus"
+  # comments:
+  #   giscus:
+  #     repo: "apurvanakade/giscus"
 
 format:
   html:

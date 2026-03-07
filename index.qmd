@@ -4,6 +4,10 @@ subtitle: "A collection of mathematical musings"
 listing:
   contents: 
     - "posts/*.qmd"
+    - "apps/buffons-needle.qmd"
+    - "apps/estimating-pi.qmd"
+    - "apps/metropolis-hastings.qmd"
+    - "apps/metropolis-random-walk.qmd"
   sort: "date desc"
   type: grid
   grid-columns: 3

@@ -32,6 +32,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../apps/estimating-pi.html" rel="next">
+<link href="../posts/begin-again.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -302,10 +304,6 @@ window.Quarto = {
 <span class="menu-text">(Math) Blog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../apps/index.html"> 
-<span class="menu-text">Interactive Apps</span></a>
-  </li>  
-  <li class="nav-item">
     <a class="nav-link" href="https://apurvanakade.github.io/CV.html"> 
 <span class="menu-text">CV</span></a>
   </li>  
@@ -333,7 +331,7 @@ window.Quarto = {
 <main class="content column-page" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../apps/buffons-needle.html">Apps</a></li><li class="breadcrumb-item"><a href="../apps/buffons-needle.html">Buffon’s Needle</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Buffon’s Needle</h1>
   <div class="quarto-categories">
@@ -899,38 +897,18 @@ window.Quarto = {
     }
   });
   </script>
-<input type="hidden" id="giscus-base-theme" value="light">
-<input type="hidden" id="giscus-alt-theme" value="dark">
-<script>
-  function loadGiscus() {
-    // Function to get the theme based on body class
-    const getTheme = () => {
-      let baseTheme = document.getElementById('giscus-base-theme').value;
-      let altTheme = document.getElementById('giscus-alt-theme').value;
-      if (authorPrefersDark) {
-          [baseTheme, altTheme] = [altTheme, baseTheme];
-      }
-      return document.body.classList.contains('quarto-dark') ? altTheme : baseTheme;
-    };
-    const script = document.createElement("script");
-    script.src = "https://giscus.app/client.js";
-    script.async = true;
-    script.dataset.repo = "apurvanakade/giscus";
-    script.dataset.repoId = "R_kgDOO1BmOQ";
-    script.dataset.category = "General";
-    script.dataset.categoryId = "DIC_kwDOO1BmOc4Cq9gk";
-    script.dataset.mapping = "title";
-    script.dataset.reactionsEnabled = "1";
-    script.dataset.emitMetadata = "0";
-    script.dataset.inputPosition = "top";
-    script.dataset.theme = getTheme();
-    script.dataset.lang = "en";
-    script.crossOrigin = "anonymous";
-    // Append the script to the desired div instead of at the end of the body
-    document.getElementById("quarto-content").appendChild(script);
-  }
-  loadGiscus();
-</script>
+<nav class="page-navigation column-page">
+  <div class="nav-page nav-page-previous">
+      <a href="../posts/begin-again.html" class="pagination-link" aria-label="Begin Again">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Begin Again</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../apps/estimating-pi.html" class="pagination-link" aria-label="Estimating π">
+        <span class="nav-page-text">Estimating π</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">

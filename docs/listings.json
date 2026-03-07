@@ -11,6 +11,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/doing hard things.html",
       "/posts/programming.html",
       "/posts/with-without-order.html",
       "/posts/nth-fibonacci.html",
@@ -22,7 +23,11 @@
       "/posts/sperners-lemma-statement.html",
       "/posts/random-points-in-a-triangle.html",
       "/posts/barycentric-coordinates.html",
-      "/posts/begin-again.html"
+      "/posts/begin-again.html",
+      "/apps/metropolis-random-walk.html",
+      "/apps/metropolis-hastings.html",
+      "/apps/estimating-pi.html",
+      "/apps/buffons-needle.html"
     ]
   }
 ]
