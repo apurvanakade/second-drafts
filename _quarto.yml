@@ -37,7 +37,6 @@ website:
     contents:
       - section: Posts
         contents:
-          - posts/doing hard things.qmd
           - posts/programming.qmd
           - posts/with-without-order.qmd
           - posts/nth-fibonacci.qmd

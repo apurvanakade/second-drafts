@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.31">
+<meta name="generator" content="quarto-1.9.36">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -11,6 +11,9 @@
 
 <title>Sperner’s Lemma - Combinatorial Proof – Second Drafts</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -75,14 +78,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-8ef56b68f8fa1e9d2ba328e99e439f80.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-f418161beb48e0141c760e455f12af2c.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-c1fac2584b48ed01fb6e278e36375074.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-a9957ab5e8b7c67643b7e2e6b5c1e54e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-c1fac2584b48ed01fb6e278e36375074.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-158031087360bce0ff56dc785ce39e06.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-05ad5c04182ae40a1da91fd291b82df0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-158031087360bce0ff56dc785ce39e06.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -314,10 +317,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">(Math) Blog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../apps/index.html"> 
-<span class="menu-text">Interactive Apps</span></a>
-  </li>  
-  <li class="nav-item">
     <a class="nav-link" href="https://apurvanakade.github.io/CV.html"> 
 <span class="menu-text">CV</span></a>
   </li>  
@@ -340,7 +339,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../posts/sperners-lemma-combinatorial-proof.html">Sperner’s Lemma - Combinatorial Proof</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Posts</li><li class="breadcrumb-item"><a href="../posts/sperners-lemma-combinatorial-proof.html">Sperner’s Lemma - Combinatorial Proof</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -352,78 +351,127 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Posts</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+ <span class="menu-text">posts/doing hard things.qmd</span>
+  </li>
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../posts/programming.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Why Programming?</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../posts/with-without-order.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">With or Without Order</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../posts/nth-fibonacci.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Self-Fibonacci Numbers</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../posts/architects-gardeners.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Architects and Gardeners</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../posts/remembering-learning.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Learning is Remembering</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../posts/bayes-theorem.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Bayes Theorem</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../posts/sperners-lemma-geometric-proof.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Sperner’s Lemma - Geometric Proof</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../posts/sperners-lemma-combinatorial-proof.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Sperner’s Lemma - Combinatorial Proof</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../posts/sperners-lemma-statement.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Sperner’s Lemma - Statement</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../posts/random-points-in-a-triangle.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Random points in a triangle</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../posts/barycentric-coordinates.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Barycentric Coordinates</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../posts/begin-again.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Begin Again</span></a>
   </div>
 </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Apps</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../apps/buffons-needle.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Buffon’s Needle</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../apps/estimating-pi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Estimating π</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../apps/metropolis-hastings.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Metropolis-Hastings Algorithm</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../apps/metropolis-random-walk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Metropolis Random Walk</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -439,7 +487,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </a>
 </div>
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Posts</li><li class="breadcrumb-item"><a href="../posts/sperners-lemma-combinatorial-proof.html">Sperner’s Lemma - Combinatorial Proof</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Sperner’s Lemma - Combinatorial Proof</h1>
   <div class="quarto-categories">
@@ -479,7 +527,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="12" data-source-offset="-21"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 11;"><span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { slider } <span class="im">from</span> <span class="st">"@jashkenas/inputs"</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb1" data-startfrom="12" data-source-offset="-21"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 11;"><span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { slider } <span class="im">from</span> <span class="st">"@jashkenas/inputs"</span></span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>viewof N <span class="op">=</span> <span class="fu">slider</span>({</span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  <span class="dt">min</span><span class="op">:</span> <span class="dv">2</span><span class="op">,</span></span>
@@ -488,7 +536,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  <span class="dt">value</span><span class="op">:</span> <span class="dv">15</span><span class="op">,</span></span>
 <span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  <span class="dt">width</span><span class="op">:</span> <span class="dv">500</span><span class="op">,</span></span>
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  <span class="dt">title</span><span class="op">:</span> <span class="st">"Number of subdivisions"</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-1-1" data-nodetype="declaration">
@@ -505,7 +553,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb2" data-startfrom="26" data-source-offset="-30"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 25;"><span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>centroid <span class="op">=</span> (p1<span class="op">,</span> p2<span class="op">,</span> p3) <span class="kw">=&gt;</span> ({</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb2" data-startfrom="26" data-source-offset="-30"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 25;"><span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>centroid <span class="op">=</span> (p1<span class="op">,</span> p2<span class="op">,</span> p3) <span class="kw">=&gt;</span> ({</span>
 <span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>  <span class="dt">x</span><span class="op">:</span> (p1<span class="op">.</span><span class="at">x</span> <span class="op">+</span> p2<span class="op">.</span><span class="at">x</span> <span class="op">+</span> p3<span class="op">.</span><span class="at">x</span>) <span class="op">/</span> <span class="dv">3</span><span class="op">,</span></span>
 <span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>  <span class="dt">y</span><span class="op">:</span> (p1<span class="op">.</span><span class="at">y</span> <span class="op">+</span> p2<span class="op">.</span><span class="at">y</span> <span class="op">+</span> p3<span class="op">.</span><span class="at">y</span>) <span class="op">/</span> <span class="dv">3</span></span>
 <span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>})</span>
@@ -520,7 +568,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>isEdgeBoundary <span class="op">=</span> (a<span class="op">,</span> b) <span class="kw">=&gt;</span></span>
-<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>  [<span class="dv">0</span><span class="op">,</span> <span class="dv">1</span><span class="op">,</span> <span class="dv">2</span>]<span class="op">.</span><span class="fu">some</span>(i <span class="kw">=&gt;</span> a<span class="op">.</span><span class="at">barycentricTriple</span>[i] <span class="op">===</span> <span class="dv">0</span> <span class="op">&amp;&amp;</span> b<span class="op">.</span><span class="at">barycentricTriple</span>[i] <span class="op">===</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>  [<span class="dv">0</span><span class="op">,</span> <span class="dv">1</span><span class="op">,</span> <span class="dv">2</span>]<span class="op">.</span><span class="fu">some</span>(i <span class="kw">=&gt;</span> a<span class="op">.</span><span class="at">barycentricTriple</span>[i] <span class="op">===</span> <span class="dv">0</span> <span class="op">&amp;&amp;</span> b<span class="op">.</span><span class="at">barycentricTriple</span>[i] <span class="op">===</span> <span class="dv">0</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-2-1" data-nodetype="declaration">
@@ -544,7 +592,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb3" data-startfrom="45" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 44;"><span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a><span class="co">// === Triangle Generators ===</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb3" data-startfrom="45" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 44;"><span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a><span class="co">// === Triangle Generators ===</span></span>
 <span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>generateBarycentricTriples <span class="op">=</span> (N) <span class="kw">=&gt;</span> {</span>
 <span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> result <span class="op">=</span> []<span class="op">;</span></span>
 <span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;=</span> N<span class="op">;</span> i<span class="op">++</span>) {</span>
@@ -553,7 +601,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>    }</span>
 <span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a>  }</span>
 <span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> result<span class="op">;</span></span>
-<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-3" data-nodetype="declaration">
 
@@ -561,7 +609,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb4" data-startfrom="60" data-source-offset="-34"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 59;"><span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a>randomChoice <span class="op">=</span> (choices) <span class="kw">=&gt;</span> choices[<span class="bu">Math</span><span class="op">.</span><span class="fu">floor</span>(<span class="bu">Math</span><span class="op">.</span><span class="fu">random</span>() <span class="op">*</span> choices<span class="op">.</span><span class="at">length</span>)]<span class="op">;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb4" data-startfrom="60" data-source-offset="-34"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 59;"><span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a>randomChoice <span class="op">=</span> (choices) <span class="kw">=&gt;</span> choices[<span class="bu">Math</span><span class="op">.</span><span class="fu">floor</span>(<span class="bu">Math</span><span class="op">.</span><span class="fu">random</span>() <span class="op">*</span> choices<span class="op">.</span><span class="at">length</span>)]<span class="op">;</span></span>
 <span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-62"><a href="#cb4-62" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> ColoredPoint {</span>
 <span id="cb4-63"><a href="#cb4-63" aria-hidden="true" tabindex="-1"></a>  <span class="fu">constructor</span>(triple<span class="op">,</span> vertices<span class="op">,</span> N) {</span>
@@ -592,7 +640,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-88"><a href="#cb4-88" aria-hidden="true" tabindex="-1"></a>  <span class="fu">getColor</span>() {</span>
 <span id="cb4-89"><a href="#cb4-89" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="kw">this</span><span class="op">.</span><span class="at">color</span><span class="op">;</span></span>
 <span id="cb4-90"><a href="#cb4-90" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb4-91"><a href="#cb4-91" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-91"><a href="#cb4-91" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-4-1" data-nodetype="declaration">
@@ -609,7 +657,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb5" data-startfrom="96" data-source-offset="-45"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 95;"><span id="cb5-96"><a href="#cb5-96" aria-hidden="true" tabindex="-1"></a>getTrianglePoints <span class="op">=</span> (coords<span class="op">,</span> cpMap) <span class="kw">=&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb5" data-startfrom="96" data-source-offset="-45"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 95;"><span id="cb5-96"><a href="#cb5-96" aria-hidden="true" tabindex="-1"></a>getTrianglePoints <span class="op">=</span> (coords<span class="op">,</span> cpMap) <span class="kw">=&gt;</span></span>
 <span id="cb5-97"><a href="#cb5-97" aria-hidden="true" tabindex="-1"></a>  coords<span class="op">.</span><span class="fu">map</span>(coord <span class="kw">=&gt;</span> cpMap<span class="op">.</span><span class="fu">get</span>(coord<span class="op">.</span><span class="fu">join</span>(<span class="st">','</span>)))<span class="op">;</span></span>
 <span id="cb5-98"><a href="#cb5-98" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-99"><a href="#cb5-99" aria-hidden="true" tabindex="-1"></a>getTriangleColors <span class="op">=</span> (points) <span class="kw">=&gt;</span></span>
@@ -686,7 +734,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-170"><a href="#cb5-170" aria-hidden="true" tabindex="-1"></a>    <span class="dt">edges</span><span class="op">:</span> edgesWithSource<span class="op">.</span><span class="fu">map</span>(e <span class="kw">=&gt;</span> e<span class="op">.</span><span class="at">point</span>)<span class="op">,</span></span>
 <span id="cb5-171"><a href="#cb5-171" aria-hidden="true" tabindex="-1"></a>    special_points</span>
 <span id="cb5-172"><a href="#cb5-172" aria-hidden="true" tabindex="-1"></a>  }<span class="op">;</span></span>
-<span id="cb5-173"><a href="#cb5-173" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-173"><a href="#cb5-173" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-5-1" data-nodetype="declaration">
@@ -731,7 +779,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb6" data-startfrom="179" data-source-offset="-30"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 178;"><span id="cb6-179"><a href="#cb6-179" aria-hidden="true" tabindex="-1"></a>triangleFeatures <span class="op">=</span> (triangles<span class="op">,</span> cpMap<span class="op">,</span> fillColor) <span class="kw">=&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb6" data-startfrom="179" data-source-offset="-30"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 178;"><span id="cb6-179"><a href="#cb6-179" aria-hidden="true" tabindex="-1"></a>triangleFeatures <span class="op">=</span> (triangles<span class="op">,</span> cpMap<span class="op">,</span> fillColor) <span class="kw">=&gt;</span></span>
 <span id="cb6-180"><a href="#cb6-180" aria-hidden="true" tabindex="-1"></a>  triangles<span class="op">.</span><span class="fu">map</span>(({ coordinates }) <span class="kw">=&gt;</span> {</span>
 <span id="cb6-181"><a href="#cb6-181" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> pts <span class="op">=</span> coordinates<span class="op">.</span><span class="fu">map</span>(c <span class="kw">=&gt;</span> cpMap<span class="op">.</span><span class="fu">get</span>(c<span class="op">.</span><span class="fu">join</span>(<span class="st">','</span>))<span class="op">.</span><span class="fu">getCoords</span>())<span class="op">;</span></span>
 <span id="cb6-182"><a href="#cb6-182" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {</span>
@@ -766,7 +814,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-211"><a href="#cb6-211" aria-hidden="true" tabindex="-1"></a>          <span class="op">:</span> <span class="kw">null</span></span>
 <span id="cb6-212"><a href="#cb6-212" aria-hidden="true" tabindex="-1"></a>      )</span>
 <span id="cb6-213"><a href="#cb6-213" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">filter</span>(<span class="bu">Boolean</span>)</span>
-<span id="cb6-214"><a href="#cb6-214" aria-hidden="true" tabindex="-1"></a>  )<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-214"><a href="#cb6-214" aria-hidden="true" tabindex="-1"></a>  )<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-6-1" data-nodetype="declaration">
@@ -790,12 +838,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb7" data-startfrom="218" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 217;"><span id="cb7-218"><a href="#cb7-218" aria-hidden="true" tabindex="-1"></a><span class="co">// === Define Base Triangle Vertices ===</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb7" data-startfrom="218" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 217;"><span id="cb7-218"><a href="#cb7-218" aria-hidden="true" tabindex="-1"></a><span class="co">// === Define Base Triangle Vertices ===</span></span>
 <span id="cb7-219"><a href="#cb7-219" aria-hidden="true" tabindex="-1"></a>vertices <span class="op">=</span> [</span>
 <span id="cb7-220"><a href="#cb7-220" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">x</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="dv">0</span>}<span class="op">,</span></span>
 <span id="cb7-221"><a href="#cb7-221" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">x</span><span class="op">:</span> <span class="fl">0.5</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(<span class="dv">3</span>) <span class="op">/</span> <span class="dv">2</span>}<span class="op">,</span></span>
 <span id="cb7-222"><a href="#cb7-222" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">x</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="dv">0</span>}<span class="op">,</span></span>
-<span id="cb7-223"><a href="#cb7-223" aria-hidden="true" tabindex="-1"></a>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-223"><a href="#cb7-223" aria-hidden="true" tabindex="-1"></a>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-7" data-nodetype="declaration">
 
@@ -803,13 +851,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb8" data-startfrom="229" data-source-offset="-35"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 228;"><span id="cb8-229"><a href="#cb8-229" aria-hidden="true" tabindex="-1"></a>triples <span class="op">=</span> <span class="fu">generateBarycentricTriples</span>(N)<span class="op">;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb8" data-startfrom="229" data-source-offset="-35"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 228;"><span id="cb8-229"><a href="#cb8-229" aria-hidden="true" tabindex="-1"></a>triples <span class="op">=</span> <span class="fu">generateBarycentricTriples</span>(N)<span class="op">;</span></span>
 <span id="cb8-230"><a href="#cb8-230" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-231"><a href="#cb8-231" aria-hidden="true" tabindex="-1"></a>coloredPoints <span class="op">=</span> triples<span class="op">.</span><span class="fu">map</span>(triple <span class="kw">=&gt;</span></span>
 <span id="cb8-232"><a href="#cb8-232" aria-hidden="true" tabindex="-1"></a>  <span class="kw">new</span> <span class="fu">ColoredPoint</span>(triple<span class="op">,</span> vertices<span class="op">,</span> N)</span>
 <span id="cb8-233"><a href="#cb8-233" aria-hidden="true" tabindex="-1"></a>)<span class="op">;</span></span>
 <span id="cb8-234"><a href="#cb8-234" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-235"><a href="#cb8-235" aria-hidden="true" tabindex="-1"></a>cpMap <span class="op">=</span> <span class="kw">new</span> <span class="bu">Map</span>(coloredPoints<span class="op">.</span><span class="fu">map</span>(p <span class="kw">=&gt;</span> [p<span class="op">.</span><span class="at">barycentricTriple</span><span class="op">.</span><span class="fu">join</span>(<span class="st">','</span>)<span class="op">,</span> p]))<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-235"><a href="#cb8-235" aria-hidden="true" tabindex="-1"></a>cpMap <span class="op">=</span> <span class="kw">new</span> <span class="bu">Map</span>(coloredPoints<span class="op">.</span><span class="fu">map</span>(p <span class="kw">=&gt;</span> [p<span class="op">.</span><span class="at">barycentricTriple</span><span class="op">.</span><span class="fu">join</span>(<span class="st">','</span>)<span class="op">,</span> p]))<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-8-1" data-nodetype="declaration">
@@ -833,7 +881,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb9" data-startfrom="240" data-source-offset="-47"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 239;"><span id="cb9-240"><a href="#cb9-240" aria-hidden="true" tabindex="-1"></a>generateAllTriangles <span class="op">=</span> (N<span class="op">,</span> cpMap) <span class="kw">=&gt;</span> {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb9" data-startfrom="240" data-source-offset="-47"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 239;"><span id="cb9-240"><a href="#cb9-240" aria-hidden="true" tabindex="-1"></a>generateAllTriangles <span class="op">=</span> (N<span class="op">,</span> cpMap) <span class="kw">=&gt;</span> {</span>
 <span id="cb9-241"><a href="#cb9-241" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> all <span class="op">=</span> []<span class="op">,</span> rg <span class="op">=</span> []<span class="op">,</span> rgb <span class="op">=</span> []<span class="op">;</span></span>
 <span id="cb9-242"><a href="#cb9-242" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-243"><a href="#cb9-243" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> N<span class="op">;</span> i<span class="op">++</span>) {</span>
@@ -869,7 +917,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb9-273"><a href="#cb9-273" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> { all<span class="op">,</span> rg<span class="op">,</span> rgb }<span class="op">;</span></span>
 <span id="cb9-274"><a href="#cb9-274" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb9-275"><a href="#cb9-275" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-276"><a href="#cb9-276" aria-hidden="true" tabindex="-1"></a>triangles <span class="op">=</span> <span class="fu">generateAllTriangles</span>(N<span class="op">,</span> cpMap)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-276"><a href="#cb9-276" aria-hidden="true" tabindex="-1"></a>triangles <span class="op">=</span> <span class="fu">generateAllTriangles</span>(N<span class="op">,</span> cpMap)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-9-1" data-nodetype="declaration">
@@ -886,7 +934,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb10" data-startfrom="279" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 278;"><span id="cb10-279"><a href="#cb10-279" aria-hidden="true" tabindex="-1"></a><span class="co">// === Final Plot ===</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb10" data-startfrom="279" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 278;"><span id="cb10-279"><a href="#cb10-279" aria-hidden="true" tabindex="-1"></a><span class="co">// === Final Plot ===</span></span>
 <span id="cb10-280"><a href="#cb10-280" aria-hidden="true" tabindex="-1"></a>viewof plotAll <span class="op">=</span> Plot<span class="op">.</span><span class="fu">plot</span>({</span>
 <span id="cb10-281"><a href="#cb10-281" aria-hidden="true" tabindex="-1"></a>  <span class="dt">width</span><span class="op">:</span> <span class="dv">800</span><span class="op">,</span></span>
 <span id="cb10-282"><a href="#cb10-282" aria-hidden="true" tabindex="-1"></a>  <span class="dt">height</span><span class="op">:</span> <span class="dv">800</span><span class="op">,</span></span>
@@ -923,7 +971,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb10-313"><a href="#cb10-313" aria-hidden="true" tabindex="-1"></a>    <span class="op">...</span><span class="fu">makeSpecialPoints</span>(triangles<span class="op">.</span><span class="at">rg</span>)<span class="op">,</span></span>
 <span id="cb10-314"><a href="#cb10-314" aria-hidden="true" tabindex="-1"></a>    <span class="op">...</span><span class="fu">makeSpecialPoints</span>(triangles<span class="op">.</span><span class="at">rgb</span>)</span>
 <span id="cb10-315"><a href="#cb10-315" aria-hidden="true" tabindex="-1"></a>  ]</span>
-<span id="cb10-316"><a href="#cb10-316" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-316"><a href="#cb10-316" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-10" data-nodetype="declaration">
 
@@ -940,7 +988,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>All other triangles have <strong>no</strong> doors.</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb11" data-startfrom="329" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 328;"><span id="cb11-329"><a href="#cb11-329" aria-hidden="true" tabindex="-1"></a><span class="co">// Create an SVG and draw three triangles with vertex colors and bold RG edges</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb11" data-startfrom="329" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 328;"><span id="cb11-329"><a href="#cb11-329" aria-hidden="true" tabindex="-1"></a><span class="co">// Create an SVG and draw three triangles with vertex colors and bold RG edges</span></span>
 <span id="cb11-330"><a href="#cb11-330" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-331"><a href="#cb11-331" aria-hidden="true" tabindex="-1"></a>svg <span class="op">=</span> {</span>
 <span id="cb11-332"><a href="#cb11-332" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> width <span class="op">=</span> <span class="dv">600</span><span class="op">,</span> height <span class="op">=</span> <span class="dv">200</span><span class="op">;</span></span>
@@ -1030,7 +1078,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb11-416"><a href="#cb11-416" aria-hidden="true" tabindex="-1"></a>  }</span>
 <span id="cb11-417"><a href="#cb11-417" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-418"><a href="#cb11-418" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> svg<span class="op">;</span></span>
-<span id="cb11-419"><a href="#cb11-419" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-419"><a href="#cb11-419" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-11" data-nodetype="declaration">
 
@@ -1079,14 +1127,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>This is indeed a true statement and can be proven by various simple but subtle tricks. Give it a shot! Be careful though, it is easy to convince yourself that you have a proof when you don’t.</p>
 <p>&nbsp;</p>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb12" data-startfrom="479" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 478;"><span id="cb12-479"><a href="#cb12-479" aria-hidden="true" tabindex="-1"></a>viewof M <span class="op">=</span> <span class="fu">slider</span>({</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb12" data-startfrom="479" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 478;"><span id="cb12-479"><a href="#cb12-479" aria-hidden="true" tabindex="-1"></a>viewof M <span class="op">=</span> <span class="fu">slider</span>({</span>
 <span id="cb12-480"><a href="#cb12-480" aria-hidden="true" tabindex="-1"></a>  <span class="dt">min</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span></span>
 <span id="cb12-481"><a href="#cb12-481" aria-hidden="true" tabindex="-1"></a>  <span class="dt">max</span><span class="op">:</span> <span class="dv">25</span><span class="op">,</span></span>
 <span id="cb12-482"><a href="#cb12-482" aria-hidden="true" tabindex="-1"></a>  <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span></span>
 <span id="cb12-483"><a href="#cb12-483" aria-hidden="true" tabindex="-1"></a>  <span class="dt">value</span><span class="op">:</span> <span class="dv">5</span><span class="op">,</span></span>
 <span id="cb12-484"><a href="#cb12-484" aria-hidden="true" tabindex="-1"></a>  <span class="dt">width</span><span class="op">:</span> <span class="dv">500</span><span class="op">,</span></span>
 <span id="cb12-485"><a href="#cb12-485" aria-hidden="true" tabindex="-1"></a>  <span class="dt">title</span><span class="op">:</span> <span class="st">"Number of subdivisions"</span></span>
-<span id="cb12-486"><a href="#cb12-486" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-486"><a href="#cb12-486" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-12" data-nodetype="declaration">
 
@@ -1094,7 +1142,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb13" data-startfrom="490" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 489;"><span id="cb13-490"><a href="#cb13-490" aria-hidden="true" tabindex="-1"></a>viewof plot <span class="op">=</span> {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb13" data-startfrom="490" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 489;"><span id="cb13-490"><a href="#cb13-490" aria-hidden="true" tabindex="-1"></a>viewof plot <span class="op">=</span> {</span>
 <span id="cb13-491"><a href="#cb13-491" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> colors <span class="op">=</span> <span class="bu">Array</span><span class="op">.</span><span class="fu">from</span>({<span class="dt">length</span><span class="op">:</span> M <span class="op">+</span> <span class="dv">1</span>}<span class="op">,</span> (_<span class="op">,</span> i) <span class="kw">=&gt;</span> {</span>
 <span id="cb13-492"><a href="#cb13-492" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (i <span class="op">===</span> <span class="dv">0</span>) <span class="cf">return</span> <span class="st">"red"</span><span class="op">;</span></span>
 <span id="cb13-493"><a href="#cb13-493" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (i <span class="op">===</span> M) <span class="cf">return</span> <span class="st">"green"</span><span class="op">;</span></span>
@@ -1130,7 +1178,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb13-523"><a href="#cb13-523" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"font-size"</span><span class="op">,</span> <span class="dv">20</span>)<span class="op">;</span></span>
 <span id="cb13-524"><a href="#cb13-524" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-525"><a href="#cb13-525" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> svg<span class="op">.</span><span class="fu">node</span>()<span class="op">;</span></span>
-<span id="cb13-526"><a href="#cb13-526" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-526"><a href="#cb13-526" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-13" data-nodetype="declaration">
 
@@ -1230,13 +1278,14 @@ window._ojs.runtime.interpretFromScriptTags();
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
@@ -1578,38 +1627,6 @@ window._ojs.runtime.interpretFromScriptTags();
     }
   });
   </script>
-<input type="hidden" id="giscus-base-theme" value="light">
-<input type="hidden" id="giscus-alt-theme" value="dark">
-<script>
-  function loadGiscus() {
-    // Function to get the theme based on body class
-    const getTheme = () => {
-      let baseTheme = document.getElementById('giscus-base-theme').value;
-      let altTheme = document.getElementById('giscus-alt-theme').value;
-      if (authorPrefersDark) {
-          [baseTheme, altTheme] = [altTheme, baseTheme];
-      }
-      return document.body.classList.contains('quarto-dark') ? altTheme : baseTheme;
-    };
-    const script = document.createElement("script");
-    script.src = "https://giscus.app/client.js";
-    script.async = true;
-    script.dataset.repo = "apurvanakade/giscus";
-    script.dataset.repoId = "R_kgDOO1BmOQ";
-    script.dataset.category = "General";
-    script.dataset.categoryId = "DIC_kwDOO1BmOc4Cq9gk";
-    script.dataset.mapping = "title";
-    script.dataset.reactionsEnabled = "1";
-    script.dataset.emitMetadata = "0";
-    script.dataset.inputPosition = "top";
-    script.dataset.theme = getTheme();
-    script.dataset.lang = "en";
-    script.crossOrigin = "anonymous";
-    // Append the script to the desired div instead of at the end of the body
-    document.getElementById("quarto-content").appendChild(script);
-  }
-  loadGiscus();
-</script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="../posts/sperners-lemma-geometric-proof.html" class="pagination-link" aria-label="Sperner's Lemma - Geometric Proof">

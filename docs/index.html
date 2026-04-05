@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.31">
+<meta name="generator" content="quarto-1.9.36">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>Second Drafts</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -38,14 +41,14 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-8ef56b68f8fa1e9d2ba328e99e439f80.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-f418161beb48e0141c760e455f12af2c.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-c1fac2584b48ed01fb6e278e36375074.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-a9957ab5e8b7c67643b7e2e6b5c1e54e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-c1fac2584b48ed01fb6e278e36375074.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-158031087360bce0ff56dc785ce39e06.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-05ad5c04182ae40a1da91fd291b82df0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-158031087360bce0ff56dc785ce39e06.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -103,7 +106,7 @@ ul.task-list li input[type="checkbox"] {
   </script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -116,7 +119,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -135,8 +138,10 @@ window.Quarto = {
 <link rel="stylesheet" href="styles.css">
 <meta property="og:title" content="Second Drafts">
 <meta property="og:description" content="A collection of mathematical musings">
-<meta property="og:image" content="https://github.com/apurvanakade/second-drafts/images/doing-hard-things-title.svg">
+<meta property="og:image" content="https://github.com/apurvanakade/second-drafts/images/programming.png">
 <meta property="og:site_name" content="Second Drafts">
+<meta property="og:image:height" content="1264">
+<meta property="og:image:width" content="848">
 </head>
 
 <body class="nav-sidebar floating nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
@@ -393,12 +398,6 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./posts/doing hard things.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Doing Hard Things</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./posts/programming.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Why Programming?</span></a>
   </div>
@@ -513,7 +512,7 @@ window.Quarto = {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(17)</span></div><div class="category" data-category="YWZmaW5lJTIwZ2VvbWV0cnk=">affine geometry <span class="quarto-category-count">(1)</span></div><div class="category" data-category="QUk=">AI <span class="quarto-category-count">(1)</span></div><div class="category" data-category="YWxnb3JpdGhtcw==">algorithms <span class="quarto-category-count">(1)</span></div><div class="category" data-category="YmFyeWNlbnRyaWMlMjBjb29yZGluYXRlcw==">barycentric coordinates <span class="quarto-category-count">(1)</span></div><div class="category" data-category="YnVkZGhpc20=">buddhism <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y29sb3Jpbmc=">coloring <span class="quarto-category-count">(3)</span></div><div class="category" data-category="Y29tYmluYXRvcmljcw==">combinatorics <span class="quarto-category-count">(2)</span></div><div class="category" data-category="ZGV0ZXJtaW5hbnQ=">determinant <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZXhwbG9yYXRpb24=">exploration <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Zmlib25hY2Np">fibonacci <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Z3JlZWtz">greeks <span class="quarto-category-count">(1)</span></div><div class="category" data-category="aW50ZXJhY3RpdmU=">interactive <span class="quarto-category-count">(4)</span></div><div class="category" data-category="bGVhcm5pbmc=">learning <span class="quarto-category-count">(2)</span></div><div class="category" data-category="bWNtYw==">mcmc <span class="quarto-category-count">(2)</span></div><div class="category" data-category="bWluZGZ1bG5lc3M=">mindfulness <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bW9udGUtY2FybG8=">monte-carlo <span class="quarto-category-count">(2)</span></div><div class="category" data-category="bnVtYmVyJTIwdGhlb3J5">number theory <span class="quarto-category-count">(1)</span></div><div class="category" data-category="b3Blbg==">open <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cGhpbG9zb3BoeQ==">philosophy <span class="quarto-category-count">(3)</span></div><div class="category" data-category="cHJvYmFiaWxpdHk=">probability <span class="quarto-category-count">(4)</span></div><div class="category" data-category="cHV6emxl">puzzle <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cXVlc3Rpb25z">questions <span class="quarto-category-count">(3)</span></div><div class="category" data-category="cmFuZG9tLXdhbGs=">random-walk <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cmFuZG9tbmVzcw==">randomness <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cmVzZWFyY2g=">research <span class="quarto-category-count">(1)</span></div><div class="category" data-category="c3RhdGlzdGljcw==">statistics <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dGVhY2hpbmc=">teaching <span class="quarto-category-count">(4)</span></div><div class="category" data-category="dHJpYW5nbGVz">triangles <span class="quarto-category-count">(5)</span></div><div class="category" data-category="dmlzdWFsaXphdGlvbg==">visualization <span class="quarto-category-count">(8)</span></div><div class="category" data-category="d3JpdGluZw==">writing <span class="quarto-category-count">(1)</span></div></div></div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(16)</span></div><div class="category" data-category="YWZmaW5lJTIwZ2VvbWV0cnk=">affine geometry <span class="quarto-category-count">(1)</span></div><div class="category" data-category="QUk=">AI <span class="quarto-category-count">(1)</span></div><div class="category" data-category="YWxnb3JpdGhtcw==">algorithms <span class="quarto-category-count">(1)</span></div><div class="category" data-category="YmFyeWNlbnRyaWMlMjBjb29yZGluYXRlcw==">barycentric coordinates <span class="quarto-category-count">(1)</span></div><div class="category" data-category="YnVkZGhpc20=">buddhism <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y29sb3Jpbmc=">coloring <span class="quarto-category-count">(3)</span></div><div class="category" data-category="Y29tYmluYXRvcmljcw==">combinatorics <span class="quarto-category-count">(2)</span></div><div class="category" data-category="ZGV0ZXJtaW5hbnQ=">determinant <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZXhwbG9yYXRpb24=">exploration <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Zmlib25hY2Np">fibonacci <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Z3JlZWtz">greeks <span class="quarto-category-count">(1)</span></div><div class="category" data-category="aW50ZXJhY3RpdmU=">interactive <span class="quarto-category-count">(4)</span></div><div class="category" data-category="bGVhcm5pbmc=">learning <span class="quarto-category-count">(2)</span></div><div class="category" data-category="bWNtYw==">mcmc <span class="quarto-category-count">(2)</span></div><div class="category" data-category="bWluZGZ1bG5lc3M=">mindfulness <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bW9udGUtY2FybG8=">monte-carlo <span class="quarto-category-count">(2)</span></div><div class="category" data-category="bnVtYmVyJTIwdGhlb3J5">number theory <span class="quarto-category-count">(1)</span></div><div class="category" data-category="b3Blbg==">open <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cGhpbG9zb3BoeQ==">philosophy <span class="quarto-category-count">(2)</span></div><div class="category" data-category="cHJvYmFiaWxpdHk=">probability <span class="quarto-category-count">(4)</span></div><div class="category" data-category="cHV6emxl">puzzle <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cXVlc3Rpb25z">questions <span class="quarto-category-count">(3)</span></div><div class="category" data-category="cmFuZG9tLXdhbGs=">random-walk <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cmFuZG9tbmVzcw==">randomness <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cmVzZWFyY2g=">research <span class="quarto-category-count">(1)</span></div><div class="category" data-category="c3RhdGlzdGljcw==">statistics <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dGVhY2hpbmc=">teaching <span class="quarto-category-count">(3)</span></div><div class="category" data-category="dHJpYW5nbGVz">triangles <span class="quarto-category-count">(5)</span></div><div class="category" data-category="dmlzdWFsaXphdGlvbg==">visualization <span class="quarto-category-count">(8)</span></div><div class="category" data-category="d3JpdGluZw==">writing <span class="quarto-category-count">(1)</span></div></div></div>
 <!-- main -->
 <main class="content quarto-banner-title-block column-body" id="quarto-document-content">
 
@@ -528,35 +527,7 @@ window.Quarto = {
 
 <div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
 <div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-categories="dGVhY2hpbmclMkNwaGlsb3NvcGh5" data-listing-date-sort="1772745877000" data-listing-file-modified-sort="1772915654164" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="308">
-<a href="./posts/doing hard things.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./images/doing-hard-things-title.svg" class="thumbnail-image card-img" style="height: 250px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Doing Hard Things
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('dGVhY2hpbmc='); return false;">teaching</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('cGhpbG9zb3BoeQ=='); return false;">philosophy</div>
-
-</div>
-<div class="card-text listing-description delink">
-Casey Neistat has a couple of videos that I just love. In part, because I love running myself and I find it to be a very spiritual experience, but also because I love the…
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-Mar 5, 2026
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="1" data-categories="bGVhcm5pbmclMkN0ZWFjaGluZyUyQ0FJ" data-listing-date-sort="1764824400000" data-listing-file-modified-sort="1769958520315" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="184">
+<div class="g-col-1" data-index="0" data-categories="bGVhcm5pbmclMkN0ZWFjaGluZyUyQ0FJ" data-listing-date-sort="1764824400000" data-listing-file-modified-sort="1769958520315" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="184">
 <a href="./posts/programming.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -586,7 +557,7 @@ Dec 4, 2025
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="2" data-categories="cHJvYmFiaWxpdHklMkNwdXp6bGU=" data-listing-date-sort="1764219600000" data-listing-file-modified-sort="1769959044770" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="453">
+<div class="g-col-1" data-index="1" data-categories="cHJvYmFiaWxpdHklMkNwdXp6bGU=" data-listing-date-sort="1764219600000" data-listing-file-modified-sort="1769959044770" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="453">
 <a href="./posts/with-without-order.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -614,10 +585,10 @@ Nov 27, 2025
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="3" data-categories="bnVtYmVyJTIwdGhlb3J5JTJDcmVzZWFyY2glMkNvcGVuJTJDZmlib25hY2NpJTJDZXhwbG9yYXRpb24=" data-listing-date-sort="1754884800000" data-listing-file-modified-sort="1769958520311" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1431">
+<div class="g-col-1" data-index="2" data-categories="bnVtYmVyJTIwdGhlb3J5JTJDcmVzZWFyY2glMkNvcGVuJTJDZmlib25hY2NpJTJDZXhwbG9yYXRpb24=" data-listing-date-sort="1754884800000" data-listing-file-modified-sort="1769958520311" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1431">
 <a href="./posts/nth-fibonacci.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="posts/nth-fibonacci_files/figure-html/cell-4-output-1.png" style="height: 250px;"  class="thumbnail-image card-img"/></p>
+<p class="card-img-top"><img loading='lazy' src="posts/nth-fibonacci_files/figure-html/cell-4-output-1.png" style="height: 250px;"  class="thumbnail-image card-img"/></p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
 Self-Fibonacci Numbers
@@ -646,7 +617,7 @@ Aug 11, 2025
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="4" data-categories="cGhpbG9zb3BoeSUyQ3RlYWNoaW5n" data-listing-date-sort="1752724800000" data-listing-file-modified-sort="1769959459101" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1282">
+<div class="g-col-1" data-index="3" data-categories="cGhpbG9zb3BoeSUyQ3RlYWNoaW5n" data-listing-date-sort="1752724800000" data-listing-file-modified-sort="1769959459101" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1282">
 <a href="./posts/architects-gardeners.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -674,7 +645,7 @@ Jul 17, 2025
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="5" data-categories="cGhpbG9zb3BoeSUyQ2xlYXJuaW5nJTJDdGVhY2hpbmclMkNidWRkaGlzbSUyQ21pbmRmdWxuZXNzJTJDZ3JlZWtz" data-listing-date-sort="1751169600000" data-listing-file-modified-sort="1769958520322" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="160">
+<div class="g-col-1" data-index="4" data-categories="cGhpbG9zb3BoeSUyQ2xlYXJuaW5nJTJDdGVhY2hpbmclMkNidWRkaGlzbSUyQ21pbmRmdWxuZXNzJTJDZ3JlZWtz" data-listing-date-sort="1751169600000" data-listing-file-modified-sort="1769958520322" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="160">
 <a href="./posts/remembering-learning.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -710,7 +681,7 @@ Jun 29, 2025
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="6" data-categories="cHJvYmFiaWxpdHklMkN2aXN1YWxpemF0aW9u" data-listing-date-sort="1748836800000" data-listing-file-modified-sort="1769958520301" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1300">
+<div class="g-col-1" data-index="5" data-categories="cHJvYmFiaWxpdHklMkN2aXN1YWxpemF0aW9u" data-listing-date-sort="1748836800000" data-listing-file-modified-sort="1769958520301" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1300">
 <a href="./posts/bayes-theorem.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -738,7 +709,7 @@ Jun 2, 2025
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="7" data-categories="dHJpYW5nbGVzJTJDY29sb3JpbmclMkNxdWVzdGlvbnMlMkN2aXN1YWxpemF0aW9uJTJDaW50ZXJhY3RpdmUlMkNkZXRlcm1pbmFudA==" data-listing-date-sort="1748145600000" data-listing-file-modified-sort="1769958520330" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2091">
+<div class="g-col-1" data-index="6" data-categories="dHJpYW5nbGVzJTJDY29sb3JpbmclMkNxdWVzdGlvbnMlMkN2aXN1YWxpemF0aW9uJTJDaW50ZXJhY3RpdmUlMkNkZXRlcm1pbmFudA==" data-listing-date-sort="1748145600000" data-listing-file-modified-sort="1769958520330" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2091">
 <a href="./posts/sperners-lemma-geometric-proof.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -774,7 +745,7 @@ May 25, 2025
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="8" data-categories="Y29tYmluYXRvcmljcyUyQ3RyaWFuZ2xlcyUyQ2NvbG9yaW5nJTJDdmlzdWFsaXphdGlvbiUyQ2ludGVyYWN0aXZlJTJDcXVlc3Rpb25z" data-listing-date-sort="1747368000000" data-listing-file-modified-sort="1769958520326" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="16" data-listing-word-count-sort="3048">
+<div class="g-col-1" data-index="7" data-categories="Y29tYmluYXRvcmljcyUyQ3RyaWFuZ2xlcyUyQ2NvbG9yaW5nJTJDdmlzdWFsaXphdGlvbiUyQ2ludGVyYWN0aXZlJTJDcXVlc3Rpb25z" data-listing-date-sort="1747368000000" data-listing-file-modified-sort="1769958520326" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="16" data-listing-word-count-sort="3048">
 <a href="./posts/sperners-lemma-combinatorial-proof.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -810,7 +781,7 @@ May 16, 2025
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="9" data-categories="Y29tYmluYXRvcmljcyUyQ3RyaWFuZ2xlcyUyQ2NvbG9yaW5nJTJDcXVlc3Rpb25zJTJDdmlzdWFsaXphdGlvbiUyQ2ludGVyYWN0aXZl" data-listing-date-sort="1747195200000" data-listing-file-modified-sort="1769958520334" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1676">
+<div class="g-col-1" data-index="8" data-categories="Y29tYmluYXRvcmljcyUyQ3RyaWFuZ2xlcyUyQ2NvbG9yaW5nJTJDcXVlc3Rpb25zJTJDdmlzdWFsaXphdGlvbiUyQ2ludGVyYWN0aXZl" data-listing-date-sort="1747195200000" data-listing-file-modified-sort="1769958520334" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1676">
 <a href="./posts/sperners-lemma-statement.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -846,7 +817,7 @@ May 14, 2025
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="10" data-categories="cmFuZG9tbmVzcyUyQ3RyaWFuZ2xlcyUyQ2JhcnljZW50cmljJTIwY29vcmRpbmF0ZXM=" data-listing-date-sort="1747022400000" data-listing-file-modified-sort="1769958520318" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1060">
+<div class="g-col-1" data-index="9" data-categories="cmFuZG9tbmVzcyUyQ3RyaWFuZ2xlcyUyQ2JhcnljZW50cmljJTIwY29vcmRpbmF0ZXM=" data-listing-date-sort="1747022400000" data-listing-file-modified-sort="1769958520318" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1060">
 <a href="./posts/random-points-in-a-triangle.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -876,7 +847,7 @@ May 12, 2025
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="11" data-categories="YWZmaW5lJTIwZ2VvbWV0cnklMkN0cmlhbmdsZXMlMkNpbnRlcmFjdGl2ZSUyQ3Zpc3VhbGl6YXRpb24=" data-listing-date-sort="1746936000000" data-listing-file-modified-sort="1769958520296" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="12" data-listing-word-count-sort="2331">
+<div class="g-col-1" data-index="10" data-categories="YWZmaW5lJTIwZ2VvbWV0cnklMkN0cmlhbmdsZXMlMkNpbnRlcmFjdGl2ZSUyQ3Zpc3VhbGl6YXRpb24=" data-listing-date-sort="1746936000000" data-listing-file-modified-sort="1769958520296" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="12" data-listing-word-count-sort="2331">
 <a href="./posts/barycentric-coordinates.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -908,7 +879,7 @@ May 11, 2025
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="12" data-categories="d3JpdGluZw==" data-listing-date-sort="1746244800000" data-listing-file-modified-sort="1769958520304" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="296">
+<div class="g-col-1" data-index="11" data-categories="d3JpdGluZw==" data-listing-date-sort="1746244800000" data-listing-file-modified-sort="1769958520304" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="296">
 <a href="./posts/begin-again.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -934,7 +905,7 @@ May 3, 2025
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="13" data-categories="cmFuZG9tLXdhbGslMkNtY21jJTJDdmlzdWFsaXphdGlvbg==" data-listing-date-sort="1735966800000" data-listing-file-modified-sort="1772575520427" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="12" data-listing-word-count-sort="2323">
+<div class="g-col-1" data-index="12" data-categories="cmFuZG9tLXdhbGslMkNtY21jJTJDdmlzdWFsaXphdGlvbg==" data-listing-date-sort="1735966800000" data-listing-file-modified-sort="1772575520427" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="12" data-listing-word-count-sort="2323">
 <a href="./apps/metropolis-random-walk.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -964,7 +935,7 @@ Jan 4, 2025
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="14" data-categories="bWNtYyUyQ3N0YXRpc3RpY3MlMkNhbGdvcml0aG1z" data-listing-date-sort="1735880400000" data-listing-file-modified-sort="1772575306567" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2135">
+<div class="g-col-1" data-index="13" data-categories="bWNtYyUyQ3N0YXRpc3RpY3MlMkNhbGdvcml0aG1z" data-listing-date-sort="1735880400000" data-listing-file-modified-sort="1772575306567" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2135">
 <a href="./apps/metropolis-hastings.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -994,7 +965,7 @@ Jan 3, 2025
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="15" data-categories="bW9udGUtY2FybG8lMkNwcm9iYWJpbGl0eSUyQ3Zpc3VhbGl6YXRpb24=" data-listing-date-sort="1735794000000" data-listing-file-modified-sort="1772575275142" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1222">
+<div class="g-col-1" data-index="14" data-categories="bW9udGUtY2FybG8lMkNwcm9iYWJpbGl0eSUyQ3Zpc3VhbGl6YXRpb24=" data-listing-date-sort="1735794000000" data-listing-file-modified-sort="1772575275142" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1222">
 <a href="./apps/estimating-pi.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -1024,7 +995,7 @@ Jan 2, 2025
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="16" data-categories="cHJvYmFiaWxpdHklMkNtb250ZS1jYXJsbyUyQ3Zpc3VhbGl6YXRpb24=" data-listing-date-sort="1735707600000" data-listing-file-modified-sort="1772575238285" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1236">
+<div class="g-col-1" data-index="15" data-categories="cHJvYmFiaWxpdHklMkNtb250ZS1jYXJsbyUyQ3Zpc3VhbGl6YXRpb24=" data-listing-date-sort="1735707600000" data-listing-file-modified-sort="1772575238285" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1236">
 <a href="./apps/buffons-needle.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -1121,13 +1092,14 @@ Jan 1, 2025
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
