@@ -1,32 +1,24 @@
 [
   {
-    "listing": "/apps/index.html",
+    "listing": "/maths/index.html",
     "items": [
-      "/apps/metropolis-random-walk.html",
-      "/apps/metropolis-hastings.html",
-      "/apps/estimating-pi.html",
-      "/apps/buffons-needle.html"
+      "/posts/maths/with-without-order.html",
+      "/posts/maths/nth-fibonacci.html",
+      "/posts/maths/bayes-theorem.html",
+      "/posts/maths/sperners-lemma-geometric-proof.html",
+      "/posts/maths/sperners-lemma-combinatorial-proof.html",
+      "/posts/maths/sperners-lemma-statement.html",
+      "/posts/maths/random-points-in-a-triangle.html",
+      "/posts/maths/barycentric-coordinates.html"
     ]
   },
   {
-    "listing": "/index.html",
+    "listing": "/scribbles/index.html",
     "items": [
-      "/posts/programming.html",
-      "/posts/with-without-order.html",
-      "/posts/nth-fibonacci.html",
-      "/posts/architects-gardeners.html",
-      "/posts/remembering-learning.html",
-      "/posts/bayes-theorem.html",
-      "/posts/sperners-lemma-geometric-proof.html",
-      "/posts/sperners-lemma-combinatorial-proof.html",
-      "/posts/sperners-lemma-statement.html",
-      "/posts/random-points-in-a-triangle.html",
-      "/posts/barycentric-coordinates.html",
-      "/posts/begin-again.html",
-      "/apps/metropolis-random-walk.html",
-      "/apps/metropolis-hastings.html",
-      "/apps/estimating-pi.html",
-      "/apps/buffons-needle.html"
+      "/posts/scribbles/programming.html",
+      "/posts/scribbles/architects-gardeners.html",
+      "/posts/scribbles/remembering-learning.html",
+      "/posts/scribbles/begin-again.html"
     ]
   }
 ]

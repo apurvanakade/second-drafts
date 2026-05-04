@@ -1,11 +1,6 @@
 project:
   type: website
   output-dir: docs
-  resources:
-    - "apps/**/*.py"
-    - "apps/**/*.js"
-    - "apps/**/*.html"
-    - "apps/**/*.svg"
 
 website:
   title: "Second Drafts"
@@ -35,27 +30,24 @@ website:
   sidebar: 
     style: floating
     contents:
-      - section: Posts
+      - section: Maths
         contents:
-          - posts/programming.qmd
-          - posts/with-without-order.qmd
-          - posts/nth-fibonacci.qmd
-          - posts/architects-gardeners.qmd
-          - posts/remembering-learning.qmd
-          - posts/bayes-theorem.qmd
-          - posts/sperners-lemma-geometric-proof.qmd
-          - posts/sperners-lemma-combinatorial-proof.qmd
-          - posts/sperners-lemma-statement.qmd
-          - posts/random-points-in-a-triangle.qmd
-          - posts/barycentric-coordinates.qmd
-          - posts/begin-again.qmd
-      - section: Apps
+          - maths/index.qmd
+          - posts/maths/with-without-order.qmd
+          - posts/maths/nth-fibonacci.qmd
+          - posts/maths/bayes-theorem.qmd
+          - posts/maths/sperners-lemma-geometric-proof.qmd
+          - posts/maths/sperners-lemma-combinatorial-proof.qmd
+          - posts/maths/sperners-lemma-statement.qmd
+          - posts/maths/random-points-in-a-triangle.qmd
+          - posts/maths/barycentric-coordinates.qmd
+      - section: Scribbles
         contents:
-          - apps/buffons-needle.qmd
-          - apps/estimating-pi.qmd
-          - apps/metropolis-hastings.qmd
-          - apps/metropolis-random-walk.qmd
-  
+          - scribbles/index.qmd
+          - posts/scribbles/programming.qmd
+          - posts/scribbles/architects-gardeners.qmd
+          - posts/scribbles/remembering-learning.qmd
+          - posts/scribbles/begin-again.qmd
   # comments:
   #   giscus:
   #     repo: "apurvanakade/giscus"

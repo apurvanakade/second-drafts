@@ -1,0 +1,256 @@
+---
+title: Bayes Theorem
+author: Apurva Nakade
+date: 2025-06-02
+categories: [probability, visualization]
+image: "../../maths/images/bayes.png"
+---
+
+```{ojs}
+// Configuration
+CONFIG = ({
+  colors: {
+    infected: "red",
+    healthy: "black", 
+    outline: "black",
+    background: "rgba(0,0,0,0.5)"
+  },
+  canvas: {
+    width: 740,
+    height: 300,
+    pointRadius: 2.5,
+    pointCount: 10000
+  }
+})
+
+// Initial parameter values
+INITIAL_VALUES = ({
+  prevalence: 0.11,
+  sensitivity: 0.8,
+  specificity: 0.9
+})
+```
+
+```{ojs}
+// Generate random points for visualization
+points = Array.from({ length: CONFIG.canvas.pointCount }, () => ({
+  x: Math.random() * CONFIG.canvas.width,
+  y: Math.random() * CONFIG.canvas.height
+}))
+```
+
+
+```{ojs}
+// Core calculation functions
+function calculateTestMetrics(points, prevalence, sensitivity, specificity, width) {
+  const prevalenceLinePosition = prevalence * width
+  const sensitivityLinePosition = prevalenceLinePosition * (1 - sensitivity)
+  const specificityLinePosition = prevalenceLinePosition + (width - prevalenceLinePosition) * (1 - specificity)
+  
+  const infected = points.filter(point => point.x < prevalenceLinePosition)
+  const healthy = points.filter(point => point.x >= prevalenceLinePosition)
+  
+  const truePositives = infected.filter(point => point.x >= sensitivityLinePosition)
+  const falseNegatives = infected.filter(point => point.x < sensitivityLinePosition)
+  const trueNegatives = healthy.filter(point => point.x >= specificityLinePosition)
+  const falsePositives = healthy.filter(point => point.x < specificityLinePosition)
+  
+  return {
+    linePositions: { prevalenceLinePosition, sensitivityLinePosition, specificityLinePosition },
+    classifications: { truePositives, falseNegatives, trueNegatives, falsePositives },
+    ppv: truePositives.length / (truePositives.length + falsePositives.length),
+    npv: trueNegatives.length / (trueNegatives.length + falseNegatives.length)
+  }
+}
+
+function stretchPoints(points, sourceStart, sourceEnd, targetStart, targetEnd) {
+  const scale = (targetEnd - targetStart) / (sourceEnd - sourceStart)
+  return points.map(point => ({
+    x: targetStart + (point.x - sourceStart) * scale,
+    y: point.y
+  }))
+}
+```
+
+```{ojs}
+// Canvas drawing function
+function drawDiagnosticCanvas(points, prevalence, sensitivity, specificity, options = {}) {
+  const { width = CONFIG.canvas.width, height = CONFIG.canvas.height, pointRadius = CONFIG.canvas.pointRadius } = options
+  
+  const canvas = DOM.canvas(width, height)
+  const ctx = canvas.getContext("2d")
+  
+  const { linePositions, classifications } = calculateTestMetrics(points, prevalence, sensitivity, specificity, width)
+  const { sensitivityLinePosition, specificityLinePosition } = linePositions
+  
+  // Draw background regions (false results)
+  ctx.fillStyle = CONFIG.colors.background
+  ctx.fillRect(0, 0, sensitivityLinePosition, height)
+  ctx.fillRect(specificityLinePosition, 0, width - specificityLinePosition, height)
+  
+  // Draw border
+  ctx.strokeStyle = CONFIG.colors.outline
+  ctx.lineWidth = 2
+  ctx.strokeRect(0, 0, width, height)
+  
+  // Draw points
+  const prevalenceLinePosition = prevalence * width
+  points.forEach(point => {
+    ctx.fillStyle = point.x < prevalenceLinePosition ? CONFIG.colors.infected : CONFIG.colors.healthy
+    ctx.beginPath()
+    ctx.arc(point.x, point.y, pointRadius, 0, 2 * Math.PI)
+    ctx.fill()
+  })
+  
+  // Draw test threshold lines
+  const drawLine = (x, width = 2) => {
+    ctx.strokeStyle = CONFIG.colors.outline
+    ctx.lineWidth = width
+    ctx.beginPath()
+    ctx.moveTo(x, 0)
+    ctx.lineTo(x, height)
+    ctx.stroke()
+  }
+  
+  drawLine(sensitivityLinePosition)
+  drawLine(specificityLinePosition)
+  
+  return canvas
+}
+```
+
+Here's a classic probability problem that illustrates this challenge. A standard mammogram test has, say, 80% sensitivity and 90% specificity. This means if you have breast cancer, the test will be positive 80% of the time, and if you do not have cancer, the test will be negative 90% of the time. (These are pretty good odds if you ask me.)
+You go to your doctor and your test comes out positive. What are the chances you have breast cancer?
+Take a moment to think about the answer before peeking below.
+
+
+```{ojs}
+viewof prevalence = html`<input type="range" 
+    min="${0}" max="${1}" step="${0.01}" value="${INITIAL_VALUES.prevalence}" 
+    style="width:${CONFIG.canvas.width}px;">`;
+viewof sensitivity = html`<input type="number" min="0" max="1" step="0.01" value="${INITIAL_VALUES.sensitivity}" style="width:80px;">`
+viewof specificity = html`<input type="number" min="0" max="1" step="0.01" value="${INITIAL_VALUES.specificity}" style="width:80px;">`
+
+// Display current parameter values
+html`
+<table style="width: 100%; border-collapse: collapse; border: 2px solid #444; margin: 10px 0;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #444; padding: 8px;">Prevalence</th>
+      <th style="border: 1px solid #444; padding: 8px;">Sensitivity</th>
+      <th style="border: 1px solid #444; padding: 8px;">Specificity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #444; padding: 8px;">${prevalence.toFixed(2)}</td>
+      <td style="border: 1px solid #444; padding: 8px;">${viewof sensitivity}</td>
+      <td style="border: 1px solid #444; padding: 8px;">${viewof specificity}</td>
+    </tr>
+  </tbody>
+</table>
+`
+```
+
+```{ojs}
+// Initial test results
+initialResults = calculateTestMetrics(points, prevalence, sensitivity, specificity, CONFIG.canvas.width)
+
+// First visualization: Original population
+canvas1 = drawDiagnosticCanvas(points, prevalence, sensitivity, specificity)
+```
+
+```{ojs}
+html`
+<div style="margin: 10px 0; padding: 10px; background-color: #f5f5f5; border-radius: 5px;">
+  <strong>Step 1 - Original Population:</strong>
+  <table style="width: 100%; border-collapse: collapse; margin-top: 10px;">
+    <tr>
+      <th style="border: 1px solid #ccc; padding: 8px; background-color: #e8e8e8;">PPV</th>
+      <th style="border: 1px solid #ccc; padding: 8px; background-color: #e8e8e8;">NPV</th>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #ccc; padding: 8px; text-align: center;"><strong>${(initialResults.ppv || 0).toFixed(3)}</strong></td>
+      <td style="border: 1px solid #ccc; padding: 8px; text-align: center;"><strong>${(initialResults.npv || 0).toFixed(3)}</strong></td>
+    </tr>
+  </table>
+</div>
+`
+```
+
+The answer, it turns out, is just around **50%** (assuming a prevalence of 11%)! Even though the tests are really good and highly accurate, the chance of you having cancer if your test comes out positive is the same as tossing a coin and saying you have cancer if you get heads! What is going on?
+
+You can see this phenomenon in the app above. There are far more women who do not have cancer than those who do. In the app, the red dots represent women with breast cancer and the black dots represent women without breast cancer. The regions between the vertical lines show women for whom the test result is positive.
+
+You can see that 80% of all the red dots (true positives) and 10% of all the black dots (false positives) fall within this positive test region. But there are so many more black dots that just 10% of these ends up being roughly the same number as 80% of all the red dots. So if your test comes out positive, you have about a 50-50 chance of being either a red dot or a black dot - a true positive or a false positive.
+
+Does this mean that the test is useless and you shouldn't take it? **Absolutely NOT!** If you focus only on the positive results (zoom in) and "repeat the test" (see below), the accuracy increases dramatically to 87%. Because for the positive cases, the effective prevalence has gone up from 11% to 50%. Do it a third time and the PPV becomes 98%. 
+
+But there's another important consideration: notice that 20% of cancer cases are missed in the first test (false negatives). However, the chances of missing a diagnosis in two consecutive tests drops from 20% to just 4%, and becomes negligible after three tests. This is another compelling reason why regular, frequent testing is so important.
+
+These calculations are formalized in Bayes' theorem.
+
+
+```{ojs}
+// Second iteration: Focus on positive results
+positiveResults = [...initialResults.classifications.truePositives, ...initialResults.classifications.falsePositives]
+
+stretchedPoints1 = stretchPoints(
+  positiveResults,
+  initialResults.linePositions.sensitivityLinePosition,
+  initialResults.linePositions.specificityLinePosition,
+  0,
+  CONFIG.canvas.width
+)
+
+newPrevalence1 = initialResults.ppv
+results1 = calculateTestMetrics(stretchedPoints1, newPrevalence1, sensitivity, specificity, CONFIG.canvas.width)
+```
+
+```{ojs}
+// Second visualization
+canvas2 = drawDiagnosticCanvas(stretchedPoints1, newPrevalence1, sensitivity, specificity, {
+  pointRadius: 3.5
+})
+```
+
+```{ojs}
+html`
+<div style="margin: 10px 0; padding: 10px; background-color: #f0f8ff; border-radius: 5px;">
+  <strong>Step 2 - Probability of having cancer if two tests are positive:</strong><br>
+  Positive Predictive Value (PPV): <strong>${(results1.ppv || 0).toFixed(3)}</strong>
+</div>
+`
+```
+
+```{ojs}
+// Third iteration: Further focus on positive results
+positiveResults2 = [...results1.classifications.truePositives, ...results1.classifications.falsePositives]
+
+stretchedPoints2 = stretchPoints(
+  positiveResults2,
+  results1.linePositions.sensitivityLinePosition,
+  results1.linePositions.specificityLinePosition,
+  0,
+  CONFIG.canvas.width
+)
+
+newPrevalence2 = results1.ppv
+results2 = calculateTestMetrics(stretchedPoints2, newPrevalence2, sensitivity, specificity, CONFIG.canvas.width)
+```
+
+```{ojs}
+// Third visualization
+canvas3 = drawDiagnosticCanvas(stretchedPoints2, newPrevalence2, sensitivity, specificity, {
+  pointRadius: 5
+})
+```
+
+```{ojs}
+html`
+<div style="margin: 10px 0; padding: 10px; background-color: #f0fff0; border-radius: 5px;">
+  <strong>Step 3 - Probability of having cancer if three tests are positive:</strong><br>
+  Positive Predictive Value (PPV): <strong>${(results2.ppv || 0).toFixed(3)}</strong>
+</div>
+`
+```

@@ -1,0 +1,19 @@
+---
+title: Vibe Coding
+date: 2025-12-04
+author: Apurva Nakade
+categories: ["learning", "AI"]
+image: "../../scribbles/images/programming.png"
+---
+
+I don't code much these days - AI does all the programming for me. I almost exclusively write programs in Python, and I do not like Python.
+
+The first programming language I learned was C. This was before the internet. I had two textbooks titled something like "Learning C" and "Graphics with C". I read the books, did the exercises on my yellow-blue Turbo C compiler. I wrote Winamp visualizations and terminal-based games. It was a lot of fun. Later, when I discovered the web browser and learned HTML and its siblings, I was able to express my creative self through coding.
+
+While I did all of this for fun, looking back, programming helped me become a better thinker. It taught me to break down a complex problem into smaller parts and work on the parts systematically. Now, from my vantage point as a teacher, I can say that programming was cross-training for math. In my mind the two are so enmeshed that I do not think of them as separate topics.
+
+This is what we're losing as we transition to the world of vibe coding. 
+
+---
+
+### Update on 2026-05-03 

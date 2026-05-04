@@ -1,21 +1,7 @@
 ---
-title: "Second Drafts"
-subtitle: "A collection of mathematical musings"
-listing:
-  contents: 
-    - "posts/*.qmd"
-    - "apps/buffons-needle.qmd"
-    - "apps/estimating-pi.qmd"
-    - "apps/metropolis-hastings.qmd"
-    - "apps/metropolis-random-walk.qmd"
-  sort: "date desc"
-  type: grid
-  grid-columns: 3
-  fields: [image, date, title, description, categories]
-  categories: true
-  sort-ui: false
-  filter-ui: false
-  image-height: 250px
-page-layout: full
-title-block-banner: true
+title: Second Drafts
+date: 2025-05-03
+author: Apurva Nakade
+categories: ['philosophy', 'teaching']
+image: "../../scribbles/images/architects-gardeners.png"
 ---
