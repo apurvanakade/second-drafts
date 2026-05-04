@@ -9,6 +9,10 @@ execute:
   cache: true
 ---
 
+<!-- 
+TODO: Add a visualization below. 
+-->
+
 Here's a question about basic probability theory that a student once asked me in class: When computing probabilities, does "choosing with order" vs "choosing without order" always give the same answer?
 
 My first instinct was "Why would it?" But then I was surprised by some simple examples. 
