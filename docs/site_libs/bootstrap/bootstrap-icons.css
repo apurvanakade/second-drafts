@@ -1227,7 +1227,7 @@ url("./bootstrap-icons.woff?2820a3852bdb9a5832199cc61cec4e65") format("woff");
 .bi-tag-fill::before { content: "\f5af"; }
 .bi-tag::before { content: "\f5b0"; }
 .bi-tags-fill::before { content: "\f5b1"; }
-.bi-tags::before { content: "\f5b2"; }
+.bi-categories::before { content: "\f5b2"; }
 .bi-telegram::before { content: "\f5b3"; }
 .bi-telephone-fill::before { content: "\f5b4"; }
 .bi-telephone-forward-fill::before { content: "\f5b5"; }

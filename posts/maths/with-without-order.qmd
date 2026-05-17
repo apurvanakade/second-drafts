@@ -3,8 +3,7 @@ title: With or Without Order
 date: 2025-11-27
 author: Apurva Nakade
 categories: ['probability', 'puzzle']
-image: "../../maths/images/order-matters.png"
-
+image: "../../maths/images/with-without-order-equation.svg"
 execute: 
   cache: true
 ---

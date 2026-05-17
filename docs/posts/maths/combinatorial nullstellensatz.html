@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Apurva Nakade">
-<meta name="dcterms.date" content="2025-08-11">
+<meta name="dcterms.date" content="2023-11-26">
 
-<title>Self-Fibonacci Numbers – Second Drafts</title>
+<title>Combinatorial Nullstellensatz – Second Drafts</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -35,8 +35,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../posts/maths/bayes-theorem.html" rel="next">
-<link href="../../posts/maths/with-without-order.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
@@ -109,12 +107,10 @@ window.Quarto = {
 </script>
 
 <link rel="stylesheet" href="../../styles.css">
-<meta property="og:title" content="Self-Fibonacci Numbers – Second Drafts">
+<meta property="og:title" content="Combinatorial Nullstellensatz – Second Drafts">
 <meta property="og:description" content="">
-<meta property="og:image" content="https://github.com/apurvanakade/second-drafts/posts/maths/nth-fibonacci_files/figure-html/cell-4-output-1.png">
+<meta property="og:image" content="https://github.com/apurvanakade/second-drafts/maths/images/combinatorial-nullstellensatz-equation.svg">
 <meta property="og:site_name" content="Second Drafts">
-<meta property="og:image:height" content="1516">
-<meta property="og:image:width" content="1515">
 </head>
 
 <body class="nav-sidebar floating nav-fixed fullcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
@@ -331,7 +327,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../maths/index.html">Maths</a></li><li class="breadcrumb-item"><a href="../../posts/maths/nth-fibonacci.html">Self-Fibonacci Numbers</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Combinatorial Nullstellensatz</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -366,7 +362,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/maths/nth-fibonacci.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../posts/maths/nth-fibonacci.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Self-Fibonacci Numbers</span></a>
   </div>
 </li>
@@ -442,11 +438,8 @@ window.Quarto = {
   </div>
 </li>
           <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/scribbles/begin-again.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Begin Again</span></a>
-  </div>
-</li>
+ <span class="menu-text">posts/scribbles/begin-again.qmd</span>
+  </li>
       </ul>
   </li>
     </ul>
@@ -464,15 +457,13 @@ window.Quarto = {
   </a>
 </div>
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../maths/index.html">Maths</a></li><li class="breadcrumb-item"><a href="../../posts/maths/nth-fibonacci.html">Self-Fibonacci Numbers</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Self-Fibonacci Numbers</h1>
+<h1 class="title">Combinatorial Nullstellensatz</h1>
   <div class="quarto-categories">
-    <div class="quarto-category">number theory</div>
-    <div class="quarto-category">research</div>
-    <div class="quarto-category">open</div>
-    <div class="quarto-category">fibonacci</div>
-    <div class="quarto-category">exploration</div>
+    <div class="quarto-category">combinatorics</div>
+    <div class="quarto-category">problems</div>
+    <div class="quarto-category">todo</div>
   </div>
   </div>
 
@@ -490,7 +481,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">August 11, 2025</p>
+      <p class="date">November 26, 2023</p>
     </div>
   </div>
   
@@ -502,121 +493,39 @@ window.Quarto = {
 </header>
 
 
-<p>Here’s a seemingly simple question that lacks a clean solution:</p>
-<blockquote class="blockquote">
-<p>For what positive integers <span class="math inline">\(n\)</span> does <span class="math inline">\(n\)</span> divide <span class="math inline">\(F_n\)</span>, where <span class="math inline">\(F_n\)</span> denotes the <span class="math inline">\(n^{\text{th}}\)</span> Fibonacci number?</p>
-</blockquote>
-<p>According to the On-Line Encyclopedia of Integer Sequences (OEIS), such numbers are called “Self-Fibonacci numbers”: <a href="https://oeis.org/A023172">https://oeis.org/A023172</a>. The sequence begins:</p>
-<blockquote class="blockquote">
-<p>1, 5, 12, 24, 25, 36, 48, 60, 72, 96, 108, 120, 125, 144, 168, 180, 192, 216, 240, 288, 300, 324, 336, 360, 384, 432, 480, 504, 540, 552, 576, 600, 612, 625, 648, 660, 672, 684, 720, 768, 840, 864, 900, 960, 972, 1008, 1080, 1104, 1152, 1176, 1200, 1224, 1296, 1320</p>
-</blockquote>
-<p>One approach to this question is as follows:</p>
-<p>Let <span class="math inline">\(\alpha(n)\)</span> be the smallest positive integer <span class="math inline">\(k\)</span> such that <span class="math inline">\(n \mid F_k\)</span>. Note that if <span class="math inline">\(n \mid F_k\)</span>, then <span class="math inline">\(n \mid F_{mk}\)</span> for all positive integers <span class="math inline">\(m\)</span>. Therefore, the self-Fibonacci numbers are exactly those for which <span class="math inline">\(\alpha(n) \mid n\)</span>.</p>
-<p>This sequence is fascinating, with apparently no simple formula! I explored the following related question:</p>
-<blockquote class="blockquote">
-<p>For what positive integers <span class="math inline">\(n\)</span> does <span class="math inline">\(\alpha(n) = n\)</span>?</p>
-</blockquote>
-<p>Here’s the list of such numbers up to 10,000.</p>
-<div id="ee69582e" class="cell" data-execution_count="2">
-<div class="cell-output cell-output-stdout">
-<pre><code>Values of n where α(n) = n (up to 10000):
-[1, 5, 12, 25, 60, 125, 300, 625, 1500, 3125, 7500]</code></pre>
-</div>
-</div>
-<p>This is a much simpler question, and the sequence appears to consist of all numbers that are powers of 5 or 12 times a power of 5. The OEIS entry for this sequence is <a href="https://oeis.org/A289586">https://oeis.org/A289586</a>.</p>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>Conjecture
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The only integers <span class="math inline">\(n\)</span> such that <span class="math inline">\(\alpha(n) = n\)</span> are of the form <span class="math inline">\(5^k\)</span> or <span class="math inline">\(12 \cdot 5^k\)</span> for some non-negative integer <span class="math inline">\(k\)</span>.</p>
-</div>
-</div>
-<p>I’m not certain this is true, but it holds for all integers up to 10,000. I’m also interested in understanding the distribution of <span class="math inline">\(n / \alpha(n)\)</span>. When plotting <span class="math inline">\(n / \alpha(n)\)</span>, most values fall above 1, though some are less than or equal to 1.</p>
-<p>Below is a table of <span class="math inline">\(n / \alpha(n)\)</span> for all integers <span class="math inline">\(n\)</span> up to 10,000. Surprisingly, the most common value is not 1 but <span class="math inline">\(4/3\)</span>.</p>
-<p>I wonder what patterns exist in the ratios <span class="math inline">\(n / \alpha(n)\)</span>…</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Questions
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<p>I came across this fun theorem in a talk about tree colorings:</p>
+<p><strong>Combinatorial Nullstellensatz.</strong> Let <span class="math inline">\(f \in F[x_1, x_2, \ldots, x_n]\)</span> be a polynomial of degree <span class="math inline">\(t_1 + \cdots + t_n\)</span>. If <span class="math inline">\(S_1, S_2, \ldots, S_n\)</span> are nonempty subsets of <span class="math inline">\(F\)</span> such that <span class="math inline">\(\left| S_i \right| \geq t_i + 1\)</span> for all <span class="math inline">\(i\)</span>, then there exists <span class="math inline">\(s_1 \in S_1\)</span>, <span class="math inline">\(s_2 \in S_2\)</span>, <span class="math inline">\(\ldots\)</span>, <span class="math inline">\(s_n \in S_n\)</span> for which <span class="math display">\[
+f(s_1, s_2, \ldots, s_n) \neq 0
+\]</span> as long as the coefficient of <span class="math inline">\(x_1^{t_1} x_2^{t_2} \cdots x_n^{t_n}\)</span> is nonzero.</p>
+<p>I would love to spend more time understanding it. I’ve copied the problems from <a href="https://web.evanchen.cc/handouts/BMC_Combo_Null/BMC_Combo_Null.pdf">this pdf</a> and will try and solve them when I can.</p>
+<section id="problems" class="level2">
+<h2 class="anchored" data-anchor-id="problems">Problems</h2>
+<p>In what follows, <span class="math inline">\(p\)</span> will denote an odd prime.</p>
+<ol type="1">
+<li><p><strong>Russia MO 2007/5:</strong> Two distinct numbers are written on each vertex of a convex 100-gon. Prove one can remove a number from each vertex so that the remaining numbers on any two adjacent vertices differ.</p></li>
+<li><p><strong>IMO 2007/6:</strong> Let <span class="math inline">\(n\)</span> be a positive integer. Consider <span class="math display">\[
+S = \{(x, y, z) \mid x, y, z \in \{0, 1, \ldots, n\}, (x, y, z) \neq (0, 0, 0)\}
+\]</span> as a set of <span class="math inline">\((n + 1)^3 - 1\)</span> points in the three-dimensional space. Determine the smallest possible number of planes, the union of which contains <span class="math inline">\(S\)</span> but does not include <span class="math inline">\((0, 0, 0)\)</span>.</p></li>
+<li><p><strong>Cauchy-Davenport:</strong> If <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are subsets of <span class="math inline">\(\mathbb{Z}_p\)</span>, then <span class="math display">\[
+|A + B| \geq \min(p, |A| + |B| - 1).
+\]</span></p></li>
+<li><p><strong>Erdős-Heilbronn Conjecture:</strong> Let <span class="math inline">\(A\)</span> be a subset of <span class="math inline">\(\mathbb{Z}_p\)</span>. Then <span class="math display">\[
+|\{x + y \mid x, y \in A, x \neq y\}| \geq \min(p, 2|A| - 3).
+\]</span></p></li>
+<li><p><strong>Chevalley-Warning:</strong> Let <span class="math inline">\(f_1, f_2, \ldots, f_k\)</span> be polynomials in <span class="math inline">\(\mathbb{Z}_p[x_1, x_2, \ldots, x_n]\)</span> with <span class="math display">\[
+\sum_{i=1}^k \deg f_i &lt; n.
+\]</span> Show that if the polynomials <span class="math inline">\(f_i\)</span> have a common zero <span class="math inline">\((c_1, c_2, \ldots, c_n)\)</span>, then they have another common zero.</p></li>
+<li><p><strong>Alon:</strong> Show that any loopless graph with average degree at least <span class="math inline">\(2p - 2\)</span> and maximum degree at most <span class="math inline">\(2p - 1\)</span> contains a <span class="math inline">\(p\)</span>-regular subgraph.</p></li>
+<li><p><strong>Shirazi-Verstraëte:</strong> Let <span class="math inline">\(G = (V, E)\)</span> be a graph. For each vertex <span class="math inline">\(v \in V\)</span> we are given a bad set <span class="math inline">\(B(v)\)</span> of positive integers.</p>
 <ul>
-<li><p>What is the distribution of the ratios <span class="math inline">\(n / \alpha(n)\)</span>?</p></li>
-<li><p>For every integer <span class="math inline">\(k\)</span>, is there some integer <span class="math inline">\(n\)</span> such that <span class="math inline">\(n / \alpha(n) = k\)</span>?</p></li>
-<li><p>Can we exploit the fact that</p>
-<p><span class="math display">\[
-F_k = \dfrac{1}{\sqrt{5}} \left( \phi^k - \psi^k \right)
-\]</span></p>
-<p>where <span class="math inline">\(\phi = \frac{1 + \sqrt{5}}{2}\)</span> and <span class="math inline">\(\psi = \frac{1 - \sqrt{5}}{2}\)</span>, to find a closed form for <span class="math inline">\(\alpha(n)\)</span>? We know that <span class="math inline">\(\mathbb{Z}[\phi]\)</span> is a Euclidean domain so we can have access to number theoretic tools such as divisibility and the Euclidean algorithm.</p></li>
-</ul>
-</div>
-</div>
-<div id="27d29344" class="cell" data-execution_count="3">
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="nth-fibonacci_files/figure-html/cell-4-output-1.png" width="758" height="758" class="figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<div id="26f2dc19" class="cell" data-execution_count="6">
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="nth-fibonacci_files/figure-html/cell-7-output-1.png" width="758" height="566" class="figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<div id="895839e0" class="cell" data-execution_count="7">
-<div class="cell-output cell-output-stdout">
-<pre><code>|   n / α(n) |   count | n values                                                                                                                                                            |
-|-----------:|--------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|   1.33333  |      31 | 8, 16, 32, 40, 64, 80, 128, 160, 200, 256, 320, 400, 512, 640, 800, 1000, 1024, 1280, 1600, 2000, 2048, 2560, 3200, 4000, 4096, 5000, 5120, 6400, 8000, 8192, 10000 |
-|   2.625    |      29 | 21, 63, 105, 147, 189, 315, 441, 525, 567, 735, 945, 1029, 1323, 1575, 1701, 2205, 2625, 2835, 3087, 3675, 3969, 4725, 5103, 5145, 6615, 7203, 7875, 8505, 9261     |
-|  12        |      27 | 144, 288, 432, 576, 720, 864, 1152, 1296, 1440, 1728, 2160, 2304, 2592, 2880, 3456, 3600, 3888, 4320, 4608, 5184, 5760, 6480, 6912, 7200, 7776, 8640, 9216          |
-|   0.75     |      25 | 3, 9, 15, 27, 45, 75, 81, 135, 225, 243, 375, 405, 675, 729, 1125, 1215, 1875, 2025, 2187, 3375, 3645, 5625, 6075, 6561, 9375                                       |
-|   1.39286  |      20 | 39, 117, 195, 351, 507, 585, 975, 1053, 1521, 1755, 2535, 2925, 3159, 4563, 4875, 5265, 6591, 7605, 8775, 9477                                                      |
-|   4        |      19 | 48, 96, 192, 240, 384, 480, 768, 960, 1200, 1536, 1920, 2400, 3072, 3840, 4800, 6000, 6144, 7680, 9600                                                              |
-|   2.47619  |      18 | 104, 208, 416, 520, 832, 1040, 1352, 1664, 2080, 2600, 2704, 3328, 4160, 5200, 5408, 6656, 6760, 8320                                                               |
-|   1.5      |      16 | 18, 54, 90, 162, 270, 450, 486, 810, 1350, 1458, 2250, 2430, 4050, 4374, 6750, 7290                                                                                 |
-|   7.55556  |      16 | 136, 272, 544, 680, 1088, 1360, 2176, 2312, 2720, 3400, 4352, 4624, 5440, 6800, 8704, 9248                                                                          |
-|   9.33333  |      15 | 224, 448, 896, 1120, 1568, 1792, 2240, 3136, 3584, 4480, 5600, 6272, 7168, 7840, 8960                                                                               |
-|   8.44444  |      15 | 152, 304, 608, 760, 1216, 1520, 2432, 2888, 3040, 3800, 4864, 5776, 6080, 7600, 9728                                                                                |
-|   1.2381   |      15 | 26, 52, 130, 260, 338, 650, 676, 1300, 1690, 3250, 3380, 4394, 6500, 8450, 8788                                                                                     |
-|   5.25     |      14 | 126, 378, 630, 882, 1134, 1890, 2646, 3150, 3402, 4410, 5670, 6174, 7938, 9450                                                                                      |
-|   3        |      14 | 36, 108, 180, 324, 540, 900, 972, 1620, 2700, 2916, 4500, 4860, 8100, 8748                                                                                          |
-|   1.85714  |      13 | 13, 65, 156, 169, 325, 780, 845, 1625, 2028, 2197, 3900, 4225, 8125                                                                                                 |
-|   3.77778  |      13 | 34, 68, 170, 340, 578, 850, 1156, 1700, 2890, 4250, 5780, 8500, 9826                                                                                                |
-|   0.875    |      13 | 7, 35, 49, 175, 245, 343, 875, 1225, 1715, 2401, 4375, 6125, 8575                                                                                                   |
-|   3.10714  |      12 | 87, 261, 435, 783, 1305, 2175, 2349, 2523, 3915, 6525, 7047, 7569                                                                                                   |
-|   6        |      12 | 72, 216, 360, 648, 1080, 1800, 1944, 3240, 5400, 5832, 9000, 9720                                                                                                   |
-|   5.52381  |      12 | 232, 464, 928, 1160, 1856, 2320, 3712, 4640, 5800, 6728, 7424, 9280                                                                                                 |
-|   2.93333  |      11 | 88, 176, 352, 704, 968, 1408, 1936, 2816, 3872, 5632, 7744                                                                                                          |
-|   5.5      |      11 | 55, 275, 330, 605, 1375, 1650, 3025, 3630, 6655, 6875, 8250                                                                                                         |
-|   8.25     |      11 | 165, 495, 825, 1485, 1815, 2475, 4125, 4455, 5445, 7425, 9075                                                                                                       |
-|   1.46053  |      11 | 111, 333, 555, 999, 1665, 2775, 2997, 4107, 4995, 8325, 8991                                                                                                        |
-|   1        |      11 | 1, 5, 12, 25, 60, 125, 300, 625, 1500, 3125, 7500                                                                                                                   |
-|   0.583333 |      11 | 14, 70, 98, 350, 490, 686, 1750, 2450, 3430, 4802, 8750                                                                                                             |
-|   1.65     |      11 | 33, 99, 297, 363, 891, 1089, 2673, 3267, 3993, 8019, 9801                                                                                                           |
-|   0.666667 |      11 | 2, 4, 10, 20, 50, 100, 250, 500, 1250, 2500, 6250                                                                                                                   |
-|  10.5      |      10 | 252, 756, 1260, 1764, 2268, 3780, 5292, 6300, 6804, 8820                                                                                                            |
-|   1.16667  |      10 | 28, 140, 196, 700, 980, 1372, 3500, 4900, 6860, 9604                                                                                                                |</code></pre>
-</div>
-</div>
+<li>Prove that if <span class="math inline">\(\sum_{v \in V} |B(v)| &lt; |E|\)</span>, then there exists a nontrivial subgraph <span class="math inline">\(H\)</span> for which <span class="math inline">\(\deg_H v \notin B(v)\)</span> for any <span class="math inline">\(v\)</span>.</li>
+<li>Now suppose we allow <span class="math inline">\(0 \in B(v)\)</span> as well. Prove that if <span class="math inline">\(|B(v)| \leq \frac{1}{2} \deg v\)</span> for any <span class="math inline">\(v\)</span>, then we can still find such an <span class="math inline">\(H\)</span> (not necessarily nontrivial).</li>
+</ul></li>
+<li><p><strong>Alon, Knuth:</strong> Let <span class="math inline">\(n \geq 2\)</span> be even and let <span class="math inline">\(v_1, v_2, \ldots, v_k \in \{\pm 1\}^n\)</span> be vectors of length <span class="math inline">\(n\)</span> such that any <span class="math inline">\(v \in \{\pm 1\}^n\)</span> is orthogonal to at least one of the <span class="math inline">\(v_i\)</span>. Prove that <span class="math inline">\(k \geq n\)</span> and that this estimate is sharp.</p></li>
+</ol>
 
 
+</section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1032,18 +941,6 @@ F_k = \dfrac{1}{\sqrt{5}} \left( \phi^k - \psi^k \right)
     }
   });
   </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="../../posts/maths/with-without-order.html" class="pagination-link" aria-label="With or Without Order">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">With or Without Order</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="../../posts/maths/bayes-theorem.html" class="pagination-link" aria-label="Bayes Theorem">
-        <span class="nav-page-text">Bayes Theorem</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">

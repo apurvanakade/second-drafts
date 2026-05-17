@@ -9,7 +9,11 @@
       "/posts/maths/sperners-lemma-combinatorial-proof.html",
       "/posts/maths/sperners-lemma-statement.html",
       "/posts/maths/random-points-in-a-triangle.html",
-      "/posts/maths/barycentric-coordinates.html"
+      "/posts/maths/barycentric-coordinates.html",
+      "/posts/maths/pythagoras hilbert 90.html",
+      "/posts/maths/closed cones.html",
+      "/posts/maths/combinatorial nullstellensatz.html",
+      "/posts/maths/ln series.html"
     ]
   },
   {
@@ -18,7 +22,37 @@
       "/posts/scribbles/programming.html",
       "/posts/scribbles/architects-gardeners.html",
       "/posts/scribbles/remembering-learning.html",
-      "/posts/scribbles/begin-again.html"
+      "/posts/scribbles/mir publications.html"
+    ]
+  },
+  {
+    "listing": "/index.html",
+    "items": [
+      "/posts/scribbles/programming.html",
+      "/posts/maths/with-without-order.html",
+      "/posts/maths/nth-fibonacci.html",
+      "/posts/scribbles/architects-gardeners.html",
+      "/posts/scribbles/remembering-learning.html",
+      "/posts/maths/bayes-theorem.html",
+      "/posts/maths/sperners-lemma-geometric-proof.html",
+      "/posts/maths/sperners-lemma-combinatorial-proof.html",
+      "/posts/maths/sperners-lemma-statement.html",
+      "/posts/maths/random-points-in-a-triangle.html",
+      "/posts/maths/barycentric-coordinates.html",
+      "/posts/scribbles/mir publications.html",
+      "/posts/maths/pythagoras hilbert 90.html",
+      "/posts/maths/closed cones.html",
+      "/posts/maths/combinatorial nullstellensatz.html",
+      "/posts/maths/ln series.html"
+    ]
+  },
+  {
+    "listing": "/maths/index copy.html",
+    "items": [
+      "/posts/scribbles/programming.html",
+      "/posts/scribbles/architects-gardeners.html",
+      "/posts/scribbles/remembering-learning.html",
+      "/posts/scribbles/mir publications.html"
     ]
   }
 ]

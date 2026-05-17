@@ -5,7 +5,7 @@ subtitle: "Posts on probability, geometry, combinatorics, and visualization"
 listing:
   contents: "../posts/maths/*.qmd"
   sort: "date desc"
-  type: grid
+  type: default
   grid-columns: 3
   fields: [image, date, title, description, categories]
   categories: true

@@ -2,14 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.36">
+<meta name="generator" content="quarto-1.9.37">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Apurva Nakade">
 <meta name="dcterms.date" content="2025-05-03">
 
-<title>Second Drafts</title>
+<title>(Math) Blog – Second Drafts</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -35,15 +35,17 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-listing/list.min.js"></script>
+<script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-f418161beb48e0141c760e455f12af2c.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-158031087360bce0ff56dc785ce39e06.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
@@ -75,15 +77,76 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script>
 
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-listing .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-image','listing-date','listing-title','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description","listing-categories"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
-<meta property="og:title" content="Second Drafts">
+<meta property="og:title" content="(Math) Blog – Second Drafts">
 <meta property="og:description" content="">
+<meta property="og:image" content="https://github.com/apurvanakade/second-drafts/scribbles/images/programming.png">
 <meta property="og:site_name" content="Second Drafts">
+<meta property="og:image:height" content="1264">
+<meta property="og:image:width" content="848">
 </head>
 
-<body class="nav-sidebar floating nav-fixed fullcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-sidebar floating nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -248,7 +311,7 @@ ul.task-list li input[type="checkbox"] {
   </script>
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
@@ -297,14 +360,42 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Second Drafts</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">(Math) Blog</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
   </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">(Math) Blog</h1>
+                      </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta column-body">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Apurva Nakade </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">May 3, 2025</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="sidebar-menu-container"> 
@@ -372,6 +463,30 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Barycentric Coordinates</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/maths/closed cones.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Closed Convex Cones in LP</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/maths/combinatorial nullstellensatz.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Combinatorial Nullstellensatz</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/maths/ln series.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Logarithms and primes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/maths/pythagoras hilbert 90.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pythagoras using Hilbert 90</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -408,9 +523,12 @@ ul.task-list li input[type="checkbox"] {
   </div>
 </li>
           <li class="sidebar-item">
+ <span class="menu-text">posts/scribbles/begin-again.qmd</span>
+  </li>
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./posts/scribbles/begin-again.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Begin Again</span></a>
+  <a href="./posts/scribbles/mir publications.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Mir Publications</span></a>
   </div>
 </li>
       </ul>
@@ -420,49 +538,457 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(16)</span></div><div class="category" data-category="YWJzdHJhY3QlMjBhbGdlYnJh">abstract algebra <span class="quarto-category-count">(1)</span></div><div class="category" data-category="QUk=">AI <span class="quarto-category-count">(1)</span></div><div class="category" data-category="YW5hbHlzaXM=">analysis <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y29sb3Jpbmc=">coloring <span class="quarto-category-count">(3)</span></div><div class="category" data-category="Y29tYmluYXRvcmljcw==">combinatorics <span class="quarto-category-count">(3)</span></div><div class="category" data-category="Y29udmV4JTIwYW5hbHlzaXM=">convex analysis <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZGV0ZXJtaW5hbnQ=">determinant <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZXhwbG9yYXRpb24=">exploration <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Zmlib25hY2Np">fibonacci <span class="quarto-category-count">(1)</span></div><div class="category" data-category="aW5maW5pdGUlMjBzZXJpZXM=">infinite series <span class="quarto-category-count">(1)</span></div><div class="category" data-category="aW50ZXJhY3RpdmU=">interactive <span class="quarto-category-count">(4)</span></div><div class="category" data-category="bGVhcm5pbmc=">learning <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bGluZWFyJTIwcHJvZ3JhbW1pbmc=">linear programming <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bnVtYmVyJTIwdGhlb3J5">number theory <span class="quarto-category-count">(2)</span></div><div class="category" data-category="b3Blbg==">open <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cGhpbG9zb3BoeQ==">philosophy <span class="quarto-category-count">(2)</span></div><div class="category" data-category="cHJvYmFiaWxpdHk=">probability <span class="quarto-category-count">(2)</span></div><div class="category" data-category="cHJvYmxlbXM=">problems <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cHV6emxl">puzzle <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cmFuZG9tbmVzcw==">randomness <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cmVzZWFyY2g=">research <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cmllbWFubiUyMHpldGE=">riemann zeta <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cnVzc2lhbg==">russian <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dGVhY2hpbmc=">teaching <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dGV4dGJvb2tz">textbooks <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dG9kbw==">todo <span class="quarto-category-count">(2)</span></div><div class="category" data-category="dHJpYW5nbGVz">triangles <span class="quarto-category-count">(5)</span></div><div class="category" data-category="dmlzdWFsaXphdGlvbg==">visualization <span class="quarto-category-count">(5)</span></div></div></div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Second Drafts</h1>
-</div>
+<main class="content quarto-banner-title-block column-body" id="quarto-document-content">
 
 
 
-<div class="quarto-title-meta">
-
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Apurva Nakade </p>
-          </div>
-  </div>
-    
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">May 3, 2025</p>
-    </div>
-  </div>
-  
-    
-  </div>
-  
 
 
-</header>
 
-
-<p>I’m lucky to have a profession where I get paid for doing something I like and at the same time have a positive impact in the world. When people ask me when I plan to retire I like to say never.</p>
-<p>I find myself more and more interested in two things: math visualization and pedagogy. Looking back it makes sense that I was attracted to algebraic topology and spent most of my grad school summers teaching at Mathcamp instead of doing research. Now, when I get a break from my teaching duties, I like to <a href="./maths/index.html">make pretty pictures</a> and think out loud about <a href="./scribbles/index.html">teaching and learning</a>.</p>
+<!-- I'm lucky to have a profession where I get paid for doing something I like and at the same time have a positive impact in the world. When people ask me when I plan to retire I like to say never.  -->
+<p>This is a place for me to write about the two parts of my professional identity: <a href="./maths/index.html">a mathematician</a> and <a href="./scribbles/index.html">an educator</a>.</p>
 <!-- I like to think of my writings here as an aspect of my identity as a math educator. Writing is something I like to do for its own sake. Because I think words are powerful and magical. They are my oldest, wisest, and most cherished friends and here I am  -->
 
 
 
-<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+
+<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
+<div class="list grid quarto-listing-cols-3">
+<div class="g-col-1" data-index="0" data-categories="bGVhcm5pbmclMkNBSQ==" data-listing-date-sort="1764824400000" data-listing-file-modified-sort="1777903948511" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="441">
+<a href="./posts/scribbles/programming.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="./scribbles/images/programming.png" class="thumbnail-image card-img" style="height: 250px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Vibe Coding
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('bGVhcm5pbmc='); return false;">learning</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('QUk='); return false;">AI</div>
+
+</div>
+<div class="card-attribution card-text-small end">
+<div class="listing-date">
+Dec 4, 2025
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="1" data-categories="cHJvYmFiaWxpdHklMkNwdXp6bGU=" data-listing-date-sort="1764219600000" data-listing-file-modified-sort="1779053905821" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="459">
+<a href="./posts/maths/with-without-order.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="./maths/images/with-without-order-equation.svg" class="thumbnail-image card-img" style="height: 250px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+With or Without Order
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('cHJvYmFiaWxpdHk='); return false;">probability</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('cHV6emxl'); return false;">puzzle</div>
+
+</div>
+<div class="card-attribution card-text-small end">
+<div class="listing-date">
+Nov 27, 2025
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="2" data-categories="bnVtYmVyJTIwdGhlb3J5JTJDcmVzZWFyY2glMkNvcGVuJTJDZmlib25hY2NpJTJDZXhwbG9yYXRpb24=" data-listing-date-sort="1754884800000" data-listing-file-modified-sort="1779054009300" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1431">
+<a href="./posts/maths/nth-fibonacci.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top"><img loading='lazy' src="posts/maths/nth-fibonacci_files/figure-html/cell-4-output-1.png" style="height: 250px;"  class="thumbnail-image card-img"/></p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Self-Fibonacci Numbers
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('bnVtYmVyJTIwdGhlb3J5'); return false;">number theory</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('cmVzZWFyY2g='); return false;">research</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('b3Blbg=='); return false;">open</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Zmlib25hY2Np'); return false;">fibonacci</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('ZXhwbG9yYXRpb24='); return false;">exploration</div>
+
+</div>
+<div class="card-attribution card-text-small end">
+<div class="listing-date">
+Aug 11, 2025
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="3" data-categories="cGhpbG9zb3BoeSUyQ3RlYWNoaW5n" data-listing-date-sort="1752724800000" data-listing-file-modified-sort="1777897527918" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1282">
+<a href="./posts/scribbles/architects-gardeners.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="./scribbles/images/architects-gardeners.png" class="thumbnail-image card-img" style="height: 250px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Architects and Gardeners
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('cGhpbG9zb3BoeQ=='); return false;">philosophy</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('dGVhY2hpbmc='); return false;">teaching</div>
+
+</div>
+<div class="card-attribution card-text-small end">
+<div class="listing-date">
+Jul 17, 2025
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="4" data-categories="cGhpbG9zb3BoeQ==" data-listing-date-sort="1751169600000" data-listing-file-modified-sort="1777897527919" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="160">
+<a href="./posts/scribbles/remembering-learning.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="./scribbles/images/learning.png" class="thumbnail-image card-img" style="height: 250px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Learning is Remembering
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('cGhpbG9zb3BoeQ=='); return false;">philosophy</div>
+
+</div>
+<div class="card-attribution card-text-small end">
+<div class="listing-date">
+Jun 29, 2025
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="5" data-categories="cHJvYmFiaWxpdHklMkN2aXN1YWxpemF0aW9u" data-listing-date-sort="1748836800000" data-listing-file-modified-sort="1777897527917" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1300">
+<a href="./posts/maths/bayes-theorem.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="./maths/images/bayes.png" class="thumbnail-image card-img" style="height: 250px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Bayes Theorem
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('cHJvYmFiaWxpdHk='); return false;">probability</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('dmlzdWFsaXphdGlvbg=='); return false;">visualization</div>
+
+</div>
+<div class="card-attribution card-text-small end">
+<div class="listing-date">
+Jun 2, 2025
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="6" data-categories="dHJpYW5nbGVzJTJDY29sb3JpbmclMkN2aXN1YWxpemF0aW9uJTJDaW50ZXJhY3RpdmUlMkNkZXRlcm1pbmFudA==" data-listing-date-sort="1748145600000" data-listing-file-modified-sort="1777897527918" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2091">
+<a href="./posts/maths/sperners-lemma-geometric-proof.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="./maths/images/sperner-geo.png" class="thumbnail-image card-img" style="height: 250px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Sperner’s Lemma - Geometric Proof
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('dHJpYW5nbGVz'); return false;">triangles</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Y29sb3Jpbmc='); return false;">coloring</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('dmlzdWFsaXphdGlvbg=='); return false;">visualization</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('aW50ZXJhY3RpdmU='); return false;">interactive</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('ZGV0ZXJtaW5hbnQ='); return false;">determinant</div>
+
+</div>
+<div class="card-attribution card-text-small end">
+<div class="listing-date">
+May 25, 2025
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="7" data-categories="Y29tYmluYXRvcmljcyUyQ3RyaWFuZ2xlcyUyQ2NvbG9yaW5nJTJDdmlzdWFsaXphdGlvbiUyQ2ludGVyYWN0aXZl" data-listing-date-sort="1747368000000" data-listing-file-modified-sort="1777897527917" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="16" data-listing-word-count-sort="3048">
+<a href="./posts/maths/sperners-lemma-combinatorial-proof.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="./maths/images/sperner-combo.png" class="thumbnail-image card-img" style="height: 250px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Sperner’s Lemma - Combinatorial Proof
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('Y29tYmluYXRvcmljcw=='); return false;">combinatorics</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('dHJpYW5nbGVz'); return false;">triangles</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Y29sb3Jpbmc='); return false;">coloring</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('dmlzdWFsaXphdGlvbg=='); return false;">visualization</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('aW50ZXJhY3RpdmU='); return false;">interactive</div>
+
+</div>
+<div class="card-attribution card-text-small end">
+<div class="listing-date">
+May 16, 2025
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="8" data-categories="Y29tYmluYXRvcmljcyUyQ3RyaWFuZ2xlcyUyQ2NvbG9yaW5nJTJDdmlzdWFsaXphdGlvbiUyQ2ludGVyYWN0aXZl" data-listing-date-sort="1747195200000" data-listing-file-modified-sort="1777897527918" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1676">
+<a href="./posts/maths/sperners-lemma-statement.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="./maths/images/sperner-statement.png" class="thumbnail-image card-img" style="height: 250px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Sperner’s Lemma - Statement
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('Y29tYmluYXRvcmljcw=='); return false;">combinatorics</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('dHJpYW5nbGVz'); return false;">triangles</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Y29sb3Jpbmc='); return false;">coloring</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('dmlzdWFsaXphdGlvbg=='); return false;">visualization</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('aW50ZXJhY3RpdmU='); return false;">interactive</div>
+
+</div>
+<div class="card-attribution card-text-small end">
+<div class="listing-date">
+May 14, 2025
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="9" data-categories="cmFuZG9tbmVzcyUyQ3RyaWFuZ2xlcw==" data-listing-date-sort="1747022400000" data-listing-file-modified-sort="1777897527917" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1060">
+<a href="./posts/maths/random-points-in-a-triangle.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="./maths/images/random-points-triangle.png" class="thumbnail-image card-img" style="height: 250px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Random points in a triangle
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('cmFuZG9tbmVzcw=='); return false;">randomness</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('dHJpYW5nbGVz'); return false;">triangles</div>
+
+</div>
+<div class="card-attribution card-text-small end">
+<div class="listing-date">
+May 12, 2025
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="10" data-categories="dHJpYW5nbGVzJTJDaW50ZXJhY3RpdmUlMkN2aXN1YWxpemF0aW9u" data-listing-date-sort="1746936000000" data-listing-file-modified-sort="1777897527917" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="12" data-listing-word-count-sort="2331">
+<a href="./posts/maths/barycentric-coordinates.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="./maths/images/barycentric-coordinates.png" class="thumbnail-image card-img" style="height: 250px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Barycentric Coordinates
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('dHJpYW5nbGVz'); return false;">triangles</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('aW50ZXJhY3RpdmU='); return false;">interactive</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('dmlzdWFsaXphdGlvbg=='); return false;">visualization</div>
+
+</div>
+<div class="card-attribution card-text-small end">
+<div class="listing-date">
+May 11, 2025
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="11" data-categories="dGV4dGJvb2tzJTJDcnVzc2lhbg==" data-listing-date-sort="1725987069000" data-listing-file-modified-sort="1779054172001" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="124">
+<a href="./posts/scribbles/mir publications.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="./scribbles/images/mir.svg" class="thumbnail-image card-img" style="height: 250px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Mir Publications
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('dGV4dGJvb2tz'); return false;">textbooks</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('cnVzc2lhbg=='); return false;">russian</div>
+
+</div>
+<div class="card-attribution card-text-small end">
+<div class="listing-date">
+Sep 10, 2024
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="12" data-categories="YWJzdHJhY3QlMjBhbGdlYnJh" data-listing-date-sort="1717864381000" data-listing-file-modified-sort="1779053905821" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="241">
+<a href="./posts/maths/pythagoras hilbert 90.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="./maths/images/pythagoras-hilbert90-equation.svg" class="thumbnail-image card-img" style="height: 250px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Pythagoras using Hilbert 90
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('YWJzdHJhY3QlMjBhbGdlYnJh'); return false;">abstract algebra</div>
+
+</div>
+<div class="card-attribution card-text-small end">
+<div class="listing-date">
+Jun 8, 2024
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="13" data-categories="YW5hbHlzaXMlMkNsaW5lYXIlMjBwcm9ncmFtbWluZyUyQ2NvbnZleCUyMGFuYWx5c2lz" data-listing-date-sort="1704172383000" data-listing-file-modified-sort="1779053905821" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="148">
+<a href="./posts/maths/closed cones.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="./maths/images/closed-cones-equation.svg" class="thumbnail-image card-img" style="height: 250px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Closed Convex Cones in LP
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('YW5hbHlzaXM='); return false;">analysis</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('bGluZWFyJTIwcHJvZ3JhbW1pbmc='); return false;">linear programming</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Y29udmV4JTIwYW5hbHlzaXM='); return false;">convex analysis</div>
+
+</div>
+<div class="card-attribution card-text-small end">
+<div class="listing-date">
+Jan 2, 2024
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="14" data-categories="Y29tYmluYXRvcmljcyUyQ3Byb2JsZW1zJTJDdG9kbw==" data-listing-date-sort="1701019621000" data-listing-file-modified-sort="1779053905821" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="496">
+<a href="./posts/maths/combinatorial nullstellensatz.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="./maths/images/combinatorial-nullstellensatz-equation.svg" class="thumbnail-image card-img" style="height: 250px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Combinatorial Nullstellensatz
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('Y29tYmluYXRvcmljcw=='); return false;">combinatorics</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('cHJvYmxlbXM='); return false;">problems</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('dG9kbw=='); return false;">todo</div>
+
+</div>
+<div class="card-attribution card-text-small end">
+<div class="listing-date">
+Nov 26, 2023
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="15" data-categories="dG9kbyUyQ2luZmluaXRlJTIwc2VyaWVzJTJDbnVtYmVyJTIwdGhlb3J5JTJDcmllbWFubiUyMHpldGE=" data-listing-date-sort="1698325286000" data-listing-file-modified-sort="1779053905821" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="309">
+<a href="./posts/maths/ln series.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="./maths/images/ln-series-equation.svg" class="thumbnail-image card-img" style="height: 250px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Logarithms and primes
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('dG9kbw=='); return false;">todo</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('aW5maW5pdGUlMjBzZXJpZXM='); return false;">infinite series</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('bnVtYmVyJTIwdGhlb3J5'); return false;">number theory</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('cmllbWFubiUyMHpldGE='); return false;">riemann zeta</div>
+
+</div>
+<div class="card-attribution card-text-small end">
+<div class="listing-date">
+Oct 26, 2023
+</div>
+</div>
+</div>
+</div></a>
+</div>
+</div>
+<div class="listing-no-matching d-none">No matching items</div>
+</div><a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right

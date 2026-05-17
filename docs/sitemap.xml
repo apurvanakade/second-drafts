@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://github.com/apurvanakade/second-drafts/maths/index.html</loc>
-    <lastmod>2026-05-04T12:25:27.914Z</lastmod>
+    <lastmod>2026-05-17T21:51:21.390Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/apurvanakade/second-drafts/scribbles/index.html</loc>
@@ -14,7 +14,7 @@
   </url>
   <url>
     <loc>https://github.com/apurvanakade/second-drafts/posts/maths/with-without-order.html</loc>
-    <lastmod>2026-05-04T14:28:16.530Z</lastmod>
+    <lastmod>2026-05-17T21:38:25.821Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/apurvanakade/second-drafts/posts/maths/sperners-lemma-combinatorial-proof.html</loc>
@@ -46,7 +46,7 @@
   </url>
   <url>
     <loc>https://github.com/apurvanakade/second-drafts/posts/maths/bayes-theorem.html</loc>
-    <lastmod>2026-05-04T12:25:27.917Z</lastmod>
+    <lastmod>2026-05-17T23:45:34.672Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/apurvanakade/second-drafts/posts/maths/barycentric-coordinates.html</loc>
@@ -54,7 +54,7 @@
   </url>
   <url>
     <loc>https://github.com/apurvanakade/second-drafts/posts/maths/nth-fibonacci.html</loc>
-    <lastmod>2026-05-04T12:25:27.917Z</lastmod>
+    <lastmod>2026-05-17T21:40:09.300Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/apurvanakade/second-drafts/posts/maths/sperners-lemma-geometric-proof.html</loc>
@@ -62,6 +62,30 @@
   </url>
   <url>
     <loc>https://github.com/apurvanakade/second-drafts/index.html</loc>
-    <lastmod>2026-05-04T14:25:53.314Z</lastmod>
+    <lastmod>2026-05-17T21:49:20.063Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/apurvanakade/second-drafts/posts/maths/combinatorial nullstellensatz.html</loc>
+    <lastmod>2026-05-17T21:38:25.821Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/apurvanakade/second-drafts/posts/maths/closed cones.html</loc>
+    <lastmod>2026-05-17T21:38:25.821Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/apurvanakade/second-drafts/posts/scribbles/mir publications.html</loc>
+    <lastmod>2026-05-17T21:42:52.001Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/apurvanakade/second-drafts/posts/maths/pythagoras hilbert 90.html</loc>
+    <lastmod>2026-05-17T21:38:25.821Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/apurvanakade/second-drafts/posts/maths/ln series.html</loc>
+    <lastmod>2026-05-17T21:38:25.821Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/apurvanakade/second-drafts/maths/index copy.html</loc>
+    <lastmod>2026-05-17T21:50:58.244Z</lastmod>
   </url>
 </urlset>

@@ -41,6 +41,10 @@ website:
           - posts/maths/sperners-lemma-statement.qmd
           - posts/maths/random-points-in-a-triangle.qmd
           - posts/maths/barycentric-coordinates.qmd
+          - posts/maths/closed cones.qmd
+          - posts/maths/combinatorial nullstellensatz.qmd
+          - posts/maths/ln series.qmd
+          - posts/maths/pythagoras hilbert 90.qmd
       - section: Scribbles
         contents:
           - scribbles/index.qmd
@@ -48,6 +52,7 @@ website:
           - posts/scribbles/architects-gardeners.qmd
           - posts/scribbles/remembering-learning.qmd
           - posts/scribbles/begin-again.qmd
+          - posts/scribbles/mir publications.qmd
   # comments:
   #   giscus:
   #     repo: "apurvanakade/giscus"
